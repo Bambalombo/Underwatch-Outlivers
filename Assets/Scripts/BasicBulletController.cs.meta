@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a3f81cfe8726b42c49a2355416328ec7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerAttackSpeed: {fileID: 11400000, guid: 7235afadb6f474d2cb3739f6df07b5fa, type: 2}
+  - basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
+  - cursorPosition: {instanceID: 0}
+  - playerPosition: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
