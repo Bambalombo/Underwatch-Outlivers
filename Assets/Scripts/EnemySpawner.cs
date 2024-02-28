@@ -5,10 +5,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject commonEnemy, uncommonEnemy, rareEnemy, epicEnemy, legendaryEnemy;
-    [SerializeField] private float spawnInterval = 5f; // Time between enemy spawns
-    [SerializeField] private GameObject player; // The player's position
-    [SerializeField] private float spawnRadius; // The radius around the player where enemies can spawn
-    [SerializeField]private float gameTime = 0f; // Total game time
+    [SerializeField] private float spawnInterval = 5f;
+    [SerializeField] private GameObject player;
+    [SerializeField] private float spawnRadius;
+    [SerializeField] private float safeZoneRadius = 5f;
+    [SerializeField] private float gameTime = 0f;
+
+    // Difficulty adjustment parameters
+    private float difficultyFactor = 1f;
 
     void Start()
     {
@@ -17,131 +21,140 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        gameTime += Time.deltaTime; // Update game time
+        gameTime += Time.deltaTime;
+        AdjustDifficulty();
+    }
+
+    private void AdjustDifficulty()
+    {
+        difficultyFactor = 1f + gameTime / 300f; // Increase difficulty over time
     }
 
     private void SpawnRandomEnemy()
     {
-        float roll = Random.Range(1, 1000);
-        Debug.Log($"Rolled: {roll}.");
-
-        // Get the player's position
+        float roll = Random.Range(1, 1000) * difficultyFactor;
         Vector3 playerPos = player.transform.position;
 
-        // Calculate a random angle
-        float angle = Random.Range(0, 360);
-
-        // Calculate the position on a circle around the player
-        Vector3 spawnPos = playerPos + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * spawnRadius;
-
         GameObject enemyToSpawn;
-        int spawnCount;
+        int spawnCount = CalculateSpawnCount(roll, out enemyToSpawn);
 
-        // Adjust spawn count and enemy types based on game time
-        if (gameTime < 300) // First 5 minutes
-        {
-            switch (roll)
-            {
-                case < 5:
-                    enemyToSpawn = legendaryEnemy;
-                    spawnCount = 1;
-                    break;
-                case < 50:
-                    enemyToSpawn = epicEnemy;
-                    spawnCount = 1;
-                    break;
-                case < 100:
-                    enemyToSpawn = rareEnemy;
-                    spawnCount = 1;
-                    break;
-                case < 250:
-                    enemyToSpawn = uncommonEnemy;
-                    spawnCount = 15;
-                    break;
-                default:
-                    enemyToSpawn = commonEnemy;
-                    spawnCount = 100;
-                    break;
-            }
-        }
-        else if (gameTime < 600) // Next 5 minutes
-        {
-            switch (roll)
-            {
-                case < 10:
-                    enemyToSpawn = legendaryEnemy;
-                    spawnCount = 2;
-                    break;
-                case < 100:
-                    enemyToSpawn = epicEnemy;
-                    spawnCount = 2;
-                    break;
-                case < 200:
-                    enemyToSpawn = rareEnemy;
-                    spawnCount = 2;
-                    break;
-                case < 500:
-                    enemyToSpawn = uncommonEnemy;
-                    spawnCount = 30;
-                    break;
-                default:
-                    enemyToSpawn = commonEnemy;
-                    spawnCount = 200;
-                    break;
-            }
-        }
-        else // After 10 minutes
-        {
-            switch (roll)
-            {
-                case < 20:
-                    enemyToSpawn = legendaryEnemy;
-                    spawnCount = 3;
-                    break;
-                case < 200:
-                    enemyToSpawn = epicEnemy;
-                    spawnCount = 3;
-                    break;
-                case < 400:
-                    enemyToSpawn = rareEnemy;
-                    spawnCount = 3;
-                    break;
-                case < 800:
-                    enemyToSpawn = uncommonEnemy;
-                    spawnCount = 45;
-                    break;
-                default:
-                    enemyToSpawn = commonEnemy;
-                    spawnCount = 300;
-                    break;
-            }
-        }
-
-        // Instantiate the enemies at the calculated position
         for (int i = 0; i < spawnCount; i++)
         {
-            // For clumps, add a small random offset to the spawn position
-            Vector3 offset = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            Vector3 clumpSpawnPos = spawnPos + offset;
-
-            // For circle, distribute the spawn positions evenly around the circle
-            float circleAngle = angle + (360f / spawnCount) * i;
-            Vector3 circleSpawnPos = playerPos + new Vector3(Mathf.Cos(circleAngle), 0, Mathf.Sin(circleAngle)) * spawnRadius;
-
-            // Choose the spawn position based on the enemy type
-            Vector3 finalSpawnPos = (spawnCount == 1) ? clumpSpawnPos : circleSpawnPos;
-
-            // Instantiate the enemy at the final spawn position
-            Instantiate(enemyToSpawn, finalSpawnPos, Quaternion.identity, transform);
+            Vector3 spawnPos = CalculateSpawnPosition(playerPos);
+            Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
         }
     }
+    
+    private int CalculateSpawnCount(float roll, out GameObject enemyToSpawn)
+    {
+        int spawnCount;
+    
+        // Adjust these thresholds as needed for balancing
+        const int legendaryThreshold = 950;
+        const int epicThreshold = 850;
+        const int rareThreshold = 700;
+        const int uncommonThreshold = 500;
+
+        // Adjusting spawn counts and types based on the roll
+        if (roll >= legendaryThreshold)
+        {
+            enemyToSpawn = legendaryEnemy;
+            spawnCount = Mathf.CeilToInt(2 * difficultyFactor); // Spawn more as difficulty increases
+        }
+        else if (roll >= epicThreshold)
+        {
+            enemyToSpawn = epicEnemy;
+            spawnCount = Mathf.CeilToInt(4 * difficultyFactor);
+        }
+        else if (roll >= rareThreshold)
+        {
+            enemyToSpawn = rareEnemy;
+            spawnCount = Mathf.CeilToInt(6 * difficultyFactor);
+        }
+        else if (roll >= uncommonThreshold)
+        {
+            enemyToSpawn = uncommonEnemy;
+            spawnCount = Mathf.CeilToInt(10 * difficultyFactor);
+        }
+        else
+        {
+            enemyToSpawn = commonEnemy;
+            spawnCount = Mathf.CeilToInt(15 * difficultyFactor);
+        }
+
+        // Ensure there is at least one enemy spawned
+        spawnCount = Mathf.Max(spawnCount, 1);
+
+        return spawnCount;
+    }
+
+
+    /*private Vector3 CalculateSpawnPosition(Vector3 playerPos)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere.normalized;
+        randomDirection.y = 0;
+        float distance = Random.Range(safeZoneRadius, spawnRadius);
+        return playerPos + randomDirection * distance;
+    }*/
+
+    private Vector2 CalculateSpawnPosition(Vector2 playerPos)
+    {
+        Vector2 spawnPos;
+        int maxAttempts = 10;
+        int attempts = 0;
+
+        do
+        {
+            // Generate a random angle
+            float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+
+            // Random distance from player within spawn radius, but outside the safe zone
+            float distance = Random.Range(safeZoneRadius, spawnRadius);
+
+            // Calculate spawn position using angle and distance
+            spawnPos = new Vector2(
+                playerPos.x + Mathf.Cos(angle) * distance,
+                playerPos.y + Mathf.Sin(angle) * distance
+            );
+
+            attempts++;
+        } while (!IsValidSpawnPosition(spawnPos) && attempts < maxAttempts);
+
+        // If a valid position isn't found after maxAttempts, fallback to a default
+        if (attempts >= maxAttempts)
+        {
+            float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+            spawnPos = new Vector2(
+                playerPos.x + Mathf.Cos(angle) * safeZoneRadius,
+                playerPos.y + Mathf.Sin(angle) * safeZoneRadius
+            );
+        }
+
+        return spawnPos;
+    }
+
+
+    private bool IsValidSpawnPosition(Vector3 position)
+    {
+        // Implement checks to determine if the position is valid
+        // Example: Check if the position is not colliding with other objects, is reachable, etc.
+        // RaycastHit hit;
+        // if (Physics.Raycast(position + Vector3.up * 100, Vector3.down, out hit))
+        // {
+        //     return hit.collider.gameObject.isWalkable; // Assuming you have a way to identify walkable areas
+        // }
+        // return false;
+
+        return true; // Temporarily returning true, replace with your actual logic
+    }
+
 
     private IEnumerator SpawnEnemies()
     {
         while (true)
         {
             SpawnRandomEnemy();
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(spawnInterval / difficultyFactor);
         }
     }
 }
