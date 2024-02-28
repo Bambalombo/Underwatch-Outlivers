@@ -15,9 +15,9 @@ public class BasicBulletController : MonoBehaviour
     
     void Start()
     {
-        transform.position = playerPosition.value;
-        _bulletSpeed = basicBulletSpeed.value + playerAttackSpeed.value/2;
-        _bulletDirection = (cursorPosition.value).normalized;
+        //transform.position = playerPosition.value;
+        //_bulletSpeed = basicBulletSpeed.value + playerAttackSpeed.value/2;
+        //_bulletDirection = (cursorPosition.value).normalized;
         // _bulletDirection.z = (Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg);
         // transform.Rotate(0,0,(Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg)/2);
         // transform.localRotation = Quaternion.Euler(0,0,(Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg)/2);
