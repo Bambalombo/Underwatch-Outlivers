@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094f9a9fb7def4c6ca21b42a7f07d87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorPosition: {fileID: 11400000, guid: 4aa56779a99524c92b2f05270376acf1, type: 2}
+  cursorPosition: {fileID: 11400000, guid: f85ef083a9751dc45b394a7b1645b9e0, type: 2}
   textObeject: {fileID: 1073600461}
   tmp: {fileID: 0}
 --- !u!4 &477238780
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 0}
+  gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
 --- !u!114 &798550457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +691,7 @@ GameObject:
   - component: {fileID: 1541939249}
   - component: {fileID: 1541939253}
   - component: {fileID: 1541939248}
+  - component: {fileID: 1541939254}
   - component: {fileID: 1541939251}
   - component: {fileID: 1541939252}
   m_Layer: 0
@@ -858,6 +860,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: {fileID: 11400000, guid: 7235afadb6f474d2cb3739f6df07b5fa, type: 2}
   bullet: {fileID: 244602473224163229, guid: a455ae59b97b94f59a88985c908702de, type: 3}
+--- !u!114 &1541939254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541939247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3cc84c22cdd45bca295502aa2d6391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbarController: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
 --- !u!1 &1737652423
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,10 +925,10 @@ MonoBehaviour:
   epicEnemy: {fileID: 5362581833865366400, guid: b127c7d400a17c0499566ead9024825a, type: 3}
   legendaryEnemy: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
   spawnInterval: 5
-  player: {fileID: 1541939247}
+  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
   spawnRadius: 40
   safeZoneRadius: 20
-  gameTime: 0
+  gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
 --- !u!1 &1795638452
 GameObject:
   m_ObjectHideFlags: 0

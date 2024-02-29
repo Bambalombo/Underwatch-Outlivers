@@ -1,11 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerDefaultShoot : MonoBehaviour
 {
     [SerializeField] private FloatVariable attackSpeed;
     [SerializeField] private GameObject bullet;

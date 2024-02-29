@@ -95,9 +95,8 @@ GameObject:
   - component: {fileID: 5851707422844388568}
   - component: {fileID: 3128402012767683048}
   - component: {fileID: 5182074035858095616}
-  - component: {fileID: 6408371412206486141}
-  - component: {fileID: 750165662903652372}
-  - component: {fileID: 4792808897084071477}
+  - component: {fileID: -6205613047608618776}
+  - component: {fileID: 8305025459644578265}
   - component: {fileID: 9160034463395656589}
   m_Layer: 0
   m_Name: Common_Enemy
@@ -189,7 +188,7 @@ MonoBehaviour:
   playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
   enemyMoveSpeed: {fileID: 11400000, guid: 4894f523a36db423eb7e4c71de803c89, type: 2}
   enemyIndividualMoveSpeed: 0
---- !u!114 &6408371412206486141
+--- !u!114 &-6205613047608618776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,30 +197,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5362581833865366400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4b996f53ef84eeb8b9b69ba9dfe165, type: 3}
+  m_Script: {fileID: 11500000, guid: 9618fa42dc7738f4e8db237c791e8f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusBar: {fileID: 0}
-  parentObject: {fileID: 5851707422844388568}
-  positionOffset: {x: 0, y: 1, z: 0}
---- !u!114 &750165662903652372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5362581833865366400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3cc84c22cdd45bca295502aa2d6391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbarController: {fileID: 0}
-  s: 0
-  maxHealth: 0
+  maxHealth: 10
   currentHealth: 0
---- !u!61 &4792808897084071477
-BoxCollider2D:
+--- !u!70 &8305025459644578265
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -252,19 +234,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016754627, y: -0.21781117}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0111698, y: 1.4579617}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.036368072, y: -0.19396281}
+  m_Size: {x: 0.963632, y: 1.6303794}
+  m_Direction: 0
 --- !u!50 &9160034463395656589
 Rigidbody2D:
   serializedVersion: 4

@@ -6,10 +6,10 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject commonEnemy, uncommonEnemy, rareEnemy, epicEnemy, legendaryEnemy;
     [SerializeField] private float spawnInterval = 5f;
-    [SerializeField] private GameObject player;
+    [SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float spawnRadius;
     [SerializeField] private float safeZoneRadius = 5f;
-    [SerializeField] private float gameTime = 0f;
+    [SerializeField] private FloatVariable gameTime;
 
     // Difficulty adjustment parameters
     private float difficultyFactor = 1f;
@@ -21,19 +21,18 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        gameTime += Time.deltaTime;
         AdjustDifficulty();
     }
 
     private void AdjustDifficulty()
     {
-        difficultyFactor = 1f + gameTime / 300f; // Increase difficulty over time
+        difficultyFactor = 1f + gameTime.value / 300f; // Increase difficulty over time
     }
 
     private void SpawnRandomEnemy()
     {
         float roll = Random.Range(1, 1000) * difficultyFactor;
-        Vector3 playerPos = player.transform.position;
+        Vector3 playerPos = playerPosition.value;
 
         GameObject enemyToSpawn;
         int spawnCount = CalculateSpawnCount(roll, out enemyToSpawn);
