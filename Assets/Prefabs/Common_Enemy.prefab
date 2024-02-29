@@ -202,6 +202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
+  attackCooldown: 1
+  damagePopupPrefab: {fileID: 3231793296204108337, guid: 07ca1eb7d1fce7b42beac597cfb6a691, type: 3}
 --- !u!70 &8305025459644578265
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

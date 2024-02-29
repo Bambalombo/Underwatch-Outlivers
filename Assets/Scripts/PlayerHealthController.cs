@@ -4,7 +4,7 @@ using TMPro;
 public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] private StatusBarController healthbarController;
-    [SerializeField] private TextMeshProUGUI deathText;
+    private TextMeshProUGUI deathText;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
     [SerializeField] private float enemyDamage = 9f;
