@@ -99,5 +99,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackSpeed: {fileID: 11400000, guid: 7235afadb6f474d2cb3739f6df07b5fa, type: 2}
   basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
-  cursorPosition: {fileID: 11400000, guid: 4aa56779a99524c92b2f05270376acf1, type: 2}
-  playerPosition: {fileID: 11400000, guid: 487fc65a28055405980660ec8df5ee30, type: 2}
+  cursorPosition: {fileID: 11400000, guid: f85ef083a9751dc45b394a7b1645b9e0, type: 2}
+  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}

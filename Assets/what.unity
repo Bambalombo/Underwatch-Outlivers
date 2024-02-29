@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoveSpeed: {fileID: 11400000, guid: 9d810daabed9d4f7c845b325d5e4bd93, type: 2}
-  playerPosition: {fileID: 11400000, guid: 487fc65a28055405980660ec8df5ee30, type: 2}
+  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
 --- !u!212 &1541939249
 SpriteRenderer:
   m_ObjectHideFlags: 0

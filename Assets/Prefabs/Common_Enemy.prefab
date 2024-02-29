@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005c2612aaeb649a080df1c5727cd48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: 487fc65a28055405980660ec8df5ee30, type: 2}
+  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
   enemyMoveSpeed: {fileID: 11400000, guid: 4894f523a36db423eb7e4c71de803c89, type: 2}
   enemyIndividualMoveSpeed: 0
 --- !u!114 &6408371412206486141
