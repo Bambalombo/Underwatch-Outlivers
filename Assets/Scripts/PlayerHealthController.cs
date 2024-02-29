@@ -30,13 +30,15 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
+    // Take damage when colliding with an enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemy = collision.gameObject.GetComponent<EnemyHealth>();
-        if (enemy != null)
+        if (enemy != null && enemy.CanAttack())
         {
             // Assume the enemy deals a fixed amount of damage
             TakeDamage(enemyDamage);
+            enemy.Attack();
         }
     }
 }
