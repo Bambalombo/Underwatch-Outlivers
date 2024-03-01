@@ -43,12 +43,14 @@ public class BasicBulletController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("Bullet hit something!");
-        var enemy = collision.gameObject.GetComponent<EnemyHealth>();
-        if (enemy != null)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            enemy.TakeDamage(damage);
-            Destroy(gameObject); // Destroy the bullet after it hits the enemy
+            var enemy = collision.gameObject.GetComponent<EnemyHealth>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Destroy(gameObject); // Destroy the bullet after it hits the enemy
+            }
         }
     }
 

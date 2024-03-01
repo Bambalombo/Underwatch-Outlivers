@@ -5,6 +5,7 @@ public class PlayerDefaultShoot : MonoBehaviour
 {
     [SerializeField] private FloatVariable attackSpeed;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform bulletParent;
 
     private Coroutine _shootingSequence;
     private void Start()
@@ -16,12 +17,13 @@ public class PlayerDefaultShoot : MonoBehaviour
     {
         for (;;)
         {
-            Instantiate(bullet);
-            yield return new WaitForSeconds(1/attacksPerSecond);
+            Instantiate(bullet, bulletParent.transform, false);
+            
+            yield return new WaitForSeconds(1 / attacksPerSecond);
         }
     }
 
-    public void RestartBasicAttack()
+    private void RestartBasicAttack()
     {
         if (_shootingSequence != null) 
             StopCoroutine(_shootingSequence);

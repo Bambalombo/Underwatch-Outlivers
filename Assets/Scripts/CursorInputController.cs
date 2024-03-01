@@ -14,7 +14,7 @@ public class CursorInputController : MonoBehaviour
     private Vector3 _screenCenter;
 
     public GameObject textObeject;
-    public TextMeshProUGUI tmp;
+    private TextMeshProUGUI tmp;
 
     private void Awake()
     {
