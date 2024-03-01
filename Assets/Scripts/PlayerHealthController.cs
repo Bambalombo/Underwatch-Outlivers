@@ -10,7 +10,7 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private float enemyDamage = 9f;
 
 
-    private void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
         deathText = GameObject.FindWithTag("DeathTextTag").GetComponent<TextMeshProUGUI>();
