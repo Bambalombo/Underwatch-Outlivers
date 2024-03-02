@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 6679712086177124191}
   - component: {fileID: 6615201202006533367}
   - component: {fileID: 537972653550675585}
+  - component: {fileID: 1862494156703512575}
   - component: {fileID: 390085467450257772}
   - component: {fileID: 5348633400840681813}
   m_Layer: 0
@@ -620,7 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: {fileID: 11400000, guid: 7235afadb6f474d2cb3739f6df07b5fa, type: 2}
   bullet: {fileID: 244602473224163229, guid: a455ae59b97b94f59a88985c908702de, type: 3}
-  playerProjectileSpawnPoint: {fileID: 1134706443915277711}
+  bulletParent: {fileID: 0}
 --- !u!114 &6615201202006533367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +652,21 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   enemyDamage: 9
+--- !u!114 &1862494156703512575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af78845949000f4a8cc6bbf97b9779a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experience: {fileID: 11400000, guid: d28cbf646da6d5b4a9514a23d9e4ca9a, type: 2}
+  level: {fileID: 11400000, guid: 5e81f02d13a93294893d33f7ee6b5200, type: 2}
+  baseExperience: 100
 --- !u!70 &390085467450257772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

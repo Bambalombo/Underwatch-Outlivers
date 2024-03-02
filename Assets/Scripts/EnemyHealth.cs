@@ -4,22 +4,25 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
-    private float lastAttackTime;
-    [SerializeField] private float attackCooldown = 1f; 
+    [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private GameObject damagePopupPrefab;
-
-
+    [SerializeField] private int experienceGain = 10;
+    private float lastAttackTime;
+    
+    //TODO: Too many random variables in this script, need to clean up/move to other scripts
+    
     private void Start()
     {
         currentHealth = maxHealth;
         lastAttackTime = -attackCooldown;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, PlayerExperience playerExperience)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            playerExperience.GainExperience(experienceGain);
             Destroy(gameObject);
         }
 

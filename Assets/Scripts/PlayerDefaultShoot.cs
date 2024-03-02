@@ -8,6 +8,12 @@ public class PlayerDefaultShoot : MonoBehaviour
     [SerializeField] private Transform bulletParent;
 
     private Coroutine _shootingSequence;
+
+    private void Awake()
+    {   
+        bulletParent = GameObject.Find("BulletParent").transform;
+    }
+
     private void Start()
     {
         RestartBasicAttack();
@@ -17,7 +23,7 @@ public class PlayerDefaultShoot : MonoBehaviour
     {
         for (;;)
         {
-            Instantiate(bullet, bulletParent.transform, false);
+            Instantiate(bullet, bulletParent, false);
             
             yield return new WaitForSeconds(1 / attacksPerSecond);
         }

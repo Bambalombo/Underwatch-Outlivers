@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicBulletController : MonoBehaviour
@@ -7,21 +6,19 @@ public class BasicBulletController : MonoBehaviour
     [SerializeField] private FloatVariable playerAttackSpeed;
     [SerializeField] private FloatVariable basicBulletSpeed;
     [SerializeField] private Vector3Variable cursorPosition, playerPosition;
+    [SerializeField] private PlayerExperience playerExperience;
 
-    [SerializeField] private float damage = 10f; // Add this line
+    [SerializeField] private float damage = 10f;
 
     private float _bulletSpeed;
     private Vector3 _bulletDirection;
-    
+
     void Start()
     {
         transform.position = playerPosition.value;
         _bulletSpeed = basicBulletSpeed.value + playerAttackSpeed.value/2;
         _bulletDirection = (cursorPosition.value).normalized;
-        // _bulletDirection.z = (Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg);
-        // transform.Rotate(0,0,(Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg)/2);
-        // transform.localRotation = Quaternion.Euler(0,0,(Mathf.Atan2(_bulletDirection.y, _bulletDirection.x) * Mathf.Rad2Deg)/2);
-        
+
         StartCoroutine(SendBulletFlying());
         StartCoroutine(KillTimer());
     }
@@ -40,7 +37,7 @@ public class BasicBulletController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -48,8 +45,8 @@ public class BasicBulletController : MonoBehaviour
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
-                Destroy(gameObject); // Destroy the bullet after it hits the enemy
+                enemy.TakeDamage(damage, playerExperience);
+                Destroy(gameObject);
             }
         }
     }
