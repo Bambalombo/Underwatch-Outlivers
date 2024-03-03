@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private IntVariable experience;
     [SerializeField] private IntVariable level;
+    [SerializeField] private Transform playerParent;
     
     
     // Start is called before the first frame update
     void Awake()
     {
         // Instantiate player at the start of the game
-        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity, playerParent);
     }
 
     public void FixedUpdate()

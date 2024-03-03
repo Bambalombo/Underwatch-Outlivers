@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 5348633400840681813}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3cc84c22cdd45bca295502aa2d6391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbarController: {fileID: 7179351921809565975}
+  healthBarController: {fileID: 7179351921809565975}
   maxHealth: 100
   currentHealth: 0
   enemyDamage: 9

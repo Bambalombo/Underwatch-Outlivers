@@ -1,10 +1,11 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    [SerializeField] private StatusBarController healthbarController;
-    private TextMeshProUGUI deathText;
+    [SerializeField] private StatusBarController healthBarController;
+    private TextMeshProUGUI _deathText;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
     [SerializeField] private float enemyDamage = 9f;
@@ -13,19 +14,19 @@ public class PlayerHealthController : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
-        deathText = GameObject.FindWithTag("DeathTextTag").GetComponent<TextMeshProUGUI>();
-        deathText.enabled = false;
+        _deathText = GameObject.FindWithTag("DeathTextTag").GetComponent<TextMeshProUGUI>();
+        _deathText.enabled = false;
     }
     
     //TODO: Death needs to be when every player is dead, not just one 
-    public void TakeDamage(float damage)
+    private void PlayerTakeDamage(float damage)
     {
         currentHealth -= damage;
-        healthbarController.UpdateStatusBar(currentHealth, maxHealth);
+        healthBarController.UpdateStatusBar(currentHealth, maxHealth);
         if (currentHealth < 0) 
         {
-            deathText.enabled = true;
-            deathText.text = "You Died!";
+            _deathText.enabled = true;
+            _deathText.text = "You Died!";
             // Handle player death here
         }
     }
@@ -37,7 +38,7 @@ public class PlayerHealthController : MonoBehaviour
         if (enemy != null && enemy.CanAttack())
         {
             // Assume the enemy deals a fixed amount of damage
-            TakeDamage(enemyDamage);
+            PlayerTakeDamage(enemyDamage);
             enemy.Attack();
         }
     }

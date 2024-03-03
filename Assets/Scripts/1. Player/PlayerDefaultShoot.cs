@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,12 +7,13 @@ public class PlayerDefaultShoot : MonoBehaviour
     [SerializeField] private FloatVariable attackSpeed;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletParent;
-
+    
     private Coroutine _shootingSequence;
 
     private void Awake()
-    {   
-        bulletParent = GameObject.Find("BulletParent").transform;
+    {
+        // TODO: Can be optimized but i don't have the energy to fix it right now
+        bulletParent = GameObject.FindWithTag("BulletsParent").transform;
     }
 
     private void Start()

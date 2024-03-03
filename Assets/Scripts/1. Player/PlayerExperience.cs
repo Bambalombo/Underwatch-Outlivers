@@ -7,14 +7,14 @@ public class PlayerExperience : MonoBehaviour
     //[SerializeField] private int experience = 0;
     //[SerializeField] private int level = 0;
     [SerializeField] private int baseExperience = 100;
-    [SerializeField] private GameManager gameManager;
+    //[SerializeField] private GameManager gameManager;
 
     private void Start()
     {
         experience.value = 0;
         level.value = 0;
 
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //gameManager.DisplayExperience(experience.value);
         //gameManager.DisplayLevel(level.value);

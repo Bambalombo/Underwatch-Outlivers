@@ -1,19 +1,19 @@
-using System;
 using UnityEngine;
 using TMPro;
 
 public class DamagePopupController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private TextMeshPro damageText;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float fadeSpeed = 1f;
-
-    private void Awake()
-    {
-        
-    }
+    
 
     private void Update()
+    {
+        DamagePopupAnimation();
+    }
+
+    private void DamagePopupAnimation()
     {
         // Move the popup up and fade out over time
         transform.position += Vector3.up * moveSpeed * Time.deltaTime;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class BasicBulletController : MonoBehaviour
 
     private float _bulletSpeed;
     private Vector3 _bulletDirection;
+    
 
     void Start()
     {
@@ -45,7 +47,9 @@ public class BasicBulletController : MonoBehaviour
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage, playerExperience);
+                enemy.EnemyTakeDamage(damage, playerExperience);
+                
+                // Destroy the bullet
                 Destroy(gameObject);
             }
         }

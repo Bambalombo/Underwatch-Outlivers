@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DeathTextTag
   - Enemy
+  - DamagePopupParent
+  - BulletsParent
   layers:
   - Default
   - TransparentFX
