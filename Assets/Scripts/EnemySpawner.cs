@@ -40,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             Vector3 spawnPos = CalculateSpawnPosition(playerPos);
+            
+            //TODO: This could be improved by recycling enemies instead of instantiating new ones
             Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
         }
     }

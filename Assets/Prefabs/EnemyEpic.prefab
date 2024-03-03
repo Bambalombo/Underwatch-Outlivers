@@ -119,6 +119,7 @@ MonoBehaviour:
   currentHealth: 0
   attackCooldown: 1
   damagePopupPrefab: {fileID: 3231793296204108337, guid: 07ca1eb7d1fce7b42beac597cfb6a691, type: 3}
+  experienceGain: 10
 --- !u!61 &4792808897084071477
 BoxCollider2D:
   m_ObjectHideFlags: 0
