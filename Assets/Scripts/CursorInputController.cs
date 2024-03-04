@@ -6,13 +6,13 @@ public class CursorInputController : MonoBehaviour
     [SerializeField] private Vector3Variable cursorPosition;
     private Vector3 _screenCenter;
 
-    public GameObject textObeject;
-    private TextMeshProUGUI tmp;
+    //public GameObject textObeject;
+    //private TextMeshProUGUI tmp;
 
     private void Awake()
     {
         _screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f);
-        tmp = textObeject.GetComponent<TextMeshProUGUI>();
+        //tmp = textObeject.GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -24,6 +24,6 @@ public class CursorInputController : MonoBehaviour
     private void UpdateMousePosition()
     {
         cursorPosition.value = Input.mousePosition - _screenCenter;
-        tmp.text = $"{cursorPosition.value}\n{Mathf.Atan2(cursorPosition.value.normalized.y, cursorPosition.value.normalized.x) * Mathf.Rad2Deg}";
+        //tmp.text = $"{cursorPosition.value}\n{Mathf.Atan2(cursorPosition.value.normalized.y, cursorPosition.value.normalized.x) * Mathf.Rad2Deg}";
     }
 }
