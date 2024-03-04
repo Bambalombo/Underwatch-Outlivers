@@ -3,16 +3,20 @@ using UnityEngine;
 public class PlayerExperience : MonoBehaviour
 {
     [SerializeField] private IntVariable experience;
+    [SerializeField] private IntVariable nextLevelExperience;
     [SerializeField] private IntVariable level;
     //[SerializeField] private int experience = 0;
-    //[SerializeField] private int level = 0;
+    //[SerializeField] private int level = 1;
     [SerializeField] private int baseExperience = 100;
     //[SerializeField] private GameManager gameManager;
+    [SerializeField] private float levelScalingFactor = 1.5f;
+
 
     private void Start()
     {
         experience.value = 0;
-        level.value = 0;
+        level.value = 1;
+        nextLevelExperience.value = baseExperience;
 
         //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -32,18 +36,18 @@ public class PlayerExperience : MonoBehaviour
 
     private void ScaleLevel()
     {
-        int nextLevelExperience = baseExperience * (int)Mathf.Pow(2, level.value);
-        while (experience.value >= nextLevelExperience)
+        nextLevelExperience.value = baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value);
+        while (experience.value >= nextLevelExperience.value)
         {
             LevelUp();
-            nextLevelExperience = baseExperience * (int)Mathf.Pow(2, level.value);
+            nextLevelExperience.value = baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value);
         }
     }
 
     private void LevelUp()
     {
         level.value++;
-        experience.value -= baseExperience * (int)Mathf.Pow(2, level.value - 1);
+        experience.value -= baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value - 1);
         
         //gameManager.DisplayExperience(experience);
         //gameManager.DisplayLevel(level);

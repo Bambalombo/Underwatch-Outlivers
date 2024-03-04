@@ -8,11 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI experienceText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private IntVariable experience;
+    [SerializeField] private IntVariable nextLevelExperience;
     [SerializeField] private IntVariable level;
 
     private void FixedUpdate()
     {
-        UpdateExperienceUI(experience.value);
+        UpdateExperienceUI(experience.value, nextLevelExperience.value);
         UpdateLevelUI(level.value);
     }
 
@@ -29,9 +30,9 @@ public class UIManager : MonoBehaviour
         }*/
     }
 
-    private void UpdateExperienceUI(int exp)
+    private void UpdateExperienceUI(int exp, int nextLevelExp)
     {
-        experienceText.text = "Exp: " + exp;
+        experienceText.text = "Exp: " + exp + " / " + nextLevelExp;
     }
 
     private void UpdateLevelUI(int lvl)
