@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 606478616137536866}
   - component: {fileID: 5913499423442561511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nyborg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -6205613047608618776}
   - component: {fileID: 8305025459644578265}
   - component: {fileID: 9160034463395656589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyCommon
   m_TagString: Enemy
   m_Icon: {fileID: 0}

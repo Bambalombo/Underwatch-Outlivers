@@ -32,7 +32,7 @@ public class PlayerHealthController : MonoBehaviour
     }
 
     // Take damage when colliding with an enemy
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemy = collision.gameObject.GetComponent<EnemyHealth>();
         if (enemy != null && enemy.CanAttack())
@@ -40,6 +40,20 @@ public class PlayerHealthController : MonoBehaviour
             // Assume the enemy deals a fixed amount of damage
             PlayerTakeDamage(enemyDamage);
             enemy.Attack();
+        }
+    }*/
+    
+    // Take damage when staying in an enemy's trigger
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            var enemy = collision.gameObject.GetComponent<EnemyHealth>();
+            if (enemy.CanAttack())
+            {
+                PlayerTakeDamage(enemyDamage);
+                enemy.Attack();
+            }
         }
     }
 }
