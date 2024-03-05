@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5851707422844388568}
   - component: {fileID: 3128402012767683048}
-  - component: {fileID: 5182074035858095616}
+  - component: {fileID: 8876211974583484907}
   - component: {fileID: -5921489093431520526}
   - component: {fileID: 4792808897084071477}
   - component: {fileID: 9160034463395656589}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5362581833865366400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.54, y: -3.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5182074035858095616
+--- !u!114 &8876211974583484907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5362581833865366400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 005c2612aaeb649a080df1c5727cd48f, type: 3}
+  m_Script: {fileID: 11500000, guid: b73fdd76d360c0448a993c374d3fc299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
-  enemyMoveSpeed: {fileID: 11400000, guid: 4894f523a36db423eb7e4c71de803c89, type: 2}
-  enemyIndividualMoveSpeed: 0
+  moveSpeed: 3
 --- !u!114 &-5921489093431520526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +119,7 @@ MonoBehaviour:
   attackCooldown: 1
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
   experienceGain: 10
+  damagePopupParent: {fileID: 0}
 --- !u!61 &4792808897084071477
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,4 +191,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4

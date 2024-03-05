@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5851707422844388568}
   - component: {fileID: 3128402012767683048}
-  - component: {fileID: 5182074035858095616}
+  - component: {fileID: -4467926714252382338}
   - component: {fileID: -6205613047608618776}
   - component: {fileID: 8305025459644578265}
   - component: {fileID: 9160034463395656589}
@@ -119,7 +119,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 606478616137536866}
-  - {fileID: 6366657586908434465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3128402012767683048
@@ -174,7 +173,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5182074035858095616
+--- !u!114 &-4467926714252382338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,12 +182,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5362581833865366400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 005c2612aaeb649a080df1c5727cd48f, type: 3}
+  m_Script: {fileID: 11500000, guid: b73fdd76d360c0448a993c374d3fc299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
-  enemyMoveSpeed: {fileID: 11400000, guid: 4894f523a36db423eb7e4c71de803c89, type: 2}
-  enemyIndividualMoveSpeed: 0
+  moveSpeed: 3
 --- !u!114 &-6205613047608618776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,35 +266,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!1 &8700949821123467359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6366657586908434465}
-  m_Layer: 0
-  m_Name: Damage Popup Parent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6366657586908434465
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8700949821123467359}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5851707422844388568}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Constraints: 4

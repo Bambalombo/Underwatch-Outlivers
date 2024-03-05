@@ -1,44 +1,40 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Rigidbody2D))] // Ensure there's a Rigidbody2D component attached to the GameObject.
 public class EnemyController : MonoBehaviour
 {
     [Header("Component Connections")]
     [SerializeField] private Vector3Variable playerPosition;
-	[SerializeField] private FloatVariable enemyMoveSpeed;
-    [SerializeField] private float enemyIndividualMoveSpeed;
-    
-    void Start()
+    [SerializeField] private float moveSpeed = 5f; 
+
+    private Rigidbody2D rb;
+    private Vector2 movementDirection;
+    private float minDistanceToPlayer = 0.2f; 
+
+    void Awake()
     {
-        SetMoveSpeed();
-        StartCoroutine(PerformMovement());
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    IEnumerator PerformMovement()
+    void FixedUpdate()
     {
-        for (;;)
-        {
-            while (Vector3.Distance(transform.position,playerPosition.value) > 0.2f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position,playerPosition.value,enemyIndividualMoveSpeed*Time.deltaTime);
-                yield return null;
-            }
-            yield return new WaitForSeconds(1.5f);
-        }
-    }
-    
-    private void SetMoveSpeed()
-    {
-        enemyIndividualMoveSpeed = enemyMoveSpeed.value * Random.Range(0.85f, 1.15f);
+        UpdateMovementDirection();
+        MoveEnemy();
     }
 
-    void OnDisable()
+    void UpdateMovementDirection()
     {
-        StopAllCoroutines();
+        // Calculate the direction vector from the enemy to the player.
+        Vector2 targetDirection = (playerPosition.value - transform.position).normalized;
+        // Determine if the enemy is close enough to stop moving.
+        bool isCloseEnough = Vector2.Distance(transform.position, playerPosition.value) <= minDistanceToPlayer;
+        movementDirection = isCloseEnough ? Vector2.zero : targetDirection; // Stop moving if close enough, otherwise move towards the player.
+    }
+
+    void MoveEnemy()
+    {
+        // Calculate the new position based on the movement direction and move speed.
+        Vector2 newPosition = rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(newPosition); // Use MovePosition for smooth physics-based movement.
     }
 }
