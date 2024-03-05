@@ -10,9 +10,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnRadius;
     [SerializeField] private float safeZoneRadius = 5f;
     [SerializeField] private FloatVariable gameTime;
-
-    // Difficulty adjustment parameters
-    private float difficultyFactor = 1f;
+    [SerializeField] private float difficultyFactor = 1f;
+    
 
     void Start()
     {
@@ -28,18 +27,19 @@ public class EnemySpawner : MonoBehaviour
     {
         difficultyFactor = 1f + gameTime.value / 300f; // Increase difficulty over time
     }
+    
 
     private void SpawnRandomEnemy()
     {
         float roll = Random.Range(1, 1000) * difficultyFactor;
-        Vector3 playerPos = playerPosition.value;
+        //Vector3 playerPos = playerPosition.value;
 
         GameObject enemyToSpawn;
         int spawnCount = CalculateSpawnCount(roll, out enemyToSpawn);
 
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 spawnPos = CalculateSpawnPosition(playerPos);
+            Vector3 spawnPos = CalculateSpawnPosition(playerPosition.value);
             
             //TODO: This could be improved by recycling enemies instead of instantiating new ones
             Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
@@ -98,7 +98,7 @@ public class EnemySpawner : MonoBehaviour
         return playerPos + randomDirection * distance;
     }*/
 
-    private Vector2 CalculateSpawnPosition(Vector2 playerPos)
+    public Vector2 CalculateSpawnPosition(Vector2 playerPos)
     {
         Vector2 spawnPos;
         int maxAttempts = 10;
@@ -134,19 +134,15 @@ public class EnemySpawner : MonoBehaviour
         return spawnPos;
     }
 
-
-    private bool IsValidSpawnPosition(Vector3 position)
+    private bool IsValidSpawnPosition(Vector2 position)
     {
-        // Implement checks to determine if the position is valid
-        // Example: Check if the position is not colliding with other objects, is reachable, etc.
-        // RaycastHit hit;
-        // if (Physics.Raycast(position + Vector3.up * 100, Vector3.down, out hit))
-        // {
-        //     return hit.collider.gameObject.isWalkable; // Assuming you have a way to identify walkable areas
-        // }
-        // return false;
+        // Check if the position is within the spawn radius and outside the safe zone radius
+        /*bool isWithinSpawnRadius = Physics2D.OverlapCircle(position, spawnRadius) != null;
+        bool isOutsideSafeZoneRadius = Physics2D.OverlapCircle(position, safeZoneRadius) == null;
 
-        return true; // Temporarily returning true, replace with your actual logic
+        return isWithinSpawnRadius && isOutsideSafeZoneRadius;*/
+
+        return true; // Temporarily returning true
     }
 
 
@@ -157,5 +153,13 @@ public class EnemySpawner : MonoBehaviour
             SpawnRandomEnemy();
             yield return new WaitForSeconds(spawnInterval / difficultyFactor);
         }
+    }
+    
+    public float SpawnRadius {
+        get { return spawnRadius; }
+    }
+    
+    public float SafeZoneRadius {
+        get { return safeZoneRadius; }
     }
 }
