@@ -8,9 +8,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float currentHealth;
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private GameObject damagePopupPrefab;
-    [SerializeField] private int experienceGain = 10;
+    //[SerializeField] private int experienceGain = 10;
     private float lastAttackTime;
-    [SerializeField] private Transform damagePopupParent;
+    private Transform damagePopupParent;
+    [SerializeField] private GameObject experiencePickupPrefab;
+    private Transform experiencePickupParent;
 
     
     //TODO: Too many random variables in this script, need to clean up/move to other scripts
@@ -19,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
     {
         // TODO: Can be optimized but i don't have the energy to fix it right now
         damagePopupParent = GameObject.FindWithTag("DamagePopupParent").transform;
+        experiencePickupParent = GameObject.FindWithTag("ExperiencePickupParent").transform;
     }
 
     private void Start()
@@ -27,24 +30,30 @@ public class EnemyHealth : MonoBehaviour
         lastAttackTime = -attackCooldown;
     }
 
-    public void EnemyTakeDamage(float damage, PlayerExperience playerExperience)
+    public void EnemyTakeDamage(float damage)
     {
         currentHealth -= damage;
         
-        KillEnemyAndGivePlayerExp(playerExperience);
+        KillEnemyAndGivePlayerExp();
 
         InstantiateDamagePopup(damage);
     }
 
-    private void KillEnemyAndGivePlayerExp(PlayerExperience playerExperience)
+    private void KillEnemyAndGivePlayerExp()
     {
         if (currentHealth <= 0)
         {
-            playerExperience.GainExperience(experienceGain);
-            
-            // Destroy the enemy
-            Destroy(gameObject);
+            InstantiateExperiencePickup();
         }
+    }
+    
+    private void InstantiateExperiencePickup()
+    {
+
+        Instantiate(experiencePickupPrefab, transform.position, Quaternion.identity, experiencePickupParent.transform);
+        
+        
+        Destroy(gameObject); // Destroy the enemy object
     }
 
     private void InstantiateDamagePopup(float damage)

@@ -119,8 +119,7 @@ MonoBehaviour:
   currentHealth: 0
   attackCooldown: 1
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
-  experienceGain: 10
-  damagePopupParent: {fileID: 0}
+  experiencePickupPrefab: {fileID: 1571339481620590403, guid: 3fa9d36f232f5034ab5b77ced72352df, type: 3}
 --- !u!114 &7723224513163896122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4489d1eec22949449b4dfec2dcad0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 0}
   playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
   maxDistanceFromPlayer: 41
 --- !u!61 &4792808897084071477

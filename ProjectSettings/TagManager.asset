@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - DamagePopupParent
   - BulletsParent
+  - ExperiencePickupParent
+  - Experience
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Experience
   - 
   - 
   - 

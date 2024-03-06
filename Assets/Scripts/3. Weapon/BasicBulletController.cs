@@ -47,7 +47,7 @@ public class BasicBulletController : MonoBehaviour
             var enemy = collision.gameObject.GetComponent<EnemyHealth>();
             if (enemy != null)
             {
-                enemy.EnemyTakeDamage(damage, playerExperience);
+                enemy.EnemyTakeDamage(damage);
                 
                 // Destroy the bullet
                 Destroy(gameObject);

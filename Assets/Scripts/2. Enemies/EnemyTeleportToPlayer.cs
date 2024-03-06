@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class TeleportEnemyToPlayer : MonoBehaviour
+public class EnemyTeleportToPlayer : MonoBehaviour
 {
-    [SerializeField] private EnemySpawner enemySpawner;
+    private EnemySpawner enemySpawner;
     [SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float maxDistanceFromPlayer = 20f; 
 

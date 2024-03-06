@@ -6,14 +6,14 @@ public class PlayerDefaultShoot : MonoBehaviour
 {
     [SerializeField] private FloatVariable attackSpeed;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform bulletParent;
+    private Transform _bulletParent;
     
     private Coroutine _shootingSequence;
 
     private void Awake()
     {
         // TODO: Can be optimized but i don't have the energy to fix it right now
-        bulletParent = GameObject.FindWithTag("BulletsParent").transform;
+        _bulletParent = GameObject.FindWithTag("BulletsParent").transform;
     }
 
     private void Start()
@@ -21,11 +21,11 @@ public class PlayerDefaultShoot : MonoBehaviour
         RestartBasicAttack();
     }
 
-    IEnumerator BasicAttack(float attacksPerSecond)
+    private IEnumerator BasicAttack(float attacksPerSecond)
     {
         for (;;)
         {
-            Instantiate(bullet, bulletParent, false);
+            Instantiate(bullet, _bulletParent, false);
             
             yield return new WaitForSeconds(1 / attacksPerSecond);
         }
