@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerPickupRange : MonoBehaviour
 {
@@ -15,11 +12,7 @@ public class PlayerPickupRange : MonoBehaviour
         _pickupRangeCollider = gameObject.GetComponent<CircleCollider2D>();    
         _pickupRangeCollider.radius = pickupRange;
     }
-
-    private void ExperiencePickupAnimation()
-    {
-        
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {

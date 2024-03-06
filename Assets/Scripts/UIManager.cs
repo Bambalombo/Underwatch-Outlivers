@@ -16,19 +16,7 @@ public class UIManager : MonoBehaviour
         UpdateExperienceUI(experience.value, nextLevelExperience.value);
         UpdateLevelUI(level.value);
     }
-
-    void Awake()
-    {
-        /*if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }*/
-    }
+    
 
     private void UpdateExperienceUI(int exp, int nextLevelExp)
     {

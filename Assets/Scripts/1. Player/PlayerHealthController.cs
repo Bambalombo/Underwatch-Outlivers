@@ -46,14 +46,12 @@ public class PlayerHealthController : MonoBehaviour
     // Take damage when staying in an enemy's trigger
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            var enemy = collision.gameObject.GetComponent<EnemyHealth>();
-            if (enemy.CanAttack())
-            {
-                PlayerTakeDamage(enemyDamage);
-                enemy.Attack();
-            }
-        }
+        if (!collision.gameObject.CompareTag("Enemy")) return;
+        
+        var enemy = collision.gameObject.GetComponent<EnemyHealth>();
+        
+        if (!enemy.CanAttack()) return;
+        PlayerTakeDamage(enemyDamage);
+        enemy.Attack();
     }
 }

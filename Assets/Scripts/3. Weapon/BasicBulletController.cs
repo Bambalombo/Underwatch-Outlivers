@@ -7,7 +7,6 @@ public class BasicBulletController : MonoBehaviour
     [SerializeField] private FloatVariable playerAttackSpeed;
     [SerializeField] private FloatVariable basicBulletSpeed;
     [SerializeField] private Vector3Variable cursorPosition, playerPosition;
-    [SerializeField] private PlayerExperience playerExperience;
 
     [SerializeField] private float damage = 10f;
 

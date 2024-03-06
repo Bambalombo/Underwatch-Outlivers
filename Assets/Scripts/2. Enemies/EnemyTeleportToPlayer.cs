@@ -2,14 +2,14 @@
 
 public class EnemyTeleportToPlayer : MonoBehaviour
 {
-    private EnemySpawner enemySpawner;
+    private EnemySpawner _enemySpawner;
     [SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float maxDistanceFromPlayer = 20f; 
 
     void Start()
     {
         //TODO: Find a way to get the reference to the EnemySpawner without using FindObjectOfType
-        enemySpawner = FindObjectOfType<EnemySpawner>();
+        _enemySpawner = FindObjectOfType<EnemySpawner>();
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class EnemyTeleportToPlayer : MonoBehaviour
         //Vector2 randomDirection = Random.insideUnitCircle.normalized;
         //Vector3 spawnPos = playerPosition.value + new Vector3(randomDirection.x, 0, randomDirection.y) * Random.Range(enemySpawner.SafeZoneRadius + 1, enemySpawner.SpawnRadius);
 
-        Vector3 spawnPos = enemySpawner.CalculateSpawnPosition(playerPosition.value);
+        Vector3 spawnPos = _enemySpawner.CalculateSpawnPosition(playerPosition.value);
         
         transform.position = spawnPos;
     }

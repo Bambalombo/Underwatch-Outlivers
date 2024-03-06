@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -17,7 +13,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        Transform playerTransform = transform;
+        var playerTransform = transform;
 
         _moveVector.x = Input.GetAxisRaw("Horizontal");
         _moveVector.y = Input.GetAxisRaw("Vertical");

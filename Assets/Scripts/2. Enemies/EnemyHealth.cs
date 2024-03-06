@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,10 +8,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private GameObject damagePopupPrefab;
     //[SerializeField] private int experienceGain = 10;
-    private float lastAttackTime;
-    private Transform damagePopupParent;
+    private float _lastAttackTime;
+    private Transform _damagePopupParent;
     [SerializeField] private GameObject experiencePickupPrefab;
-    private Transform experiencePickupParent;
+    private Transform _experiencePickupParent;
 
     
     //TODO: Too many random variables in this script, need to clean up/move to other scripts
@@ -20,14 +19,14 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         // TODO: Can be optimized but i don't have the energy to fix it right now
-        damagePopupParent = GameObject.FindWithTag("DamagePopupParent").transform;
-        experiencePickupParent = GameObject.FindWithTag("ExperiencePickupParent").transform;
+        _damagePopupParent = GameObject.FindWithTag("DamagePopupParent").transform;
+        _experiencePickupParent = GameObject.FindWithTag("ExperiencePickupParent").transform;
     }
 
     private void Start()
     {
         currentHealth = maxHealth;
-        lastAttackTime = -attackCooldown;
+        _lastAttackTime = -attackCooldown;
     }
 
     public void EnemyTakeDamage(float damage)
@@ -50,7 +49,7 @@ public class EnemyHealth : MonoBehaviour
     private void InstantiateExperiencePickup()
     {
 
-        Instantiate(experiencePickupPrefab, transform.position, Quaternion.identity, experiencePickupParent.transform);
+        Instantiate(experiencePickupPrefab, transform.position, Quaternion.identity, _experiencePickupParent.transform);
         
         
         Destroy(gameObject); // Destroy the enemy object
@@ -63,7 +62,7 @@ public class EnemyHealth : MonoBehaviour
 
         // Apply the offset to the damage popup's position
         Vector3 popupPosition = transform.position + new Vector3(0, 1, 0) + randomOffset;
-        var popup = Instantiate(damagePopupPrefab, popupPosition, Quaternion.identity, damagePopupParent);
+        var popup = Instantiate(damagePopupPrefab, popupPosition, Quaternion.identity, _damagePopupParent);
         popup.GetComponent<DamagePopupController>().SetDamage(damage);
     }
 
@@ -78,11 +77,11 @@ public class EnemyHealth : MonoBehaviour
 
     public bool CanAttack()
     {
-        return Time.time >= lastAttackTime + attackCooldown;
+        return Time.time >= _lastAttackTime + attackCooldown;
     }
 
     public void Attack()
     {
-        lastAttackTime = Time.time;
+        _lastAttackTime = Time.time;
     }
 }
