@@ -8,6 +8,8 @@ public class PlayerHealthController : MonoBehaviour
     private TextMeshProUGUI _deathText;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
+    
+    //TODO: Enemy damage should be a variable of the enemy class
     [SerializeField] private float enemyDamage = 9f;
 
 
