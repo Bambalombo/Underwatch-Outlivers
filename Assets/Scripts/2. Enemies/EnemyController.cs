@@ -4,15 +4,18 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Component Connections")]
-    [SerializeField] private Vector3Variable playerPosition;
-    [SerializeField] private float moveSpeed = 5f; 
-
+    //[SerializeField] private Vector3Variable playerPosition;
     private Rigidbody2D _rb;
     private Vector2 _movementDirection;
-    private readonly float _minDistanceToPlayer = 0.2f; 
+    [SerializeField] private float minDistanceToPlayer = 0.2f;
+    [SerializeField] private EnemyStatsController enemyStatsController;
+    private PlayerStatsController _playerStatsController;
+
 
     private void Awake()
     {
+        _playerStatsController = FindObjectOfType<PlayerStatsController>();
+        
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -25,16 +28,17 @@ public class EnemyController : MonoBehaviour
     private void UpdateMovementDirection()
     {
         // Calculate the direction vector from the enemy to the player.
-        Vector2 targetDirection = (playerPosition.value - transform.position).normalized;
+        Vector2 targetDirection = (_playerStatsController.GetPlayerPosition() - transform.position).normalized;
         // Determine if the enemy is close enough to stop moving.
-        bool isCloseEnough = Vector2.Distance(transform.position, playerPosition.value) <= _minDistanceToPlayer;
+        bool isCloseEnough = Vector2.Distance(transform.position, _playerStatsController.GetPlayerPosition()) <= minDistanceToPlayer;
         _movementDirection = isCloseEnough ? Vector2.zero : targetDirection; // Stop moving if close enough, otherwise move towards the player.
     }
 
     private void MoveEnemy()
     {
         // Calculate the new position based on the movement direction and move speed.
-        Vector2 newPosition = _rb.position + _movementDirection * moveSpeed * Time.fixedDeltaTime;
+        var newPosition = _rb.position + _movementDirection * 
+            enemyStatsController.GetMoveSpeed() * Time.fixedDeltaTime;
         _rb.MovePosition(newPosition); // Use MovePosition for smooth physics-based movement.
     }
 }

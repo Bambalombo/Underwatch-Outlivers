@@ -1,54 +1,111 @@
 using UnityEngine;
-using System;
 
 public class PlayerStatsController : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
-    [SerializeField] private int damage = 10;
-    [SerializeField] private int armor = 5;
-    [SerializeField] private float speed = 5.0f;
-    
-    //***************** THIS SCRIPT IS NOT USED YET ******************//
-    
-    public int Health { get { return health; } set { health = value; } }
-    public int AttackPower { get { return damage; } set { damage = value; } }
-    public int Defense { get { return armor; } set { armor = value; } }
-    public float Speed { get { return speed; } set { speed = value; } }
+    [SerializeField] private float currentHealth;
+    [SerializeField] private float maxHealth;
+    //[SerializeField] private float armor;
+    [SerializeField] private float moveSpeed;
+    //[SerializeField] private float damage; // Should be changed by weapon?
+    [SerializeField] private float attackSpeed;
+    //[SerializeField] private float attackRange; //NOT USED YET
+    //[SerializeField] private float attackCooldown; 
+    [SerializeField] private float experiencePickupRange; // The range in which the player can pick up experience
+    //[SerializeField] private float levelScalingFactor; // The level scaling factor for the experience needed to level up
+    //[SerializeField] private int experience; // Player experience
+    //[SerializeField] private int baseExperience; // Experience needed to reach level 2
+    //[SerializeField] private int experienceToNextLevel; // Experience needed to reach next level
+    //[SerializeField] private int level; // Player level
+    [SerializeField] private Vector3 playerPosition; // Player position
 
-    public enum StatType
-    {
-        Health,
-        Damage,
-        Speed,
-        Armor
-    }
     
-
-    public void LevelUpReward()
+    private void Start()
     {
-        StatType[] stats = (StatType[])Enum.GetValues(typeof(StatType));
-        StatType stat1 = stats[UnityEngine.Random.Range(0, stats.Length)];
-        StatType stat2 = stats[UnityEngine.Random.Range(0, stats.Length)];
-        StatType stat3 = stats[UnityEngine.Random.Range(0, stats.Length)];
+        currentHealth = maxHealth;
         
+        //experience = 0;
+        //level = 1;
+        //experienceToNextLevel = baseExperience;
     }
-
-    public void UpgradeStat(StatType stat)
+    
+    public void SetCurrentHealth(float value)
     {
-        switch (stat)
-        {
-            case StatType.Health:
-                Health += 10; 
-                break;
-            case StatType.Damage:
-                AttackPower += 2; 
-                break;
-            case StatType.Speed:
-                Speed += 0.5f; 
-                break;
-            case StatType.Armor:
-                Defense += 1; 
-                break;
-        }
+        currentHealth = value;
     }
+    public void SetMaxHealth(float value)
+    {
+        maxHealth = value;
+    }
+    /*public void SetArmor(float value)
+    {
+        armor = value;
+    }*/
+    public void SetMoveSpeed(float value)
+    {
+        moveSpeed = value;
+    }
+    /*public void SetDamage(float value)
+    {
+        damage = value;
+    }*/
+    public void SetAttackSpeed(float value)
+    {
+        attackSpeed = value;
+    }
+    /*public void SetAttackRange(float value)
+    {
+        attackRange = value;
+    }
+    public void SetAttackCooldown(float value)
+    {
+        attackCooldown = value;
+    }*/
+    public void SetExperiencePickupRange(float value)
+    {
+        experiencePickupRange = value;
+    }
+    /*public void SetLevelScalingFactor(float value)
+    {
+        levelScalingFactor = value;
+    }
+    public void SetExperience(int value)
+    {
+        experience = value;
+    }
+    public void SetBaseExperience(int value)
+    {
+        baseExperience = value;
+    }
+    public void SetExperienceToNextLevel(int value)
+    {
+        experienceToNextLevel = value;
+    }
+    public void SetLevel(int value)
+    {
+        level = value;
+    }*/
+    public void SetPlayerPosition(Vector3 value)
+    {
+        playerPosition = value;
+    }
+    
+    public float GetCurrentHealth() => currentHealth;
+    public float GetMaxHealth() => maxHealth;
+    //public float GetArmor() => armor;
+    public float GetMoveSpeed() => moveSpeed;
+    //public float GetDamage() => damage;
+
+    public float GetAttackSpeed() => attackSpeed;
+    //public float GetAttackRange() => attackRange;
+    //public float GetAttackCooldown() => attackCooldown;
+    public float GetExperiencePickupRange() => experiencePickupRange;
+    /*public float GetLevelScalingFactor() => levelScalingFactor;
+    public int GetExperience() => experience;
+    public int GetBaseExperience() => baseExperience;
+    public int GetExperienceToNextLevel() => experienceToNextLevel;
+    public int GetLevel() => level;*/
+    public Vector3 GetPlayerPosition() => playerPosition;
+    
+    
+    
 }

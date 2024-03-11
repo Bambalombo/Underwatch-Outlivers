@@ -5,15 +5,19 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject commonEnemy, uncommonEnemy, rareEnemy, epicEnemy, legendaryEnemy;
     [SerializeField] private float spawnInterval = 5f;
-    [SerializeField] private Vector3Variable playerPosition;
+    //[SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float spawnRadius;
     [SerializeField] private float safeZoneRadius = 5f;
     [SerializeField] private FloatVariable gameTime;
     [SerializeField] private float difficultyFactor = 1f;
     
+    [SerializeField] private PlayerStatsController playerStatsController;
+    
 
     void Start()
     {
+        playerStatsController = FindObjectOfType<PlayerStatsController>();
+        
         StartCoroutine(SpawnEnemies());
     }
 
@@ -38,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 spawnPos = CalculateSpawnPosition(playerPosition.value);
+            Vector3 spawnPos = CalculateSpawnPosition(playerStatsController.GetPlayerPosition());
             
             //TODO: This could be improved by recycling enemies instead of instantiating new ones
             Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);

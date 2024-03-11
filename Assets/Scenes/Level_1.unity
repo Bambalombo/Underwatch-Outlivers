@@ -949,11 +949,11 @@ MonoBehaviour:
   epicEnemy: {fileID: 5362581833865366400, guid: b127c7d400a17c0499566ead9024825a, type: 3}
   legendaryEnemy: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
   spawnInterval: 10
-  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
   spawnRadius: 40
   safeZoneRadius: 30
   gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
   difficultyFactor: 1
+  playerStatsController: {fileID: 0}
 --- !u!1 &1795638452
 GameObject:
   m_ObjectHideFlags: 0

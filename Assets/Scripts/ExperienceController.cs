@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerExperience : MonoBehaviour
+public class ExperienceController : MonoBehaviour
 {
     [SerializeField] private IntVariable experience;
     [SerializeField] private IntVariable nextLevelExperience;

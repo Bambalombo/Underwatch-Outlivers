@@ -3,16 +3,17 @@ using UnityEngine;
 
 public class PlayerDefaultShoot : MonoBehaviour
 {
-    [SerializeField] private FloatVariable attackSpeed;
+    //[SerializeField] private FloatVariable attackSpeed;
     [SerializeField] private GameObject bullet;
     private Transform _bulletParent;
-    
+    private PlayerStatsController _playerStatsController;
     private Coroutine _shootingSequence;
 
     private void Awake()
     {
-        // TODO: Can be optimized but i don't have the energy to fix it right now
         _bulletParent = GameObject.FindWithTag("BulletsParent").transform;
+        
+        _playerStatsController = GetComponent<PlayerStatsController>();
     }
 
     private void Start()
@@ -24,7 +25,7 @@ public class PlayerDefaultShoot : MonoBehaviour
     {
         for (;;)
         {
-            Instantiate(bullet, _bulletParent, false);
+            Instantiate(bullet, _playerStatsController.GetPlayerPosition(), Quaternion.identity, _bulletParent);
             
             yield return new WaitForSeconds(1 / attacksPerSecond);
         }
@@ -34,6 +35,6 @@ public class PlayerDefaultShoot : MonoBehaviour
     {
         if (_shootingSequence != null) 
             StopCoroutine(_shootingSequence);
-        _shootingSequence = StartCoroutine(BasicAttack(attackSpeed.value));
+        _shootingSequence = StartCoroutine(BasicAttack(_playerStatsController.GetAttackSpeed()));
     }
 }

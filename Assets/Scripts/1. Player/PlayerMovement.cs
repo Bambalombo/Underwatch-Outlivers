@@ -1,14 +1,21 @@
+using System;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
     private Vector3 _moveVector;
-    [SerializeField] private FloatVariable playerMoveSpeed;
-    [SerializeField] private Vector3Variable playerPosition;
+    //[SerializeField] private FloatVariable playerMoveSpeed;
+    //[SerializeField] private Vector3Variable playerPosition;
+    private PlayerStatsController _playerStatsController;
+
+    private void Awake()
+    {
+        _playerStatsController = GetComponent<PlayerStatsController>();
+    }
 
     private void Start()
     {
-        playerPosition.value = transform.position;
+        _playerStatsController.SetPlayerPosition(transform.position);
     }
 
     private void Update()
@@ -18,7 +25,7 @@ public class PlayerMove : MonoBehaviour
         _moveVector.x = Input.GetAxisRaw("Horizontal");
         _moveVector.y = Input.GetAxisRaw("Vertical");
 
-        playerTransform.Translate(_moveVector.normalized * (playerMoveSpeed.value * Time.deltaTime));
-        playerPosition.value = playerTransform.position;
+        playerTransform.Translate(_moveVector.normalized * (_playerStatsController.GetMoveSpeed() * Time.deltaTime));
+        _playerStatsController.SetPlayerPosition(playerTransform.position);
     }
 }

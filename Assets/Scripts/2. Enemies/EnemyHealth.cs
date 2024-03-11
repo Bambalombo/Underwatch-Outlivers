@@ -1,21 +1,17 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour 
 {
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private GameObject damagePopupPrefab;
-    //[SerializeField] private int experienceGain = 10;
-    private float _lastAttackTime;
     private Transform _damagePopupParent;
-    [SerializeField] private GameObject experiencePickupPrefab;
     private Transform _experiencePickupParent;
+    [SerializeField] private EnemyStatsController enemyStatsController;
 
     
-    //TODO: Too many random variables in this script, need to clean up/move to other scripts
+    //TODO: Maybe change the name of this script
 
+    
     private void Awake()
     {
         // TODO: Can be optimized but i don't have the energy to fix it right now
@@ -23,15 +19,9 @@ public class EnemyHealth : MonoBehaviour
         _experiencePickupParent = GameObject.FindWithTag("ExperiencePickupParent").transform;
     }
 
-    private void Start()
-    {
-        currentHealth = maxHealth;
-        _lastAttackTime = -attackCooldown;
-    }
-
     public void EnemyTakeDamage(float damage)
     {
-        currentHealth -= damage;
+        enemyStatsController.SetCurrentHealth(enemyStatsController.GetCurrentHealth() - damage);
         
         KillEnemyAndGivePlayerExp();
 
@@ -40,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void KillEnemyAndGivePlayerExp()
     {
-        if (currentHealth <= 0)
+        if (enemyStatsController.GetCurrentHealth() <= 0)
         {
             InstantiateExperiencePickup();
         }
@@ -49,7 +39,8 @@ public class EnemyHealth : MonoBehaviour
     private void InstantiateExperiencePickup()
     {
 
-        Instantiate(experiencePickupPrefab, transform.position, Quaternion.identity, _experiencePickupParent.transform);
+        Instantiate(enemyStatsController.GetExperienceDrop(), transform.position, 
+            Quaternion.identity, _experiencePickupParent.transform);
         
         
         Destroy(gameObject); // Destroy the enemy object
@@ -77,11 +68,11 @@ public class EnemyHealth : MonoBehaviour
 
     public bool CanAttack()
     {
-        return Time.time >= _lastAttackTime + attackCooldown;
+        return Time.time >= enemyStatsController.GetLastAttackTime() + enemyStatsController.GetAttackCooldown();
     }
 
     public void Attack()
     {
-        _lastAttackTime = Time.time;
+        enemyStatsController.SetLastAttackTime(Time.time);
     }
 }

@@ -1,31 +1,27 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
 
 public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] private StatusBarController healthBarController;
     private TextMeshProUGUI _deathText;
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
+    private PlayerStatsController _playerStatsController;
     
-    //TODO: Enemy damage should be a variable of the enemy class
-    [SerializeField] private float enemyDamage = 9f;
-
 
     private void Awake()
     {
-        currentHealth = maxHealth;
         _deathText = GameObject.FindWithTag("DeathTextTag").GetComponent<TextMeshProUGUI>();
         _deathText.enabled = false;
+        
+        _playerStatsController = GetComponent<PlayerStatsController>();
     }
     
     //TODO: Death needs to be when every player is dead, not just one 
     private void PlayerTakeDamage(float damage)
     {
-        currentHealth -= damage;
-        healthBarController.UpdateStatusBar(currentHealth, maxHealth);
-        if (currentHealth < 0) 
+        _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() - damage);
+        healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
+        if (_playerStatsController.GetCurrentHealth() < 0) 
         {
             _deathText.enabled = true;
             _deathText.text = "You Died!";
@@ -50,10 +46,12 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Enemy")) return;
         
-        var enemy = collision.gameObject.GetComponent<EnemyHealth>();
+        var enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
         
-        if (!enemy.CanAttack()) return;
-        PlayerTakeDamage(enemyDamage);
-        enemy.Attack();
+        if (!enemyHealth.CanAttack()) return; // If the enemy can't attack, return
+        
+        var enemyStats = collision.gameObject.GetComponent<EnemyStatsController>();
+        PlayerTakeDamage(enemyStats.GetDamage());
+        enemyHealth.Attack();
     }
 }

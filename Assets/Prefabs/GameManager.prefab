@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6384191231246129797}
   - component: {fileID: 5664965020529258177}
   - component: {fileID: 4376598570309669642}
+  - component: {fileID: 1809355141524032551}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -69,3 +70,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3229078379461766825}
   m_Enabled: 1
+--- !u!114 &1809355141524032551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229078379461766825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af78845949000f4a8cc6bbf97b9779a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experience: {fileID: 11400000, guid: d28cbf646da6d5b4a9514a23d9e4ca9a, type: 2}
+  nextLevelExperience: {fileID: 11400000, guid: c829af41fec879b4cb5776a2ca228732, type: 2}
+  level: {fileID: 11400000, guid: 5e81f02d13a93294893d33f7ee6b5200, type: 2}
+  baseExperience: 100
+  levelScalingFactor: 1.5

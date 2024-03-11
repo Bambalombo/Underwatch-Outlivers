@@ -98,12 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f81cfe8726b42c49a2355416328ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackSpeed: {fileID: 11400000, guid: 7235afadb6f474d2cb3739f6df07b5fa, type: 2}
   basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
   cursorPosition: {fileID: 11400000, guid: f85ef083a9751dc45b394a7b1645b9e0, type: 2}
-  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
-  playerExperience: {fileID: 1862494156703512575, guid: c221fdf603e209e4bba4e973792c8e1a, type: 3}
   damage: 10
+  playerStatsController: {fileID: 5807114057819124149, guid: c221fdf603e209e4bba4e973792c8e1a, type: 3}
 --- !u!58 &-7631913092441358423
 CircleCollider2D:
   m_ObjectHideFlags: 0

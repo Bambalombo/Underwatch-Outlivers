@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5851707422844388568}
   - component: {fileID: 3128402012767683048}
+  - component: {fileID: -3664147031491938412}
   - component: {fileID: -8453282589616106755}
   - component: {fileID: 2657412919957944325}
   - component: {fileID: -8608850812497516781}
@@ -276,6 +277,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3664147031491938412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362581833865366400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b12c7d856636f45a4e9b581a9b7d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
+  armor: 5
+  moveSpeed: 1.5
+  damage: 9
+  attackSpeed: 0
+  lastAttackTime: 0
+  attackRange: 0
+  attackCooldown: 2
+  experienceDrop: {fileID: 1571339481620590403, guid: d598553436d6c0d46a0aa4d7af048964, type: 3}
 --- !u!114 &-8453282589616106755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,8 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73fdd76d360c0448a993c374d3fc299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
-  moveSpeed: 3
+  minDistanceToPlayer: 0.2
+  enemyStatsController: {fileID: -3664147031491938412}
+  playerStatsController: {fileID: 0}
 --- !u!114 &2657412919957944325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,12 +326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9618fa42dc7738f4e8db237c791e8f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  attackCooldown: 1
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
-  experienceGain: 10
-  experiencePickupPrefab: {fileID: 1571339481620590403, guid: d598553436d6c0d46a0aa4d7af048964, type: 3}
+  enemyStatsController: {fileID: -3664147031491938412}
 --- !u!114 &-8608850812497516781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4489d1eec22949449b4dfec2dcad0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 11400000, guid: 6170b16b648bde84c94ca62807f931b4, type: 2}
   maxDistanceFromPlayer: 41
+  _playerStatsController: {fileID: 0}
 --- !u!61 &4792808897084071477
 BoxCollider2D:
   m_ObjectHideFlags: 0
