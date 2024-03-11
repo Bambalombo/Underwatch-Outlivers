@@ -10,6 +10,7 @@ TagManager:
   - BulletsParent
   - ExperiencePickupParent
   - Experience
+  - HealthPickup
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - Experience
+  - Pickups
   - 
   - 
   - 

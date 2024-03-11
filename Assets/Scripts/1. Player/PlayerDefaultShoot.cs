@@ -11,7 +11,7 @@ public class PlayerDefaultShoot : MonoBehaviour
 
     private void Awake()
     {
-        _bulletParent = GameObject.FindWithTag("BulletsParent").transform;
+        _bulletParent = GameManager.GetBulletParent();
         
         _playerStatsController = GetComponent<PlayerStatsController>();
     }

@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyTeleportToPlayer : MonoBehaviour
 {
-    private EnemySpawner _enemySpawner;
+    private SpawnerEnemyController _spawnerEnemyController;
     //[SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float maxDistanceFromPlayer;
     private PlayerStatsController _playerStatsController;
@@ -11,18 +10,18 @@ public class EnemyTeleportToPlayer : MonoBehaviour
 
     private void Awake()
     {
+        //TODO: Does not work with more players
         _playerStatsController = FindObjectOfType<PlayerStatsController>();
     }
 
     private void Start()
     {
         //TODO: Find a way to get the reference to the EnemySpawner without using FindObjectOfType
-        _enemySpawner = FindObjectOfType<EnemySpawner>();
+        _spawnerEnemyController = FindObjectOfType<SpawnerEnemyController>();
     }
-
     private void FixedUpdate()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, _playerStatsController.GetPlayerPosition());
+        var distanceToPlayer = Vector3.Distance(transform.position, _playerStatsController.GetPlayerPosition());
 
         // Check if the enemy is too far from the player
         if (distanceToPlayer > maxDistanceFromPlayer)
@@ -37,7 +36,7 @@ public class EnemyTeleportToPlayer : MonoBehaviour
         //Vector2 randomDirection = Random.insideUnitCircle.normalized;
         //Vector3 spawnPos = playerPosition.value + new Vector3(randomDirection.x, 0, randomDirection.y) * Random.Range(enemySpawner.SafeZoneRadius + 1, enemySpawner.SpawnRadius);
 
-        Vector3 spawnPos = _enemySpawner.CalculateSpawnPosition(_playerStatsController.GetPlayerPosition());
+        Vector3 spawnPos = _spawnerEnemyController.CalculateSpawnPosition(_playerStatsController.GetPlayerPosition());
         
         transform.position = spawnPos;
     }

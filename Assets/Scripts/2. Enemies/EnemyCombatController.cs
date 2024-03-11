@@ -1,23 +1,20 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyHealth : MonoBehaviour 
+public class EnemyCombatController : MonoBehaviour 
 {
     [SerializeField] private GameObject damagePopupPrefab;
-    private Transform _damagePopupParent;
-    private Transform _experiencePickupParent;
+    [SerializeField] private Transform _damagePopupParent; 
+    [SerializeField] private Transform _experiencePickupParent;
     [SerializeField] private EnemyStatsController enemyStatsController;
-
     
-    //TODO: Maybe change the name of this script
-
     
     private void Awake()
     {
-        // TODO: Can be optimized but i don't have the energy to fix it right now
-        _damagePopupParent = GameObject.FindWithTag("DamagePopupParent").transform;
-        _experiencePickupParent = GameObject.FindWithTag("ExperiencePickupParent").transform;
+        _damagePopupParent = GameManager.GetDamagePopupParent();
+        _experiencePickupParent = GameManager.GetExperiencePickupParent();
     }
+
 
     public void EnemyTakeDamage(float damage)
     {

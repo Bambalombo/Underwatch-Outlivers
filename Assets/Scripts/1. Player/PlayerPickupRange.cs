@@ -7,6 +7,7 @@ public class PlayerPickupRange : MonoBehaviour
     //[SerializeField] private float pickupRange = 4f;
     [SerializeField] private ExperienceController experienceController;
     [SerializeField] private PlayerStatsController playerStatsController;
+    [SerializeField] private PlayerHealthController playerHealthController;
     
     [Header("Movement Settings")]
     //[SerializeField] private float moveAwayDuration = 0.25f; // Duration to move away, adjust as needed
@@ -24,25 +25,39 @@ public class PlayerPickupRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Experience"))
         {
-            StartCoroutine(MoveExperienceToPlayer(other.gameObject));
+            var experiencePickup = other.gameObject.GetComponent<ExperienceAmount>();
+            var expAmount = experiencePickup.GetExperienceAmount();
+            StartCoroutine(MoveObjectToPlayer(other.gameObject, towardsPlayerSpeed));
+            if (other.gameObject != null)
+            {
+                experienceController.AddExperience(expAmount);
+            }
+        }
+
+        if (other.gameObject.CompareTag("HealthPickup"))
+        {
+            var healthPickup = other.gameObject.GetComponent<HealthPickup>();
+            var healAmount = healthPickup.GetHealthAmount();
+            StartCoroutine(MoveObjectToPlayer(other.gameObject, towardsPlayerSpeed));
+            if (other.gameObject != null)
+            {
+                playerHealthController.PlayerHeal(healAmount);
+            }
         }
     }
 
-    private IEnumerator MoveExperienceToPlayer(GameObject expObject)
+    private IEnumerator MoveObjectToPlayer(GameObject obj, float speed)
     {
-        var experiencePickup = expObject.GetComponent<ExperienceAmount>();
-        var expAmount = experiencePickup.GetExperienceAmount();
-    
-        while (expObject != null && Vector3.Distance(expObject.transform.position, transform.position) > 0.1f)
+        while (obj != null && Vector3.Distance(obj.transform.position, transform.position) > 0.01f)
         {
-            expObject.transform.position = Vector3.MoveTowards(expObject.transform.position, transform.position, Time.deltaTime * towardsPlayerSpeed); // Adjust speed as needed
-            yield return null;
+            float step = speed * Time.deltaTime;
+            obj.transform.position = Vector3.MoveTowards(obj.transform.position, transform.position, 
+                Time.deltaTime * towardsPlayerSpeed);
+            yield return new WaitForEndOfFrame();
         }
-
-        if (expObject != null)
+        if (obj != null)
         {
-            experienceController.GainExperience(expAmount);
-            Destroy(expObject);
+            Destroy(obj);
         }
     }
     

@@ -18,6 +18,7 @@ public class PlayerStatsController : MonoBehaviour
     //[SerializeField] private int level; // Player level
     [SerializeField] private Vector3 playerPosition; // Player position
 
+    // NOT SURE IF PLAYERS SHOULD HAVE INDIVIDUAL EXPERIENCE
     
     private void Start()
     {
@@ -30,7 +31,18 @@ public class PlayerStatsController : MonoBehaviour
     
     public void SetCurrentHealth(float value)
     {
-        currentHealth = value;
+        if (value > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else if (value < 0)
+        {
+            currentHealth = 0;
+        }
+        else
+        {
+            currentHealth = value;
+        }
     }
     public void SetMaxHealth(float value)
     {

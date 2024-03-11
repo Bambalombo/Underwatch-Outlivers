@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c4b0fbb72411d4f895017875d89a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8905089503809146214, guid: c221fdf603e209e4bba4e973792c8e1a, type: 3}
+  playerPrefab: {fileID: 8905089503809146214, guid: c221fdf603e209e4bba4e973792c8e1a, type: 3}
+  spawnerEnemyController: {fileID: 2040488348098064462, guid: e9c6cdb0d48f766428a0cbe444f3d8ce, type: 3}
   numberOfPlayers: 1
 --- !u!114 &5664965020529258177
 MonoBehaviour:

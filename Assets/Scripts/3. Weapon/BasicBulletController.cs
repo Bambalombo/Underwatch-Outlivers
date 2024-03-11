@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -17,10 +16,11 @@ public class BasicBulletController : MonoBehaviour
 
     private void Start()
     {
+        //TODO: Does not work with more players
         _playerStatsController = GameObject.FindWithTag("Player").GetComponent<PlayerStatsController>();
         
         transform.position = _playerStatsController.GetPlayerPosition();
-        _bulletSpeed = basicBulletSpeed.value + _playerStatsController.GetAttackSpeed()/2; //TODO: Bullet speed should not be attackspeed
+        _bulletSpeed = basicBulletSpeed.value + _playerStatsController.GetAttackSpeed()/2; //TODO: Bullet speed should not be attack speed
         _bulletDirection = (cursorPosition.value).normalized;
 
         StartCoroutine(SendBulletFlying());
@@ -46,7 +46,7 @@ public class BasicBulletController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            var enemy = collision.gameObject.GetComponent<EnemyHealth>();
+            var enemy = collision.gameObject.GetComponent<EnemyCombatController>();
             if (enemy != null)
             {
                 enemy.EnemyTakeDamage(damage);

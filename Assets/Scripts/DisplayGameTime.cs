@@ -6,19 +6,19 @@ public class GameTimeDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI  timeText;
     [SerializeField] private FloatVariable gameTime;
 
-    void Start()
+    private void Start()
     {
         gameTime.value = 0;
         
-        timeText = gameObject.GetComponent<TextMeshProUGUI>();
+        timeText = GetComponent<TextMeshProUGUI>();
     }
-    void Update()
+    private void Update()
     {
         gameTime.value += Time.deltaTime;
         UpdateTimeText();
     }
 
-    void UpdateTimeText()
+    private void UpdateTimeText()
     {
         int minutes = Mathf.FloorToInt(gameTime.value / 60);
         int seconds = Mathf.FloorToInt(gameTime.value % 60);

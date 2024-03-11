@@ -1098,8 +1098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   experienceController: {fileID: 1809355141524032551, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
   playerStatsController: {fileID: 5807114057819124149}
-  moveAwayDuration: 0
-  awayDirectionSpeed: 8
+  playerHealthController: {fileID: 537972653550675585}
   towardsPlayerSpeed: 10
 --- !u!50 &1967715345660335201
 Rigidbody2D:

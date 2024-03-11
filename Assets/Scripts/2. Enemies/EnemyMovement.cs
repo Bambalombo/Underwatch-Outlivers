@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))] // Ensure there's a Rigid body 2D component attached to the GameObject.
-public class EnemyController : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [Header("Component Connections")]
     //[SerializeField] private Vector3Variable playerPosition;
@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        //TODO: Does not work with more players
         _playerStatsController = FindObjectOfType<PlayerStatsController>();
         
         _rb = GetComponent<Rigidbody2D>();

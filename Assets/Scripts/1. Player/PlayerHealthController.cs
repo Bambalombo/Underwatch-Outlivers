@@ -21,12 +21,18 @@ public class PlayerHealthController : MonoBehaviour
     {
         _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() - damage);
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
-        if (_playerStatsController.GetCurrentHealth() < 0) 
+        if (_playerStatsController.GetCurrentHealth() <= 0) 
         {
             _deathText.enabled = true;
             _deathText.text = "You Died!";
             // Handle player death here
         }
+    }
+    
+    public void PlayerHeal(float healAmount)
+    {
+        _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() + healAmount);
+        healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
     }
 
     // Take damage when colliding with an enemy
@@ -46,7 +52,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Enemy")) return;
         
-        var enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+        var enemyHealth = collision.gameObject.GetComponent<EnemyCombatController>();
         
         if (!enemyHealth.CanAttack()) return; // If the enemy can't attack, return
         
