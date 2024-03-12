@@ -12,13 +12,11 @@ public class EnemyTeleportToPlayer : MonoBehaviour
     {
         //TODO: Does not work with more players
         _playerStatsController = FindObjectOfType<PlayerStatsController>();
+        
+        var spawnerEnemyTransform = GameManager.GetSpawnerEnemyControllerParent();
+        _spawnerEnemyController = spawnerEnemyTransform.GetComponent<SpawnerEnemyController>();
     }
-
-    private void Start()
-    {
-        //TODO: Find a way to get the reference to the EnemySpawner without using FindObjectOfType
-        _spawnerEnemyController = FindObjectOfType<SpawnerEnemyController>();
-    }
+    
     private void FixedUpdate()
     {
         var distanceToPlayer = Vector3.Distance(transform.position, _playerStatsController.GetPlayerPosition());

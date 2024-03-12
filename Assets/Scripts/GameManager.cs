@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,9 +13,10 @@ public class GameManager : MonoBehaviour
     private Transform _experiencePickupParent;
     private Transform _pickupParent;
     private Transform _bulletParent;
+    private Transform _spawnerEnemyControllerParent;
     
-    private GameObject[] _players; // Array to store player references
-    
+    [SerializeField] private GameObject[] players; // Array to store player references
+
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-            _players = new GameObject[4]; // Initialize the array for up to 4 players
+            players = new GameObject[4]; // Initialize the array for up to 4 players
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             if (SceneManager.GetActiveScene().name == "Level_1")
@@ -45,13 +45,42 @@ public class GameManager : MonoBehaviour
     public static Transform GetDamagePopupParent() => _instance._damagePopupParent;
     public static Transform GetExperiencePickupParent() => _instance._experiencePickupParent;
     public static Transform GetPickupParent() => _instance._pickupParent;
-    public static GameObject GetPlayer(int index)
+    public static Transform GetSpawnerEnemyControllerParent() => _instance._spawnerEnemyControllerParent;
+    private static GameObject[] Players => _instance.players;
+    public static int GetNumberOfPlayers() => _instance.numberOfPlayers;
+    public static GameObject[] GetPlayerGameObjects() => _instance.FindPlayerGameObjects();
+    //public static GameObject GetNearestPlayer() => _instance.FindNearestPlayer(Vector3 currentPosition);
+    
+    private GameObject[] FindPlayerGameObjects()
     {
-        if (index >= 0 && index < _instance._players.Length)
+        var playerGameObjects = new GameObject[numberOfPlayers];
+        for (int i = 0; i < numberOfPlayers; i++)
         {
-            return _instance._players[index];
+            playerGameObjects[i] = players[i];
         }
-        return null;
+
+        return playerGameObjects;  
+    }
+
+    public static GameObject GetNearestPlayer(Vector3 currentPosition)
+    {
+        GameObject nearestPlayer = null;
+        float closestDistanceSqr = Mathf.Infinity;
+
+        foreach (GameObject player in Players)
+        {
+            if (player != null)
+            {
+                Vector3 directionToPlayer = player.transform.position - currentPosition;
+                float dSqrToPlayer = directionToPlayer.sqrMagnitude;
+                if (dSqrToPlayer < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToPlayer;
+                    nearestPlayer = player;
+                }
+            }
+        }
+        return nearestPlayer;
     }
     
     private void OnEnable()
@@ -92,7 +121,8 @@ public class GameManager : MonoBehaviour
         _pickupParent = FindOrCreateParent("PickupParent", _pickupParent);
         _bulletParent = FindOrCreateParent("BulletParent", _bulletParent);
         
-        Instantiate(spawnerEnemyController);
+        var spawnerEnemyGameObject = Instantiate(spawnerEnemyController);
+        _spawnerEnemyControllerParent = spawnerEnemyGameObject.transform;
     }
 
     private static Transform FindOrCreateParent(string parentName, Transform parentTransform)
@@ -120,8 +150,8 @@ public class GameManager : MonoBehaviour
             // Calculate the position for each player
             Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
             // Instantiate and store the player reference in the array
-            _players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
-            _players[i].name = "Player_" + (i + 1); // Naming the player GameObject
+            players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
+            players[i].name = "Player_" + (i + 1); // Naming the player GameObject
         }
     }
 }

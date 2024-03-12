@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))] // Ensure there's a Rigid body 2D component attached to the GameObject.
 public class EnemyMovement : MonoBehaviour
@@ -9,14 +10,19 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 _movementDirection;
     [SerializeField] private float minDistanceToPlayer = 0.2f;
     [SerializeField] private EnemyStatsController enemyStatsController;
-    private PlayerStatsController _playerStatsController;
+    [SerializeField] private PlayerStatsController[] playerStatsControllers;
 
 
     private void Awake()
     {
-        //TODO: Does not work with more players
-        _playerStatsController = FindObjectOfType<PlayerStatsController>();
-        
+        var players = GameManager.GetPlayerGameObjects();
+        playerStatsControllers = new PlayerStatsController[players.Length];
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            playerStatsControllers[i] = players[i].GetComponent<PlayerStatsController>();
+        }
+
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -26,18 +32,26 @@ public class EnemyMovement : MonoBehaviour
         MoveEnemy();
     }
 
+    // Enemies will move towards the nearest player
     private void UpdateMovementDirection()
     {
-        // Calculate the direction vector from the enemy to the player.
-        Vector2 targetDirection = (_playerStatsController.GetPlayerPosition() - transform.position).normalized;
-        // Determine if the enemy is close enough to stop moving.
-        bool isCloseEnough = Vector2.Distance(transform.position, _playerStatsController.GetPlayerPosition()) <= minDistanceToPlayer;
-        _movementDirection = isCloseEnough ? Vector2.zero : targetDirection; // Stop moving if close enough, otherwise move towards the player.
+        GameObject nearestPlayer = GameManager.GetNearestPlayer(transform.position);
+        if (nearestPlayer != null)
+        {
+            PlayerStatsController nearestPlayerStatsController = nearestPlayer.GetComponent<PlayerStatsController>();
+            Vector2 targetDirection = (nearestPlayerStatsController.GetPlayerPosition() - transform.position).normalized;
+            bool isCloseEnough = Vector2.Distance(transform.position, nearestPlayerStatsController.GetPlayerPosition()) <= minDistanceToPlayer;
+            _movementDirection = isCloseEnough ? Vector2.zero : targetDirection;
+        }
+        else
+        {
+            _movementDirection = Vector2.zero;
+        }
     }
 
+    // Move the enemy based on the movement direction and move speed
     private void MoveEnemy()
     {
-        // Calculate the new position based on the movement direction and move speed.
         var newPosition = _rb.position + _movementDirection * 
             enemyStatsController.GetMoveSpeed() * Time.fixedDeltaTime;
         _rb.MovePosition(newPosition); // Use MovePosition for smooth physics-based movement.

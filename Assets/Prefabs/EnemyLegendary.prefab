@@ -445,11 +445,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 200
-  armor: 5
   moveSpeed: 1.5
-  damage: 9
+  damage: 15
   lastAttackTime: 0
-  attackCooldown: 2
+  attackCooldown: 1
   experienceDrop: {fileID: 1571339481620590403, guid: 4f99f29e34349df429d909a44e75d578, type: 3}
 --- !u!114 &1801632654411770858
 MonoBehaviour:
@@ -478,6 +477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
+  _damagePopupParent: {fileID: 0}
+  _experiencePickupParent: {fileID: 0}
   enemyStatsController: {fileID: -8671569779794781263}
 --- !u!114 &8933796695499925440
 MonoBehaviour:
