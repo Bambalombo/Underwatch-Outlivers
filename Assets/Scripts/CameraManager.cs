@@ -4,7 +4,7 @@ public class FixedMultiplayerCamera : MonoBehaviour
 {
     //This script is used to make the camera follow all the players in the game, it takes the position of all the players and moves the camera to the center of all the players
     public GameObject[] players;
-    public float smoothTime = 0.5f;
+    public float smoothTime = 0; //Vi kan sætte smooth time hvis vi vil, men det ser lidt fucked up i single player tbh 
 
     private Vector3 velocity;
     

@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  smoothTime: 0.5
+  smoothTime: 0
 --- !u!1 &8634067550496226388
 GameObject:
   m_ObjectHideFlags: 0
