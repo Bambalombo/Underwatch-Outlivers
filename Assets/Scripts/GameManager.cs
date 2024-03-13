@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject playerParentPrefab;
     [SerializeField] private GameObject spawnerEnemyController;
     [SerializeField] private int numberOfPlayers = 1;
     private Transform _playerParent;
@@ -115,7 +117,7 @@ public class GameManager : MonoBehaviour
     
     private void SetupSceneDependencies()
     {
-        _playerParent = FindOrCreateParent("PlayerParent", _playerParent);
+        //_playerParent = FindOrCreateParent("PlayerParent", _playerParent);
         _damagePopupParent = FindOrCreateParent("DamagePopupParent", _damagePopupParent);
         _experiencePickupParent = FindOrCreateParent("ExperiencePickupParent", _experiencePickupParent);
         _pickupParent = FindOrCreateParent("PickupParent", _pickupParent);
@@ -138,12 +140,13 @@ public class GameManager : MonoBehaviour
         
         return parentObj.transform;
     }
-
     
+    //Den her funktion skal ændres eventually så den kun bliver called 1 gang (Lige nu bliver den called 2 gange hvis men starter spillet fra menu)
     private void CreatePlayers(int playersToCreate)
     {
         // Check if playerParent exists or create it
-        _playerParent = FindOrCreateParent("PlayerParent", _playerParent);
+        // (Har ændret den sådan den ikk caller findOrCreateParent, men bare instantiater direkte fordi jeg skulle bruge et anderledes parent object)
+        _playerParent = Instantiate(playerParentPrefab, Vector3.zero, Quaternion.identity).transform;
         
         for (int i = 0; i < playersToCreate; i++)
         {
@@ -152,7 +155,11 @@ public class GameManager : MonoBehaviour
             // Instantiate and store the player reference in the array
             players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
             players[i].name = "Player_" + (i + 1); // Naming the player GameObject
+            // Assign the control scheme based on player index
+            var playerInput = players[i].GetComponent<PlayerInput>();
+            
+
         }
     }
-}
+}   
 

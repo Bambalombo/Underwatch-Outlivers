@@ -48,8 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8905089503809146214, guid: c221fdf603e209e4bba4e973792c8e1a, type: 3}
+  playerParentPrefab: {fileID: 7534218059036125195, guid: a10c3e02e4cd96e43ab7427d9cbff470, type: 3}
   spawnerEnemyController: {fileID: 2040488348098064462, guid: e9c6cdb0d48f766428a0cbe444f3d8ce, type: 3}
-  numberOfPlayers: 1
+  numberOfPlayers: 2
+  players: []
 --- !u!114 &5664965020529258177
 MonoBehaviour:
   m_ObjectHideFlags: 0
