@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class FixedMultiplayerCamera : MonoBehaviour
 {
-    public GameObject[] players; // Array to hold all the players
-    public float smoothTime = 0.5f; // Time for the camera to refocus
+    //This script is used to make the camera follow all the players in the game, it takes the position of all the players and moves the camera to the center of all the players
+    public GameObject[] players;
+    public float smoothTime = 0.5f;
 
-    private Vector3 velocity; // Speed of the camera movement
+    private Vector3 velocity;
     
     void Start()
     {
@@ -16,7 +17,6 @@ public class FixedMultiplayerCamera : MonoBehaviour
     {
         if (players.Length == 0)
             return;
-
         Move();
     }
 
@@ -24,10 +24,7 @@ public class FixedMultiplayerCamera : MonoBehaviour
     {
         Vector3 centerPoint = GetCenterPoint();
         Vector3 newPosition = centerPoint;
-
-        // Note: You may want to adjust the Y and/or Z position depending on your game's camera angle and desired view
-        newPosition.z = transform.position.z; // Keep the camera's original Z position
-        //newPosition.y = transform.position.y; // Keep the camera's original Y position
+        newPosition.z = transform.position.z;
 
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
     }
