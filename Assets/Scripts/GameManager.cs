@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
     }
     
 
-    // Public static methods to access the parents
+    // Public static methods to access the private fields
     public static Transform GetBulletParent() => _instance._bulletParent;
     public static Transform GetDamagePopupParent() => _instance._damagePopupParent;
     public static Transform GetExperiencePickupParent() => _instance._experiencePickupParent;
     public static Transform GetPickupParent() => _instance._pickupParent;
     public static Transform GetSpawnerEnemyControllerParent() => _instance._spawnerEnemyControllerParent;
-    private static GameObject[] Players => _instance.players;
+    private static GameObject[] playerGameObjectsArray => _instance.players;
     public static int GetNumberOfPlayers() => _instance.numberOfPlayers;
     public static GameObject[] GetPlayerGameObjects() => _instance.FindPlayerGameObjects();
     //public static GameObject GetNearestPlayer() => _instance.FindNearestPlayer(Vector3 currentPosition);
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         GameObject nearestPlayer = null;
         float closestDistanceSqr = Mathf.Infinity;
 
-        foreach (GameObject player in Players)
+        foreach (GameObject player in playerGameObjectsArray)
         {
             if (player != null)
             {

@@ -15,7 +15,7 @@ public class SpawnerEnemyController : MonoBehaviour
 
     private void Start()
     {
-        //TODO: Does not work with more players
+        //TODO: Does not work with more players - Should probably be set to the camera position instead
         _playerStatsController = FindObjectOfType<PlayerStatsController>();
         
         StartCoroutine(SpawnEnemies());

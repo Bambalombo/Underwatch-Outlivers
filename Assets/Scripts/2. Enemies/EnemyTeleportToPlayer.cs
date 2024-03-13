@@ -10,7 +10,7 @@ public class EnemyTeleportToPlayer : MonoBehaviour
 
     private void Awake()
     {
-        //TODO: Does not work with more players
+        //TODO: Does not work with more players - Should probably be set to the camera position instead
         _playerStatsController = FindObjectOfType<PlayerStatsController>();
         
         var spawnerEnemyTransform = GameManager.GetSpawnerEnemyControllerParent();
