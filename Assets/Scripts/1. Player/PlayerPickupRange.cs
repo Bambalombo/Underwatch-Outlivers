@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class PlayerPickupRange : MonoBehaviour
 {
-    private CircleCollider2D _pickupRangeCollider;
+    [SerializeField] private CircleCollider2D _pickupRangeCollider;
     //[SerializeField] private float pickupRange = 4f;
     [SerializeField] private ExperienceController experienceController;
     [SerializeField] private PlayerStatsController playerStatsController;
     [SerializeField] private PlayerHealthController playerHealthController;
+
+     
     
     [Header("Movement Settings")]
     //[SerializeField] private float moveAwayDuration = 0.25f; // Duration to move away, adjust as needed
@@ -16,7 +18,7 @@ public class PlayerPickupRange : MonoBehaviour
     
     private void Awake()
     {
-        _pickupRangeCollider = GetComponent<CircleCollider2D>();    
+        //_pickupRangeCollider = GetComponent<CircleCollider2D>();    
         _pickupRangeCollider.radius = playerStatsController.GetExperiencePickupRange();
     }
     

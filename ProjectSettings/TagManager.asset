@@ -21,8 +21,8 @@ TagManager:
   - Player
   - Enemy
   - Pickups
-  - 
-  - 
+  - PLAYER_BOUNDARY
+  - Weapon
   - 
   - 
   - 

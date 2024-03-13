@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1548870931724295538}
   - component: {fileID: 4516286362287112012}
   - component: {fileID: -7631913092441358423}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BasicBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,6 @@ MonoBehaviour:
   basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
   cursorPosition: {fileID: 11400000, guid: f85ef083a9751dc45b394a7b1645b9e0, type: 2}
   damage: 10
-  playerStatsController: {fileID: 5807114057819124149, guid: c221fdf603e209e4bba4e973792c8e1a, type: 3}
 --- !u!58 &-7631913092441358423
 CircleCollider2D:
   m_ObjectHideFlags: 0
