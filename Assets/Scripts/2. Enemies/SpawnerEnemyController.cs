@@ -151,6 +151,7 @@ public class SpawnerEnemyController : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        yield return new WaitForSeconds(2f);
         while (true)
         {
             SpawnRandomEnemy();

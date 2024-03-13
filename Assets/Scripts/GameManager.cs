@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject playerParentPrefab;
     [SerializeField] private GameObject spawnerEnemyController;
     [SerializeField] private int numberOfPlayers = 1;
     private Transform _playerParent;
@@ -48,6 +49,20 @@ public class GameManager : MonoBehaviour
     public static Transform GetSpawnerEnemyControllerParent() => _instance._spawnerEnemyControllerParent;
     private static GameObject[] playerGameObjectsArray => _instance.players;
     public static int GetNumberOfPlayers() => _instance.numberOfPlayers;
+
+    public static void SetNumberOfPlayers(int value)
+    {
+        _instance.numberOfPlayers = value;
+        //check if the number of players would either become less than 1 or more than 4
+        if (_instance.numberOfPlayers < 1)
+        {
+            _instance.numberOfPlayers = 1;
+        }
+        else if (_instance.numberOfPlayers > 4)
+        {
+            _instance.numberOfPlayers = 4;
+        }
+    }
     public static GameObject[] GetPlayerGameObjects() => _instance.FindPlayerGameObjects();
     //public static GameObject GetNearestPlayer() => _instance.FindNearestPlayer(Vector3 currentPosition);
     
@@ -115,7 +130,6 @@ public class GameManager : MonoBehaviour
     
     private void SetupSceneDependencies()
     {
-        _playerParent = FindOrCreateParent("PlayerParent", _playerParent);
         _damagePopupParent = FindOrCreateParent("DamagePopupParent", _damagePopupParent);
         _experiencePickupParent = FindOrCreateParent("ExperiencePickupParent", _experiencePickupParent);
         _pickupParent = FindOrCreateParent("PickupParent", _pickupParent);
@@ -140,19 +154,25 @@ public class GameManager : MonoBehaviour
     }
 
     
+    //Den her funktion skal ændres eventually så den kun bliver called 1 gang (Lige nu bliver den called 2 gange hvis men starter spillet fra menu)
     private void CreatePlayers(int playersToCreate)
     {
-        // Check if playerParent exists or create it
-        _playerParent = FindOrCreateParent("PlayerParent", _playerParent);
-        
-        for (int i = 0; i < playersToCreate; i++)
+        // Only create players if they have not already been created
+        if (_playerParent == null) // Check if playerParent does not exist
         {
-            // Calculate the position for each player
-            Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
-            // Instantiate and store the player reference in the array
-            players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
-            players[i].name = "Player_" + (i + 1); // Naming the player GameObject
+            // Create the playerParent
+            _playerParent = Instantiate(playerParentPrefab, Vector3.zero, Quaternion.identity).transform;
+
+            for (int i = 0; i < playersToCreate; i++)
+            {
+                // Calculate the position for each player
+                Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
+                // Instantiate and store the player reference in the array
+                players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
+                players[i].name = "Player_" + (i + 1); // Naming the player GameObject
+            }
         }
     }
+
 }
 
