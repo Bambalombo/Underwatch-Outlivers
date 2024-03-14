@@ -932,6 +932,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7635096117551805146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4410928735042271632}
+  m_Layer: 0
+  m_Name: WeaponParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4410928735042271632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635096117551805146}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4743056730613283810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8209694626681877609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,12 +1041,13 @@ GameObject:
   - component: {fileID: 4743056730613283810}
   - component: {fileID: 3143591249616965177}
   - component: {fileID: 5807114057819124149}
+  - component: {fileID: 4457740806196610427}
   - component: {fileID: 6679712086177124191}
   - component: {fileID: 537972653550675585}
-  - component: {fileID: 390085467450257772}
-  - component: {fileID: 7479574559359149238}
   - component: {fileID: 1938536580294704214}
   - component: {fileID: 716872362657776153}
+  - component: {fileID: 390085467450257772}
+  - component: {fileID: 7479574559359149238}
   - component: {fileID: -5591498939169631434}
   m_Layer: 6
   m_Name: Player
@@ -1038,6 +1070,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1700217611970590819}
+  - {fileID: 4410928735042271632}
   - {fileID: 7284714005015617915}
   - {fileID: 937704010424447647}
   m_Father: {fileID: 0}
@@ -1112,6 +1145,20 @@ MonoBehaviour:
   attackSpeed: 5
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &4457740806196610427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea39bab256f96542a97f029a9c5bd0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponParent: {fileID: 7635096117551805146}
+  weapons: []
 --- !u!114 &6679712086177124191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,6 +1185,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarController: {fileID: 7179351921809565975}
+--- !u!114 &1938536580294704214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53ed539412776d44a1ea6709bb87820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickupRangeCollider: {fileID: 2213543130032873990}
+  experienceController: {fileID: 1809355141524032551, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
+  playerStatsController: {fileID: 5807114057819124149}
+  playerHealthController: {fileID: 537972653550675585}
+  towardsPlayerSpeed: 10
+--- !u!114 &716872362657776153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732bfacf8093a8541934545e0ff18bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &390085467450257772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1200,35 +1276,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1938536580294704214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905089503809146214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b53ed539412776d44a1ea6709bb87820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pickupRangeCollider: {fileID: 2213543130032873990}
-  experienceController: {fileID: 1809355141524032551, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
-  playerStatsController: {fileID: 5807114057819124149}
-  playerHealthController: {fileID: 537972653550675585}
-  towardsPlayerSpeed: 10
---- !u!114 &716872362657776153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905089503809146214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732bfacf8093a8541934545e0ff18bf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-5591498939169631434
 MonoBehaviour:
   m_ObjectHideFlags: 0

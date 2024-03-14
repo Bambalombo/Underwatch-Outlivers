@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        _playerStatsController.SetPlayerPosition(transform.position);
+        //_playerStatsController.SetPlayerPosition(transform.position);
     }
 
     private void Update()
@@ -26,6 +26,6 @@ public class PlayerMove : MonoBehaviour
         _moveVector.y = Input.GetAxisRaw("Vertical");
 
         playerTransform.Translate(_moveVector.normalized * (_playerStatsController.GetMoveSpeed() * Time.deltaTime));
-        _playerStatsController.SetPlayerPosition(playerTransform.position);
+        //_playerStatsController.SetPlayerPosition(playerTransform.position);
     }
 }

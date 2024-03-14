@@ -4,15 +4,16 @@ using Random = UnityEngine.Random;
 public class EnemyCombatController : MonoBehaviour 
 {
     [SerializeField] private GameObject damagePopupPrefab;
-    [SerializeField] private Transform _damagePopupParent; 
-    [SerializeField] private Transform _experiencePickupParent;
+    private Transform _damagePopupParent; 
+    private Transform _experiencePickupParent;
     [SerializeField] private EnemyStatsController enemyStatsController;
-    
+    private SpawnerEnemyController _spawnerEnemyController;
     
     private void Awake()
     {
         _damagePopupParent = GameManager.GetDamagePopupParent();
         _experiencePickupParent = GameManager.GetExperiencePickupParent();
+        _spawnerEnemyController = GameManager.GetSpawnerEnemyControllerParent().GetComponent<SpawnerEnemyController>();
     }
 
 
@@ -71,5 +72,11 @@ public class EnemyCombatController : MonoBehaviour
     public void Attack()
     {
         enemyStatsController.SetLastAttackTime(Time.time);
+    }
+    
+    private void OnDestroy()
+    {
+        _spawnerEnemyController.RemoveEnemyFromList(gameObject);
+        
     }
 }

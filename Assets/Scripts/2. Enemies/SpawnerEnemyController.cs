@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerEnemyController : MonoBehaviour
@@ -11,8 +12,9 @@ public class SpawnerEnemyController : MonoBehaviour
     [SerializeField] private FloatVariable gameTime;
     [SerializeField] private float difficultyFactor = 1f;
     private PlayerStatsController _playerStatsController;
-    
 
+    [SerializeField] private List<GameObject> allEnemies = new List<GameObject>();
+    
     private void Start()
     {
         //TODO: Does not work with more players - Should probably be set to the camera position instead
@@ -31,6 +33,15 @@ public class SpawnerEnemyController : MonoBehaviour
         difficultyFactor = 1f + gameTime.value / 300f; // Increase difficulty over time
     }
     
+    public List<GameObject> GetAllEnemiesList()
+    {
+        return allEnemies;
+    }
+    
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        allEnemies.Remove(enemy);
+    }
 
     private void SpawnRandomEnemy()
     {
@@ -45,7 +56,8 @@ public class SpawnerEnemyController : MonoBehaviour
             Vector3 spawnPos = CalculateSpawnPosition(_playerStatsController.GetPlayerPosition());
             
             //TODO: This could be improved by recycling enemies instead of instantiating new ones
-            Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
+            GameObject enemy = Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
+            allEnemies.Add(enemy);
         }
     }
     
@@ -157,13 +169,5 @@ public class SpawnerEnemyController : MonoBehaviour
             SpawnRandomEnemy();
             yield return new WaitForSeconds(spawnInterval / difficultyFactor);
         }
-    }
-    
-    public float SpawnRadius {
-        get { return spawnRadius; }
-    }
-    
-    public float SafeZoneRadius {
-        get { return safeZoneRadius; }
     }
 }

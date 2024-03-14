@@ -104,7 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 50
-  armor: 5
   moveSpeed: 1.5
   damage: 9
   lastAttackTime: 0
@@ -124,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistanceToPlayer: 0.2
   enemyStatsController: {fileID: -2111774544511058763}
+  playerStatsControllers: []
 --- !u!114 &-4557648043707126890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
+  _damagePopupParent: {fileID: 0}
+  _experiencePickupParent: {fileID: 0}
   enemyStatsController: {fileID: -2111774544511058763}
 --- !u!114 &-2757452759354866403
 MonoBehaviour:

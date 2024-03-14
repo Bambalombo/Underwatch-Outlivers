@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistanceToPlayer: 0.2
   enemyStatsController: {fileID: -6628376797079429673}
+  playerStatsControllers: []
 --- !u!114 &-6205613047608618776
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 674661241648069599}
   - component: {fileID: 3622505919720294646}
+  - component: {fileID: -2451237040802010168}
   m_Layer: 0
   m_Name: SpawnEnemyController
   m_TagString: Untagged
@@ -54,4 +55,15 @@ MonoBehaviour:
   safeZoneRadius: 30
   gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
   difficultyFactor: 1
-  playerStatsController: {fileID: 0}
+--- !u!114 &-2451237040802010168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040488348098064462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9665d59cdc7b24a8405460b9752c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -11,6 +11,7 @@ TagManager:
   - ExperiencePickupParent
   - Experience
   - HealthPickup
+  - WeaponPickup
   layers:
   - Default
   - TransparentFX
