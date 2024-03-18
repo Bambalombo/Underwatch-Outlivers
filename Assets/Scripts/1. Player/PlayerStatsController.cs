@@ -34,6 +34,7 @@ public class PlayerStatsController : MonoBehaviour
         Xenobiologist,
         XI_017
     }
+    // Inside PlayerStatsController class   
     
     private void Start()
     {

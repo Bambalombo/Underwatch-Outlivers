@@ -11,6 +11,7 @@ public class MeleeSlash : MonoBehaviour
     private float lineVisibilityDuration = 0.5f; // Duration for which the line remains visible after an attack
 
     private PlayerStatsController playerStatsController;
+    private PlayerHealthController playerHealthController;
     private Vector2 lastMoveDirection = Vector2.right; // Default direction if the player has not moved
 
     void Start()
@@ -25,6 +26,7 @@ public class MeleeSlash : MonoBehaviour
 
         var grandParent = transform.parent.parent;
         playerStatsController = grandParent.GetComponent<PlayerStatsController>();
+        playerHealthController = grandParent.GetComponent<PlayerHealthController>();
 
         StartCoroutine(AttackRoutine());
     }
@@ -67,6 +69,7 @@ public class MeleeSlash : MonoBehaviour
                     {
                         // Deal damage to the enemy
                         enemy.EnemyTakeDamage(_weaponStats.GetDamage());
+                        playerHealthController.PlayerHeal(_weaponStats.GetLifeStealAmount());
                     }
                 }
             }

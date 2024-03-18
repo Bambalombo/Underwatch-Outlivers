@@ -58,9 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 200
+  damage: 100
   attackCooldown: 1
   attackRange: 6
   projectileSpeed: 0
   attackLifetime: 0
   knockback: 0
+  lifeStealAmount: 1

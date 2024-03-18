@@ -10,6 +10,7 @@ public class WeaponStats : MonoBehaviour
     [SerializeField] private float projectileSpeed; // The speed of the projectile
     [SerializeField] private float attackLifetime; // The lifetime of the bullet
     [SerializeField] private float knockback; // The knockback of the weapon
+    [SerializeField] private float lifeStealAmount;
 
     public void SetDamage(float value) { damage = value; }
     public float GetDamage() { return damage; }
@@ -28,4 +29,7 @@ public class WeaponStats : MonoBehaviour
     
     public void SetKnockback(float value) { knockback = value; }
     public float GetKnockback() { return knockback; }
+    
+    public void SetLifeStealAmount(float value) { lifeStealAmount = value; }
+    public float GetLifeStealAmount() { return lifeStealAmount; }
 }
