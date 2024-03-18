@@ -58,11 +58,18 @@ public class PlayerActiveAttack : MonoBehaviour
                 weapon = Instantiate(xenobiologistWeapon, parent: weaponParent.transform);
                 break;
             case PlayerStatsController.PlayerClass.XI_017:
-                ability = Instantiate(xi017Ability, parent: abilityParent.transform);
-                weapon = Instantiate(xi017Weapon, parent: weaponParent.transform);
+                if (xi017Ability != null)
+                    ability = Instantiate(xi017Ability, parent: abilityParent.transform);
+                else
+                    Debug.LogWarning("XI_017 Ability is not assigned in the inspector");
+
+                if (xi017Weapon != null)
+                    weapon = Instantiate(xi017Weapon, parent: weaponParent.transform);
+                else
+                    Debug.LogWarning("XI_017 Weapon is not assigned in the inspector");
                 break;
             default:
-                Debug.LogError("Class not detected. No ability or weapon was assigned.");
+                Debug.LogWarning("Class not detected. No ability or weapon was assigned.");
                 break;
         }
         if (ability)
