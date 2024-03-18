@@ -35,7 +35,7 @@ public class PhysicsMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementDirection = new Vector2(movementDirection.x, movementDirection.y);
+        movementDirection = new Vector2(movementDirection.x, movementDirection.y).normalized;
         playerStatsController.SetLastMoveDirection(movementDirection);
     }
 
