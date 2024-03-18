@@ -20,7 +20,7 @@ public class BasicBulletController : MonoBehaviour
         _playerStatsController = GameObject.FindWithTag("Player").GetComponent<PlayerStatsController>();
         
         transform.position = _playerStatsController.GetPlayerPosition();
-        _bulletSpeed = basicBulletSpeed.value + _playerStatsController.GetAttackSpeed()/2; //TODO: Bullet speed should not be attack speed
+        //_bulletSpeed = basicBulletSpeed.value + _playerStatsController.GetAttackSpeed()/2; //TODO: Bullet speed should not be attack speed
         _bulletDirection = (cursorPosition.value).normalized;
 
         StartCoroutine(SendBulletFlying());

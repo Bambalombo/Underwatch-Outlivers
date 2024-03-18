@@ -17,7 +17,7 @@ public class PlayerHealthController : MonoBehaviour
     }
     
     //TODO: Death needs to be when every player is dead, not just one 
-    private void PlayerTakeDamage(float damage)
+    public void PlayerTakeDamage(float damage)
     {
         _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() - damage);
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());

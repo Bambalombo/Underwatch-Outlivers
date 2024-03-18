@@ -35,6 +35,6 @@ public class PlayerDefaultShoot : MonoBehaviour
     {
         if (_shootingSequence != null) 
             StopCoroutine(_shootingSequence);
-        _shootingSequence = StartCoroutine(BasicAttack(_playerStatsController.GetAttackSpeed()));
+        //_shootingSequence = StartCoroutine(BasicAttack(_playerStatsController.GetAttackSpeed())); //I uncommented this since it needs to get the attack speed from the weapon stats instead
     }
 }

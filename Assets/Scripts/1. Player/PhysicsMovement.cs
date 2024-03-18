@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PhysicsMovement : MonoBehaviour
 {
-    private float _movementSpeed;
     private PlayerStatsController _playerStatsController;
     private Rigidbody2D _rb;
     private Vector2 _movementDirection;
@@ -12,9 +11,9 @@ public class PhysicsMovement : MonoBehaviour
     private void Awake()
     {
         _playerStatsController = GetComponent<PlayerStatsController>();
-        _movementSpeed = _playerStatsController.GetMoveSpeed();
     }
     
+    //This code is only for when using controllers, since they can move in all 360 degrees and the melee weapon works best when snapping to 45 degree angles i think
     private Vector2 SnapDirectionToNearestAngle(Vector2 direction, float snapAngle)
     {
         var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Convert direction to angle
@@ -39,12 +38,12 @@ public class PhysicsMovement : MonoBehaviour
             _lastMovementAngle = snappedDirection.normalized; // Update last move direction
             _playerStatsController.SetLastMoveDirection(_lastMovementAngle);
         }
-        Debug.Log($"Last move direction: {_playerStatsController.GetLastMoveDirection()}");
+        //Debug.Log($"Last move direction: {_playerStatsController.GetLastMoveDirection()}");
     }
 
     void FixedUpdate()
     {
-        _rb.velocity = _movementDirection * _movementSpeed;
+        _rb.velocity = _movementDirection * _playerStatsController.GetMoveSpeed();
         _playerStatsController.SetPlayerPosition(gameObject.transform.position);
     }
     

@@ -1147,6 +1147,7 @@ GameObject:
   - component: {fileID: 7479574559359149238}
   - component: {fileID: -5591498939169631434}
   - component: {fileID: 1120148009396779783}
+  - component: {fileID: 1591481472568065555}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1246,7 +1247,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 5
+  playerClass: 3
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,12 +1265,12 @@ MonoBehaviour:
   playerStatsController: {fileID: 5807114057819124149}
   elementalistAbility: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
   voidwalkerAbility: {fileID: 0}
-  mutantBerserkerAbility: {fileID: 0}
+  mutantBerserkerAbility: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
   xenobiologistAbility: {fileID: 0}
   xi017Ability: {fileID: 0}
   elementalistWeapon: {fileID: 0}
   voidwalkerWeapon: {fileID: 0}
-  mutantBerserkerWeapon: {fileID: 0}
+  mutantBerserkerWeapon: {fileID: 4140215671141498193, guid: f8f4a542d1f8d5a4bb1286ce764e5f70, type: 3}
   xenobiologistWeapon: {fileID: 0}
   xi017Weapon: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
   activeAbilities: []
@@ -1419,6 +1420,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bdb12071-6217-408a-9f87-fe79833f30d7
     m_ActionName: Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DualSenseGamepadHID/leftStick,/DualSenseGamepadHID1/leftStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1591481472568065555}
+        m_TargetAssemblyTypeName: AbilityCastHandler, Assembly-CSharp
+        m_MethodName: CastAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d0daf142-2395-470b-9d8d-b632e1da369e
+    m_ActionName: Gameplay/CastAbility[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1442,3 +1459,15 @@ MonoBehaviour:
   mutantBerserkerSprite: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
   xenobiologistSprite: {fileID: 21300000, guid: b91044454ea3bc740b63ed7ff6139452, type: 3}
   XI_017Sprite: {fileID: 21300000, guid: 25cc9e621fbf313408996a671f99148e, type: 3}
+--- !u!114 &1591481472568065555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab173afbf244cd142a64e2d18d2dec81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -9,7 +9,7 @@ public class PlayerStatsController : MonoBehaviour
     //[SerializeField] private float armor;
     [SerializeField] private float moveSpeed;
     //[SerializeField] private float damage; // Should be changed by weapon?
-    [SerializeField] private float attackSpeed;
+    //[SerializeField] private float attackSpeed; //I think this variable is called attackCooldown in WeaponStats
     //[SerializeField] private float attackRange; //NOT USED YET
     //[SerializeField] private float attackCooldown; 
     [SerializeField] private float experiencePickupRange; // The range in which the player can pick up experience
@@ -76,10 +76,10 @@ public class PlayerStatsController : MonoBehaviour
     {
         damage = value;
     }*/
-    public void SetAttackSpeed(float value)
+    /*public void SetAttackSpeed(float value)
     {
         attackSpeed = value;
-    }
+    }*/
     /*public void SetAttackRange(float value)
     {
         attackRange = value;
@@ -128,7 +128,7 @@ public class PlayerStatsController : MonoBehaviour
     public float GetMoveSpeed() => moveSpeed;
     //public float GetDamage() => damage;
 
-    public float GetAttackSpeed() => attackSpeed;
+    //public float GetAttackSpeed() => attackSpeed;
     //public float GetAttackRange() => attackRange;
     //public float GetAttackCooldown() => attackCooldown;
     public float GetExperiencePickupRange() => experiencePickupRange;

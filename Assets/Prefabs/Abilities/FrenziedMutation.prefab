@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4140215671141498193
+--- !u!1 &2829449551655566294
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,60 +8,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7298093415776621446}
-  - component: {fileID: 7034148826506339841}
-  - component: {fileID: -1866010037043708669}
+  - component: {fileID: 3104461203774431054}
+  - component: {fileID: -6220575486791319817}
+  - component: {fileID: 1466473065086806268}
   m_Layer: 0
-  m_Name: MeleeSlash
+  m_Name: FrenziedMutation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7298093415776621446
+--- !u!4 &3104461203774431054
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4140215671141498193}
+  m_GameObject: {fileID: 2829449551655566294}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.3477864, y: -2.4377651, z: 0.005308762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7034148826506339841
+--- !u!114 &-6220575486791319817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4140215671141498193}
+  m_GameObject: {fileID: 2829449551655566294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2752f9d0922f25849b044c690c407b32, type: 3}
+  m_Script: {fileID: 11500000, guid: fd2a06b0bf3f53642a5b2e51076e8880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAngle: 80
---- !u!114 &-1866010037043708669
+--- !u!114 &1466473065086806268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4140215671141498193}
+  m_GameObject: {fileID: 2829449551655566294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cd8622f6a9924321ac1afdf1e286b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
-  attackCooldown: 1
-  attackRange: 6
-  projectileSpeed: 0
-  attackLifetime: 0
-  knockback: 0
-  lifeStealAmount: 1
+  damage: 10
+  cooldown: 1
+  range: 1
+  projectileSpeed: 1
+  lifetime: 1
+  knockback: 1
+  targetCount: 1
