@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerPickupRange : MonoBehaviour
 {
-    [SerializeField] private CircleCollider2D _pickupRangeCollider;
+    [SerializeField] private CircleCollider2D pickupRangeCollider;
     //[SerializeField] private float pickupRange = 4f;
     [SerializeField] private ExperienceController experienceController;
     [SerializeField] private PlayerStatsController playerStatsController;
@@ -11,15 +12,16 @@ public class PlayerPickupRange : MonoBehaviour
 
      
     
+    [FormerlySerializedAs("towardsPlayerSpeed")]
     [Header("Movement Settings")]
     //[SerializeField] private float moveAwayDuration = 0.25f; // Duration to move away, adjust as needed
     //[SerializeField] private float awayDirectionSpeed = 5f; // Speed of moving away, adjust as needed
-    [SerializeField] private float towardsPlayerSpeed = 10f; // Speed of moving towards the player, adjust as needed
+    [SerializeField] private float expMoveSpeed = 10f; // Speed of moving towards the player, adjust as needed
     
     private void Awake()
     {
         //_pickupRangeCollider = GetComponent<CircleCollider2D>();    
-        _pickupRangeCollider.radius = playerStatsController.GetExperiencePickupRange();
+        pickupRangeCollider.radius = playerStatsController.GetExperiencePickupRange();
     }
     
     
@@ -29,7 +31,7 @@ public class PlayerPickupRange : MonoBehaviour
         {
             var experiencePickup = other.gameObject.GetComponent<ExperienceAmount>();
             var expAmount = experiencePickup.GetExperienceAmount();
-            StartCoroutine(MoveObjectToPlayer(other.gameObject, towardsPlayerSpeed));
+            StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed));
             if (other.gameObject != null)
             {
                 experienceController.AddExperience(expAmount);
@@ -40,7 +42,7 @@ public class PlayerPickupRange : MonoBehaviour
         {
             var healthPickup = other.gameObject.GetComponent<HealthPickup>();
             var healAmount = healthPickup.GetHealthAmount();
-            StartCoroutine(MoveObjectToPlayer(other.gameObject, towardsPlayerSpeed));
+            StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed));
             if (other.gameObject != null)
             {
                 playerHealthController.PlayerHeal(healAmount);
@@ -52,9 +54,8 @@ public class PlayerPickupRange : MonoBehaviour
     {
         while (obj != null && Vector3.Distance(obj.transform.position, transform.position) > 0.01f)
         {
-            float step = speed * Time.deltaTime;
-            obj.transform.position = Vector3.MoveTowards(obj.transform.position, transform.position, 
-                Time.deltaTime * towardsPlayerSpeed);
+            // float step = speed * Time.deltaTime;
+            obj.transform.position = Vector3.MoveTowards(obj.transform.position, transform.position, Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
         if (obj != null)

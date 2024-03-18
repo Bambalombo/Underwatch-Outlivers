@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PhysicsMovement : MonoBehaviour
 {
-    private float movementSpeed;
+    private float _movementSpeed;
     private PlayerStatsController _playerStatsController;
-    private Rigidbody2D rb;
-    private Vector2 movementDirection;
-    private Vector2 lastMovementAngle;
+    private Rigidbody2D _rb;
+    private Vector2 _movementDirection;
+    private Vector2 _lastMovementAngle;
     
-    [SerializeField] private PlayerStatsController playerStatsController;
-
     private void Awake()
     {
         _playerStatsController = GetComponent<PlayerStatsController>();
-        movementSpeed = _playerStatsController.GetMoveSpeed();
+        _movementSpeed = _playerStatsController.GetMoveSpeed();
     }
     
     private Vector2 SnapDirectionToNearestAngle(Vector2 direction, float snapAngle)
@@ -29,26 +25,26 @@ public class PhysicsMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        playerStatsController = GetComponent<PlayerStatsController>();
+        _rb = GetComponent<Rigidbody2D>();
+        _playerStatsController = GetComponent<PlayerStatsController>();
     }
     
     public void OnMove(InputAction.CallbackContext context)
     {
-        movementDirection = context.ReadValue<Vector2>();
+        _movementDirection = context.ReadValue<Vector2>();
         // Normalize the movement direction only if it's not zero
-        if (movementDirection != Vector2.zero)
+        if (_movementDirection != Vector2.zero)
         {
-            var snappedDirection = SnapDirectionToNearestAngle(movementDirection, 45); // Snap to nearest 45-degree angle
-            lastMovementAngle = snappedDirection.normalized; // Update last move direction
-            playerStatsController.SetLastMoveDirection(lastMovementAngle);
+            var snappedDirection = SnapDirectionToNearestAngle(_movementDirection, 45); // Snap to nearest 45-degree angle
+            _lastMovementAngle = snappedDirection.normalized; // Update last move direction
+            _playerStatsController.SetLastMoveDirection(_lastMovementAngle);
         }
-        Debug.Log($"Last move direction: {playerStatsController.GetLastMoveDirection()}");
+        Debug.Log($"Last move direction: {_playerStatsController.GetLastMoveDirection()}");
     }
 
     void FixedUpdate()
     {
-        rb.velocity = movementDirection * movementSpeed;
+        _rb.velocity = _movementDirection * _movementSpeed;
         _playerStatsController.SetPlayerPosition(gameObject.transform.position);
     }
     

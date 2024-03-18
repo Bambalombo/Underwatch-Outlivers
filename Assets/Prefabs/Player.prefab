@@ -1141,7 +1141,6 @@ GameObject:
   - component: {fileID: 5807114057819124149}
   - component: {fileID: 8457482166147896845}
   - component: {fileID: 4457740806196610427}
-  - component: {fileID: 6679712086177124191}
   - component: {fileID: 537972653550675585}
   - component: {fileID: 1938536580294704214}
   - component: {fileID: 716872362657776153}
@@ -1172,8 +1171,8 @@ Transform:
   - {fileID: 4410928735042271632}
   - {fileID: 425963669774639625}
   - {fileID: 7284714005015617915}
-  - {fileID: 937704010424447647}
   - {fileID: 7455284733439242630}
+  - {fileID: 937704010424447647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3143591249616965177
@@ -1247,7 +1246,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 5
+  playerClass: 0
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,21 +1280,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 7635096117551805146}
-  weapons:
-  - {fileID: 0}
---- !u!114 &6679712086177124191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905089503809146214}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb283ff82a843449caf12284641e9c00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 244602473224163229, guid: a455ae59b97b94f59a88985c908702de, type: 3}
+  playerStatsController: {fileID: 5807114057819124149}
+  elementalistWeapon: {fileID: 0}
+  voidwalkerWeapon: {fileID: 0}
+  mutantBerserkerWeapon: {fileID: 0}
+  xenobiologistWeapon: {fileID: 0}
+  xi017Weapon: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
+  activeWeapons: []
 --- !u!114 &537972653550675585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,11 +1312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53ed539412776d44a1ea6709bb87820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickupRangeCollider: {fileID: 2213543130032873990}
+  pickupRangeCollider: {fileID: 2213543130032873990}
   experienceController: {fileID: 1809355141524032551, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
   playerStatsController: {fileID: 5807114057819124149}
   playerHealthController: {fileID: 537972653550675585}
-  towardsPlayerSpeed: 10
+  expMoveSpeed: 10
 --- !u!114 &716872362657776153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,7 +1329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732bfacf8093a8541934545e0ff18bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatsController: {fileID: 0}
 --- !u!70 &390085467450257772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
