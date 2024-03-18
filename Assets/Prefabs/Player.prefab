@@ -1145,6 +1145,7 @@ MonoBehaviour:
   attackSpeed: 5
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
+  lastMoveDirection: {x: 0, y: 0}
 --- !u!114 &4457740806196610427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,7 +1167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8905089503809146214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb283ff82a843449caf12284641e9c00, type: 3}
   m_Name: 
@@ -1214,6 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732bfacf8093a8541934545e0ff18bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatsController: {fileID: 0}
 --- !u!70 &390085467450257772
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

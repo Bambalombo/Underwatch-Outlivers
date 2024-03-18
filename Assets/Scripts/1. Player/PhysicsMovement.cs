@@ -9,6 +9,8 @@ public class PhysicsMovement : MonoBehaviour
     private PlayerStatsController _playerStatsController;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
+    
+    [SerializeField] private PlayerStatsController playerStatsController;
 
     private void Awake()
     {
@@ -20,6 +22,9 @@ public class PhysicsMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        //Get the playerstats controller attached to this gameobject
+        playerStatsController = GetComponent<PlayerStatsController>();
     }
     
     public void OnMove(InputAction.CallbackContext context)
@@ -31,6 +36,7 @@ public class PhysicsMovement : MonoBehaviour
     void Update()
     {
         movementDirection = new Vector2(movementDirection.x, movementDirection.y);
+        playerStatsController.SetLastMoveDirection(movementDirection);
     }
 
 

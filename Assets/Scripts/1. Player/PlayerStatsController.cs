@@ -18,6 +18,7 @@ public class PlayerStatsController : MonoBehaviour
     //[SerializeField] private int level; // Player level
     [SerializeField] private Vector3 playerPosition; // Player position
 
+    [SerializeField] private Vector2 lastMoveDirection;
     // NOT SURE IF PLAYERS SHOULD HAVE INDIVIDUAL EXPERIENCE
     
     private void Start()
@@ -101,6 +102,11 @@ public class PlayerStatsController : MonoBehaviour
         playerPosition = value;
     }
     
+    public void SetLastMoveDirection(Vector2 value)
+    {
+        lastMoveDirection = value;
+    }
+    
     public float GetCurrentHealth() => currentHealth;
     public float GetMaxHealth() => maxHealth;
     //public float GetArmor() => armor;
@@ -117,7 +123,9 @@ public class PlayerStatsController : MonoBehaviour
     public int GetExperienceToNextLevel() => experienceToNextLevel;
     public int GetLevel() => level;*/
     public Vector3 GetPlayerPosition() => playerPosition;
-    
-    
-    
+
+    public Vector2 GetLastMoveDirection() => lastMoveDirection;
+
+
+
 }
