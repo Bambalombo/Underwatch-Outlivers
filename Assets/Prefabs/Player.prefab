@@ -1140,7 +1140,6 @@ GameObject:
   - component: {fileID: 3143591249616965177}
   - component: {fileID: 5807114057819124149}
   - component: {fileID: 8457482166147896845}
-  - component: {fileID: 4457740806196610427}
   - component: {fileID: 537972653550675585}
   - component: {fileID: 1938536580294704214}
   - component: {fileID: 716872362657776153}
@@ -1246,7 +1245,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 0
+  playerClass: 5
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1260,32 +1259,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityParent: {fileID: 5853401119182489628}
+  weaponParent: {fileID: 7635096117551805146}
   playerStatsController: {fileID: 5807114057819124149}
   elementalistAbility: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
   voidwalkerAbility: {fileID: 0}
   mutantBerserkerAbility: {fileID: 0}
   xenobiologistAbility: {fileID: 0}
-  Xi017Ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
-  activeAbilities: []
---- !u!114 &4457740806196610427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8905089503809146214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea39bab256f96542a97f029a9c5bd0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponParent: {fileID: 7635096117551805146}
-  playerStatsController: {fileID: 5807114057819124149}
+  xi017Ability: {fileID: 0}
   elementalistWeapon: {fileID: 0}
   voidwalkerWeapon: {fileID: 0}
   mutantBerserkerWeapon: {fileID: 0}
   xenobiologistWeapon: {fileID: 0}
   xi017Weapon: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
+  activeAbilities: []
   activeWeapons: []
 --- !u!114 &537972653550675585
 MonoBehaviour:
