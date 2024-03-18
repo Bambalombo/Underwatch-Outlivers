@@ -43,10 +43,10 @@ public class MeleeSlash : MonoBehaviour
     {
         Vector2 currentMoveDirection = playerStatsController.GetLastMoveDirection();
         if (currentMoveDirection != Vector2.zero)
-        {
-            lastMoveDirection = currentMoveDirection; // Update last move direction only if there is movement
+        {   
+            lastMoveDirection = currentMoveDirection.normalized; // Normalize to ensure the direction vector has a consistent length
         }
-        // The line renderer is updated in the coroutine ShowLineRendererTemporarily now
+        // Line renderer updates are now handled separately to maintain visibility only during attacks
     }
 
     void PerformAttack()
