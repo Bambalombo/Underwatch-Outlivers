@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStatsController : MonoBehaviour
 {
+    [Header("Player Stats")]
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxHealth;
     //[SerializeField] private float armor;
@@ -20,6 +22,18 @@ public class PlayerStatsController : MonoBehaviour
 
     [SerializeField] private Vector2 lastMoveDirection;
     // NOT SURE IF PLAYERS SHOULD HAVE INDIVIDUAL EXPERIENCE
+    
+    [Header("Class Attributes")]
+    [SerializeField] public PlayerClass playerClass;
+    public enum PlayerClass 
+    {
+        None,
+        Elementalist,
+        Voidwalker,
+        MutantBerserker,
+        Xenobiologist,
+        XI_017
+    }
     
     private void Start()
     {
@@ -125,7 +139,4 @@ public class PlayerStatsController : MonoBehaviour
     public Vector3 GetPlayerPosition() => playerPosition;
 
     public Vector2 GetLastMoveDirection() => lastMoveDirection;
-
-
-
 }

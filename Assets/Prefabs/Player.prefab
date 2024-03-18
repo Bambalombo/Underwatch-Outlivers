@@ -747,6 +747,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5853401119182489628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425963669774639625}
+  m_Layer: 0
+  m_Name: Ability Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425963669774639625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5853401119182489628}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4743056730613283810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6754930599081286685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1139,7 @@ GameObject:
   - component: {fileID: 4743056730613283810}
   - component: {fileID: 3143591249616965177}
   - component: {fileID: 5807114057819124149}
+  - component: {fileID: 8457482166147896845}
   - component: {fileID: 4457740806196610427}
   - component: {fileID: 6679712086177124191}
   - component: {fileID: 537972653550675585}
@@ -1138,6 +1170,7 @@ Transform:
   m_Children:
   - {fileID: 1700217611970590819}
   - {fileID: 4410928735042271632}
+  - {fileID: 425963669774639625}
   - {fileID: 7284714005015617915}
   - {fileID: 937704010424447647}
   - {fileID: 7455284733439242630}
@@ -1214,6 +1247,27 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
+  playerClass: 5
+--- !u!114 &8457482166147896845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f6f8bad90e748e9a1df5b572bbcafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityParent: {fileID: 5853401119182489628}
+  playerStatsController: {fileID: 5807114057819124149}
+  elementalistAbility: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
+  voidwalkerAbility: {fileID: 0}
+  mutantBerserkerAbility: {fileID: 0}
+  xenobiologistAbility: {fileID: 0}
+  Xi017Ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
+  activeAbilities: []
 --- !u!114 &4457740806196610427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,7 +1281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponParent: {fileID: 7635096117551805146}
-  weapons: []
+  weapons:
+  - {fileID: 0}
 --- !u!114 &6679712086177124191
 MonoBehaviour:
   m_ObjectHideFlags: 0
