@@ -7,6 +7,7 @@ public class PlayerActiveAttack : MonoBehaviour
     [SerializeField] private GameObject abilityParent; // The parent of the abilities
     [SerializeField] private GameObject weaponParent; // The parent of the weapons
     [SerializeField] private PlayerStatsController playerStatsController;
+    [SerializeField] private GameObject rangeIndicator;
     
     [Header("Default Class Abilities")]
     [SerializeField] private GameObject elementalistAbility;

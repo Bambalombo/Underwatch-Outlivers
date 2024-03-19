@@ -289,6 +289,90 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2023850877828575082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249288475465609444}
+  - component: {fileID: 2256219905076983408}
+  m_Layer: 0
+  m_Name: Range Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &249288475465609444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023850877828575082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4743056730613283810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2256219905076983408
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023850877828575082}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2048172858422458382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 249288475465609444}
   - {fileID: 1700217611970590819}
   - {fileID: 4410928735042271632}
   - {fileID: 425963669774639625}
@@ -1243,11 +1328,10 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   moveSpeed: 5
-  attackSpeed: 5
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 3
+  playerClass: 1
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,15 +1347,16 @@ MonoBehaviour:
   abilityParent: {fileID: 5853401119182489628}
   weaponParent: {fileID: 7635096117551805146}
   playerStatsController: {fileID: 5807114057819124149}
+  rangeIndicator: {fileID: 2023850877828575082}
   elementalistAbility: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
-  voidwalkerAbility: {fileID: 0}
+  voidwalkerAbility: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
   mutantBerserkerAbility: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
-  xenobiologistAbility: {fileID: 0}
-  xi017Ability: {fileID: 0}
-  elementalistWeapon: {fileID: 0}
-  voidwalkerWeapon: {fileID: 0}
+  xenobiologistAbility: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
+  xi017Ability: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
+  elementalistWeapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
+  voidwalkerWeapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
   mutantBerserkerWeapon: {fileID: 4140215671141498193, guid: f8f4a542d1f8d5a4bb1286ce764e5f70, type: 3}
-  xenobiologistWeapon: {fileID: 0}
+  xenobiologistWeapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
   xi017Weapon: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
   activeAbilities: []
   activeWeapons: []

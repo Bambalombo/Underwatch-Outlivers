@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class AbilityStats : MonoBehaviour
 {
-    [Header("Ability Stats")]
-    [SerializeField] private float
-        damage, // The damage of the ability
-        cooldown, // The cooldown of the ability
+    [Header("Ability Stats")] [SerializeField]
+    private float damage; // The damage of the ability
+    [SerializeField] private float cooldown, // The cooldown of the ability
         range, // The range of the ability
         projectileSpeed, // The speed of the projectile
         lifetime, // The lifetime of the bullet or projectile
@@ -32,6 +31,6 @@ public class AbilityStats : MonoBehaviour
     public void SetKnockback(float value) { knockback = value; }
     public float GetKnockback() { return knockback; }
     
-    public void SetTargetCount(float value) { knockback = value; }
-    public float GetTargetCount() { return knockback; }
+    public void SetTargetCount(float value) { targetCount = value; }
+    public float GetTargetCount() { return targetCount; }
 }

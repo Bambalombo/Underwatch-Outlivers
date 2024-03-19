@@ -8,7 +8,6 @@ public class LaserGun : MonoBehaviour
     private NearestEnemyFinder _nearestEnemyFinder;
     [SerializeField] private PlayerStatsController playerStatsController;
     [SerializeField] private Material laserMaterial;
-
     
     private void Awake()
     {

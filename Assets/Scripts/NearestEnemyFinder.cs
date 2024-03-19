@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NearestEnemyFinder : MonoBehaviour
@@ -31,12 +32,14 @@ public class NearestEnemyFinder : MonoBehaviour
         return nearestEnemies;
     }*/
 
-    public GameObject GetNearestEnemy(Vector3 position)
+    public GameObject GetNearestEnemy(Vector3 position, List<GameObject> enemies = null)
     {
         GameObject nearestEnemy = null;
         float nearestDistance = Mathf.Infinity;
-
-        foreach (var enemy in _spawnerEnemyController.GetAllEnemiesList())
+        if (enemies == null)
+            enemies = _spawnerEnemyController.GetAllEnemiesList();
+        
+        foreach (var enemy in enemies)
         {
             if (enemy == null) continue; // Skip if the enemy has been destroyed
 
@@ -49,5 +52,57 @@ public class NearestEnemyFinder : MonoBehaviour
         }
 
         return nearestEnemy;
+    }
+
+    public List<GameObject> GetChainOfEnemies(Vector3 lastPos, float targetCount)
+    {
+        var enemyHitList = new List<GameObject>();
+        var enemyLookList = new List<GameObject>();
+        enemyLookList.AddRange(_spawnerEnemyController.GetAllEnemiesList());
+        
+        for (int i = 0; i < (int)targetCount; i++)
+        {
+            // we get the nearest enemy and save it in the "currentEnemy variable"
+            var currentEnemy = GetNearestEnemy(lastPos, enemyLookList);
+            if (currentEnemy == null) break;
+            
+            // we then add the current enemy to the list of enemies to be hit and removes it from the look list
+            enemyHitList.Add(currentEnemy);
+            enemyLookList.Remove(currentEnemy);
+
+            // lastly, we update lastPos to the current enemy position, and also add it to pos list
+            lastPos = currentEnemy.transform.position;
+        }
+
+        return enemyHitList;
+    }
+    
+    public Dictionary<List<GameObject>,List<Vector3>> GetChainOfEnemiesAndPositions(Vector3 lastPos, float targetCount)
+    {
+        var enemyLookList = new List<GameObject>();
+        enemyLookList.AddRange(_spawnerEnemyController.GetAllEnemiesList());
+        var enemyHitList = new List<GameObject>();
+        var enemyPosList = new List<Vector3>();
+        
+        for (int i = 0; i < (int)targetCount; i++)
+        {
+            // we get the nearest enemy and save it in the "currentEnemy variable"
+            var currentEnemy = GetNearestEnemy(lastPos, enemyLookList);
+            if (currentEnemy == null)
+                break;
+            
+            // we then add the current enemy to the list of enemies to be hit and removes it from the look list
+            //Debug.Log($"{enemyHitList.Count} - {currentEnemy}");
+            enemyHitList.Add(currentEnemy);
+            enemyLookList.Remove(currentEnemy);
+
+            // lastly, we update lastPos to the current enemy position, and also add it to pos list
+            lastPos = currentEnemy.transform.position;
+            enemyPosList.Add(lastPos);
+        }
+
+        Dictionary<List<GameObject>, List<Vector3>> enemiesAndPositions = new Dictionary<List<GameObject>, List<Vector3>>();
+        enemiesAndPositions.Add(enemyHitList, enemyPosList);
+        return enemiesAndPositions;
     }
 }
