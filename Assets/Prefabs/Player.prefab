@@ -1331,7 +1331,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 1
+  playerClass: 5
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,17 +1347,22 @@ MonoBehaviour:
   abilityParent: {fileID: 5853401119182489628}
   weaponParent: {fileID: 7635096117551805146}
   playerStatsController: {fileID: 5807114057819124149}
-  rangeIndicator: {fileID: 2023850877828575082}
-  elementalistAbility: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
-  voidwalkerAbility: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  mutantBerserkerAbility: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
-  xenobiologistAbility: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  xi017Ability: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  elementalistWeapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  voidwalkerWeapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  mutantBerserkerWeapon: {fileID: 4140215671141498193, guid: f8f4a542d1f8d5a4bb1286ce764e5f70, type: 3}
-  xenobiologistWeapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  xi017Weapon: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
+  classAssets:
+  - className: 1
+    ability: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
+    weapon: {fileID: 0}
+  - className: 2
+    ability: {fileID: 0}
+    weapon: {fileID: 0}
+  - className: 3
+    ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
+    weapon: {fileID: 4140215671141498193, guid: aedb32521890444a686dbaad89338c80, type: 3}
+  - className: 4
+    ability: {fileID: 0}
+    weapon: {fileID: 0}
+  - className: 5
+    ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
+    weapon: {fileID: 5427118373787253608, guid: 4bd6f0528f03e544abdb2b5e73cfdd44, type: 3}
   activeAbilities: []
   activeWeapons: []
 --- !u!114 &537972653550675585

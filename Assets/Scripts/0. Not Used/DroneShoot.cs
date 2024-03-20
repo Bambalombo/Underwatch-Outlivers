@@ -5,7 +5,7 @@ using UnityEngine;
 public class DroneShoot : MonoBehaviour
 {
     // Start is called before the first frame update
- [SerializeField] float shootingDistance = 7f;
+    [SerializeField] float shootingDistance = 7f;
     [SerializeField] float speedProjectile = 5f;
     [SerializeField] float fireRate = 3f;
     public GameObject laserProjectile;
@@ -70,5 +70,9 @@ public class DroneShoot : MonoBehaviour
         Destroy(gameObject);
     }
     
+    public void SetDamage(float damage)
+    {
+        damage = damage;
+    }
 
 }
