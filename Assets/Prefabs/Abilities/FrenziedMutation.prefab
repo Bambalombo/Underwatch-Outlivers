@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2a06b0bf3f53642a5b2e51076e8880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frenzyEffectPrefab: {fileID: 4609061036474927045, guid: d0515f89d4ef3a9498c7d0f0723007d7, type: 3}
 --- !u!114 &1466473065086806268
 MonoBehaviour:
   m_ObjectHideFlags: 0

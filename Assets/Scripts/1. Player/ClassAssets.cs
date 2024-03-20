@@ -43,6 +43,11 @@ public class ClassAssets : MonoBehaviour
         if (weapon)
             activeWeapons.Add(weapon);
     }
+    
+    public GameObject GetActiveWeapons()
+    {
+        return activeWeapons[0];
+    }
 }
 
 [System.Serializable]
@@ -52,3 +57,4 @@ public class PlayerClassAssets
     [SerializeField] public GameObject ability;
     [SerializeField] public GameObject weapon;
 }
+

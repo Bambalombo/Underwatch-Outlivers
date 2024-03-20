@@ -8,6 +8,11 @@ public class FrenziedMutation : MonoBehaviour
     private AbilityStats abilityStats; 
     private PlayerStatsController playerStatsController;
     private PlayerHealthController playerHealthController;
+    private ClassAssets classAssets;
+    private WeaponStats weaponStats;
+    private GameObject currentWeapon;
+    
+    public GameObject frenzyEffectPrefab; // The particle effect for the ability
 
     private bool isOnCooldown = false; 
 
@@ -19,8 +24,12 @@ public class FrenziedMutation : MonoBehaviour
         playerStatsController = grandParent.GetComponent<PlayerStatsController>();
         playerHealthController = grandParent.GetComponent<PlayerHealthController>();
         abilityStats = GetComponent<AbilityStats>();
+        classAssets = grandParent.GetComponent<ClassAssets>();
         //Subscribe to event
         abilityCastHandler.OnAbilityCast += OnAbilityUsed;
+        
+        currentWeapon = classAssets.GetActiveWeapons();
+        weaponStats = currentWeapon.GetComponent<WeaponStats>();
     }
 
     private void OnAbilityUsed()
@@ -39,8 +48,12 @@ public class FrenziedMutation : MonoBehaviour
 
     private IEnumerator ActivateFrenziedMutation()
     {
-        //playerStatsController.attackSpeed *= abilityStats.attackSpeedMultiplier;
-        playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() * 2f);
+        // Start the particle effect
+        GameObject frenzyEffect = Instantiate(frenzyEffectPrefab, playerStatsController.transform.position, Quaternion.identity, playerStatsController.transform);
+        
+        playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() * 2f); // Movespeed
+        weaponStats.SetDamage(weaponStats.GetDamage() * 2f); // Damage
+        weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown()/2f); // Attack speed/weapon cooldown
 
         // Duration of the ability effect
         float duration = 10f; // 10 seconds
@@ -57,6 +70,11 @@ public class FrenziedMutation : MonoBehaviour
         //playerStatsController.weaponDamage /= abilityStats.damageMultiplier;
         //playerStatsController.attackSpeed /= abilityStats.attackSpeedMultiplier;
         playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() / 2f);
+        weaponStats.SetDamage(weaponStats.GetDamage() / 2f);
+        weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() * 2f);
+        
+        // Stop the particle effect
+        Destroy(frenzyEffect);
     }
 
     private IEnumerator AbilityCooldown()
