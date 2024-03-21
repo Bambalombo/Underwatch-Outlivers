@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5427118373787253608
+--- !u!1 &3580379577340771317
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 744624731429449746}
-  - component: {fileID: 1103944262482140880}
-  - component: {fileID: 7470401551691688179}
+  - component: {fileID: 7655503318985355648}
+  - component: {fileID: -5222384466333624262}
+  - component: {fileID: 2547849844757334627}
   m_Layer: 0
-  m_Name: DroneWeapon
+  m_Name: VoidBlast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &744624731429449746
+--- !u!4 &7655503318985355648
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5427118373787253608}
+  m_GameObject: {fileID: 3580379577340771317}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,38 +33,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1103944262482140880
+--- !u!114 &-5222384466333624262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5427118373787253608}
+  m_GameObject: {fileID: 3580379577340771317}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  attackCooldown: 0.1
-  attackRange: 10
+  attackCooldown: 2
+  attackRange: 5
   projectileSpeed: 0
-  attackLifetime: 1
+  attackLifetime: 0
   knockback: 0
   lifeStealAmount: 0
---- !u!114 &7470401551691688179
+--- !u!114 &2547849844757334627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5427118373787253608}
+  m_GameObject: {fileID: 3580379577340771317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c54211bc8694241b309f37e4fad50a, type: 3}
+  m_Script: {fileID: 11500000, guid: 20fa3fa303328844095f08aad5d171fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dronePrefab: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
-  spawnDistance: 10
-  totalDistanceMoved: 0
-  destroyTime: 5
+  projectilePrefab: {fileID: 5317794402841587772, guid: cc8b447428eb8e0449e0e140acdb1bf7, type: 3}
+  explosionEffectPrefab: {fileID: 6680677468570508516, guid: 0ae7039564f097941bce8c7123c2ada3, type: 3}
+  projectileSpeed: 15
+  maxProjectileDistance: 10

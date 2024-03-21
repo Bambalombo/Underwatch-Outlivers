@@ -1331,7 +1331,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 3
+  playerClass: 2
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1352,8 +1352,8 @@ MonoBehaviour:
     ability: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
     weapon: {fileID: 0}
   - className: 2
-    ability: {fileID: 0}
-    weapon: {fileID: 0}
+    ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
+    weapon: {fileID: 3580379577340771317, guid: aae5ad42b0d7ef845b9a2b3ee06eb5a2, type: 3}
   - className: 3
     ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
     weapon: {fileID: 4140215671141498193, guid: aedb32521890444a686dbaad89338c80, type: 3}
