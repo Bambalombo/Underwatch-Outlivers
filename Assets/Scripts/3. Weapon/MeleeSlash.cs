@@ -48,7 +48,6 @@ public class MeleeSlash : MonoBehaviour
         {   
             lastMoveDirection = currentMoveDirection.normalized; // Normalize to ensure the direction vector has a consistent length
         }
-        // Line renderer updates are now handled separately to maintain visibility only during attacks
     }
 
     void PerformAttack()

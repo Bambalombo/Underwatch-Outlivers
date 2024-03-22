@@ -1,9 +1,11 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] private StatusBarController healthBarController;
+    [SerializeField] private StatusBarController cooldownBarController;
     private TextMeshProUGUI _deathText;
     private PlayerStatsController _playerStatsController;
     
@@ -33,6 +35,11 @@ public class PlayerHealthController : MonoBehaviour
     {
         _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() + healAmount);
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
+    }
+    
+    public void UpdateCoolDownBar(float currentCooldown, float maxCooldown)
+    {
+        cooldownBarController.UpdateStatusBar(currentCooldown, maxCooldown);
     }
 
     // Take damage when colliding with an enemy

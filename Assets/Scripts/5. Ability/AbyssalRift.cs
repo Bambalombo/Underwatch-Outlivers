@@ -3,9 +3,10 @@
 
     public class AbyssalRift : MonoBehaviour
     {
+        [SerializeField] private float defaultCooldown;
         public GameObject riftPrefab;
-        public float pullStrength;
-        public float riftSpawnDistance;
+        [SerializeField] private float pullStrength;
+        [SerializeField] private float riftSpawnDistance;
         private AbilityCastHandler abilityCastHandler; 
         private AbilityStats abilityStats; 
         private PlayerStatsController playerStatsController;
@@ -26,16 +27,10 @@
 
         private void OnAbilityUsed()
         {
-            if (isOnCooldown)
-            {
-                Debug.Log("Abyssal Rift is on cooldown.");
-                return; 
-            }
-
-            Debug.Log("Abyssal Rift activated.");
-
             StartCoroutine(RiftCoroutine());
-            StartCoroutine(AbilityCooldown());
+            
+            // DEN HER MÅDE AT STARTE COOLDOWN PÅ SKAL HELST BRUGES I DE ANDRE ABILITY SCRIPTS OGSÅ 
+            abilityCastHandler.StartCooldown(defaultCooldown,abilityStats.GetAttackCooldown()); //!!!!
         }
 
         IEnumerator RiftCoroutine()
@@ -54,7 +49,6 @@
             }
 
             float actualDuration = Time.time - startTime;
-            Debug.Log($"Rift ended after {actualDuration} seconds");
 
             Destroy(rift);
         }
@@ -74,16 +68,5 @@
                     }
                 }
             }
-        }
-
-        
-        private IEnumerator AbilityCooldown()
-        {
-            isOnCooldown = true;
-
-            yield return new WaitForSeconds(5f);
-
-            isOnCooldown = false;
-            Debug.Log("Abyssal Rift is ready to use again.");
         }
     }

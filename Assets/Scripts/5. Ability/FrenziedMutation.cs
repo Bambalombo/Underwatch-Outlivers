@@ -12,7 +12,10 @@ public class FrenziedMutation : MonoBehaviour
     private WeaponStats weaponStats;
     private GameObject currentWeapon;
     
-    public GameObject frenzyEffectPrefab; // The particle effect for the ability
+    [SerializeField] private float defaultCooldown;
+    [SerializeField] private float defaultAbilityDuration;
+    
+    public GameObject frenzyEffectPrefab;
 
     private bool isOnCooldown = false; 
 
@@ -25,6 +28,7 @@ public class FrenziedMutation : MonoBehaviour
         playerHealthController = grandParent.GetComponent<PlayerHealthController>();
         abilityStats = GetComponent<AbilityStats>();
         classAssets = grandParent.GetComponent<ClassAssets>();
+        
         //Subscribe to event
         abilityCastHandler.OnAbilityCast += OnAbilityUsed;
         
@@ -34,16 +38,10 @@ public class FrenziedMutation : MonoBehaviour
 
     private void OnAbilityUsed()
     {
-        if (isOnCooldown)
-        {
-            Debug.Log("Ability is on cooldown.");
-            return; // Exit if the ability is on cooldown
-        }
-
-        Debug.Log("Ability used! Frenzied Mutation activated.");
-
         StartCoroutine(ActivateFrenziedMutation());
-        StartCoroutine(AbilityCooldown());
+        
+        // DEN HER MÅDE AT STARTE COOLDOWN PÅ SKAL HELST BRUGES I DE ANDRE ABILITY SCRIPTS OGSÅ 
+        abilityCastHandler.StartCooldown(defaultCooldown,abilityStats.GetAttackCooldown()); //!!!!
     }
 
     private IEnumerator ActivateFrenziedMutation()
@@ -56,17 +54,15 @@ public class FrenziedMutation : MonoBehaviour
         weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown()/2f); // Attack speed/weapon cooldown
 
         // Duration of the ability effect
-        float duration = 10f; // 10 seconds
+        float duration = defaultAbilityDuration; // 10 seconds
 
         while (duration > 0)
         {
             // Slowly drain health over the 10-second period
             playerHealthController.PlayerTakeDamage(5f * Time.deltaTime);
             duration -= Time.deltaTime;
-            yield return null; // Wait for the next frame
+            yield return null;
         }
-
-        // Revert stats back to normal after the effect ends
         //playerStatsController.weaponDamage /= abilityStats.damageMultiplier;
         //playerStatsController.attackSpeed /= abilityStats.attackSpeedMultiplier;
         playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() / 2f);
@@ -75,15 +71,5 @@ public class FrenziedMutation : MonoBehaviour
         
         // Stop the particle effect
         Destroy(frenzyEffect);
-    }
-
-    private IEnumerator AbilityCooldown()
-    {
-        isOnCooldown = true; // Set the cooldown flag
-
-        yield return new WaitForSeconds(20f); // Wait for 20 seconds
-
-        isOnCooldown = false; // Reset the cooldown flag
-        Debug.Log("Frenzied Mutation is ready to use again.");
     }
 }
