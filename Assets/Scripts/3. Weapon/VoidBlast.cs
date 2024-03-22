@@ -62,10 +62,10 @@ public class WeaponWithVoidBlast : MonoBehaviour
         if (explosionEffectPrefab != null)
         {
             GameObject explosionEffect = Instantiate(explosionEffectPrefab, projectile.transform.position, Quaternion.identity);
-            Destroy(explosionEffect, explosionEffect.GetComponent<ParticleSystem>().main.duration); // Add this line for destroying the effect
+            Destroy(explosionEffect, explosionEffect.GetComponent<ParticleSystem>().main.duration); 
         }
         
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(projectile.transform.position, 5f);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(projectile.transform.position, 4f);
         foreach (Collider2D hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Enemy"))
