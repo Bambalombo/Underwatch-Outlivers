@@ -27,7 +27,6 @@ public class PlayerStatsController : MonoBehaviour
     [SerializeField] public PlayerClass playerClass;
     public enum PlayerClass 
     {
-        None,
         Elementalist,
         Voidwalker,
         MutantBerserker,

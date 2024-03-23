@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6372698806485292450}
   - component: {fileID: 5096889483203131017}
+  - component: {fileID: 600205970410482341}
   m_Layer: 5
   m_Name: Button1 (2)
   m_TagString: Untagged
@@ -84,6 +85,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &600205970410482341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10543457494314113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b42a62a90f64c44bb41c92e57aa92d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentNameText: {fileID: 7623340398617853898}
+  talentDescriptionText: {fileID: 5247349425067399120}
+  talentManager: {fileID: 0}
 --- !u!1 &37313335526749419
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4192856346235191637}
   - component: {fileID: 6114070499437551295}
+  - component: {fileID: 105628447360528379}
   m_Layer: 5
   m_Name: Button1 (1)
   m_TagString: Untagged
@@ -909,6 +926,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &105628447360528379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704244893774801551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b42a62a90f64c44bb41c92e57aa92d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentNameText: {fileID: 5316592614669373294}
+  talentDescriptionText: {fileID: 6795806017293635824}
+  talentManager: {fileID: 0}
 --- !u!1 &6366327575327676957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,6 +1503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3102166290492368933}
   - component: {fileID: 2377218137701025535}
+  - component: {fileID: 2353519927958823866}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -1544,7 +1577,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 702785957222251514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2353519927958823866}
+        m_TargetAssemblyTypeName: TalentUI, Assembly-CSharp
+        m_MethodName: OnTalentSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2353519927958823866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8461961930858989235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b42a62a90f64c44bb41c92e57aa92d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talentNameText: {fileID: 8789187794111503803}
+  talentDescriptionText: {fileID: 1832050959565571736}
+  talentManager: {fileID: 0}
 --- !u!1 &8994567769729868463
 GameObject:
   m_ObjectHideFlags: 0
