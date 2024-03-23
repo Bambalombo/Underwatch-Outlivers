@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class ChainLightning : MonoBehaviour
 {
+    [Header("Script References")]
     [SerializeField] private AbilityStats stats;
     [SerializeField] private Material lightningMaterial;
+    [SerializeField] private GameObject rangeIndicator;
+    
+    [Header("Gameplay Settings")]
     [SerializeField] private float lightningJumpDelay;
     [SerializeField] private float damageAmplifier = 1.5f;
-    [SerializeField] private GameObject rangeIndicator;
-
+    
     private float _extraTargets;
     private NearestEnemyFinder _nearestEnemyFinder;
     private List<GameObject> _enemyHitList;
