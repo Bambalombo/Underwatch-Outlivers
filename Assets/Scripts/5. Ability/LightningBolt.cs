@@ -31,6 +31,10 @@ public class LightningBolt : MonoBehaviour
     private ParticleSystem ps;
     private float _boltPowerLevel;
     private GameObject _lightningBolt;
+    
+    [SerializeField] private float defaultCooldown;
+    private AbilityCastHandler abilityCastHandler; 
+    private AbilityStats abilityStats; 
 
     private void Awake()
     {
@@ -40,6 +44,18 @@ public class LightningBolt : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         ParticleSystem.MainModule main = ps.main;
         main.simulationSpace = ParticleSystemSimulationSpace.World;
+        
+        abilityCastHandler = grandParent.GetComponent<AbilityCastHandler>();
+        abilityCastHandler.OnAbilityCast += OnAbilityUsed;
+        abilityStats = GetComponent<AbilityStats>();
+    }
+    
+    private void OnAbilityUsed()
+    {
+        //Det her er lidt ødelægger pointen med at charge den, men kan ikk finde en måde at lave GetKeyUp på med nye input system, sorry Linus ;_; (Ability bliver triggered med Q btw)
+        StartChargingLightningBolt();
+        ReleaseLightningBolt();
+        abilityCastHandler.StartCooldown(defaultCooldown,abilityStats.GetAttackCooldown());
     }
 
     private void Update()

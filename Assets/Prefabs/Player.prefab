@@ -1645,7 +1645,7 @@ MonoBehaviour:
     ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
     weapon: {fileID: 4140215671141498193, guid: aedb32521890444a686dbaad89338c80, type: 3}
   - className: 0
-    ability: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
+    ability: {fileID: 8940566107521859141, guid: d8c3a76768e254f8e8b7ab1e0b7baa43, type: 3}
     weapon: {fileID: 8630830754980910555, guid: b512eab2793a7c842818b985c1579ad7, type: 3}
   - className: 4
     ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}

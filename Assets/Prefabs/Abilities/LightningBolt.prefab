@@ -4932,3 +4932,4 @@ MonoBehaviour:
   lightningBoltMaterial: {fileID: 0}
   boltStartSize: 0.8
   boltMaxSize: 1.8
+  defaultCooldown: 5
