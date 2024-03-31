@@ -15,7 +15,6 @@
 
         void Start()
         {
-
             var grandParent = transform.parent.parent;
             abilityCastHandler = grandParent.GetComponent<AbilityCastHandler>();
             playerStatsController = grandParent.GetComponent<PlayerStatsController>();

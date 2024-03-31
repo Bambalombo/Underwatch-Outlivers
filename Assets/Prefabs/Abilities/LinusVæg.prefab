@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7922172576198204964}
+  - component: {fileID: -2706882196197180652}
+  - component: {fileID: 1243573945186883135}
   m_Layer: 0
   m_Name: "LinusV\xE6g"
   m_TagString: Untagged
@@ -25,9 +27,43 @@ Transform:
   m_GameObject: {fileID: 1405695155165063261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.112371, y: 0.0013012756, z: -0.00050068507}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2706882196197180652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405695155165063261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f818330f5e4debc4380c8dc2dfcc4bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCooldown: 2
+  wallPrefab: {fileID: 2454459793794410012, guid: 2b7ca81071c14214aaec40c82ce5de89, type: 3}
+  wallSpawnDistance: 5
+--- !u!114 &1243573945186883135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405695155165063261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd8622f6a9924321ac1afdf1e286b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  cooldown: 0
+  range: 0
+  projectileSpeed: 0
+  lifetime: 10
+  knockback: 0
+  targetCount: 0
