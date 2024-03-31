@@ -11,14 +11,14 @@ public class SpawnerEnemyController : MonoBehaviour
     [SerializeField] private float safeZoneRadius = 5f;
     [SerializeField] private FloatVariable gameTime;
     [SerializeField] private float difficultyFactor = 1f;
-    private PlayerStatsController _playerStatsController;
+
+    private GameObject _mainCamera;
 
     [SerializeField] private List<GameObject> allEnemies = new List<GameObject>();
     
     private void Start()
     {
-        //TODO: Does not work with more players - Should probably be set to the camera position instead
-        _playerStatsController = FindObjectOfType<PlayerStatsController>();
+        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         
         StartCoroutine(SpawnEnemies());
     }
@@ -53,7 +53,7 @@ public class SpawnerEnemyController : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 spawnPos = CalculateSpawnPosition(_playerStatsController.GetPlayerPosition());
+            Vector3 spawnPos = CalculateSpawnPosition(_mainCamera.transform.position);
             
             //TODO: This could be improved by recycling enemies instead of instantiating new ones
             GameObject enemy = Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);

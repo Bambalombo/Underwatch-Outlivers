@@ -134,10 +134,19 @@ public class GameManager : MonoBehaviour
         _experiencePickupParent = FindOrCreateParent("ExperiencePickupParent", _experiencePickupParent);
         _pickupParent = FindOrCreateParent("PickupParent", _pickupParent);
         _bulletParent = FindOrCreateParent("BulletParent", _bulletParent);
-        
-        var spawnerEnemyGameObject = Instantiate(spawnerEnemyController);
-        _spawnerEnemyControllerParent = spawnerEnemyGameObject.transform;
+
+        // Only instantiate spawnerEnemyController if it has not been already
+        if (_spawnerEnemyControllerParent == null)
+        {
+            var spawnerEnemyGameObject = Instantiate(spawnerEnemyController);
+            _spawnerEnemyControllerParent = spawnerEnemyGameObject.transform;
+        }
+        else
+        {
+            // Reset or adjust existing _spawnerEnemyControllerParent as needed
+        }
     }
+
 
     private static Transform FindOrCreateParent(string parentName, Transform parentTransform)
     {
@@ -154,25 +163,21 @@ public class GameManager : MonoBehaviour
     }
 
     
-    //Den her funktion skal ændres eventually så den kun bliver called 1 gang (Lige nu bliver den called 2 gange hvis men starter spillet fra menu)
     private void CreatePlayers(int playersToCreate)
     {
-        // Only create players if they have not already been created
-        if (_playerParent == null) // Check if playerParent does not exist
+        if (_playerParent == null)
         {
-            // Create the playerParent
             _playerParent = Instantiate(playerParentPrefab, Vector3.zero, Quaternion.identity).transform;
 
             for (int i = 0; i < playersToCreate; i++)
             {
-                // Calculate the position for each player
                 Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
-                // Instantiate and store the player reference in the array
                 players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
-                players[i].name = "Player_" + (i + 1); // Naming the player GameObject
+                players[i].name = "Player_" + (i + 1);
             }
         }
     }
+
 
 }
 
