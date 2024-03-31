@@ -1621,7 +1621,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 1
+  playerClass: 0
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,20 +1639,20 @@ MonoBehaviour:
   playerStatsController: {fileID: 5807114057819124149}
   classAssets:
   - className: 1
-    ability: {fileID: 8940566107521859141, guid: d8c3a76768e254f8e8b7ab1e0b7baa43, type: 3}
-    weapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  - className: 2
     ability: {fileID: 6122174662690779350, guid: f8ae54f33f8ccb3489235247fc967fae, type: 3}
     weapon: {fileID: 3580379577340771317, guid: aae5ad42b0d7ef845b9a2b3ee06eb5a2, type: 3}
-  - className: 3
+  - className: 2
     ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
     weapon: {fileID: 4140215671141498193, guid: aedb32521890444a686dbaad89338c80, type: 3}
+  - className: 0
+    ability: {fileID: 8940566107521859141, guid: b476c5c5e489b49b4b41309bd83806bb, type: 3}
+    weapon: {fileID: 8630830754980910555, guid: b512eab2793a7c842818b985c1579ad7, type: 3}
   - className: 4
-    ability: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-    weapon: {fileID: 1036126479000753434, guid: 83c38fe62d3d148089a9f4f005ab321c, type: 3}
-  - className: 5
     ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
     weapon: {fileID: 5427118373787253608, guid: 4bd6f0528f03e544abdb2b5e73cfdd44, type: 3}
+  - className: 3
+    ability: {fileID: 0}
+    weapon: {fileID: 0}
   activeAbilities: []
   activeWeapons: []
 --- !u!114 &537972653550675585

@@ -32,7 +32,7 @@ public class NearestEnemyFinder : MonoBehaviour
         return nearestEnemies;
     }*/
 
-    public GameObject GetNearestEnemy(Vector3 position, List<GameObject> enemies = null)
+    public GameObject GetNearestEnemy(Vector2 position, List<GameObject> enemies = null)
     {
         GameObject nearestEnemy = null;
         float nearestDistance = Mathf.Infinity;
@@ -43,7 +43,7 @@ public class NearestEnemyFinder : MonoBehaviour
         {
             if (enemy == null) continue; // Skip if the enemy has been destroyed
 
-            float distance = Vector3.Distance(position, enemy.transform.position);
+            float distance = Vector2.Distance(position, enemy.transform.position);
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;

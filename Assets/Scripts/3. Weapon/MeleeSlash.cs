@@ -5,8 +5,8 @@ public class MeleeSlash : MonoBehaviour
 {
     //TODO Kan godt være det her script skal ændres på et tidspunkt hvis vi ender med at lave sådan at player orientation ændrer sig med movement, tror kinda det vil være bedre men idk
     private WeaponStats _weaponStats;
-    
-    public float attackAngle = 60f;
+
+    public float attackAngle;
     private LineRenderer lineRenderer;
     private float lineVisibilityDuration = 0.5f; // Duration for which the line remains visible after an attack
 
