@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  attackCooldown: 2
+  damage: 10000
+  attackCooldown: 0.5
   attackRange: 5
   projectileSpeed: 0
   attackLifetime: 0

@@ -1,12 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TalentManager : MonoBehaviour {
+public class TalentManager : MonoBehaviour
+{
+    [SerializeField] private GameManager _gameManager;
+
+    public GameObject talentUIParent;
     public List<Talent> allTalents; // Populate this list in the Unity Editor
     public TalentUI[] talentUIElements; // Assign your TalentUI elements here in the Unity Editor
 
     void Start() {
-        GenerateRandomTalents();
+        //Find the gamemanager
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); //Ved godt vi laver en gameobject find 2 gange på samme ting men whatever
+        
+
+
+    }
+
+    public void OpenTalentMenu(int newLevel)
+    {
+        Debug.Log("OPEN TALENT MENU");
+        talentUIParent.SetActive(true);
+        _gameManager.TogglePause();
+        
     }
 
     public void GenerateRandomTalents() {
@@ -26,11 +42,16 @@ public class TalentManager : MonoBehaviour {
     public void TalentSelected(Talent selectedTalent) {
         // Handle the logic for when a talent is selected
         // For example, applying the talent's effects or upgrading the talent
-        Debug.Log($"Talent selected: {selectedTalent.name}");
+        //Debug.Log($"Talent selected: {selectedTalent.name}");
         
         // For demonstration purposes, let's just increase the level of the selected talent
-        selectedTalent.level++;
-        Debug.Log($"Talent level increased to: {selectedTalent.level}");
+        //selectedTalent.level++;
+        //Debug.Log($"Talent level increased to: {selectedTalent.level}");
+        
+        Debug.Log("CLOSE TALENT MENU");
+        
+        talentUIParent.SetActive(false);
+        _gameManager.TogglePause();
         
     }
 }

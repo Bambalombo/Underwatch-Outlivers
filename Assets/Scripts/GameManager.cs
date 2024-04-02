@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerParentPrefab;
     [SerializeField] private GameObject spawnerEnemyController;
+    [SerializeField] private ExperienceController _experienceController;
     [SerializeField] private int numberOfPlayers = 1;
     private Transform _playerParent;
     private Transform _damagePopupParent;
@@ -17,6 +19,13 @@ public class GameManager : MonoBehaviour
     private Transform _spawnerEnemyControllerParent;
     
     [SerializeField] private GameObject[] players; // Array to store player references
+    
+    private MultiplayerEventSystem[] playerInputSystems;
+
+    
+    
+    
+    private bool isPaused = false;
 
 
     private void Awake()
@@ -38,6 +47,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
     
 
@@ -175,7 +186,21 @@ public class GameManager : MonoBehaviour
                 players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
                 players[i].name = "Player_" + (i + 1);
             }
+            
         }
+    }
+
+    
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+
+    }
+
+    public ExperienceController GetExperienceController()
+    {
+        return _experienceController;
     }
 
 

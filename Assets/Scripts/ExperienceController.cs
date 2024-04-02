@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class ExperienceController : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ExperienceController : MonoBehaviour
     [SerializeField] private IntVariable level;
     [SerializeField] private int baseExperience = 100;
     [SerializeField] private float levelScalingFactor = 1.5f;
+    private TalentManager _talentManager;
+    
 
 
     private void Start()
@@ -35,7 +38,16 @@ public class ExperienceController : MonoBehaviour
 
     private void LevelUp()
     {
+        //OK DET HER ER VIRKELIG DUMT, VILLE HAVE LAVET EN EVENT MEN DEN FUCKEDE FKING MEGET MED MIG SÅ JEG WHIPPEDE SPAGETTHI KODEN UD GRR
+        if (_talentManager == null)
+        {
+            _talentManager = GameObject.Find("TalentMenu").GetComponent<TalentManager>();
+        }
+        Debug.Log("LEVEL UP");
         level.value++;
+        _talentManager.OpenTalentMenu(level.value);
         experience.value -= baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value - 1);
+        
+        
     }
 }
