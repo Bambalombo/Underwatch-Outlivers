@@ -19,11 +19,13 @@ public class EnemyCombatController : MonoBehaviour
 
     public void EnemyTakeDamage(float damage)
     {
-        enemyStatsController.SetCurrentHealth(enemyStatsController.GetCurrentHealth() - damage);
+        int damageAsInt = Mathf.RoundToInt(damage); // Convert the float damage to an int
+        
+        enemyStatsController.SetCurrentHealth(enemyStatsController.GetCurrentHealth() - damageAsInt);
         
         KillEnemyAndGivePlayerExp();
 
-        InstantiateDamagePopup(damage);
+        InstantiateDamagePopup(damageAsInt);
     }
 
     private void KillEnemyAndGivePlayerExp()
