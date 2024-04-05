@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
@@ -19,8 +20,8 @@ public class GameManager : MonoBehaviour
     private Transform _spawnerEnemyControllerParent;
     
     [SerializeField] private GameObject[] players; // Array to store player references
-    
-    private MultiplayerEventSystem[] playerInputSystems;
+
+    private MultiplayerEventSystem[] playerMultiplayerEventSystems;
 
     
     
@@ -176,16 +177,61 @@ public class GameManager : MonoBehaviour
     
     private void CreatePlayers(int playersToCreate)
     {
+        Debug.Log($"Creating {playersToCreate} players");
         if (_playerParent == null)
         {
             _playerParent = Instantiate(playerParentPrefab, Vector3.zero, Quaternion.identity).transform;
 
+            // Ensure arrays are initialized to the correct size before use.
+            players = new GameObject[playersToCreate];
+            playerMultiplayerEventSystems = new MultiplayerEventSystem[playersToCreate];
+
             for (int i = 0; i < playersToCreate; i++)
             {
+                // Instantiate player at the calculated position and under _playerParent for organization
                 Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
                 players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
                 players[i].name = "Player_" + (i + 1);
+
+                // Find the "InteractableCanvas" by iterating through child objects
+                Canvas playerCanvas = null;
+                foreach (Transform child in players[i].transform)
+                {
+                    if (child.name == "InteractableCanvas")
+                    {
+                        playerCanvas = child.GetComponent<Canvas>();
+                        break; // Found the interactable canvas, no need to search further
+                    }
+                }
+
+                // Find the MultiplayerEventSystem component within the instantiated player's children
+                MultiplayerEventSystem playerEventSystem = players[i].GetComponentInChildren<MultiplayerEventSystem>(true);
+
+                if (playerCanvas != null && playerEventSystem != null)
+                {
+                    // Set the MultiplayerEventSystem's playerRoot to the "InteractableCanvas" GameObject
+                    playerEventSystem.playerRoot = playerCanvas.gameObject;
+        
+                    // Store the reference to the player's MultiplayerEventSystem for potential future use
+                    playerMultiplayerEventSystems[i] = playerEventSystem;
+                }
+                else
+                {
+                    Debug.LogError("Failed to find 'InteractableCanvas' or MultiplayerEventSystem for player " + (i + 1));
+                }
             }
+            
+        }
+    }
+
+
+    private void FindPlayerInputSystems(int playersToCreate)
+    {
+        playerMultiplayerEventSystems = new MultiplayerEventSystem[playersToCreate];
+        for (int i = 0; i < playersToCreate; i++)
+        {
+            Debug.Log($"Attempting to find: Player{i+1}EventSystem");
+            playerMultiplayerEventSystems[i] = GameObject.Find($"Player{i+1}EventSystem").GetComponent<MultiplayerEventSystem>();
             
         }
     }
