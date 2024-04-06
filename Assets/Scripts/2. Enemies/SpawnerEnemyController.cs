@@ -62,7 +62,7 @@ public class SpawnerEnemyController : MonoBehaviour
             Vector3 spawnPos = CalculateSpawnPosition(_mainCamera.transform.position);
             
             //TODO: This could be improved by recycling enemies instead of instantiating new ones
-            GameObject enemy = Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
+            GameObject enemy = Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, GameManager.GetEnemyParent().transform);
             allEnemies.Add(enemy);
         }
     }
@@ -190,7 +190,7 @@ public class SpawnerEnemyController : MonoBehaviour
         foreach (var boss in bosses)
         {
             Vector3 spawnPos = RandomBossSpawnPosition();
-            Instantiate(boss, spawnPos, Quaternion.identity, transform);
+            Instantiate(boss, spawnPos, Quaternion.identity, GameManager.GetBossParent().transform);
             bossSpawnPositions.Remove(spawnPos);
         }
     }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private Transform _pickupParent;
     private Transform _bulletParent;
     private Transform _spawnerEnemyControllerParent;
+    private Transform _enemyParent;
+    private Transform _bossParent;
     
     [SerializeField] private GameObject[] players; // Array to store player references
 
@@ -73,6 +75,9 @@ public class GameManager : MonoBehaviour
             _instance.numberOfPlayers = 4;
         }
     }
+    public static Transform GetEnemyParent() => _instance._enemyParent;
+    public static Transform GetBossParent() => _instance._bossParent;
+    
     public static GameObject[] GetPlayerGameObjects() => _instance.FindPlayerGameObjects();
     //public static GameObject GetNearestPlayer() => _instance.FindNearestPlayer(Vector3 currentPosition);
     
@@ -151,10 +156,9 @@ public class GameManager : MonoBehaviour
             var spawnerEnemyGameObject = Instantiate(spawnerEnemyController);
             _spawnerEnemyControllerParent = spawnerEnemyGameObject.transform;
         }
-        else
-        {
-            // Reset or adjust existing _spawnerEnemyControllerParent as needed
-        }
+        
+        _enemyParent = FindOrCreateParent("EnemyParent", _enemyParent);
+        _bossParent = FindOrCreateParent("BossParent", _bossParent);
     }
 
 
