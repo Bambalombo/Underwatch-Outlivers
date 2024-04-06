@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class EnemyStatsController : MonoBehaviour
 {
+    [SerializeField] private bool isBoss; // If the enemy is a boss
+    [SerializeField] private bool isFoundByPlayer; // If the enemy has been found by the player (Used for bosses)
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxHealth;
     //[SerializeField] private float armor;
@@ -10,11 +13,17 @@ public class EnemyStatsController : MonoBehaviour
     [SerializeField] private float lastAttackTime; // Time of the last attack
     [SerializeField] private float attackCooldown; // Time between attacks
     [SerializeField] private GameObject experienceDrop; // Experience drop prefab
-    
-    private void Start()
+
+    private void Awake()
     {
         currentHealth = maxHealth;
         lastAttackTime = -attackCooldown;
+        
+        // If the enemy is a boss, it has not been found by the player
+        isFoundByPlayer = !isBoss;
+
+        if (!isFoundByPlayer)
+            GetComponent<EnemyTeleportToPlayer>().enabled = false;
     }
     
     public void SetCurrentHealth(float value)
@@ -45,6 +54,10 @@ public class EnemyStatsController : MonoBehaviour
     {
         attackCooldown = value;
     }
+    public void SetIsFoundByPlayer(bool value)
+    {
+        isFoundByPlayer = value;
+    }
   
     public float GetCurrentHealth() => currentHealth;
     public float GetMaxHealth() => maxHealth;
@@ -54,6 +67,7 @@ public class EnemyStatsController : MonoBehaviour
     public float GetLastAttackTime() => lastAttackTime;
     public float GetAttackCooldown() => attackCooldown;
     public GameObject GetExperienceDrop() => experienceDrop;
+    public bool GetIsFoundByPlayer() => isFoundByPlayer;
     
     
 }

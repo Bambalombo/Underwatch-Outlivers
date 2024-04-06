@@ -124,6 +124,8 @@ MonoBehaviour:
   minDistanceToPlayer: 0.2
   enemyStatsController: {fileID: 3962438831467787200}
   playerStatsControllers: []
+  runToDistance: 25
+  runSpeedMultiplier: 1
 --- !u!114 &-4240546209400050134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
-  _damagePopupParent: {fileID: 0}
-  _experiencePickupParent: {fileID: 0}
   enemyStatsController: {fileID: 3962438831467787200}
 --- !u!114 &7723224513163896122
 MonoBehaviour:

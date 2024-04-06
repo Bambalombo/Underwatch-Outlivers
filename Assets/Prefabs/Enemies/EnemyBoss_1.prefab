@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 4792808897084071477}
   - component: {fileID: 9160034463395656589}
   m_Layer: 7
-  m_Name: EnemyLegendary
+  m_Name: EnemyBoss_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,7 +421,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9214484, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.62534285, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -443,12 +443,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b12c7d856636f45a4e9b581a9b7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 1
+  isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 200
+  maxHealth: 3000
   moveSpeed: 1.5
-  damage: 15
+  damage: 5
   lastAttackTime: 0
-  attackCooldown: 1
+  attackCooldown: 0.5
   experienceDrop: {fileID: 1571339481620590403, guid: 4f99f29e34349df429d909a44e75d578, type: 3}
 --- !u!114 &1801632654411770858
 MonoBehaviour:
@@ -466,7 +468,7 @@ MonoBehaviour:
   enemyStatsController: {fileID: -8671569779794781263}
   playerStatsControllers: []
   runToDistance: 25
-  runSpeedMultiplier: 1
+  runSpeedMultiplier: 3
 --- !u!114 &3812902737295349452
 MonoBehaviour:
   m_ObjectHideFlags: 0

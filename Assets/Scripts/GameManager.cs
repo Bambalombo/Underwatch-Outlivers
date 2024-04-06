@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
+    [SerializeField] private ExperienceController _experienceController;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerParentPrefab;
     [SerializeField] private GameObject spawnerEnemyController;
-    [SerializeField] private ExperienceController _experienceController;
     [SerializeField] private int numberOfPlayers = 1;
     private Transform _playerParent;
     private Transform _damagePopupParent;
@@ -48,8 +48,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        
     }
     
 

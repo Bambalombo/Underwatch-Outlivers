@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,6 +13,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private EnemyStatsController enemyStatsController;
     [SerializeField] private PlayerStatsController[] playerStatsControllers;
 
+    [SerializeField] private int runToDistance = 25;
+    private float _originalMoveSpeed;
+    [SerializeField] private float runSpeedMultiplier = 1f; // 1 = normal speed, 2 = double speed
+
+
 
     private void Awake()
     {
@@ -22,14 +28,35 @@ public class EnemyMovement : MonoBehaviour
         {
             playerStatsControllers[i] = players[i].GetComponent<PlayerStatsController>();
         }
-
+        
         _rb = GetComponent<Rigidbody2D>();
+        
+        _originalMoveSpeed = enemyStatsController.GetMoveSpeed();
+
     }
 
     private void FixedUpdate()
     {
+        if (enemyStatsController.GetIsFoundByPlayer() == false)
+        {
+            CheckIfPlayerIsClose();
+            return;
+        }
+            
         UpdateMovementDirection();
         MoveEnemy();
+    }
+    
+    private void CheckIfPlayerIsClose()
+    {
+        foreach (var playerStatsController in playerStatsControllers)
+        {
+            if (Vector2.Distance(transform.position, playerStatsController.GetPlayerPosition()) < 20f)
+            {
+                enemyStatsController.SetIsFoundByPlayer(true);
+                GetComponent<EnemyTeleportToPlayer>().enabled = true;
+            }
+        }
     }
 
     // Enemies will move towards the nearest player
@@ -42,6 +69,8 @@ public class EnemyMovement : MonoBehaviour
             Vector2 targetDirection = (nearestPlayerStatsController.GetPlayerPosition() - transform.position).normalized;
             bool isCloseEnough = Vector2.Distance(transform.position, nearestPlayerStatsController.GetPlayerPosition()) <= minDistanceToPlayer;
             _movementDirection = isCloseEnough ? Vector2.zero : targetDirection;
+            
+            RunCloserToPlayer(nearestPlayerStatsController);
         }
         else
         {
@@ -56,4 +85,19 @@ public class EnemyMovement : MonoBehaviour
             enemyStatsController.GetMoveSpeed() * Time.fixedDeltaTime;
         _rb.MovePosition(newPosition); // Use MovePosition for smooth physics-based movement.
     }
+
+    // The enemy will run faster towards the player if the player is far away
+    private void RunCloserToPlayer(PlayerStatsController nearestPlayerStatsController)
+    {
+        // Check if the enemy is closer to the player
+        if (Vector2.Distance(transform.position, nearestPlayerStatsController.GetPlayerPosition()) < runToDistance)
+        {
+            enemyStatsController.SetMoveSpeed(_originalMoveSpeed);
+        }
+        else
+        {
+            enemyStatsController.SetMoveSpeed(_originalMoveSpeed * runSpeedMultiplier);
+        }
+    }
+    
 }
