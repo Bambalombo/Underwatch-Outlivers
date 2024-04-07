@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16c6f78230fa4964a222622d8aae332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1623453949}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
   m_PlayerRoot: {fileID: 0}
@@ -1199,22 +1199,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
---- !u!1 &1623453949 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5483787331681279746, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
-  m_PrefabInstance: {fileID: 7131129754687002811}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1661755680 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3540077979772023572, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
-  m_PrefabInstance: {fileID: 7131129754687002811}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b42a62a90f64c44bb41c92e57aa92d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1976166971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,17 +1519,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092564593}
   m_CullTransparentMesh: 1
---- !u!114 &2134930869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4036345185624749642, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
-  m_PrefabInstance: {fileID: 7131129754687002811}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b42a62a90f64c44bb41c92e57aa92d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7131129754687002811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1554,6 +1527,86 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1181747732}
     m_Modifications:
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[0].name
+      value: Player Health Increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[1].name
+      value: Player Movement Speed Increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[2].name
+      value: Weapon Damage Increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[3].name
+      value: Weapon Cooldown Decrease
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[4].name
+      value: Ability Damage Increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[5].name
+      value: Ability Cooldown Decrease
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[0].level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[0].description
+      value: Increases health by 5%
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[1].description
+      value: Increases movement speed by 5%
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[2].description
+      value: Increases weapon damage by 5%
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[3].description
+      value: Decreases weapon cooldown by 5%
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[4].description
+      value: Increases ability damage by 5%
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[5].description
+      value: Decreaes ability cooldown by 5%
+      objectReference: {fileID: 0}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[0].talentPrefab
+      value: 
+      objectReference: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[1].talentPrefab
+      value: 
+      objectReference: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[2].talentPrefab
+      value: 
+      objectReference: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[3].talentPrefab
+      value: 
+      objectReference: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[4].talentPrefab
+      value: 
+      objectReference: {fileID: 4542655277352818398, guid: fab404118bd3c31479d779b750037783, type: 3}
+    - target: {fileID: 120583470446853281, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
+      propertyPath: allTalents.Array.data[5].talentPrefab
+      value: 
+      objectReference: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
     - target: {fileID: 1863892022735485451, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
       propertyPath: talentManager
       value: 
@@ -1585,7 +1638,7 @@ PrefabInstance:
     - target: {fileID: 7903030874402670350, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2134930869}
+      objectReference: {fileID: 0}
     - target: {fileID: 7903030874402670350, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1693,7 +1746,7 @@ PrefabInstance:
     - target: {fileID: 9209711669874519864, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1661755680}
+      objectReference: {fileID: 0}
     - target: {fileID: 9209711669874519864, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1711,7 +1764,8 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6722071812988607044, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc1ab50404cea4f40bd11093f8d0d781, type: 3}

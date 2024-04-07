@@ -6,6 +6,7 @@ public class TalentUI : MonoBehaviour {
     public TextMeshProUGUI talentDescriptionText;
     // Reference to TalentManager to notify about talent selection
     public TalentManager talentManager;
+    public Sprite talentSprite;
 
     // The talent this UI represents
     private Talent currentTalent;
