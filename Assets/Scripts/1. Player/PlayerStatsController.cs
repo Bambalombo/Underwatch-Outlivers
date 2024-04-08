@@ -6,6 +6,7 @@ public class PlayerStatsController : MonoBehaviour
     [Header("Player Stats")]
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxHealth;
+    [SerializeField] private float respawnTime = 15f;
     //[SerializeField] private float armor;
     [SerializeField] private float moveSpeed;
     //[SerializeField] private float damage; // Should be changed by weapon?
@@ -67,6 +68,10 @@ public class PlayerStatsController : MonoBehaviour
         maxHealth = value;
         playerHealthController.PlayerTakeDamage(0); //Lige en hurtig cheat for at få den til at update UI, håber ikk det kommer til at fucke med noget senere:) 
     }
+    public void SetRespawnTime(float value)
+    {
+        respawnTime = value;
+    }
     /*public void SetArmor(float value)
     {
         armor = value;
@@ -127,6 +132,8 @@ public class PlayerStatsController : MonoBehaviour
     
     public float GetCurrentHealth() => currentHealth;
     public float GetMaxHealth() => maxHealth;
+    public float GetRespawnTime() => respawnTime;
+
     //public float GetArmor() => armor;
     public float GetMoveSpeed() => moveSpeed;
     //public float GetDamage() => damage;
