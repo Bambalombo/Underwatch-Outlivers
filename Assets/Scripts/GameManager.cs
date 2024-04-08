@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGameOverSequence()
     {
-        if (!isPaused)
+        if (!_isPaused)
             TogglePause();
         Debug.Log("All players are dead. Game over.");
     }

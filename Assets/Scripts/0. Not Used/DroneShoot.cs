@@ -70,9 +70,9 @@ public class DroneShoot : MonoBehaviour
         Destroy(gameObject);
     }
     
-    public void SetDamage(float damage)
+    /*public void SetDamage(float damage)
     {
         damage = damage;
-    }
+    }*/
 
 }
