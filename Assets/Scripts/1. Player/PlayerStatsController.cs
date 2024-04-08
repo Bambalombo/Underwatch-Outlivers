@@ -33,8 +33,8 @@ public class PlayerStatsController : MonoBehaviour
         Elementalist,
         Voidwalker,
         MutantBerserker,
-        Xenobiologist,
-        XI_017
+        XI_017,
+        Xenobiologist
     }
     // Inside PlayerStatsController class   
     
@@ -150,4 +150,16 @@ public class PlayerStatsController : MonoBehaviour
     public Vector3 GetPlayerPosition() => playerPosition;
 
     public Vector2 GetLastMoveDirection() => lastMoveDirection;
+    
+    public void ChangePlayerClass(int classIndex)
+    {
+        if (classIndex < 0 || classIndex >= System.Enum.GetValues(typeof(PlayerClass)).Length)
+        {
+            Debug.LogError("Invalid class index.");
+            return;
+        }
+
+        playerClass = (PlayerClass)classIndex;
+    }
+
 }
