@@ -48,6 +48,22 @@ public class ClassAssets : MonoBehaviour
     {
         return activeWeapons[0];
     }
+    
+    public void ChangeClass(int classIndex)
+    {
+        playerStatsController.ChangePlayerClass(classIndex);
+        foreach (var ability in activeAbilities)
+        {
+            Destroy(ability);
+        }
+        foreach (var weapon in activeWeapons)
+        {
+            Destroy(weapon);
+        }
+        activeAbilities.Clear();
+        activeWeapons.Clear();
+        SetPlayerAbilityAndWeapon();
+    }
 }
 
 [System.Serializable]

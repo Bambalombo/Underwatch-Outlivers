@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 8806183130677090733}
   - component: {fileID: 8209256375832030573}
   - component: {fileID: 94601566232106527}
-  - component: {fileID: 1266953397850531084}
   m_Layer: 11
   m_Name: TalentManager
   m_TagString: Untagged
@@ -276,18 +275,7 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
   playerGameObjects: []
---- !u!114 &1266953397850531084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393773106918644084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b526d0d6093209d46a4b8e3e3634bc59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
 --- !u!1 &420423617099396806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,10 +3654,10 @@ MonoBehaviour:
   - className: 0
     ability: {fileID: 8940566107521859141, guid: d8c3a76768e254f8e8b7ab1e0b7baa43, type: 3}
     weapon: {fileID: 8630830754980910555, guid: b512eab2793a7c842818b985c1579ad7, type: 3}
-  - className: 4
+  - className: 3
     ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
     weapon: {fileID: 5427118373787253608, guid: 4bd6f0528f03e544abdb2b5e73cfdd44, type: 3}
-  - className: 3
+  - className: 4
     ability: {fileID: 0}
     weapon: {fileID: 0}
   activeAbilities: []

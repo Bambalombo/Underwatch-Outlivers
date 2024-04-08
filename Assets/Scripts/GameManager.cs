@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -20,12 +21,19 @@ public class GameManager : MonoBehaviour
     private Transform _spawnerEnemyControllerParent;
     private Transform _enemyParent;
     private Transform _bossParent;
+
+    private static List<int> _selectedCharacters;
+    
     
     [SerializeField] private GameObject[] players; // Array to store player references
 
     private MultiplayerEventSystem[] playerMultiplayerEventSystems;
     
     private static bool _isPaused = false;
+    
+    //UI 
+    public GameObject DefaultMenuUI;
+    public GameObject CharacterSelectionUI;
 
 
     private void Awake()
@@ -124,12 +132,21 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    
-    // Load level 1 with menu button
-    public void LoadLevel1()
+
+    public void EnableCharacterSelectionUI()
     {
+        DefaultMenuUI.SetActive(false);
+        CharacterSelectionUI.SetActive(true);
+        CharacterSelectionUI.GetComponent<CharacterSelectionManager>().EnableCharacterSelectionUI(GetNumberOfPlayers());
+        
+    }
+
+    public static void SaveCharacterSelectionsAndLoadLevel(List<int> listOfSelectedCharacters)
+    {
+        _selectedCharacters = listOfSelectedCharacters;
         SceneManager.LoadScene("Level_1");
     }
+    
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -191,6 +208,9 @@ public class GameManager : MonoBehaviour
                 Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
                 players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
                 players[i].name = "Player_" + (i + 1);
+                
+                //Set the class of the player
+                players[i].GetComponent<ClassAssets>().ChangeClass(_selectedCharacters[i]);
 
                 // Find the "InteractableCanvas" by iterating through child objects
                 Canvas playerCanvas = null;
