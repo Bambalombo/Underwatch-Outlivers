@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class StatUpgradeTalent : MonoBehaviour
+public class StatUpgradeTalent : MonoBehaviour, ITalentEffect
 {
     private PlayerStatsController _playerStatsController;
     private WeaponStats _weaponStats;

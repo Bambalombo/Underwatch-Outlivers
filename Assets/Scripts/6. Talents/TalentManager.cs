@@ -8,21 +8,24 @@ public class TalentManager : MonoBehaviour
     
     public List<Talent> allTalents; // Populate this list in the Unity Editor
     [SerializeField] private GameObject[] playerGameObjects;
+    [SerializeField] private GameManager _gameManager;
 
     void Start() {
         playerGameObjects = GameManager.GetPlayerGameObjects();
-        
+        // Find the GameManager
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void OpenTalentMenu(int newLevel)
     {
         TogglePlayerCanvases(true); // Enable the canvases
-        GameManager.TogglePause();
+        _gameManager.TogglePause();
     }
 
-    public void TalentSelected(Talent selectedTalent) {
+    public void TalentSelected(Talent selectedTalent, GameObject playerGameobject) {
         TogglePlayerCanvases(false); // Disable the canvases
-        GameManager.TogglePause();
+        _gameManager.TogglePause();
+        selectedTalent.ApplyEffectToPlayer(playerGameobject);
     }
 
     private void TogglePlayerCanvases(bool isActive)
@@ -83,15 +86,7 @@ public class TalentManager : MonoBehaviour
             Debug.LogError("TalentBackground not found.");
             return;
         }
-
-        // Now we have the correct parent object, and we can find the buttons under TalentBackground
-        TalentUIUpdater talentUIUpdater = interactableCanvas.GetComponentInChildren<TalentUIUpdater>(true);
-        if (talentUIUpdater == null)
-        {
-            Debug.LogError("TalentUIUpdater component not found in children of TalentBackground.");
-            return;
-        }
-
+        
         for (int i = 0; i < randomTalents.Count; i++)
         {
             string buttonName = $"Button{i+1}";
@@ -108,9 +103,8 @@ public class TalentManager : MonoBehaviour
                 Debug.LogError($"Talent option UI game object for {buttonName} is missing.");
                 continue;
             }
-
-            // If everything is found, proceed with updating the UI
-            talentUIUpdater.UpdateTalentDisplays(new GameObject[] { talentOptionUI }, new Talent[] { randomTalents[i] });
+            
+            talentOptionUI.GetComponent<TalentUI>().SetTalent(randomTalents[i]);
         }
     }
 

@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ff77926a384274a999c5c9398b19a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameManager: {fileID: 0}
   allTalents:
   - name: Player Health Increase
     description: Increases max health by 5%
@@ -276,6 +275,7 @@ MonoBehaviour:
     description: Decreases ability cooldown by 5%
     level: 0
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+  playerGameObjects: []
 --- !u!114 &1266953397850531084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +504,7 @@ MonoBehaviour:
   talentDescriptionText: {fileID: 7730354059541088573}
   talentManager: {fileID: 94601566232106527}
   talentSprite: {fileID: 0}
+  playerGameobject: {fileID: 8905089503809146214}
 --- !u!1 &469859055750802908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1164,7 @@ MonoBehaviour:
   talentDescriptionText: {fileID: 4383462115353116346}
   talentManager: {fileID: 94601566232106527}
   talentSprite: {fileID: 0}
+  playerGameobject: {fileID: 8905089503809146214}
 --- !u!1 &1950460555516160872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2614,7 @@ MonoBehaviour:
   talentDescriptionText: {fileID: 5782224545435460540}
   talentManager: {fileID: 94601566232106527}
   talentSprite: {fileID: 0}
+  playerGameobject: {fileID: 8905089503809146214}
 --- !u!1 &6050142451102737890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3636,7 +3639,8 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
-  playerClass: 2
+  playerHealthController: {fileID: 537972653550675585}
+  playerClass: 1
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0

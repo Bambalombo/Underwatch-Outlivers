@@ -22,6 +22,8 @@ public class PlayerStatsController : MonoBehaviour
 
     [SerializeField] private Vector2 lastMoveDirection;
     // NOT SURE IF PLAYERS SHOULD HAVE INDIVIDUAL EXPERIENCE
+
+    public PlayerHealthController playerHealthController;
     
     [Header("Class Attributes")]
     [SerializeField] public PlayerClass playerClass;
@@ -58,10 +60,12 @@ public class PlayerStatsController : MonoBehaviour
         {
             currentHealth = value;
         }
+        
     }
     public void SetMaxHealth(float value)
     {
         maxHealth = value;
+        playerHealthController.PlayerTakeDamage(0); //Lige en hurtig cheat for at få den til at update UI, håber ikk det kommer til at fucke med noget senere:) 
     }
     /*public void SetArmor(float value)
     {

@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public static void TogglePause()
+    public void TogglePause()
     {
         _isPaused = !_isPaused;
         Time.timeScale = _isPaused ? 0 : 1;
