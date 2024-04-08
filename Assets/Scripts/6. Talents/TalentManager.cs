@@ -8,21 +8,23 @@ public class TalentManager : MonoBehaviour
     
     public List<Talent> allTalents; // Populate this list in the Unity Editor
     [SerializeField] private GameObject[] playerGameObjects;
+    [SerializeField] private GameManager _gameManager;
 
     void Start() {
         playerGameObjects = GameManager.GetPlayerGameObjects();
-        
+        // Find the GameManager
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void OpenTalentMenu(int newLevel)
     {
         TogglePlayerCanvases(true); // Enable the canvases
-        GameManager.TogglePause();
+        _gameManager.TogglePause();
     }
 
     public void TalentSelected(Talent selectedTalent, GameObject playerGameobject) {
         TogglePlayerCanvases(false); // Disable the canvases
-        GameManager.TogglePause();
+        _gameManager.TogglePause();
         selectedTalent.ApplyEffectToPlayer(playerGameobject);
     }
 
