@@ -1256,7 +1256,6 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8022887233563125731, guid: 6b0d2357896323b499720f74d623cc0a, type: 3}
   mainCamera: {fileID: 1057428089}
   bosses: []
-  offset: 50
 --- !u!1 &1972132983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,7 +1987,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e06ca342579f6ec44a685175c930fc10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a81babcdc30ac814cb078e7f034cf270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
