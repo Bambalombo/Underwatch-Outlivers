@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 8806183130677090733}
   - component: {fileID: 8209256375832030573}
   - component: {fileID: 94601566232106527}
+  - component: {fileID: 1266953397850531084}
   m_Layer: 11
   m_Name: TalentManager
   m_TagString: Untagged
@@ -249,9 +250,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ff77926a384274a999c5c9398b19a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameManager: {fileID: 0}
-  allTalents: []
-  talentUIElements: []
+  allTalents:
+  - name: Player Health Increase
+    description: Increases max health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+  - name: Player Movespeed Increase
+    description: Increases movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+  - name: Weapon Cooldown Decrease
+    description: Decreases weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+  - name: Ability Damage Increase
+    description: Increases ability damage by 5%
+    level: 0
+    talentPrefab: {fileID: 4542655277352818398, guid: fab404118bd3c31479d779b750037783, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreases ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+  playerGameObjects: []
+--- !u!114 &1266953397850531084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393773106918644084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b526d0d6093209d46a4b8e3e3634bc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420423617099396806
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +403,7 @@ GameObject:
   - component: {fileID: 8987169207881129472}
   - component: {fileID: 3219366748603130365}
   m_Layer: 5
-  m_Name: Button1 (1)
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,6 +503,8 @@ MonoBehaviour:
   talentNameText: {fileID: 8187361824098717298}
   talentDescriptionText: {fileID: 7730354059541088573}
   talentManager: {fileID: 94601566232106527}
+  talentSprite: {fileID: 0}
+  playerGameobject: {fileID: 8905089503809146214}
 --- !u!1 &469859055750802908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1063,7 @@ GameObject:
   - component: {fileID: 7311136137635814931}
   - component: {fileID: 3770116849503019690}
   m_Layer: 5
-  m_Name: Button1 (3)
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1125,6 +1163,8 @@ MonoBehaviour:
   talentNameText: {fileID: 5020011662523118138}
   talentDescriptionText: {fileID: 4383462115353116346}
   talentManager: {fileID: 94601566232106527}
+  talentSprite: {fileID: 0}
+  playerGameobject: {fileID: 8905089503809146214}
 --- !u!1 &1950460555516160872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,7 +2513,7 @@ GameObject:
   - component: {fileID: 2506667361229532472}
   - component: {fileID: 9168005198522033980}
   m_Layer: 5
-  m_Name: Button1 (2)
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2573,6 +2613,8 @@ MonoBehaviour:
   talentNameText: {fileID: 6764358900309922269}
   talentDescriptionText: {fileID: 5782224545435460540}
   talentManager: {fileID: 94601566232106527}
+  talentSprite: {fileID: 0}
+  playerGameobject: {fileID: 8905089503809146214}
 --- !u!1 &6050142451102737890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,7 +3222,7 @@ GameObject:
   - component: {fileID: 5092187908138352883}
   - component: {fileID: 8187361824098717298}
   m_Layer: 5
-  m_Name: Name_text (1)
+  m_Name: Name_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3495,6 +3537,7 @@ GameObject:
   - component: {fileID: -5591498939169631434}
   - component: {fileID: 1120148009396779783}
   - component: {fileID: 1591481472568065555}
+  - component: {fileID: 3462755394086869057}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3596,6 +3639,7 @@ MonoBehaviour:
   experiencePickupRange: 4
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
+  playerHealthController: {fileID: 537972653550675585}
   playerClass: 1
 --- !u!114 &8457482166147896845
 MonoBehaviour:
@@ -3868,3 +3912,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownSlider: {fileID: 5535701629808398039}
+--- !u!114 &3462755394086869057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0cd2c080c70f14cb835e095f2c72a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &606478616137536866
 Transform:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5362581833865366400}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -187,6 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b12c7d856636f45a4e9b581a9b7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
+  isFoundByPlayer: 0
   currentHealth: 0
   maxHealth: 10
   moveSpeed: 2.5
@@ -209,6 +211,8 @@ MonoBehaviour:
   minDistanceToPlayer: 0.2
   enemyStatsController: {fileID: -6628376797079429673}
   playerStatsControllers: []
+  runToDistance: 25
+  runSpeedMultiplier: 1
 --- !u!114 &-6205613047608618776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,8 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
-  _damagePopupParent: {fileID: 0}
-  _experiencePickupParent: {fileID: 0}
   enemyStatsController: {fileID: -6628376797079429673}
 --- !u!114 &3152952240785648398
 MonoBehaviour:

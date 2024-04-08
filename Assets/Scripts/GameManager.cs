@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
+    [SerializeField] private ExperienceController _experienceController;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject playerParentPrefab;
     [SerializeField] private GameObject spawnerEnemyController;
-    [SerializeField] private ExperienceController _experienceController;
     [SerializeField] private int numberOfPlayers = 1;
     [FormerlySerializedAs("endGameWhenPlayersDie")] [SerializeField] private bool gameOverEnabled = true;
     private Transform _playerParent;
@@ -20,16 +20,15 @@ public class GameManager : MonoBehaviour
     private Transform _pickupParent;
     private Transform _bulletParent;
     private Transform _spawnerEnemyControllerParent;
+    private Transform _enemyParent;
+    private Transform _bossParent;
     
     [SerializeField] private GameObject[] players; // Array to store player references
 
     private MultiplayerEventSystem[] playerMultiplayerEventSystems;
     private PlayerHealthController[] _playerHealthControllers;
-
     
-    
-    
-    private bool isPaused = false;
+    private static bool _isPaused = false;
 
 
     private void Awake()
@@ -51,8 +50,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        
     }
     
 
@@ -80,6 +77,9 @@ public class GameManager : MonoBehaviour
             _instance.numberOfPlayers = 4;
         }
     }
+    public static Transform GetEnemyParent() => _instance._enemyParent;
+    public static Transform GetBossParent() => _instance._bossParent;
+    
     public static GameObject[] GetPlayerGameObjects() => _instance.FindPlayerGameObjects();
     //public static GameObject GetNearestPlayer() => _instance.FindNearestPlayer(Vector3 currentPosition);
     
@@ -170,10 +170,9 @@ public class GameManager : MonoBehaviour
             var spawnerEnemyGameObject = Instantiate(spawnerEnemyController);
             _spawnerEnemyControllerParent = spawnerEnemyGameObject.transform;
         }
-        else
-        {
-            // Reset or adjust existing _spawnerEnemyControllerParent as needed
-        }
+        
+        _enemyParent = FindOrCreateParent("EnemyParent", _enemyParent);
+        _bossParent = FindOrCreateParent("BossParent", _bossParent);
     }
 
 
@@ -194,7 +193,7 @@ public class GameManager : MonoBehaviour
     
     private void CreatePlayers(int playersToCreate)
     {
-        Debug.Log($"Creating {playersToCreate} players");
+        //Debug.Log($"Creating {playersToCreate} players");
         if (_playerParent == null)
         {
             _playerParent = Instantiate(playerParentPrefab, Vector3.zero, Quaternion.identity).transform;
@@ -259,8 +258,8 @@ public class GameManager : MonoBehaviour
     
     public void TogglePause()
     {
-        isPaused = !isPaused;
-        Time.timeScale = isPaused ? 0 : 1;
+        _isPaused = !_isPaused;
+        Time.timeScale = _isPaused ? 0 : 1;
 
     }
 

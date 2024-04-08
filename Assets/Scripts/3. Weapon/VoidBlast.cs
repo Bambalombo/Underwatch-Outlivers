@@ -70,7 +70,7 @@ public class WeaponWithVoidBlast : MonoBehaviour
         {
             if (hitCollider.CompareTag("Enemy"))
             {
-                Debug.Log("Enemy hit: " + hitCollider.name);
+                //Debug.Log("Enemy hit: " + hitCollider.name);
                 hitCollider.GetComponent<EnemyCombatController>().EnemyTakeDamage(_weaponStats.GetDamage());
             }
         }

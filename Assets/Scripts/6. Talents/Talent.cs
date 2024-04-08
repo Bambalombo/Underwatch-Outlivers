@@ -1,13 +1,25 @@
+using UnityEngine;
+
 [System.Serializable]
 public class Talent {
     public string name;
     public string description;
     public int level; // Current level of the talent.
-    // Add more properties as needed, such as effects, cooldown, etc.
+    public GameObject talentPrefab;
 
     public Talent(string name, string description) {
         this.name = name;
         this.description = description;
         this.level = 0;
+    }
+    
+    // Method to apply the talent effect to a player
+    public void ApplyEffectToPlayer(GameObject player) {
+        ITalentEffect effect = talentPrefab.GetComponent<ITalentEffect>();
+        if (effect != null) {
+            effect.ApplyEffect(player);
+        } else {
+            Debug.LogWarning("Talent prefab does not contain an ITalentEffect implementation.");
+        }
     }
 }

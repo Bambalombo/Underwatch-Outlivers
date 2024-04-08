@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnerEnemyController : MonoBehaviour
 {
     [SerializeField] private GameObject commonEnemy, uncommonEnemy, rareEnemy, epicEnemy, legendaryEnemy;
+    [SerializeField] private List<GameObject> bosses;
+    [SerializeField] private List<Vector2> bossSpawnPositions;
     [SerializeField] private float spawnInterval = 5f;
     //[SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float spawnRadius;
@@ -15,12 +17,16 @@ public class SpawnerEnemyController : MonoBehaviour
     private GameObject _mainCamera;
 
     [SerializeField] private List<GameObject> allEnemies = new List<GameObject>();
+
     
     private void Start()
     {
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         
         StartCoroutine(SpawnEnemies());
+        
+        // Spawn bosses
+        SpawnBosses();
     }
 
     private void Update()
@@ -56,12 +62,13 @@ public class SpawnerEnemyController : MonoBehaviour
             Vector3 spawnPos = CalculateSpawnPosition(_mainCamera.transform.position);
             
             //TODO: This could be improved by recycling enemies instead of instantiating new ones
-            GameObject enemy = Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, transform);
+            GameObject enemy = Instantiate(enemyToSpawn, spawnPos, Quaternion.identity, GameManager.GetEnemyParent().transform);
             allEnemies.Add(enemy);
         }
     }
     
-    private int CalculateSpawnCount(float roll, out GameObject enemyToSpawn)
+    //TODO: Change this method at some point. I don't like the way the enemies are spawned
+    private int CalculateSpawnCount(float roll, out GameObject enemyToSpawn) 
     {
         int spawnCount;
     
@@ -170,4 +177,24 @@ public class SpawnerEnemyController : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval / difficultyFactor);
         }
     }
+    
+    private Vector2 RandomBossSpawnPosition()
+    {
+        int randomIndex = Random.Range(0, bossSpawnPositions.Count);
+        Vector2 spawnPos = bossSpawnPositions[randomIndex];
+        
+        return spawnPos;
+    }
+
+    private void SpawnBosses()
+    {
+        foreach (var boss in bosses)
+        {
+            Vector3 spawnPos = RandomBossSpawnPosition();
+            Instantiate(boss, spawnPos, Quaternion.identity, GameManager.GetBossParent().transform);
+            bossSpawnPositions.Remove(spawnPos);
+        }
+    }
+    
+    
 }
