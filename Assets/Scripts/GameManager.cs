@@ -24,11 +24,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] players; // Array to store player references
 
     private MultiplayerEventSystem[] playerMultiplayerEventSystems;
-
     
-    
-    
-    private bool isPaused = false;
+    private static bool _isPaused = false;
 
 
     private void Awake()
@@ -179,7 +176,7 @@ public class GameManager : MonoBehaviour
     
     private void CreatePlayers(int playersToCreate)
     {
-        Debug.Log($"Creating {playersToCreate} players");
+        //Debug.Log($"Creating {playersToCreate} players");
         if (_playerParent == null)
         {
             _playerParent = Instantiate(playerParentPrefab, Vector3.zero, Quaternion.identity).transform;
@@ -239,10 +236,10 @@ public class GameManager : MonoBehaviour
     }
 
     
-    public void TogglePause()
+    public static void TogglePause()
     {
-        isPaused = !isPaused;
-        Time.timeScale = isPaused ? 0 : 1;
+        _isPaused = !_isPaused;
+        Time.timeScale = _isPaused ? 0 : 1;
 
     }
 

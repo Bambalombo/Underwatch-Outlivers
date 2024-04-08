@@ -67,7 +67,8 @@ public class SpawnerEnemyController : MonoBehaviour
         }
     }
     
-    private int CalculateSpawnCount(float roll, out GameObject enemyToSpawn)
+    //TODO: Change this method at some point. I don't like the way the enemies are spawned
+    private int CalculateSpawnCount(float roll, out GameObject enemyToSpawn) 
     {
         int spawnCount;
     

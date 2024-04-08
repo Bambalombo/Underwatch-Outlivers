@@ -52,11 +52,12 @@ MonoBehaviour:
   legendaryEnemy: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
   bosses:
   - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
+  - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
   bossSpawnPositions:
-  - {x: 300, y: 300}
-  - {x: 300, y: -300}
-  - {x: -300, y: 300}
-  - {x: -300, y: -300}
+  - {x: 30, y: 30}
+  - {x: 30, y: -30}
+  - {x: -30, y: 30}
+  - {x: -30, y: -30}
   spawnInterval: 10
   spawnRadius: 40
   safeZoneRadius: 30

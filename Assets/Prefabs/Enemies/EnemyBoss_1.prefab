@@ -446,7 +446,7 @@ MonoBehaviour:
   isBoss: 1
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 3000
+  maxHealth: 300
   moveSpeed: 1.5
   damage: 5
   lastAttackTime: 0

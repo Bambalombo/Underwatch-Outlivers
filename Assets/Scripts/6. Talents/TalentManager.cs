@@ -3,35 +3,31 @@ using UnityEngine;
 
 public class TalentManager : MonoBehaviour
 {
-    [SerializeField] private GameManager _gameManager;
-
     //TODO randomize talents + lave et tjek for at de stat talents der kommer frem rent faktisk giver mening for playercharacteren (f.eks giver ability dmg ikk mening for wall ability)
     //Maybe some sort of checker that checks the weapon and ability, and based on what it finds it adds a predefined set of talents
     
     public List<Talent> allTalents; // Populate this list in the Unity Editor
-    private GameObject[] playerGameobjects;
+    [SerializeField] private GameObject[] playerGameObjects;
 
     void Start() {
-        // Find the GameManager
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        playerGameobjects = GameManager.GetPlayerGameObjects();
+        playerGameObjects = GameManager.GetPlayerGameObjects();
         
     }
 
     public void OpenTalentMenu(int newLevel)
     {
         TogglePlayerCanvases(true); // Enable the canvases
-        _gameManager.TogglePause();
+        GameManager.TogglePause();
     }
 
     public void TalentSelected(Talent selectedTalent) {
         TogglePlayerCanvases(false); // Disable the canvases
-        _gameManager.TogglePause();
+        GameManager.TogglePause();
     }
 
     private void TogglePlayerCanvases(bool isActive)
     {
-        foreach (GameObject player in playerGameobjects)
+        foreach (GameObject player in playerGameObjects)
         {
             Transform interactableCanvas = null;
         
