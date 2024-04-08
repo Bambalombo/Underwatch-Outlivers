@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject spawnerEnemyController;
     [SerializeField] private ExperienceController _experienceController;
     [SerializeField] private int numberOfPlayers = 1;
+    [FormerlySerializedAs("endGameWhenPlayersDie")] [SerializeField] private bool gameOverEnabled = true;
     private Transform _playerParent;
     private Transform _damagePopupParent;
     private Transform _experiencePickupParent;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] players; // Array to store player references
 
     private MultiplayerEventSystem[] playerMultiplayerEventSystems;
+    private PlayerHealthController[] _playerHealthControllers;
 
     
     
@@ -59,8 +62,10 @@ public class GameManager : MonoBehaviour
     public static Transform GetExperiencePickupParent() => _instance._experiencePickupParent;
     public static Transform GetPickupParent() => _instance._pickupParent;
     public static Transform GetSpawnerEnemyControllerParent() => _instance._spawnerEnemyControllerParent;
-    private static GameObject[] playerGameObjectsArray => _instance.players;
+    private static GameObject[] PlayerGameObjectsArray => _instance.players;
     public static int GetNumberOfPlayers() => _instance.numberOfPlayers;
+    
+    public static PlayerHealthController[] GetPlayerHealthControllers() => _instance._playerHealthControllers;
 
     public static void SetNumberOfPlayers(int value)
     {
@@ -94,7 +99,7 @@ public class GameManager : MonoBehaviour
         GameObject nearestPlayer = null;
         float closestDistanceSqr = Mathf.Infinity;
 
-        foreach (GameObject player in playerGameObjectsArray)
+        foreach (GameObject player in PlayerGameObjectsArray)
         {
             if (player != null)
             {
@@ -108,6 +113,11 @@ public class GameManager : MonoBehaviour
             }
         }
         return nearestPlayer;
+    }
+
+    public bool EndGameEnabled()
+    {
+        return gameOverEnabled;
     }
     
     private void OnEnable()
@@ -129,6 +139,13 @@ public class GameManager : MonoBehaviour
     public void LoadLevel1()
     {
         SceneManager.LoadScene("Level_1");
+    }
+
+    public void StartGameOverSequence()
+    {
+        if (!isPaused)
+            TogglePause();
+        Debug.Log("All players are dead. Game over.");
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -185,6 +202,7 @@ public class GameManager : MonoBehaviour
             // Ensure arrays are initialized to the correct size before use.
             players = new GameObject[playersToCreate];
             playerMultiplayerEventSystems = new MultiplayerEventSystem[playersToCreate];
+            _playerHealthControllers = new PlayerHealthController[playersToCreate];
 
             for (int i = 0; i < playersToCreate; i++)
             {
@@ -206,7 +224,8 @@ public class GameManager : MonoBehaviour
 
                 // Find the MultiplayerEventSystem component within the instantiated player's children
                 MultiplayerEventSystem playerEventSystem = players[i].GetComponentInChildren<MultiplayerEventSystem>(true);
-
+                PlayerHealthController playerHealthController = players[i].GetComponentInChildren<PlayerHealthController>(true);
+                
                 if (playerCanvas != null && playerEventSystem != null)
                 {
                     // Set the MultiplayerEventSystem's playerRoot to the "InteractableCanvas" GameObject
@@ -214,6 +233,7 @@ public class GameManager : MonoBehaviour
         
                     // Store the reference to the player's MultiplayerEventSystem for potential future use
                     playerMultiplayerEventSystems[i] = playerEventSystem;
+                    _playerHealthControllers[i] = playerHealthController;
                 }
                 else
                 {
