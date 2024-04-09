@@ -12,6 +12,8 @@ public class TalentUI : MonoBehaviour {
 
     // The talent this UI represents
     private Talent currentTalent;
+    public GameObject localTalentPanel; //We use this to disable the panel when selected
+    public GameObject doneSelectingPanel; //We can maybe add a gameobject here that we enable to signify that you are done selecting (while waiting for other players)
     
 
     public void SetTalent(Talent talent) {
@@ -23,7 +25,13 @@ public class TalentUI : MonoBehaviour {
 
     public void OnTalentSelected() {
         Debug.Log("Talent selected!");
+        if (talentManager == null)
+        {
+            talentManager = GameObject.Find("TalentMenu").GetComponent<TalentManager>();
+        }
         talentManager.TalentSelected(currentTalent, playerGameobject);
+        
+        localTalentPanel.SetActive(false);
     }
 
 }

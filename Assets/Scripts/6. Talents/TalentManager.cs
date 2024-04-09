@@ -10,6 +10,8 @@ public class TalentManager : MonoBehaviour
     [SerializeField] private GameObject[] playerGameObjects;
     [SerializeField] private GameManager _gameManager;
 
+    private int _talentsPicked;
+
     void Start() {
         playerGameObjects = GameManager.GetPlayerGameObjects();
         // Find the GameManager
@@ -20,12 +22,17 @@ public class TalentManager : MonoBehaviour
     {
         TogglePlayerCanvases(true); // Enable the canvases
         _gameManager.TogglePause();
+
+        _talentsPicked = 0;
     }
 
     public void TalentSelected(Talent selectedTalent, GameObject playerGameobject) {
-        TogglePlayerCanvases(false); // Disable the canvases
-        _gameManager.TogglePause();
         selectedTalent.ApplyEffectToPlayer(playerGameobject);
+        _talentsPicked++;
+        if (_talentsPicked >= playerGameObjects.Length)
+        {
+            _gameManager.TogglePause();
+        }
     }
 
     private void TogglePlayerCanvases(bool isActive)
