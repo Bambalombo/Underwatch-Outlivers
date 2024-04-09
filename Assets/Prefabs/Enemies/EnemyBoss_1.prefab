@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: -8671569779794781263}
   - component: {fileID: 1801632654411770858}
   - component: {fileID: 3812902737295349452}
+  - component: {fileID: -7502217279293819852}
   - component: {fileID: 8933796695499925440}
   - component: {fileID: 4792808897084071477}
   - component: {fileID: 9160034463395656589}
@@ -483,6 +484,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
   enemyStatsController: {fileID: -8671569779794781263}
+--- !u!114 &-7502217279293819852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362581833865366400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d87eb48bfe8ee41bda995646fe4f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6252570930536968202, guid: 9ba4ae3513d24d74594f9834a09aedb1, type: 3}
+  normalStateDuration: 30
+  rageStateDuration: 10
+  bulletSpeed: 10
+  normalFireRate: 2
+  rageFireRate: 10
+  bulletDamage: 3
+  bulletLifetime: 5
+  lastFireTime: 0
+  currentState: 0
+  players: []
 --- !u!114 &8933796695499925440
 MonoBehaviour:
   m_ObjectHideFlags: 0

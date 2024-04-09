@@ -12,6 +12,8 @@ TagManager:
   - Experience
   - HealthPickup
   - WeaponPickup
+  - RangeIndicator
+  - BossWeapon
   layers:
   - Default
   - TransparentFX
@@ -19,15 +21,15 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - 
   - Enemy
   - Pickups
-  - PLAYER_BOUNDARY
+  - 
   - Weapon
-  - 
-  - 
-  - 
-  - 
+  - BossWeapon
+  - PlayerHitBox
+  - PlayerPickup
+  - PlayerBoundary
   - 
   - 
   - 

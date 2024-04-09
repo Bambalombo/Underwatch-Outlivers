@@ -110,6 +110,17 @@ public class PlayerHealthController : MonoBehaviour
         PlayerTakeDamage(enemyStats.GetDamage());
         enemyHealth.Attack();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BossWeapon"))
+        {
+            var damage = collision.gameObject.GetComponent<BossBullet>().GetDamage();
+            
+            PlayerTakeDamage(damage);
+            
+            Destroy(collision.gameObject);
+        }
+    }
 
     private void KillPlayer()
     {
