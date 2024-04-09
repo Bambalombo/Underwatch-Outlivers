@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 public class PlayerPickupRange : MonoBehaviour
 {
     [SerializeField] private CircleCollider2D pickupRangeCollider;
-    //[SerializeField] private float pickupRange = 4f;
     [SerializeField] private ExperienceController experienceController;
     [SerializeField] private PlayerStatsController playerStatsController;
     [SerializeField] private PlayerHealthController playerHealthController;
@@ -20,48 +19,39 @@ public class PlayerPickupRange : MonoBehaviour
     
     private void Awake()
     {
-        //_pickupRangeCollider = GetComponent<CircleCollider2D>();    
         pickupRangeCollider.radius = playerStatsController.GetExperiencePickupRange();
     }
     
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Experience"))
+        if (other.gameObject.CompareTag("Experience") || other.gameObject.CompareTag("HealthPickup"))
         {
-            var experiencePickup = other.gameObject.GetComponent<ExperienceAmount>();
-            var expAmount = experiencePickup.GetExperienceAmount();
             StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed));
-            if (other.gameObject != null)
-            {
-                experienceController.AddExperience(expAmount);
-            }
-        }
-
-        if (other.gameObject.CompareTag("HealthPickup"))
-        {
-            var healthPickup = other.gameObject.GetComponent<HealthPickup>();
-            var healAmount = healthPickup.GetHealthAmount();
-            StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed));
-            if (other.gameObject != null)
-            {
-                playerHealthController.PlayerHeal(healAmount);
-            }
         }
     }
 
     private IEnumerator MoveObjectToPlayer(GameObject obj, float speed)
     {
-        while (obj != null && Vector3.Distance(obj.transform.position, transform.position) > 0.01f)
+        while (Vector3.Distance(obj.transform.position, transform.position) > 0.01f)
         {
-            // float step = speed * Time.deltaTime;
             obj.transform.position = Vector3.MoveTowards(obj.transform.position, transform.position, Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
-        if (obj != null)
+
+        if (obj.CompareTag("Experience"))
         {
-            Destroy(obj);
+            var experiencePickup = obj.GetComponent<ExperienceAmount>();
+            var expAmount = experiencePickup.GetExperienceAmount();
+            experienceController.AddExperience(expAmount);
         }
+        else if (obj.CompareTag("HealthPickup"))
+        {
+            var healthPickup = obj.GetComponent<HealthPickup>();
+            var healAmount = healthPickup.GetHealthAmount();
+            playerHealthController.PlayerHeal(healAmount);
+        }
+        Destroy(obj);
     }
     
     /*private IEnumerator MoveExperienceToPlayer(GameObject expObject)
