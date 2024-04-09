@@ -55,7 +55,7 @@ public class PlayerHealthController : MonoBehaviour
        
         if (_playerStatsController.GetCurrentHealth() <= 0)
         {
-            if (_respawnPlayerCoroutine != null)
+            if (!_isAlive)
                 return;
             
             _isAlive = false;
