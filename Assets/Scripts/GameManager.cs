@@ -278,6 +278,8 @@ public class GameManager : MonoBehaviour
     
     public void TogglePause()
     {
+        Debug.Log($"Timescale is{Time.timeScale}");
+        
         _isPaused = !_isPaused;
         Time.timeScale = _isPaused ? 0 : 1;
 
