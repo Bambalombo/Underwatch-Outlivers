@@ -25,29 +25,44 @@ public class PlayerPickupRange : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Experience") || other.gameObject.CompareTag("HealthPickup"))
+        if (other.gameObject.CompareTag("Experience"))
         {
-            StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed));
+            var experiencePickup = other.gameObject.GetComponent<ExperienceAmount>();
+            if (!experiencePickup.isBeingPickedUp)
+            {
+                experiencePickup.isBeingPickedUp = true;
+                StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, experiencePickup));
+            }
+        }
+        else if (other.gameObject.CompareTag("HealthPickup"))
+        {
+            var healthPickup = other.gameObject.GetComponent<HealthPickup>();
+            if (!healthPickup.isBeingPickedUp)
+            {
+                healthPickup.isBeingPickedUp = true;
+                StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, null, healthPickup));
+            }
         }
     }
 
-    private IEnumerator MoveObjectToPlayer(GameObject obj, float speed)
+    private IEnumerator MoveObjectToPlayer(GameObject obj, float speed, ExperienceAmount experiencePickup = null, HealthPickup healthPickup = null)
     {
+        if (obj == null)
+            yield break;
+
         while (Vector3.Distance(obj.transform.position, transform.position) > 0.01f)
         {
             obj.transform.position = Vector3.MoveTowards(obj.transform.position, transform.position, Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
 
-        if (obj.CompareTag("Experience"))
+        if (experiencePickup != null)
         {
-            var experiencePickup = obj.GetComponent<ExperienceAmount>();
             var expAmount = experiencePickup.GetExperienceAmount();
             experienceController.AddExperience(expAmount);
         }
-        else if (obj.CompareTag("HealthPickup"))
+        else if (healthPickup != null)
         {
-            var healthPickup = obj.GetComponent<HealthPickup>();
             var healAmount = healthPickup.GetHealthAmount();
             playerHealthController.PlayerHeal(healAmount);
         }

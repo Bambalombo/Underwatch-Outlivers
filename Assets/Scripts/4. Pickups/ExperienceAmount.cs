@@ -3,6 +3,8 @@ using UnityEngine;
 public class ExperienceAmount : MonoBehaviour
 {
     [SerializeField] private int experienceAmount = 10; // Set the amount of EXP to give
+    public bool isBeingPickedUp { get; set; }
+
     //[SerializeField] private IntVariable playerExperience;
     
     // Get experienceAmount from the enemy that dropped the EXP
