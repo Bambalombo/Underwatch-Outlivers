@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +18,13 @@ public class ClassAssets : MonoBehaviour
     [Header("Currently Active Weapon")]
     [SerializeField] private List<GameObject> activeWeapons; // List of weapons the player has
 
+    [Header("Player Collider")]
+    private CapsuleCollider2D playerCollider;
+    [SerializeField] private CapsuleCollider2D playerHitbox;
+
     private void Awake()
     {
-        SetPlayerAbilityAndWeapon();
+        playerCollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void SetPlayerAbilityAndWeapon()
@@ -29,10 +34,13 @@ public class ClassAssets : MonoBehaviour
         GameObject ability = null;
         GameObject weapon = null;
         var playerClass = playerStatsController.playerClass;
+
         foreach (var classAsset in classAssets)
         {
             if (classAsset.className == playerClass)
             {
+                //Debug.Log("Player class: " + playerClass);
+                
                 ability = Instantiate(classAsset.ability, parent: abilityParent.transform);
                 weapon = Instantiate(classAsset.weapon, parent: weaponParent.transform);
                 break;
@@ -42,6 +50,35 @@ public class ClassAssets : MonoBehaviour
             activeAbilities.Add(ability);
         if (weapon)
             activeWeapons.Add(weapon);
+    }
+    
+    // Sets the correct hitbox for the player based of which character they are
+    private void SetPlayerHitbox()
+    {
+        var playerClass = playerStatsController.playerClass;
+        
+        // Set the hitbox size and offset based on the player class
+        foreach (var classAsset in classAssets)
+        {
+            if (classAsset.className == playerClass)
+            {
+                playerHitbox.offset = classAsset.hitboxOffset;
+                playerCollider.offset = classAsset.hitboxOffset;
+                
+                playerHitbox.size = classAsset.hitboxSize;
+                playerCollider.size = classAsset.hitboxSize;
+                //Debug.Log("Player class: " + playerClass);
+                //Debug.Log("Hitbox offset: " + playerHitbox.offset + " Hitbox size: " + playerHitbox.size);
+                
+                playerHitbox.direction = classAsset.hitboxDirection == PlayerClassAssets.HitboxDirection.Vertical
+                    ? CapsuleDirection2D.Vertical
+                    : CapsuleDirection2D.Horizontal;
+                playerCollider.direction = classAsset.hitboxDirection == PlayerClassAssets.HitboxDirection.Vertical
+                    ? CapsuleDirection2D.Vertical
+                    : CapsuleDirection2D.Horizontal;
+                break;
+            }
+        }
     }
     
     public GameObject GetActiveWeapons()
@@ -68,6 +105,7 @@ public class ClassAssets : MonoBehaviour
         activeAbilities.Clear();
         activeWeapons.Clear();
         SetPlayerAbilityAndWeapon();
+        SetPlayerHitbox();
     }
 }
 
@@ -77,5 +115,14 @@ public class PlayerClassAssets
     [SerializeField] public PlayerStatsController.PlayerClass className;
     [SerializeField] public GameObject ability;
     [SerializeField] public GameObject weapon;
+    [Header("Hitbox Settings")]
+    [SerializeField] public Vector2 hitboxOffset;
+    [SerializeField] public Vector2 hitboxSize;
+    public enum HitboxDirection
+    {
+        Vertical,
+        Horizontal
+    }
+    [SerializeField] public HitboxDirection hitboxDirection;
 }
 

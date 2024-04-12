@@ -1938,7 +1938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7455284733439242630}
-  - component: {fileID: 4077936236101338608}
+  - component: {fileID: 3497547529761046945}
   m_Layer: 12
   m_Name: Player Hitbox
   m_TagString: Player
@@ -1955,14 +1955,14 @@ Transform:
   m_GameObject: {fileID: 4233615549772182852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.46, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4743056730613283810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4077936236101338608
-CircleCollider2D:
+--- !u!70 &3497547529761046945
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1994,8 +1994,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &4366851466771612737
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,20 +3301,36 @@ MonoBehaviour:
   - className: 1
     ability: {fileID: 6122174662690779350, guid: f8ae54f33f8ccb3489235247fc967fae, type: 3}
     weapon: {fileID: 3580379577340771317, guid: aae5ad42b0d7ef845b9a2b3ee06eb5a2, type: 3}
+    hitboxOffset: {x: 0, y: -0.23}
+    hitboxSize: {x: 1.37, y: 0.96}
+    hitboxDirection: 1
   - className: 2
     ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
     weapon: {fileID: 4140215671141498193, guid: aedb32521890444a686dbaad89338c80, type: 3}
+    hitboxOffset: {x: 0, y: -0.05}
+    hitboxSize: {x: 0.78, y: 2.61}
+    hitboxDirection: 0
   - className: 0
     ability: {fileID: 8940566107521859141, guid: d8c3a76768e254f8e8b7ab1e0b7baa43, type: 3}
     weapon: {fileID: 8630830754980910555, guid: b512eab2793a7c842818b985c1579ad7, type: 3}
+    hitboxOffset: {x: 0, y: 0}
+    hitboxSize: {x: 0.79, y: 2.12}
+    hitboxDirection: 0
   - className: 3
     ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
     weapon: {fileID: 5427118373787253608, guid: 4bd6f0528f03e544abdb2b5e73cfdd44, type: 3}
+    hitboxOffset: {x: 0, y: 0}
+    hitboxSize: {x: 1.29, y: 1.83}
+    hitboxDirection: 0
   - className: 4
     ability: {fileID: 0}
     weapon: {fileID: 0}
+    hitboxOffset: {x: 0, y: 0}
+    hitboxSize: {x: 1, y: 1}
+    hitboxDirection: 0
   activeAbilities: []
   activeWeapons: []
+  playerHitbox: {fileID: 3497547529761046945}
 --- !u!114 &537972653550675585
 MonoBehaviour:
   m_ObjectHideFlags: 0
