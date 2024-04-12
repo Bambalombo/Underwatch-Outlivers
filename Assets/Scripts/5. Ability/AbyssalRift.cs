@@ -66,6 +66,15 @@
                         enemyRb.AddForce(directionToCenter.normalized * pullStrength, ForceMode2D.Force);
                     }
                 }
+                if (hitCollider.CompareTag("Player"))
+                {
+                    Rigidbody2D playerRb = hitCollider.GetComponent<Rigidbody2D>();
+                    if (playerRb != null)
+                    {
+                        Vector2 directionToCenter = riftPosition - (Vector2)hitCollider.transform.position;
+                        playerRb.AddForce(directionToCenter.normalized * pullStrength, ForceMode2D.Force);
+                    }
+                }
             }
         }
     }

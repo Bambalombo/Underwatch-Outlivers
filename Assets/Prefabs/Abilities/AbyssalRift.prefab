@@ -66,5 +66,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCooldown: 10
   riftPrefab: {fileID: 7910206181747909105, guid: 20b72a78c821ed044a3ff16c03c4af74, type: 3}
-  pullStrength: 50
+  pullStrength: 30
   riftSpawnDistance: 11.5
