@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
 
     private MultiplayerEventSystem[] playerMultiplayerEventSystems;
     private PlayerHealthController[] _playerHealthControllers;
-    
-    private static bool _isPaused = false;
+
+    private static bool _isPaused;
     
     //UI 
     public GameObject DefaultMenuUI;
@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _isPaused = false;
+        
         if (_instance == null)
         {
             _instance = this;
