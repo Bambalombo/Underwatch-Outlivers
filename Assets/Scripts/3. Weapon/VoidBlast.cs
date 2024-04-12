@@ -1,19 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class WeaponWithVoidBlast : MonoBehaviour
+public class VoidBlast : MonoBehaviour
 {
     public GameObject projectilePrefab; 
     public GameObject explosionEffectPrefab; 
-    public float projectileSpeed = 10f;
-    public float maxProjectileDistance = 2f; 
 
     private Vector2 lastMoveDirection;
     private PlayerStatsController playerStatsController;
     private WeaponStats _weaponStats;
 
+    public Vector2 projectileScale;
+
     void Start()
     {
+        projectileScale = new Vector2(1, 1); //Default projectile scale but talents (such as the AngryKitten talent) will increase this
         var grandParent = transform.parent.parent;
         playerStatsController = grandParent.GetComponent<PlayerStatsController>();
         _weaponStats = GetComponent<WeaponStats>();
@@ -37,6 +38,7 @@ public class WeaponWithVoidBlast : MonoBehaviour
             if (lastMoveDirection != Vector2.zero) 
             {
                 GameObject projectile = Instantiate(projectilePrefab, transform.position + new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * 1.5f, Quaternion.identity); // Spawn projectile in front of player
+
                 StartCoroutine(ProjectileBehaviorRoutine(projectile, lastMoveDirection));
             }
         }
@@ -47,10 +49,10 @@ public class WeaponWithVoidBlast : MonoBehaviour
         Vector3 launchPosition = projectile.transform.position;
         float distanceTraveled = 0;
 
-        while (distanceTraveled < maxProjectileDistance)
+        while (distanceTraveled < _weaponStats.GetAttackRange())
         {
-            projectile.transform.Translate(new Vector3(direction.x, direction.y, 0) * (projectileSpeed * Time.deltaTime), Space.World);
-            distanceTraveled += projectileSpeed * Time.deltaTime;
+            projectile.transform.Translate(new Vector3(direction.x, direction.y, 0) * (_weaponStats.GetProjectileSpeed() * Time.deltaTime), Space.World);
+            distanceTraveled += _weaponStats.GetProjectileSpeed() * Time.deltaTime;
             yield return null;
         }
 
@@ -62,6 +64,7 @@ public class WeaponWithVoidBlast : MonoBehaviour
         if (explosionEffectPrefab != null)
         {
             GameObject explosionEffect = Instantiate(explosionEffectPrefab, projectile.transform.position, Quaternion.identity);
+            explosionEffect.transform.localScale = projectileScale; // Example scale setting, adjust as needed
             Destroy(explosionEffect, explosionEffect.GetComponent<ParticleSystem>().main.duration); 
         }
         

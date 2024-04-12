@@ -48,6 +48,11 @@ public class ClassAssets : MonoBehaviour
     {
         return activeWeapons[0];
     }
+
+    public GameObject GetActiveAbilities()
+    {
+        return activeAbilities[0];
+    }
     
     public void ChangeClass(int classIndex)
     {

@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10000
   attackCooldown: 0.5
-  attackRange: 5
-  projectileSpeed: 0
+  attackRange: 10
+  projectileSpeed: 10
   attackLifetime: 0
   knockback: 0
   lifeStealAmount: 0
@@ -66,5 +66,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5317794402841587772, guid: cc8b447428eb8e0449e0e140acdb1bf7, type: 3}
   explosionEffectPrefab: {fileID: 6680677468570508516, guid: 0ae7039564f097941bce8c7123c2ada3, type: 3}
-  projectileSpeed: 15
-  maxProjectileDistance: 10
