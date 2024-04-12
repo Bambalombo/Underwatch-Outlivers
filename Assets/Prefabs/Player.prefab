@@ -3569,3 +3569,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0cd2c080c70f14cb835e095f2c72a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatsController: {fileID: 5807114057819124149}
+  elementalistTalents:
+  - name: Player Health Increase
+    description: Increases health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+  - name: Player Movement Speed Increase
+    description: Increases movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+  - name: Weapon Cooldown Decrease
+    description: Decreases weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+  - name: Ability Damage Increase
+    description: Increases ability damage by 5%
+    level: 0
+    talentPrefab: {fileID: 4542655277352818398, guid: fab404118bd3c31479d779b750037783, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreaes ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+  voidwalkerTalents:
+  - name: Player Health Increase
+    description: Increases health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+  - name: Player Movement Speed Increase
+    description: Increases movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+  - name: Weapon Cooldown Decrease
+    description: Decreases weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreaes ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+  mutantberserkerTalents:
+  - name: Player Health Increase
+    description: Increases health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+  - name: Player Movement Speed Increase
+    description: Increases movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+  - name: Weapon Cooldown Decrease
+    description: Decreases weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreaes ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+  XI_017talents:
+  - name: Player Health Increase
+    description: Increases health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+  - name: Player Movement Speed Increase
+    description: Increases movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+  - name: Weapon Cooldown Decrease
+    description: Decreases weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreaes ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}

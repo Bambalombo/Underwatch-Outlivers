@@ -10,12 +10,32 @@ public class PlayerTalents : MonoBehaviour
     //2. Store their already selected talents
 
     private List<Talent> playerTalentPool; //Variable meant to hold the possible talents the player can get based on weapon/ability combiniation
+
+    public PlayerStatsController playerStatsController; //We need this because the refernece to the currently selected class is in here
+
+    public List<Talent> elementalistTalents, voidwalkerTalents, mutantberserkerTalents, XI_017talents;
     
 
-    private void InitializeAndSortPossibleTalents(List<Talent> allTalents)
+    public List<Talent> InitializeUniqueTalentSet()
     {
         // TODO: Implement logic to filter talents based on the player's weapon and ability
-        playerTalentPool = allTalents; // This should eventually filter allTalents based on some criteria
+        switch (playerStatsController.playerClass)
+        {
+            case PlayerStatsController.PlayerClass.Elementalist:
+                playerTalentPool = elementalistTalents;
+                break;
+            case PlayerStatsController.PlayerClass.Voidwalker:
+                playerTalentPool = voidwalkerTalents;
+                break;
+            case PlayerStatsController.PlayerClass.MutantBerserker:
+                playerTalentPool = mutantberserkerTalents;
+                break;
+            case PlayerStatsController.PlayerClass.XI_017:
+                playerTalentPool = XI_017talents;
+                break;
+        }
+
+        return playerTalentPool;
     }
 
     public List<Talent> GetThreeRandomTalents(List<Talent> allTalents)
