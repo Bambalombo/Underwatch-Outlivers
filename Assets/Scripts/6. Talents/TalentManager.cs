@@ -31,6 +31,7 @@ public class TalentManager : MonoBehaviour
         _talentsPicked++;
         if (_talentsPicked >= playerGameObjects.Length)
         {
+            Debug.Log("Enough talents picked, time to UNPAUSE");
             _gameManager.TogglePause();
         }
     }

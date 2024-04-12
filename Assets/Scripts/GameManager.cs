@@ -279,10 +279,19 @@ public class GameManager : MonoBehaviour
     public void TogglePause()
     {
         Debug.Log($"Timescale is{Time.timeScale}");
-        
-        _isPaused = !_isPaused;
-        Time.timeScale = _isPaused ? 0 : 1;
+        if (_isPaused) //If game is paused, unpause it and set the _isPaused to false
+        {
+            Debug.Log("I am unpausing");
+            _isPaused = false;
+            Time.timeScale = 1;
+        }
 
+        else if (_isPaused == false)
+        {
+            Debug.Log("I am pausing");
+            _isPaused = true;
+            Time.timeScale = 0;
+        }
     }
 
     public ExperienceController GetExperienceController()
