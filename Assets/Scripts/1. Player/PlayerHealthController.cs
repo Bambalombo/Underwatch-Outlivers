@@ -19,6 +19,7 @@ public class PlayerHealthController : MonoBehaviour
     
     [Header("Player Taking Damage")]
     [SerializeField] private Color hurtColor = Color.red; 
+    [SerializeField] private Color healColor = Color.green;
     [SerializeField] private float colorRecoverTime = 0.25f;
     private Color _originalColor;
     private SpriteRenderer _spriteRenderer;
@@ -71,13 +72,14 @@ public class PlayerHealthController : MonoBehaviour
         if (_flashSpriteColorCoroutine != null)
             StopCoroutine(_flashSpriteColorCoroutine);
         
-        _flashSpriteColorCoroutine = StartCoroutine(FlashSpriteColor());
+        _flashSpriteColorCoroutine = StartCoroutine(FlashSpriteColor(hurtColor));
     }
     
     public void PlayerHeal(float healAmount)
     {
         _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() + healAmount);
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
+        _flashSpriteColorCoroutine = StartCoroutine(FlashSpriteColor(healColor));
     }
     
     public void UpdateCoolDownBar(float currentCooldown, float maxCooldown)
@@ -154,20 +156,20 @@ public class PlayerHealthController : MonoBehaviour
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
     }
     
-    private IEnumerator FlashSpriteColor()
+    private IEnumerator FlashSpriteColor(Color flashColor)
     {
-        _spriteRenderer.color = hurtColor;
+        _spriteRenderer.color = flashColor; 
         
         float duration = colorRecoverTime;
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            _spriteRenderer.color = Color.Lerp(Color.red, _originalColor, elapsed / duration);
+            _spriteRenderer.color = Color.Lerp(flashColor, _originalColor, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        _spriteRenderer.color = _originalColor;
+        _spriteRenderer.color = _originalColor; 
     }
 }

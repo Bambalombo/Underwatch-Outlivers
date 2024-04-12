@@ -68,3 +68,7 @@ MonoBehaviour:
   riftPrefab: {fileID: 7910206181747909105, guid: 20b72a78c821ed044a3ff16c03c4af74, type: 3}
   pullStrength: 30
   riftSpawnDistance: 11.5
+  soulHarvestTalentActivated: 0
+  soulHarvestHealAmount: 0
+  soulHarvestHealChance: 0
+  nextHealTime: 0

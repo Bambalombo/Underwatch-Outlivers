@@ -3620,6 +3620,11 @@ MonoBehaviour:
     description: Sets weapon range to 0 and increases the explosion size by 50%
     level: 0
     talentPrefab: {fileID: 4902826877966733350, guid: 802c8c725516cd849a0d76d899ff3990, type: 3}
+  - name: Soul Harvest
+    description: Enemies inside the abyssal rift have a 5%(?) chance to heal you
+      for 0.1(?)
+    level: 0
+    talentPrefab: {fileID: 8241283235283213236, guid: b8227da990f44ee4889783610e033078, type: 3}
   mutantberserkerTalents:
   - name: Player Health Increase
     description: Increases health by 5%
