@@ -8,21 +8,31 @@ public class TalentManager : MonoBehaviour
 
     private List<Talent> _playerTalentPool;
     [SerializeField] private GameObject[] playerGameObjects;
-    [SerializeField] private GameManager _gameManager;
+    private GameManager _gameManager;
 
     private int _talentsPicked;
+    
+    [SerializeField] private GameObject talentBackground;
 
     void Start() {
         playerGameObjects = GameManager.GetPlayerGameObjects();
         // Find the GameManager
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
+        talentBackground.SetActive(false);
     }
 
     public void OpenTalentMenu(int newLevel)
     {
+        if (talentBackground.activeSelf == false)
+        {
+            //Debug.Log("Talent background is not active, activating it now");
+            talentBackground.SetActive(true);
+        }
+        
         TogglePlayerCanvases(true); // Enable the canvases
         _gameManager.TogglePause();
-
+        
         _talentsPicked = 0;
     }
 
@@ -31,6 +41,12 @@ public class TalentManager : MonoBehaviour
         _talentsPicked++;
         if (_talentsPicked >= playerGameObjects.Length)
         {
+            if (talentBackground.activeSelf)
+            {
+                //Debug.Log("Talent background is active, deactivating it now");
+                talentBackground.SetActive(false);
+            }
+            
             Debug.Log("Enough talents picked, time to UNPAUSE");
             _gameManager.TogglePause();
         }
