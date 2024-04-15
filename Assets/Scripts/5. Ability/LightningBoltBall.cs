@@ -59,8 +59,6 @@ public class LightningBoltBall : MonoBehaviour
         StartCoroutine(StartChainLightningCoroutine(enemy));
         circleCollider2D.enabled = false;
         spriteRenderer.enabled = false;
-
-        Destroy(gameObject, 5f);
     }
     
     private IEnumerator StartChainLightningCoroutine(GameObject enemy)
@@ -94,9 +92,9 @@ public class LightningBoltBall : MonoBehaviour
     
     private IEnumerator DrawLightning(Vector3 startPos, Vector3 endPos)
     {
-        ps.Stop();
-        ps.Clear();
-        ps.Play();
+        //ps.Stop();
+        //ps.Clear();
+        //ps.Play();
         
         var emitParams = new ParticleSystem.EmitParams();
         emitParams.startSize = 0.2f + (_extraTargets / 5f);

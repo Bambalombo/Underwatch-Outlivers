@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7300779002317606381}
   - component: {fileID: 8806183130677090733}
-  - component: {fileID: 8209256375832030573}
+  - component: {fileID: 5621701520672144876}
   m_Layer: 0
   m_Name: TalentManager
   m_TagString: Untagged
@@ -224,7 +224,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393773106918644084}
   m_CullTransparentMesh: 1
---- !u!114 &8209256375832030573
+--- !u!114 &5621701520672144876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 393773106918644084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4488a3e39c0da8348a4a29c307d65cdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ae8416e53c8f424d9170fd94d30438f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &420423617099396806
@@ -1601,7 +1601,7 @@ GameObject:
   - component: {fileID: 6641277488892227978}
   - component: {fileID: 6290701331878084012}
   - component: {fileID: 3097394931411843315}
-  - component: {fileID: 517594677886541}
+  - component: {fileID: 2785072711430016564}
   m_Layer: 0
   m_Name: InteractableCanvas
   m_TagString: Untagged
@@ -1692,16 +1692,16 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &517594677886541
+--- !u!114 &2785072711430016564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2966401771021524521}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4488a3e39c0da8348a4a29c307d65cdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ae8416e53c8f424d9170fd94d30438f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3201321166327215918
@@ -3311,7 +3311,7 @@ MonoBehaviour:
     hitboxSize: {x: 0.78, y: 2.61}
     hitboxDirection: 0
   - className: 0
-    ability: {fileID: 8940566107521859141, guid: d8c3a76768e254f8e8b7ab1e0b7baa43, type: 3}
+    ability: {fileID: 8940566107521859141, guid: a263166ce5aa74e61879fa594272a952, type: 3}
     weapon: {fileID: 8630830754980910555, guid: b512eab2793a7c842818b985c1579ad7, type: 3}
     hitboxOffset: {x: 0, y: 0}
     hitboxSize: {x: 0.79, y: 2.12}
@@ -3347,6 +3347,7 @@ MonoBehaviour:
   cooldownBarController: {fileID: 0}
   canDie: 1
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  healColor: {r: 0, g: 1, b: 0, a: 1}
   colorRecoverTime: 0.25
   gameManager: {fileID: 0}
 --- !u!114 &1938536580294704214

@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  attackCooldown: 2.5
+  attackCooldown: 10
   attackRange: 10
   projectileSpeed: 0
-  attackLifetime: 1
+  attackLifetime: 5
   knockback: 0
   lifeStealAmount: 0
 --- !u!114 &7470401551691688179
@@ -65,6 +65,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dronePrefab: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
-  spawnDistance: 10
   totalDistanceMoved: 0
-  destroyTime: 5

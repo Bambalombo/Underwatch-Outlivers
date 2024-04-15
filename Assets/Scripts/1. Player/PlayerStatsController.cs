@@ -41,7 +41,8 @@ public class PlayerStatsController : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        
+        lastMoveDirection = new Vector2(1f, 0f);
+
         //experience = 0;
         //level = 1;
         //experienceToNextLevel = baseExperience;
@@ -150,7 +151,7 @@ public class PlayerStatsController : MonoBehaviour
     public Vector3 GetPlayerPosition() => playerPosition;
 
     public Vector2 GetLastMoveDirection() => lastMoveDirection;
-    
+
     public void ChangePlayerClass(int classIndex)
     {
         if (classIndex < 0 || classIndex >= System.Enum.GetValues(typeof(PlayerClass)).Length)

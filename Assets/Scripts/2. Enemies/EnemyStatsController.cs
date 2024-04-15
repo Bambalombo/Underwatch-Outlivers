@@ -1,7 +1,8 @@
 using System;
+using DefaultNamespace;
 using UnityEngine;
 
-public class EnemyStatsController : MonoBehaviour
+public class EnemyStatsController : MonoBehaviour, IStatController
 {
     [SerializeField] private bool isBoss; // If the enemy is a boss
     [SerializeField] private bool isFoundByPlayer; // If the enemy has been found by the player (Used for bosses)

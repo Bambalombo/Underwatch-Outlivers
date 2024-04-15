@@ -13,15 +13,12 @@ public class BossController : MonoBehaviour
     [SerializeField] private float bulletLifetime; // Lifetime of bullets in seconds
     [SerializeField] private float lastFireTime = 0f; // Time since the last fire
 
-
     private enum State { Normal, Rage }
     [SerializeField] private State currentState;
     [SerializeField] private GameObject[] players;
     
     private EnemyStatsController enemyStatsController;
     private Transform _bulletParent;
-
-
 
     private void Start()
     {
@@ -49,7 +46,6 @@ public class BossController : MonoBehaviour
             }
         }
     }
-
 
     private void FixedUpdate()
     {
@@ -80,7 +76,8 @@ public class BossController : MonoBehaviour
             {
                 Vector3 direction = (player.transform.position - transform.position).normalized;
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, _bulletParent);
-                StartCoroutine(MoveBullet(bullet, direction, bulletSpeed));
+                var bc = bullet.GetComponent<BulletController>();
+                bc.Initialize(direction,bulletSpeed,enemyStatsController);
             }
         }
     }
@@ -103,7 +100,7 @@ public class BossController : MonoBehaviour
 
         while (bullet != null && elapsedTime < bulletLifetime)
         {
-            bullet.transform.position += direction * speed * Time.deltaTime;
+            bullet.transform.position += direction * (speed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

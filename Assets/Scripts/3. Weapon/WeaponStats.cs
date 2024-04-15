@@ -1,7 +1,8 @@
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class WeaponStats : MonoBehaviour
+public class WeaponStats : MonoBehaviour, IStatController
 {
     [Header("Weapon Stats")]
     [SerializeField] private float damage; // The damage of the weapon
