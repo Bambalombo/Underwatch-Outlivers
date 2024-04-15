@@ -18,10 +18,13 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject[] players;
     
     private EnemyStatsController enemyStatsController;
+    [SerializeField] private SpawnerEnemyController _spawnerEnemyController;
     private Transform _bulletParent;
 
     private void Start()
     {
+        _spawnerEnemyController = GameManager.GetSpawnerEnemyControllerParent().GetComponent<SpawnerEnemyController>();
+        
         enemyStatsController = GetComponent<EnemyStatsController>();
         players = GameManager.GetPlayerGameObjects();
         StartCoroutine(StateMachine());
@@ -109,5 +112,10 @@ public class BossController : MonoBehaviour
         {
             Destroy(bullet);
         }
+    }
+    
+    private void OnDestroy()
+    {
+        _spawnerEnemyController.RemoveEnemyFromList(gameObject);
     }
 }

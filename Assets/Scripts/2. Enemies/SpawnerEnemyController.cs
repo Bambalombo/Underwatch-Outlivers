@@ -191,8 +191,10 @@ public class SpawnerEnemyController : MonoBehaviour
         foreach (var boss in bosses)
         {
             Vector3 spawnPos = RandomBossSpawnPosition();
-            Instantiate(boss, spawnPos, Quaternion.identity, GameManager.GetBossParent().transform);
+            var bossObj = Instantiate(boss, spawnPos, Quaternion.identity, GameManager.GetBossParent().transform);
             bossSpawnPositions.Remove(spawnPos);
+            
+            allEnemies.Add(bossObj);
         }
     }
     
