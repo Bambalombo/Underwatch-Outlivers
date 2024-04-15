@@ -26,10 +26,10 @@ public class FixedMultiplayerCamera : MonoBehaviour
         Vector3 newPosition = centerPoint;
         newPosition.z = transform.position.z;
 
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, players.Length == 1 ? 0f : smoothTime);
     }
 
-    Vector3 GetCenterPoint()
+    public Vector3 GetCenterPoint()
     {
         if (players.Length == 1)
         {
