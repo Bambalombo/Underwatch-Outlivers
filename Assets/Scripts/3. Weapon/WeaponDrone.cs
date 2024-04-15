@@ -4,11 +4,9 @@ public class WeaponDrone : MonoBehaviour
 {
     private PlayerStatsController _playerStatsController;
     [SerializeField] private GameObject dronePrefab;
-    [SerializeField] private float spawnDistance = 5f; // The distance the player has to move before the drone spawns
     private WeaponStats _weaponStats;
     private Vector3 _lastPlayerPosition;
     [SerializeField] private float totalDistanceMoved;
-    [SerializeField] private float destroyTime = 10f;
     
     private void Awake()
     {
@@ -28,12 +26,11 @@ public class WeaponDrone : MonoBehaviour
 
         totalDistanceMoved += distanceMoved;
 
-        if (totalDistanceMoved >= spawnDistance) 
+        if (totalDistanceMoved >= _weaponStats.GetAttackCooldown()) 
         {
             SpawnDrone(); // Spawn the drone
             
             totalDistanceMoved = 0f; // Reset the total distance moved
-
         }
 
         _lastPlayerPosition = currentPlayerPosition;
@@ -47,6 +44,6 @@ public class WeaponDrone : MonoBehaviour
 
         dronesScript.GetWeaponStats(_weaponStats); // Pass the WeaponStats script to the drone
         
-        Destroy(drone, destroyTime); // Destroy the drone after x seconds
+        Destroy(drone, _weaponStats.GetAttackLifetime()); // Destroy the drone after x seconds
     }
 }
