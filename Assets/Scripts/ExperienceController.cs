@@ -43,7 +43,7 @@ public class ExperienceController : MonoBehaviour
         {
             _talentManager = GameObject.Find("TalentMenu").GetComponent<TalentManager>();
         }
-        Debug.Log("LEVEL UP");
+        //Debug.Log("LEVEL UP");
         level.value++;
         _talentManager.OpenTalentMenu(level.value);
         experience.value -= baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value - 1);

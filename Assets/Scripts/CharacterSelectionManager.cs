@@ -35,7 +35,7 @@ public class CharacterSelectionManager : MonoBehaviour
         charactersSaved++;
         if (charactersSaved >= numberOfExpectedPlayers)
         {
-            Debug.Log("Characters saved, proceeding to load level...");
+            //Debug.Log("Characters saved, proceeding to load level...");
             GameManager.SaveCharacterSelectionsAndLoadLevel(selectedCharacters);
         }
     }

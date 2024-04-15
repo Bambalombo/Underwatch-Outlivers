@@ -1,119 +1,112 @@
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
+    // SerializeField attributes allow these variables to be adjusted in the Unity Inspector
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float normalStateDuration; // Duration of normal state in seconds
-    [SerializeField] private float rageStateDuration; // Duration of rage state in seconds
     [SerializeField] private float bulletSpeed; // Speed of bullets
     [SerializeField] private float normalFireRate; // Bullets per second in normal state
     [SerializeField] private float rageFireRate; // Bullets per second in rage state
-    [SerializeField] private float bulletDamage; // Damage of bullets
-    [SerializeField] private float bulletLifetime; // Lifetime of bullets in seconds
-    [SerializeField] private float lastFireTime = 0f; // Time since the last fire
+    [SerializeField] private float lastFireTime; // Time since the last fire
+    [SerializeField] private float timeSinceLastBullet; // Time since the last bullet
 
     private enum State { Normal, Rage }
     [SerializeField] private State currentState;
     [SerializeField] private GameObject[] players;
-    
-    private EnemyStatsController enemyStatsController;
-    [SerializeField] private SpawnerEnemyController _spawnerEnemyController;
+
+    private EnemyStatsController _enemyStatsController;
     private Transform _bulletParent;
+
+    private float _currentAngle;
+    private SpawnerEnemyController _spawnerEnemyController;
 
     private void Start()
     {
         _spawnerEnemyController = GameManager.GetSpawnerEnemyControllerParent().GetComponent<SpawnerEnemyController>();
         
-        enemyStatsController = GetComponent<EnemyStatsController>();
+        _enemyStatsController = GetComponent<EnemyStatsController>();
         players = GameManager.GetPlayerGameObjects();
-        StartCoroutine(StateMachine());
-        
-        bulletPrefab.GetComponent<BossBullet>().SetDamage(bulletDamage);
         _bulletParent = GameManager.GetBulletParent().transform;
+        StartCoroutine(StateMachine());
     }
 
     private IEnumerator StateMachine()
     {
         while (true)
         {
-            if (enemyStatsController.GetCurrentHealth() <= enemyStatsController.GetMaxHealth() * 0.5f)
+            float currentHealth = _enemyStatsController.GetCurrentHealth();
+            float maxHealth = _enemyStatsController.GetMaxHealth();
+
+            if (currentHealth <= maxHealth * 0.5f)
             {
                 currentState = State.Rage;
-                yield return new WaitForSeconds(rageStateDuration);
             }
             else
             {
                 currentState = State.Normal;
-                yield return new WaitForSeconds(normalStateDuration);
             }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
-
+    
     private void FixedUpdate()
     {
-        if (enemyStatsController.GetIsFoundByPlayer())
+        if (!_enemyStatsController.GetIsFoundByPlayer()) return;
+        
+        timeSinceLastBullet += Time.fixedDeltaTime;
+        if (Time.time >= lastFireTime + 1f / normalFireRate)
         {
-            if (Time.time >= lastFireTime + 1f / normalFireRate)
-            {
-                switch (currentState)
-                {
-                    case State.Normal:
-                        NormalShootAtPlayers();
-                        break;
-                    case State.Rage:
-                        RageShootSpiral();
-                        break;
-                }
-
-                lastFireTime = Time.time;
-            }
+            Shoot();
+            lastFireTime = Time.time;
         }
     }
+    
+    private void Shoot()
+    {
+        switch (currentState)
+        {
+            case State.Normal:
+                ShootSpiral();
+                break;
+            case State.Rage:
+                ShootAtPlayers();
+                break;
+        }
+        timeSinceLastBullet = 0f;
+    }
 
-    private void NormalShootAtPlayers()
+    private void ShootAtPlayers()
     {
         foreach (var player in players)
         {
             if (player != null)
             {
                 Vector3 direction = (player.transform.position - transform.position).normalized;
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, _bulletParent);
-                var bc = bullet.GetComponent<BulletController>();
-                bc.Initialize(direction,bulletSpeed,enemyStatsController);
+                FireBullet(direction);
             }
         }
     }
 
-    private void RageShootSpiral()
+    private void ShootSpiral()
     {
         float angleStep = 360f / rageFireRate;
-        for (int i = 0; i < rageFireRate; i++)
-        {
-            float angle = i * angleStep;
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, _bulletParent);
-            StartCoroutine(MoveBullet(bullet, direction, bulletSpeed));
-        }
+        _currentAngle += angleStep;
+        float angle = _currentAngle * Mathf.Deg2Rad;
+        Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        FireBullet(direction);
     }
 
-    private IEnumerator MoveBullet(GameObject bullet, Vector3 direction, float speed)
+    private void FireBullet(Vector3 direction)
     {
-        float elapsedTime = 0f;
-
-        while (bullet != null && elapsedTime < bulletLifetime)
-        {
-            bullet.transform.position += direction * (speed * Time.deltaTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        if (bullet != null)
-        {
-            Destroy(bullet);
-        }
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, _bulletParent);
+        var bc = bullet.GetComponent<BulletController>();
+        bc.Initialize(direction, bulletSpeed, _enemyStatsController);
     }
-    
+
+
     private void OnDestroy()
     {
         _spawnerEnemyController.RemoveEnemyFromList(gameObject);

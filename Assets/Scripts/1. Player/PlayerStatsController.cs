@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerStatsController : MonoBehaviour
 {
     [Header("Player Stats")]
+    [SerializeField] private bool playerCanLooseHealth = true;
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxHealth;
     [SerializeField] private float respawnTime = 15f;
@@ -56,11 +57,11 @@ public class PlayerStatsController : MonoBehaviour
         }
         else if (value < 0)
         {
-            currentHealth = 0;
+            currentHealth = playerCanLooseHealth ? 0 : maxHealth; // Set health to maxHealth when playerCanLooseHealth is false
         }
         else
         {
-            currentHealth = value;
+            currentHealth = playerCanLooseHealth ? value : maxHealth; // Set health to maxHealth when playerCanLooseHealth is false
         }
         
     }

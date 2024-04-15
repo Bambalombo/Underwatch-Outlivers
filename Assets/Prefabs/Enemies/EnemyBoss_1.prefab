@@ -505,8 +505,9 @@ MonoBehaviour:
   bulletDamage: 3
   bulletLifetime: 5
   lastFireTime: 0
-  currentState: 0
+  currentState: 1
   players: []
+  _spawnerEnemyController: {fileID: 0}
 --- !u!114 &8933796695499925440
 MonoBehaviour:
   m_ObjectHideFlags: 0

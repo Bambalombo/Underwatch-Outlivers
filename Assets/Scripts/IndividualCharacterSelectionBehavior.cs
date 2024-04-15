@@ -39,13 +39,13 @@ public class IndividualCharacterSelectionBehavior : MonoBehaviour
         if (characterSprites == null || characterSprites.Length == 0) return;
 
         currentSpriteIndex--;
-        Debug.Log($"Before boundary check - Going Left, Current sprite index: {currentSpriteIndex}");
+        //Debug.Log($"Before boundary check - Going Left, Current sprite index: {currentSpriteIndex}");
 
         if (currentSpriteIndex < 0)
         {   
             currentSpriteIndex = characterSprites.Length - 1; // Cycle back to last sprite
         }
-        Debug.Log($"After boundary check - Going Left, Current sprite index: {currentSpriteIndex}");
+        //Debug.Log($"After boundary check - Going Left, Current sprite index: {currentSpriteIndex}");
 
         UpdateCharacterSelectionUI();
     }
@@ -55,13 +55,13 @@ public class IndividualCharacterSelectionBehavior : MonoBehaviour
         if (characterSprites == null || characterSprites.Length == 0) return;
 
         currentSpriteIndex++;
-        Debug.Log($"Before boundary check - Going Right, Current sprite index: {currentSpriteIndex}");
+        //Debug.Log($"Before boundary check - Going Right, Current sprite index: {currentSpriteIndex}");
 
         if (currentSpriteIndex >= characterSprites.Length)
         {
             currentSpriteIndex = 0; // Cycle back to first sprite
         }
-        Debug.Log($"After boundary check - Going Right, Current sprite index: {currentSpriteIndex}");
+        //Debug.Log($"After boundary check - Going Right, Current sprite index: {currentSpriteIndex}");
 
         UpdateCharacterSelectionUI();
     }
@@ -70,7 +70,7 @@ public class IndividualCharacterSelectionBehavior : MonoBehaviour
     private void UpdateCharacterSelectionUI()
     {
         CharacterSprite.sprite = characterSprites[currentSpriteIndex];
-        Debug.Log($"Changing Sprite to {characterSprites[currentSpriteIndex].name}");
+        //Debug.Log($"Changing Sprite to {characterSprites[currentSpriteIndex].name}");
         switch (currentSpriteIndex)
         {
             case 0:

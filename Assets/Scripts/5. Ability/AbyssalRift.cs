@@ -71,7 +71,7 @@ public class AbyssalRift : MonoBehaviour
                 if (soulHarvestTalentActivated && Time.time >= nextHealTime)
                 {
                     nextHealTime = Time.time + 0.5f; // Set the next allowable heal time
-                    Debug.Log("Checking random value");
+                    //Debug.Log("Checking random value");
                     if (Random.value < soulHarvestHealChance)
                     {
                         _playerHealthController.PlayerHeal(soulHarvestHealAmount);

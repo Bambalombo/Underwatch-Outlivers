@@ -18,13 +18,13 @@ public class TalentUI : MonoBehaviour {
 
     public void SetTalent(Talent talent) {
         currentTalent = talent; // Store the current talent for reference
-        Debug.Log($"Current talent = {currentTalent}");
+        //Debug.Log($"Current talent = {currentTalent}");
         talentNameText.text = talent.name;
         talentDescriptionText.text = talent.description;
     }
 
     public void OnTalentSelected() {
-        Debug.Log("Talent selected!");
+        //Debug.Log("Talent selected!");
         if (talentManager == null)
         {
             talentManager = GameObject.Find("TalentMenu").GetComponent<TalentManager>();

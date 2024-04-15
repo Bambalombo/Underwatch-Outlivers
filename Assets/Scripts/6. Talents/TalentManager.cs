@@ -47,7 +47,7 @@ public class TalentManager : MonoBehaviour
                 talentBackground.SetActive(false);
             }
             
-            Debug.Log("Enough talents picked, time to UNPAUSE");
+            //Debug.Log("Enough talents picked, time to UNPAUSE");
             _gameManager.TogglePause();
         }
     }
