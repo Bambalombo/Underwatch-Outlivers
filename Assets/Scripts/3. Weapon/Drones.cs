@@ -35,6 +35,9 @@ public class Drones : MonoBehaviour
 
     private IEnumerator FireLaserAutomatically()
     {
+        yield return new WaitForSeconds(0.5f);
+        FireLaser();
+        
         while (true)
         {
             FireLaser();
@@ -91,7 +94,7 @@ public class Drones : MonoBehaviour
 
     private IEnumerator FadeOutLaserCoroutine()
     {
-        float fadeDuration = _weaponStats.GetAttackLifetime();
+        float fadeDuration = _weaponStats.GetAttackCooldown()/2;
         float fadeSpeed = 1 / fadeDuration;
 
         for (float t = 0; t < fadeDuration; t += Time.deltaTime)

@@ -26,7 +26,7 @@ public class WeaponDrone : MonoBehaviour
 
         totalDistanceMoved += distanceMoved;
 
-        if (totalDistanceMoved >= _weaponStats.GetAttackCooldown()) 
+        if (totalDistanceMoved >= _weaponStats.GetAttackCooldown()*4) 
         {
             SpawnDrone(); // Spawn the drone
             
