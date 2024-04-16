@@ -11,12 +11,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private IntVariable nextLevelExperience;
     [SerializeField] private IntVariable level;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        UpdateExperienceUI(experience.value, nextLevelExperience.value);
-        UpdateLevelUI(level.value);
+        UpdateExpUI();
     }
-    
 
     private void UpdateExperienceUI(int exp, int nextLevelExp)
     {
@@ -26,5 +24,11 @@ public class UIManager : MonoBehaviour
     private void UpdateLevelUI(int lvl)
     {
         levelText.text = "Lvl: " + lvl;
+    }
+
+    public void UpdateExpUI()
+    {
+        UpdateExperienceUI(experience.value, nextLevelExperience.value);
+        UpdateLevelUI(level.value);
     }
 }

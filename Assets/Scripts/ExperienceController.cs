@@ -10,6 +10,7 @@ public class ExperienceController : MonoBehaviour
     [SerializeField] private float levelScalingFactor = 1.5f;
     private TalentManager _talentManager;
     
+    //private UIManager uiManager;
 
 
     private void Start()
@@ -47,7 +48,11 @@ public class ExperienceController : MonoBehaviour
         level.value++;
         experience.value -= baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value - 1);
         
-        _talentManager.OpenTalentMenu(level.value);
+        // TODO: Could not get the reference from GameManager for some reason
+        var uiManager = FindObjectOfType<UIManager>().GetComponent<UIManager>();
+        uiManager.UpdateExpUI();
         
+        _talentManager.OpenTalentMenu(level.value);
+
     }
 }
