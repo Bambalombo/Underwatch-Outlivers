@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FixedMultiplayerCamera : MonoBehaviour
@@ -7,9 +8,11 @@ public class FixedMultiplayerCamera : MonoBehaviour
     public float smoothTime = 0; //Vi kan sætte smooth time hvis vi vil, men det ser lidt fucked up i single player tbh 
 
     private Vector3 velocity;
+    private GameManager _gameManager;
     
     void Start()
     {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         players = GameManager.GetPlayerGameObjects();
     }
 
@@ -36,11 +39,15 @@ public class FixedMultiplayerCamera : MonoBehaviour
             return players[0].transform.position;
         }
 
-        var bounds = new Bounds(players[0].transform.position, Vector3.zero);
-        for (int i = 0; i < players.Length; i++)
+        var playerIndices = _gameManager.GetAlivePlayers();
+        var bounds = new Bounds(players[playerIndices[0]].transform.position, Vector3.zero);
+        
+        foreach (var i in playerIndices)
+        //for (int i = 0; i < players.Length; i++)
         {
             bounds.Encapsulate(players[i].transform.position);
         }
+        
         return bounds.center;
     }
 }

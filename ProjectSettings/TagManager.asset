@@ -14,6 +14,8 @@ TagManager:
   - WeaponPickup
   - RangeIndicator
   - BossWeapon
+  - DeathIcons
+  - DeathIconText
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -31,12 +34,15 @@ public class GameManager : MonoBehaviour
 
     private MultiplayerEventSystem[] playerMultiplayerEventSystems;
     private PlayerHealthController[] _playerHealthControllers;
+    private PlayerStatsController[] _playerStatsControllers;
 
     private static bool _isPaused;
     
     //UI 
     public GameObject DefaultMenuUI;
     public GameObject CharacterSelectionUI;
+    private FixedMultiplayerCamera _cameraManager;
+    private DeathIconTimer _deathIconTimer;
 
 
     private void Awake()
@@ -61,8 +67,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
 
+    private void Start()
+    {
+        UpdateCameraReference();
+    }
+
+    private void UpdateCameraReference()
+    {
+        _cameraManager = Camera.main.GetComponent<FixedMultiplayerCamera>();
+    }
+    
     // Public static methods to access the private fields
     public static Transform GetBulletParent() => _instance._bulletParent;
     public static Transform GetDamagePopupParent() => _instance._damagePopupParent;
@@ -109,19 +124,33 @@ public class GameManager : MonoBehaviour
         GameObject nearestPlayer = null;
         float closestDistanceSqr = Mathf.Infinity;
 
+        for (int i = 0; i < GetNumberOfPlayers(); i++)
+        {
+            Vector3 directionToPlayer = PlayerGameObjectsArray[i].transform.position - currentPosition;
+            
+            float dSqrToPlayer = directionToPlayer.sqrMagnitude;
+            if (dSqrToPlayer < closestDistanceSqr && GetPlayerHealthControllers()[i].IsAlive())
+            {
+                closestDistanceSqr = dSqrToPlayer;
+                nearestPlayer = PlayerGameObjectsArray[i];
+            }
+        }
+        
+        /*
         foreach (GameObject player in PlayerGameObjectsArray)
         {
             if (player != null)
             {
                 Vector3 directionToPlayer = player.transform.position - currentPosition;
                 float dSqrToPlayer = directionToPlayer.sqrMagnitude;
-                if (dSqrToPlayer < closestDistanceSqr)
+                if (dSqrToPlayer < closestDistanceSqr && player.GetComponent<PlayerHealthController>().CheckIfAlive()
                 {
                     closestDistanceSqr = dSqrToPlayer;
                     nearestPlayer = player;
                 }
             }
         }
+        */
         return nearestPlayer;
     }
 
@@ -133,11 +162,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        OnPlayerDeath += KillPlayer;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        OnPlayerDeath -= KillPlayer;
     }
     
     private void OnDestroy()
@@ -164,6 +195,8 @@ public class GameManager : MonoBehaviour
     {
         if (!_isPaused)
             TogglePause();
+        
+        // Game over sequence here ...
         Debug.Log("All players are dead. Game over.");
     }
 
@@ -174,6 +207,8 @@ public class GameManager : MonoBehaviour
             SetupSceneDependencies();
             CreatePlayers(numberOfPlayers);
         }
+        
+        UpdateCameraReference();
     }
     
     private void SetupSceneDependencies()
@@ -221,6 +256,7 @@ public class GameManager : MonoBehaviour
             players = new GameObject[playersToCreate];
             playerMultiplayerEventSystems = new MultiplayerEventSystem[playersToCreate];
             _playerHealthControllers = new PlayerHealthController[playersToCreate];
+            _playerStatsControllers = new PlayerStatsController[playersToCreate];
 
             for (int i = 0; i < playersToCreate; i++)
             {
@@ -228,6 +264,13 @@ public class GameManager : MonoBehaviour
                 Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
                 players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
                 players[i].name = "Player_" + (i + 1);
+                
+                // Fill local lists of health and stats controllers
+                PlayerHealthController playerHealthController = players[i].GetComponentInChildren<PlayerHealthController>(true);
+                _playerHealthControllers[i] = playerHealthController;
+                PlayerStatsController playerStatsController = players[i].GetComponentInChildren<PlayerStatsController>(true);
+                playerStatsController.SetPlayerIndex(i);
+                _playerStatsControllers[i] = playerStatsController;
                 
                 //Set the class of the player
                 players[i].GetComponent<ClassAssets>().ChangeClass(_selectedCharacters[i]);
@@ -245,7 +288,6 @@ public class GameManager : MonoBehaviour
 
                 // Find the MultiplayerEventSystem component within the instantiated player's children
                 MultiplayerEventSystem playerEventSystem = players[i].GetComponentInChildren<MultiplayerEventSystem>(true);
-                PlayerHealthController playerHealthController = players[i].GetComponentInChildren<PlayerHealthController>(true);
                 
                 if (playerCanvas != null && playerEventSystem != null)
                 {
@@ -254,7 +296,6 @@ public class GameManager : MonoBehaviour
         
                     // Store the reference to the player's MultiplayerEventSystem for potential future use
                     playerMultiplayerEventSystems[i] = playerEventSystem;
-                    _playerHealthControllers[i] = playerHealthController;
                 }
                 else
                 {
@@ -262,6 +303,8 @@ public class GameManager : MonoBehaviour
                 }
             }
             
+            _deathIconTimer = GameObject.FindWithTag("DeathIcons").GetComponent<DeathIconTimer>();
+            _deathIconTimer.CreateDeathIcons(playersToCreate, _selectedCharacters);
         }
     }
 
@@ -301,6 +344,72 @@ public class GameManager : MonoBehaviour
         return _experienceController;
     }
 
+    public delegate void PlayerDeathHandler(int playerIndex, float respawnTime);
+    public static event PlayerDeathHandler OnPlayerDeath;
+    public void PlayerDied(int playerIndex, float respawnTime)
+    {
+        // Check to see if we end the game
+        bool anyPlayersAreAlive = GetPlayerHealthControllers().Any(player => player.IsAlive());
+        
+        if (!anyPlayersAreAlive && EndGameEnabled())
+        {
+            StartGameOverSequence();
+        }
+        else
+        {
+            OnPlayerDeath?.Invoke(playerIndex, respawnTime);
+            StartCoroutine(KillAndRespawnPlayer(playerIndex, respawnTime));
+        }
+    }
 
+    private void KillPlayer(int playerIndex, float respawnTime)
+    {
+        StartCoroutine(KillAndRespawnPlayer(playerIndex, respawnTime));
+    }
+
+    private IEnumerator KillAndRespawnPlayer(int playerIndex, float respawnTime)
+    {
+        var player = players[playerIndex];
+        player.SetActive(false);
+        
+        Debug.Log("Respawn time " + respawnTime);
+        
+        yield return new WaitForSeconds(respawnTime);
+        
+        player.SetActive(true);
+        Debug.Log($"prev pos, {player.transform.position}");
+        
+        var newPos = _cameraManager.GetCenterPoint();
+        player.transform.position = newPos;
+
+        foreach (var pos in _playerStatsControllers)
+        {
+            Debug.Log($"new pos, {pos.GetPlayerPosition()}");
+        }
+        
+        PlayerRespawned(playerIndex);
+    }
+    
+    public List<int> GetAlivePlayers()
+    {
+        List<int> alivePlayers = new List<int>();
+        for (int i = 0; i < _playerHealthControllers.Length; i++)
+        {
+            if (_playerHealthControllers[i].IsAlive())
+            {
+                alivePlayers.Add(i);
+            }
+        }
+        return alivePlayers;
+    }
+    
+    public delegate void PlayerRespawnHandler(int playerIndex);
+
+    public static event PlayerRespawnHandler OnPlayerRespawn;
+
+    public void PlayerRespawned(int playerIndex)
+    {
+        OnPlayerRespawn?.Invoke(playerIndex);
+    }
 }
 

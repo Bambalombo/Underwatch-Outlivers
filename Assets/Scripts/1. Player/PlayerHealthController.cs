@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -13,8 +14,7 @@ public class PlayerHealthController : MonoBehaviour
     
     [Header("Player Death")]
     [SerializeField] private bool canDie = true;
-    private TextMeshProUGUI _deathText;
-    private bool _isAlive = true;
+    [SerializeField] private bool _isAlive = true;
     private Coroutine _respawnPlayerCoroutine;
     
     [Header("Player Taking Damage")]
@@ -25,25 +25,28 @@ public class PlayerHealthController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Coroutine _flashSpriteColorCoroutine;
     
-    // References
+    [Header("Script References")]
     private PlayerStatsController _playerStatsController;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private DeathIconTimer deathIconTimer;
 
     
-    
-    private void Awake()
+    private void Start()
     {
-        _deathText = GameObject.FindWithTag("DeathTextTag").GetComponent<TextMeshProUGUI>();
-        _deathText.enabled = false;
-        
         _playerStatsController = GetComponent<PlayerStatsController>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
         
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        deathIconTimer = GameObject.FindWithTag("DeathIcons").GetComponent<DeathIconTimer>();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnPlayerRespawn += RespawnPlayer;
     }
     
-    private bool CheckIfAlive()
+    public bool IsAlive()
     {
         return _isAlive;
     }
@@ -56,16 +59,7 @@ public class PlayerHealthController : MonoBehaviour
        
         if (_playerStatsController.GetCurrentHealth() <= 0)
         {
-            if (!_isAlive)
-                return;
-            
-            _isAlive = false;
-            bool anyPlayerAlive = GameManager.GetPlayerHealthControllers().Any(player => player.CheckIfAlive());
-           
-            if (!anyPlayerAlive && gameManager.EndGameEnabled())
-                gameManager.StartGameOverSequence();
-
-            KillPlayer();
+            TryKillPlayer();
             return;
         }
         
@@ -73,6 +67,25 @@ public class PlayerHealthController : MonoBehaviour
             StopCoroutine(_flashSpriteColorCoroutine);
         
         _flashSpriteColorCoroutine = StartCoroutine(FlashSpriteColor(hurtColor));
+    }
+
+    public void TryKillPlayer()
+    {
+        Debug.Log("Trying to kill player");
+        if (!_isAlive)
+            return;
+            
+        _isAlive = false;
+            
+        bool anyPlayerAlive = GameManager.GetPlayerHealthControllers().Any(player => player.IsAlive());
+        if (!anyPlayerAlive && gameManager.EndGameEnabled())
+            gameManager.StartGameOverSequence();
+
+        if (canDie)
+        {
+            Debug.Log("Killing player.");
+            gameManager.PlayerDied(_playerStatsController.GetPlayerIndex(), _playerStatsController.GetRespawnTime());
+        }
     }
     
     public void PlayerHeal(float healAmount)
@@ -124,34 +137,12 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
-    private void KillPlayer()
+    private void RespawnPlayer(int playerIndex)
     {
-        if (!canDie) return;
+        if (playerIndex != _playerStatsController.GetPlayerIndex())
+            return;
         
-        _deathText.enabled = true;
-        _deathText.text = "You Died!";
-        
-        _respawnPlayerCoroutine = StartCoroutine(StartRespawnTimer());
-    }
-    
-    private IEnumerator StartRespawnTimer()
-    {
-        var respawnTime = _playerStatsController.GetRespawnTime();
-        
-        while (respawnTime > 0)
-        {
-            yield return new WaitForSeconds(1f);
-            respawnTime--;
-            Debug.Log($"Respawning in {respawnTime} seconds.");
-        }
-        
-        RespawnPlayer();
-    }
-
-    private void RespawnPlayer()
-    {
         _isAlive = true;
-        _deathText.enabled = false;
         _playerStatsController.SetCurrentHealth(_playerStatsController.GetMaxHealth());
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
     }
@@ -171,5 +162,10 @@ public class PlayerHealthController : MonoBehaviour
         }
 
         _spriteRenderer.color = _originalColor; 
+    }
+
+    public void SetAlive(bool value)
+    {
+        _isAlive = value;
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 public class PlayerStatsController : MonoBehaviour
 {
     [Header("Player Stats")]
+    [SerializeField] private int playerIndex;
+    [SerializeField] private int classIndex;
+    
+    [Header("Player Stats")]
     [SerializeField] private bool playerCanLooseHealth = true;
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxHealth;
@@ -24,7 +28,6 @@ public class PlayerStatsController : MonoBehaviour
 
     [SerializeField] private Vector2 lastMoveDirection;
     // NOT SURE IF PLAYERS SHOULD HAVE INDIVIDUAL EXPERIENCE
-
     public PlayerHealthController playerHealthController;
     
     [Header("Class Attributes")]
@@ -124,7 +127,8 @@ public class PlayerStatsController : MonoBehaviour
     }*/
     public void SetPlayerPosition(Vector3 value)
     {
-        playerPosition = value;
+        playerPosition.x = value.x;
+        playerPosition.y = value.y;
     }
     
     public void SetLastMoveDirection(Vector2 value)
@@ -153,15 +157,18 @@ public class PlayerStatsController : MonoBehaviour
 
     public Vector2 GetLastMoveDirection() => lastMoveDirection;
 
-    public void ChangePlayerClass(int classIndex)
+    public void ChangePlayerClass(int newClassIndex)
     {
-        if (classIndex < 0 || classIndex >= System.Enum.GetValues(typeof(PlayerClass)).Length)
+        if (newClassIndex < 0 || newClassIndex >= System.Enum.GetValues(typeof(PlayerClass)).Length)
         {
             Debug.LogError("Invalid class index.");
             return;
         }
 
-        playerClass = (PlayerClass)classIndex;
+        playerClass = (PlayerClass)newClassIndex;
+        classIndex = newClassIndex;
     }
 
+    public int GetPlayerIndex() => playerIndex;
+    public void SetPlayerIndex(int value) => playerIndex = value;
 }
