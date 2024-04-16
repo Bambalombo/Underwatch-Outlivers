@@ -59,7 +59,7 @@ public class NearestEnemyFinder : MonoBehaviour
     {
         var enemyHitList = new List<GameObject>();
         var enemyLookList = new List<GameObject>();
-        enemyLookList.AddRange(_spawnerEnemyController.GetAllEnemiesList());
+        enemyLookList.AddRange(_enemySpawner.GetAllEnemiesList());
         var lastPos = startPos;
         
         for (int i = 0; i < (int)targetCount; i++)
