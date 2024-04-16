@@ -3273,6 +3273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee0b8ecace7c4ce4905af2690de94bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCanLooseHealth: 1
   currentHealth: 0
   maxHealth: 100
   respawnTime: 15
@@ -3663,6 +3664,11 @@ MonoBehaviour:
     description: Decreaes ability cooldown by 5%
     level: 0
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+  - name: BloodType00
+    description: Adds a 50% chance for enemies hit by melee slash to leave a pool
+      of blood that damage all enemies within its range
+    level: 0
+    talentPrefab: {fileID: 4594324479640580164, guid: 6b8013e7aa0b2004fb1a7a1c479f65b7, type: 3}
   XI_017talents:
   - name: Player Health Increase
     description: Increases health by 5%

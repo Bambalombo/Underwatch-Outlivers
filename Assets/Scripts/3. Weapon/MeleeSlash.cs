@@ -13,6 +13,11 @@ public class MeleeSlash : MonoBehaviour
     private PlayerStatsController playerStatsController;
     private PlayerHealthController playerHealthController;
     private Vector2 lastMoveDirection = Vector2.right; // Default direction if the player has not moved
+    
+    //Talent variables
+    //Bloodtype00 
+    public bool bloodType00Enabled;
+    
 
     void Start()
     {
@@ -69,6 +74,11 @@ public class MeleeSlash : MonoBehaviour
                         // Deal damage to the enemy
                         enemy.EnemyTakeDamage(_weaponStats.GetDamage());
                         playerHealthController.PlayerHeal(_weaponStats.GetLifeStealAmount());
+
+                        if (bloodType00Enabled)
+                        {
+                            this.gameObject.GetComponent<AoeDamagePool>().AttemptInitialize(_weaponStats.GetDamage()/10, hit.gameObject.transform.position);
+                        }
                     }
                 }
             }
