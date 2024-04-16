@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeSlash : MonoBehaviour
@@ -17,22 +19,25 @@ public class MeleeSlash : MonoBehaviour
     //Talent variables
     //Bloodtype00 
     public bool bloodType00Enabled;
-    
+
+    private void Awake()
+    {
+        var grandParent = transform.parent.parent;
+        playerStatsController = grandParent.GetComponent<PlayerStatsController>();
+        playerHealthController = grandParent.GetComponent<PlayerHealthController>();
+        _weaponStats = GetComponent<WeaponStats>();
+    }
 
     void Start()
     {
-        // Get the WeaponStats component
-        _weaponStats = GetComponent<WeaponStats>();
-        
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.widthMultiplier = 0.05f;
         lineRenderer.positionCount = 3;
         lineRenderer.enabled = false; // Initially hide the line
+    }
 
-        var grandParent = transform.parent.parent;
-        playerStatsController = grandParent.GetComponent<PlayerStatsController>();
-        playerHealthController = grandParent.GetComponent<PlayerHealthController>();
-
+    private void OnEnable()
+    {
         StartCoroutine(AttackRoutine());
     }
 

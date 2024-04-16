@@ -77,6 +77,32 @@ public class NearestEnemyFinder : MonoBehaviour
         return enemyHitList;
     }
     
+    public List<GameObject> GetChainOfEnemiesInProximity(Vector3 startPos, float targetCount, float proximityRange)
+    {
+        var enemyHitList = new List<GameObject>();
+        var enemyLookList = new List<GameObject>();
+        enemyLookList.AddRange(_spawnerEnemyController.GetAllEnemiesList());
+        var lastPos = startPos;
+        
+        for (int i = 0; i < (int)targetCount; i++)
+        {
+            // we get the nearest enemy and save it in the "currentEnemy variable"
+            var currentEnemy = GetNearestEnemy(lastPos, enemyLookList);
+            
+            float distance = Vector2.Distance(lastPos, currentEnemy.transform.position);
+            if (distance < proximityRange || currentEnemy == null) break;
+            
+            // we then add the current enemy to the list of enemies to be hit and removes it from the look list
+            enemyHitList.Add(currentEnemy);
+            enemyLookList.Remove(currentEnemy);
+
+            // lastly, we update lastPos to the current enemy position, and also add it to pos list
+            lastPos = currentEnemy.transform.position;
+        }
+
+        return enemyHitList;
+    }
+    
     public Dictionary<List<GameObject>,List<Vector3>> GetChainOfEnemiesAndPositions(Vector3 lastPos, float targetCount)
     {
         var enemyLookList = new List<GameObject>();

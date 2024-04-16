@@ -12,12 +12,16 @@ public class VoidBlast : MonoBehaviour
 
     public Vector2 projectileScale;
 
-    void Start()
+    void Awake()
     {
         projectileScale = new Vector2(1, 1); //Default projectile scale but talents (such as the AngryKitten talent) will increase this
         var grandParent = transform.parent.parent;
         playerStatsController = grandParent.GetComponent<PlayerStatsController>();
         _weaponStats = GetComponent<WeaponStats>();
+    }
+    
+    private void OnEnable()
+    {
         StartCoroutine(AttackRoutine());
     }
 
