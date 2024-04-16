@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TalentUI : MonoBehaviour {
     public TextMeshProUGUI talentNameText;
     public TextMeshProUGUI talentDescriptionText;
     // Reference to TalentManager to notify about talent selection
     public TalentManager talentManager;
-    public Sprite talentSprite;
+    public Image talentImage;
     public GameObject playerGameobject;
 
     // The talent this UI represents
@@ -21,6 +22,7 @@ public class TalentUI : MonoBehaviour {
         //Debug.Log($"Current talent = {currentTalent}");
         talentNameText.text = talent.name;
         talentDescriptionText.text = talent.description;
+        talentImage.sprite = talent.talentIcon;
     }
 
     public void OnTalentSelected() {

@@ -6,6 +6,7 @@ public class Talent {
     public string description;
     public int level; // Current level of the talent.
     public GameObject talentPrefab;
+    public Sprite talentIcon;
 
     public Talent(string name, string description) {
         this.name = name;
