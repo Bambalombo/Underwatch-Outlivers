@@ -3,41 +3,19 @@ using UnityEngine;
 
 public class NearestEnemyFinder : MonoBehaviour
 {
-    private SpawnerEnemyController _spawnerEnemyController;
-    //[SerializeField] private List<GameObject> enemies;
-
-    //[SerializeField] private GameObject nearestEnemy;
+    private EnemySpawner _enemySpawner;
     
     private void Awake()
     {
-        _spawnerEnemyController = GetComponent<SpawnerEnemyController>();
+        _enemySpawner = GetComponent<EnemySpawner>();
     }
-
-    /*private void FixedUpdate()
-    {
-        Dictionary<GameObject, GameObject> nearestEnemies = GetNearestEnemies();
-    }*/
-
-    /*private Dictionary<GameObject, GameObject> GetNearestEnemies()
-    {
-        Dictionary<GameObject, GameObject> nearestEnemies = new Dictionary<GameObject, GameObject>();
-        GameObject[] players = GameManager.GetPlayerGameObjects();
-
-        foreach (var player in players)
-        {
-            GameObject nearestEnemy = GetNearestEnemy(player.transform.position);
-            nearestEnemies.Add(player, nearestEnemy);
-        }
-
-        return nearestEnemies;
-    }*/
 
     public GameObject GetNearestEnemy(Vector2 position, List<GameObject> enemies = null)
     {
         GameObject nearestEnemy = null;
         float nearestDistance = Mathf.Infinity;
         if (enemies == null)
-            enemies = _spawnerEnemyController.GetAllEnemiesList();
+            enemies = _enemySpawner.GetAllEnemiesList();
         
         foreach (var enemy in enemies)
         {
@@ -58,7 +36,7 @@ public class NearestEnemyFinder : MonoBehaviour
     {
         var enemyHitList = new List<GameObject>();
         var enemyLookList = new List<GameObject>();
-        enemyLookList.AddRange(_spawnerEnemyController.GetAllEnemiesList());
+        enemyLookList.AddRange(_enemySpawner.GetAllEnemiesList());
         
         for (int i = 0; i < (int)targetCount; i++)
         {
@@ -106,7 +84,7 @@ public class NearestEnemyFinder : MonoBehaviour
     public Dictionary<List<GameObject>,List<Vector3>> GetChainOfEnemiesAndPositions(Vector3 lastPos, float targetCount)
     {
         var enemyLookList = new List<GameObject>();
-        enemyLookList.AddRange(_spawnerEnemyController.GetAllEnemiesList());
+        enemyLookList.AddRange(_enemySpawner.GetAllEnemiesList());
         var enemyHitList = new List<GameObject>();
         var enemyPosList = new List<Vector3>();
         

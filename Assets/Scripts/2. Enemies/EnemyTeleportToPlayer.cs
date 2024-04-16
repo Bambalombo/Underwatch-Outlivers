@@ -2,7 +2,7 @@
 
 public class EnemyTeleportToPlayer : MonoBehaviour
 {
-    private SpawnerEnemyController _spawnerEnemyController;
+    private EnemySpawnPosition _enemySpawnPosition;
     //[SerializeField] private Vector3Variable playerPosition;
     [SerializeField] private float maxDistanceFromPlayer;
     private FixedMultiplayerCamera _fixedMultiplayerCamera;
@@ -14,7 +14,7 @@ public class EnemyTeleportToPlayer : MonoBehaviour
         _fixedMultiplayerCamera = FindObjectOfType<FixedMultiplayerCamera>();
         
         var spawnerEnemyTransform = GameManager.GetSpawnerEnemyControllerParent();
-        _spawnerEnemyController = spawnerEnemyTransform.GetComponent<SpawnerEnemyController>();
+        _enemySpawnPosition = spawnerEnemyTransform.GetComponent<EnemySpawnPosition>();
     }
     
     private void FixedUpdate()
@@ -34,7 +34,7 @@ public class EnemyTeleportToPlayer : MonoBehaviour
         //Vector2 randomDirection = Random.insideUnitCircle.normalized;
         //Vector3 spawnPos = playerPosition.value + new Vector3(randomDirection.x, 0, randomDirection.y) * Random.Range(enemySpawner.SafeZoneRadius + 1, enemySpawner.SpawnRadius);
 
-        Vector3 spawnPos = _spawnerEnemyController.CalculateSpawnPosition(_fixedMultiplayerCamera.GetCenterPoint());
+        Vector3 spawnPos = _enemySpawnPosition.CalculateSpawnPosition(_fixedMultiplayerCamera.GetCenterPoint());
         
         transform.position = spawnPos;
     }

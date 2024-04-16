@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerEnemyController : MonoBehaviour
+public class OldSpawnerEnemyController : MonoBehaviour
 {
     [SerializeField] private GameObject commonEnemy, uncommonEnemy, rareEnemy, epicEnemy, legendaryEnemy;
     [SerializeField] private List<GameObject> bosses;
