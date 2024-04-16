@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 900832930478835379}
   - component: {fileID: 5069664392260033658}
   - component: {fileID: 45850737978651769}
+  - component: {fileID: -690048890690819015}
   m_Layer: 0
   m_Name: ElementalBolts
   m_TagString: Untagged
@@ -66,3 +67,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 244602473224163229, guid: a455ae59b97b94f59a88985c908702de, type: 3}
   basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
+  AoeDamagePool: {fileID: -690048890690819015}
+  aspectOfEarthEnabled: 0
+--- !u!114 &-690048890690819015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630830754980910555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34558d0654f9f8c408ed3833c90a424e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circlePrefab: {fileID: 7910206181747909105, guid: 6219c808ba54100489a556a97a7a3ebc, type: 3}
+  initialSize: 1
+  maxSize: 2
+  growSpeed: 0.1
+  duration: 4
+  spawnChance: 100

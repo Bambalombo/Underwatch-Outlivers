@@ -7,12 +7,14 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] private float destroyTime = 10f;
     private float impactDestroyTime;
-    
+
     private Vector3 _direction;
     private float _speed;
-    // private WeaponStats _weaponStats; // Store weapon stats
-    // private AbilityStats _abilityStats;
     private float _damage;
+
+    // Define a delegate and an event for bullet collision
+    public delegate void BulletHitHandler(GameObject enemy);
+    public event BulletHitHandler OnBulletHitEnemy;
 
     // Modified Initialize method to accept WeaponStats
     public void Initialize(Vector3 direction, float speed, IStatController damageSource, float killTime = 0)
@@ -22,7 +24,7 @@ public class BulletController : MonoBehaviour
         _speed = speed;
         impactDestroyTime = killTime;
         StartCoroutine(SendBulletFlying());
-    
+
         Destroy(gameObject, destroyTime);
     }
 
@@ -42,7 +44,9 @@ public class BulletController : MonoBehaviour
             var enemy = collision.gameObject.GetComponent<EnemyCombatController>();
             if (enemy != null)
             {
-                enemy.EnemyTakeDamage(_damage); // Adjust '10' if needed
+                enemy.EnemyTakeDamage(_damage);
+                // Fire the OnBulletHitEnemy event
+                OnBulletHitEnemy?.Invoke(collision.gameObject);
                 Destroy(gameObject, impactDestroyTime);
             }
         }
