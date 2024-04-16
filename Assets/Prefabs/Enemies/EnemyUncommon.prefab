@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b12c7d856636f45a4e9b581a9b7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 0
+  isFoundByPlayer: 0
   currentHealth: 0
   maxHealth: 25
   moveSpeed: 1.5
@@ -140,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
   enemyStatsController: {fileID: -4190917358582265219}
+  expParticleEffectPrefab: {fileID: 7393881730429135457, guid: fe231c6d81577094184ddd26bc525a02, type: 3}
 --- !u!114 &4426178556680646889
 MonoBehaviour:
   m_ObjectHideFlags: 0

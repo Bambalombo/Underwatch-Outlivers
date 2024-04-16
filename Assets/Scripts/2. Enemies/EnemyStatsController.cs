@@ -69,6 +69,7 @@ public class EnemyStatsController : MonoBehaviour, IStatController
     public float GetAttackCooldown() => attackCooldown;
     public GameObject GetExperienceDrop() => experienceDrop;
     public bool GetIsFoundByPlayer() => isFoundByPlayer;
+    public bool GetIsBoss() => isBoss;
     
     
 }

@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
   enemyStatsController: {fileID: -6628376797079429673}
+  expParticleEffectPrefab: {fileID: 7393881730429135457, guid: fe231c6d81577094184ddd26bc525a02, type: 3}
 --- !u!114 &3152952240785648398
 MonoBehaviour:
   m_ObjectHideFlags: 0

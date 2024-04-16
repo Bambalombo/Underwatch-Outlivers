@@ -484,6 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
   enemyStatsController: {fileID: -8671569779794781263}
+  expParticleEffectPrefab: {fileID: 7393881730429135457, guid: fe231c6d81577094184ddd26bc525a02, type: 3}
 --- !u!114 &-7502217279293819852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,17 +498,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6252570930536968202, guid: 9ba4ae3513d24d74594f9834a09aedb1, type: 3}
-  normalStateDuration: 30
-  rageStateDuration: 10
   bulletSpeed: 10
   normalFireRate: 2
   rageFireRate: 10
-  bulletDamage: 3
-  bulletLifetime: 5
   lastFireTime: 0
+  timeSinceLastBullet: 0
   currentState: 1
   players: []
-  _spawnerEnemyController: {fileID: 0}
 --- !u!114 &8933796695499925440
 MonoBehaviour:
   m_ObjectHideFlags: 0

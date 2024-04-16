@@ -8,6 +8,7 @@ public class EnemyCombatController : MonoBehaviour
     private Transform _experiencePickupParent;
     [SerializeField] private EnemyStatsController enemyStatsController;
     private SpawnerEnemyController _spawnerEnemyController;
+    [SerializeField] private GameObject expParticleEffectPrefab;
     
     private void Awake()
     {
@@ -38,12 +39,40 @@ public class EnemyCombatController : MonoBehaviour
     
     private void InstantiateExperiencePickup()
     {
-
-        Instantiate(enemyStatsController.GetExperienceDrop(), transform.position, 
-            Quaternion.identity, _experiencePickupParent.transform);
+        if (enemyStatsController.GetIsBoss())
+        {
+            BossExperienceDrop();
+        }
+        else
+        {
+            // Instantiate the experience drop
+            Instantiate(enemyStatsController.GetExperienceDrop(), transform.position, Quaternion.identity, _experiencePickupParent.transform);
+        }
         
         
         Destroy(gameObject); // Destroy the enemy object
+    }
+    
+    private void BossExperienceDrop()
+    {
+        Vector3 bossPosition = transform.position;
+        // Play the particle effect at the boss position
+        var expParticleEffect = Instantiate(expParticleEffectPrefab, bossPosition, Quaternion.identity, _experiencePickupParent);
+        Destroy(expParticleEffect, 5f);
+        
+        int numExpOrbs = 20; // Number of experience orbs to spawn
+        float explosionRadius = 5.0f; // Radius for the explosion effect
+        for (int i = 0; i < numExpOrbs; i++)
+        {
+            float angle = Random.Range(0f, Mathf.PI * 2);
+            Vector3 spawnPosition = bossPosition + new Vector3(Mathf.Cos(angle) * explosionRadius, Mathf.Sin(angle) * explosionRadius, 0);
+            GameObject expDrop = Instantiate(enemyStatsController.GetExperienceDrop(), spawnPosition, Quaternion.identity, _experiencePickupParent);
+            Rigidbody2D rb = expDrop.AddComponent<Rigidbody2D>(); // Add Rigidbody
+            rb.gravityScale = 0; // Disable gravity
+            rb.drag = 1; // Adjust this value to get the desired slowdown effect
+            rb.AddForce((spawnPosition - bossPosition).normalized * Random.Range(100, 200)); // Add force to simulate explosion
+        }
+        
     }
 
     private void InstantiateDamagePopup(float damage)

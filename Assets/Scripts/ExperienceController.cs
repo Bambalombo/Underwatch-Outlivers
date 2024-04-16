@@ -45,9 +45,9 @@ public class ExperienceController : MonoBehaviour
         }
         //Debug.Log("LEVEL UP");
         level.value++;
-        _talentManager.OpenTalentMenu(level.value);
         experience.value -= baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value - 1);
         
+        _talentManager.OpenTalentMenu(level.value);
         
     }
 }
