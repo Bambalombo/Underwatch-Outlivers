@@ -14,6 +14,8 @@ public class EnemyStatsController : MonoBehaviour, IStatController
     [SerializeField] private float lastAttackTime; // Time of the last attack
     [SerializeField] private float attackCooldown; // Time between attacks
     [SerializeField] private GameObject experienceDrop; // Experience drop prefab
+    [SerializeField] private GameObject healthPickup; // Health pickup prefab
+    [SerializeField] private float healthDropChance; // Chance for health drop (0-100)
 
     private void Awake()
     {
@@ -68,6 +70,8 @@ public class EnemyStatsController : MonoBehaviour, IStatController
     public float GetLastAttackTime() => lastAttackTime;
     public float GetAttackCooldown() => attackCooldown;
     public GameObject GetExperienceDrop() => experienceDrop;
+    public GameObject GetHealthPickup() => healthPickup;
+    public float GetHealthDropChance() => healthDropChance;
     public bool GetIsFoundByPlayer() => isFoundByPlayer;
     public bool GetIsBoss() => isBoss;
     

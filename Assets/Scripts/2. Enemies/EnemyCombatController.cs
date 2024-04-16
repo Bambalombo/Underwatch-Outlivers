@@ -49,6 +49,12 @@ public class EnemyCombatController : MonoBehaviour
             Instantiate(enemyStatsController.GetExperienceDrop(), transform.position, Quaternion.identity, _experiencePickupParent.transform);
         }
         
+        float randomFloat = Random.Range(0, 100); // Random number between 0 and 100
+        if (randomFloat < enemyStatsController.GetHealthDropChance()) // Chance for health drop
+        {
+            // Instantiate the health pickup
+            Instantiate(enemyStatsController.GetHealthPickup(), transform.position, Quaternion.identity, _experiencePickupParent.transform);
+        }
         
         Destroy(gameObject); // Destroy the enemy object
     }
