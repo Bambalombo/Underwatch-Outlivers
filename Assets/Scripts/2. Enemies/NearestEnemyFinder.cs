@@ -68,7 +68,7 @@ public class NearestEnemyFinder : MonoBehaviour
             var currentEnemy = GetNearestEnemy(lastPos, enemyLookList);
             
             float distance = Vector2.Distance(lastPos, currentEnemy.transform.position);
-            if (distance < proximityRange || currentEnemy == null) break;
+            if (distance > proximityRange || currentEnemy == null) break;
             
             // we then add the current enemy to the list of enemies to be hit and removes it from the look list
             enemyHitList.Add(currentEnemy);

@@ -45,7 +45,14 @@ public class PlayerHealthController : MonoBehaviour
     {
         GameManager.OnPlayerRespawn += RespawnPlayer;
     }
-    
+
+    private void OnDisable()
+    {
+        GameManager.OnPlayerRespawn -= RespawnPlayer;
+        StopAllCoroutines();
+        _spriteRenderer.color = _originalColor;
+    }
+
     public bool IsAlive()
     {
         return _isAlive;

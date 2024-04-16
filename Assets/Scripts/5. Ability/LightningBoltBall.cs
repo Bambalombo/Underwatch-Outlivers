@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class LightningBoltBall : MonoBehaviour
@@ -66,7 +67,7 @@ public class LightningBoltBall : MonoBehaviour
         var hitPosition = enemy.transform.position;
         ps.transform.position = hitPosition;
         Vector3 lastPos = hitPosition;
-        _enemyHitList = _nearestEnemyFinder.GetChainOfEnemies(hitPosition, stats.GetTargetCount() + _extraTargets);
+        _enemyHitList = _nearestEnemyFinder.GetChainOfEnemiesInProximity(hitPosition, stats.GetTargetCount() + _extraTargets, stats.GetAttackRange());
 
         for (int i = 0; i < _enemyHitList.Count; i++)
         {
@@ -78,7 +79,8 @@ public class LightningBoltBall : MonoBehaviour
 
             if (_enemyHitList[i] != null && _enemyHitList[i].TryGetComponent<EnemyCombatController>(out var enemyCombatController))
             {
-                enemyCombatController.EnemyTakeDamage(stats.GetDamage() * (float)Math.Pow(_damageAmplifier, _extraTargets));
+                _damageAmplifier = stats.GetTargetCount() / _enemyHitList.Count;
+                enemyCombatController.EnemyTakeDamage(stats.GetDamage() * _damageAmplifier);
             }
 
             yield return new WaitForSeconds(_lightningJumpDelay);

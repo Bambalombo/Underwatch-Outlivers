@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ElementalBolts : MonoBehaviour
@@ -13,11 +15,14 @@ public class ElementalBolts : MonoBehaviour
     //Talent bools
     public bool aspectOfEarthEnabled;
 
-    private void Start()
+    private void Awake()
     {
         _weaponStats = GetComponent<WeaponStats>();
-        
         _nearestEnemyFinder = GameManager.GetSpawnerEnemyControllerParent().GetComponent<NearestEnemyFinder>();
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(SpawnBullets());
     }
 
