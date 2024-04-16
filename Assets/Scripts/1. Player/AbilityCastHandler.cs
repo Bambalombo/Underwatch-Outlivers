@@ -55,5 +55,11 @@ public class AbilityCastHandler : MonoBehaviour
             cooldownSlider.value = progress;
         }
     }
-    
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        UpdateCooldownUI(1);
+        isOnCooldown = false;
+    }
 }

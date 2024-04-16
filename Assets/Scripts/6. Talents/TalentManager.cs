@@ -39,7 +39,8 @@ public class TalentManager : MonoBehaviour
     public void TalentSelected(Talent selectedTalent, GameObject playerGameobject) {
         selectedTalent.ApplyEffectToPlayer(playerGameobject);
         _talentsPicked++;
-        if (_talentsPicked >= playerGameObjects.Length)
+        // if (_talentsPicked >= playerGameObjects.Length)
+        if (_talentsPicked >= _gameManager.GetAlivePlayers().Count)
         {
             if (talentBackground.activeSelf)
             {
@@ -54,7 +55,16 @@ public class TalentManager : MonoBehaviour
 
     private void TogglePlayerCanvases(bool isActive)
     {
-        foreach (GameObject player in playerGameObjects)
+        List<GameObject> alivePlayers = new List<GameObject>();
+        List<int> alivePlayerIndices = _gameManager.GetAlivePlayers();
+        
+        foreach (int i in alivePlayerIndices)
+        {
+            alivePlayers.Add(playerGameObjects[i]);
+        }
+        
+        //foreach (GameObject player in playerGameObjects)
+        foreach (GameObject player in alivePlayers)
         {
             Transform interactableCanvas = null;
         
