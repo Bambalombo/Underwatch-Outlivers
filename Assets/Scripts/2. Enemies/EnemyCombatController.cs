@@ -7,14 +7,14 @@ public class EnemyCombatController : MonoBehaviour
     private Transform _damagePopupParent; 
     private Transform _experiencePickupParent;
     [SerializeField] private EnemyStatsController enemyStatsController;
-    private SpawnerEnemyController _spawnerEnemyController;
+    private EnemySpawner _enemySpawner;
     [SerializeField] private GameObject expParticleEffectPrefab;
     
     private void Awake()
     {
         _damagePopupParent = GameManager.GetDamagePopupParent();
         _experiencePickupParent = GameManager.GetExperiencePickupParent();
-        _spawnerEnemyController = GameManager.GetSpawnerEnemyControllerParent().GetComponent<SpawnerEnemyController>();
+        _enemySpawner = GameManager.GetSpawnerEnemyControllerParent().GetComponent<EnemySpawner>();
     }
 
 
@@ -113,7 +113,7 @@ public class EnemyCombatController : MonoBehaviour
     
     private void OnDestroy()
     {
-        _spawnerEnemyController.RemoveEnemyFromList(gameObject);
+        _enemySpawner.RemoveEnemyFromList(gameObject);
         
     }
 }

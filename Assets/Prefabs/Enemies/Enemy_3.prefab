@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5851707422844388568}
   - component: {fileID: 3128402012767683048}
-  - component: {fileID: 3962438831467787200}
-  - component: {fileID: 6042124109120060040}
-  - component: {fileID: -4240546209400050134}
-  - component: {fileID: 7723224513163896122}
+  - component: {fileID: -2111774544511058763}
+  - component: {fileID: 2776702716741665479}
+  - component: {fileID: -4557648043707126890}
+  - component: {fileID: -2757452759354866403}
   - component: {fileID: 4792808897084071477}
   - component: {fileID: 9160034463395656589}
   m_Layer: 7
-  m_Name: EnemyEpic
+  m_Name: Enemy_3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8962264, g: 0.15641688, b: 0.6916908, a: 1}
+  m_Color: {r: 0.13679248, g: 0.3670542, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3962438831467787200
+--- !u!114 &-2111774544511058763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,15 +105,15 @@ MonoBehaviour:
   isBoss: 0
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 50
   moveSpeed: 1.5
   damage: 9
   lastAttackTime: 0
   attackCooldown: 2
-  experienceDrop: {fileID: 1571339481620590403, guid: 3fa9d36f232f5034ab5b77ced72352df, type: 3}
+  experienceDrop: {fileID: 1571339481620590403, guid: d598553436d6c0d46a0aa4d7af048964, type: 3}
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
   healthDropChance: 5
---- !u!114 &6042124109120060040
+--- !u!114 &2776702716741665479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceToPlayer: 0.2
-  enemyStatsController: {fileID: 3962438831467787200}
+  enemyStatsController: {fileID: -2111774544511058763}
   playerStatsControllers: []
   runToDistance: 25
   runSpeedMultiplier: 1
---- !u!114 &-4240546209400050134
+--- !u!114 &-4557648043707126890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
-  enemyStatsController: {fileID: 3962438831467787200}
+  enemyStatsController: {fileID: -2111774544511058763}
   expParticleEffectPrefab: {fileID: 7393881730429135457, guid: fe231c6d81577094184ddd26bc525a02, type: 3}
---- !u!114 &7723224513163896122
+--- !u!114 &-2757452759354866403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

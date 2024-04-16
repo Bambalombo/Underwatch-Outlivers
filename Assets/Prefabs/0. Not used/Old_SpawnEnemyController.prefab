@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 674661241648069599}
-  - component: {fileID: 3622505919720294646}
-  - component: {fileID: 1757951494819308280}
+  - component: {fileID: -5649172150862016168}
   - component: {fileID: -2451237040802010168}
   m_Layer: 0
-  m_Name: SpawnEnemyController
+  m_Name: Old_SpawnEnemyController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3622505919720294646
+--- !u!114 &-5649172150862016168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,54 +42,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2040488348098064462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81363068e79c4d3488ebb4a6c757a25, type: 3}
+  m_Script: {fileID: 11500000, guid: 11b57d344e2e54a44b24e1576c123b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycles:
-  - enemyType: {fileID: 5362581833865366400, guid: db0360b50530a4a49a6dac6f49327ef6, type: 3}
-    count: 100
-    duration: 60
-    spawnRateMultiplier: 1.5
-  - enemyType: {fileID: 5362581833865366400, guid: fdf2d49501f06a749bf5677bab1f697a, type: 3}
-    count: 100
-    duration: 60
-    spawnRateMultiplier: 1.5
-  - enemyType: {fileID: 5362581833865366400, guid: f58a704cf80fca945b70b2f2aa8ff480, type: 3}
-    count: 100
-    duration: 60
-    spawnRateMultiplier: 1.5
-  - enemyType: {fileID: 5362581833865366400, guid: b127c7d400a17c0499566ead9024825a, type: 3}
-    count: 100
-    duration: 60
-    spawnRateMultiplier: 1.5
-  - enemyType: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
-    count: 100
-    duration: 60
-    spawnRateMultiplier: 1.5
+  commonEnemy: {fileID: 5362581833865366400, guid: db0360b50530a4a49a6dac6f49327ef6, type: 3}
+  uncommonEnemy: {fileID: 5362581833865366400, guid: fdf2d49501f06a749bf5677bab1f697a, type: 3}
+  rareEnemy: {fileID: 5362581833865366400, guid: f58a704cf80fca945b70b2f2aa8ff480, type: 3}
+  epicEnemy: {fileID: 5362581833865366400, guid: b127c7d400a17c0499566ead9024825a, type: 3}
+  legendaryEnemy: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
   bosses:
   - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
   - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
-  gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
-  allEnemies: []
---- !u!114 &1757951494819308280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040488348098064462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aab285909d5364e45af455d74893f709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnRadius: 40
-  safeZoneRadius: 30
   bossSpawnPositions:
   - {x: 30, y: 30}
   - {x: 30, y: -30}
   - {x: -30, y: 30}
   - {x: -30, y: -30}
+  spawnInterval: 10
+  spawnRadius: 40
+  safeZoneRadius: 30
+  gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
+  difficultyFactor: 1
+  allEnemies: []
 --- !u!114 &-2451237040802010168
 MonoBehaviour:
   m_ObjectHideFlags: 0

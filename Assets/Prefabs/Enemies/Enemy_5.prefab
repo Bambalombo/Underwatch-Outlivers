@@ -349,12 +349,11 @@ GameObject:
   - component: {fileID: -8671569779794781263}
   - component: {fileID: 1801632654411770858}
   - component: {fileID: 3812902737295349452}
-  - component: {fileID: -7502217279293819852}
   - component: {fileID: 8933796695499925440}
   - component: {fileID: 4792808897084071477}
   - component: {fileID: 9160034463395656589}
   m_Layer: 7
-  m_Name: EnemyBoss_1
+  m_Name: Enemy_5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +369,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4683586253467244212}
@@ -422,7 +421,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.62534285, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9214484, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -444,17 +443,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b12c7d856636f45a4e9b581a9b7d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 1
+  isBoss: 0
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 300
+  maxHealth: 200
   moveSpeed: 1.5
-  damage: 5
+  damage: 15
   lastAttackTime: 0
-  attackCooldown: 0.5
+  attackCooldown: 1
   experienceDrop: {fileID: 1571339481620590403, guid: 4f99f29e34349df429d909a44e75d578, type: 3}
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
-  healthDropChance: 100
+  healthDropChance: 5
 --- !u!114 &1801632654411770858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +470,7 @@ MonoBehaviour:
   enemyStatsController: {fileID: -8671569779794781263}
   playerStatsControllers: []
   runToDistance: 25
-  runSpeedMultiplier: 3
+  runSpeedMultiplier: 1
 --- !u!114 &3812902737295349452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,26 +486,6 @@ MonoBehaviour:
   damagePopupPrefab: {fileID: 3231793296204108337, guid: cec0992e0cd711f4e8dd773c56885d01, type: 3}
   enemyStatsController: {fileID: -8671569779794781263}
   expParticleEffectPrefab: {fileID: 7393881730429135457, guid: fe231c6d81577094184ddd26bc525a02, type: 3}
---- !u!114 &-7502217279293819852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5362581833865366400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34d87eb48bfe8ee41bda995646fe4f9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6252570930536968202, guid: 9ba4ae3513d24d74594f9834a09aedb1, type: 3}
-  bulletSpeed: 10
-  normalFireRate: 2
-  rageFireRate: 10
-  lastFireTime: 0
-  timeSinceLastBullet: 0
-  currentState: 1
-  players: []
 --- !u!114 &8933796695499925440
 MonoBehaviour:
   m_ObjectHideFlags: 0

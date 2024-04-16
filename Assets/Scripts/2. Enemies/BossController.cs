@@ -20,11 +20,11 @@ public class BossController : MonoBehaviour
     private Transform _bulletParent;
 
     private float _currentAngle;
-    private SpawnerEnemyController _spawnerEnemyController;
+    private EnemySpawner _enemySpawner;
 
     private void Start()
     {
-        _spawnerEnemyController = GameManager.GetSpawnerEnemyControllerParent().GetComponent<SpawnerEnemyController>();
+        _enemySpawner = GameManager.GetSpawnerEnemyControllerParent().GetComponent<EnemySpawner>();
         
         _enemyStatsController = GetComponent<EnemyStatsController>();
         players = GameManager.GetPlayerGameObjects();
@@ -109,6 +109,6 @@ public class BossController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _spawnerEnemyController.RemoveEnemyFromList(gameObject);
+        _enemySpawner.RemoveEnemyFromList(gameObject);
     }
 }
