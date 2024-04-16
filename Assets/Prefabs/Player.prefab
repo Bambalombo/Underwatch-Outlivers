@@ -3704,6 +3704,11 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 7103618558277064452, guid: a24ab0b5fc6656648ab030dcbd75ad35, type: 3}
     talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
+  - name: Weapon life steal increase
+    description: Increases weapon life steal by 10%
+    level: 0
+    talentPrefab: {fileID: 7793423878317038822, guid: 42bba5d04810ce848a981528b21145ef, type: 3}
+    talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
   XI_017talents:
   - name: Player Health Increase
     description: Increases health by 5%
