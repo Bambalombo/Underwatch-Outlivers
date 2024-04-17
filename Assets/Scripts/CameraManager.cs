@@ -81,8 +81,12 @@ public class FixedMultiplayerCamera : MonoBehaviour
         {
             return players[0].transform.position;
         }
-
+        
         var playerIndices = _gameManager.GetAlivePlayers();
+        
+        if (playerIndices.Count == 0) // if all players are dead, the camera will still try to update and throw and exception
+            return transform.position;
+        
         var bounds = new Bounds(players[playerIndices[0]].transform.position, Vector3.zero);
         
         foreach (var i in playerIndices)
