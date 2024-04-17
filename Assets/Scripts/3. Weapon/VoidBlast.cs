@@ -11,6 +11,12 @@ public class VoidBlast : MonoBehaviour
     private WeaponStats _weaponStats;
 
     public Vector2 projectileScale;
+    
+    
+    [SerializeField]private AudioSource audioSource;
+    [SerializeField] private AudioClip[] arraySounds;
+    private int arrayMax;
+    private int soundToPlay;
 
     void Awake()
     {
@@ -18,6 +24,10 @@ public class VoidBlast : MonoBehaviour
         var grandParent = transform.parent.parent;
         playerStatsController = grandParent.GetComponent<PlayerStatsController>();
         _weaponStats = GetComponent<WeaponStats>();
+        
+        arrayMax = arraySounds.Length;
+        soundToPlay = Random.Range(0, arrayMax);
+        audioSource.clip = arraySounds[soundToPlay];
     }
     
     private void OnEnable()
@@ -42,7 +52,9 @@ public class VoidBlast : MonoBehaviour
             if (lastMoveDirection != Vector2.zero) 
             {
                 GameObject projectile = Instantiate(projectilePrefab, transform.position + new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * 1.5f, Quaternion.identity); // Spawn projectile in front of player
-
+                
+                
+                
                 StartCoroutine(ProjectileBehaviorRoutine(projectile, lastMoveDirection));
             }
         }
@@ -59,7 +71,9 @@ public class VoidBlast : MonoBehaviour
             distanceTraveled += _weaponStats.GetProjectileSpeed() * Time.deltaTime;
             yield return null;
         }
-
+        soundToPlay = Random.Range(0, arrayMax);
+        audioSource.clip = arraySounds[soundToPlay];
+        audioSource.Play();
         Explode(projectile);
     }
 

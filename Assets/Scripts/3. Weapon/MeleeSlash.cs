@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MeleeSlash : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class MeleeSlash : MonoBehaviour
     public bool bloodType00Enabled;
     public bool healingHackEnabled;
     public float healingHackRange;
+    
+    [SerializeField]private AudioSource audioSource;
+    [SerializeField] private AudioClip[] arraySounds;
+    private int arrayMax;
+    private int soundToPlay;
 
     private void Awake()
     {
@@ -29,6 +35,10 @@ public class MeleeSlash : MonoBehaviour
         playerStatsController = _playerGameObject.GetComponent<PlayerStatsController>();
         playerHealthController = _playerGameObject.GetComponent<PlayerHealthController>();
         _weaponStats = GetComponent<WeaponStats>();
+        
+        arrayMax = arraySounds.Length;
+        soundToPlay = Random.Range(0, arrayMax);
+        audioSource.clip = arraySounds[soundToPlay];
     }
 
     void Start()
@@ -65,6 +75,12 @@ public class MeleeSlash : MonoBehaviour
 
     void PerformAttack()
     {
+        arrayMax = arraySounds.Length;
+        soundToPlay = Random.Range(0, arrayMax);
+        audioSource.clip = arraySounds[soundToPlay];
+        audioSource.Play();
+        
+        
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _weaponStats.GetAttackRange());
 
         foreach (Collider2D hit in hits)
