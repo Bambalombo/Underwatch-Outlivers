@@ -12,6 +12,7 @@ public class MeleeSlash : MonoBehaviour
     private LineRenderer lineRenderer;
     private float lineVisibilityDuration = 0.5f; // Duration for which the line remains visible after an attack
 
+    private GameObject _playerGameObject;
     private PlayerStatsController playerStatsController;
     private PlayerHealthController playerHealthController;
     private Vector2 lastMoveDirection = Vector2.right; // Default direction if the player has not moved
@@ -19,12 +20,14 @@ public class MeleeSlash : MonoBehaviour
     //Talent variables
     //Bloodtype00 
     public bool bloodType00Enabled;
+    public bool healingHackEnabled;
+    public float healingHackRange;
 
     private void Awake()
     {
-        var grandParent = transform.parent.parent;
-        playerStatsController = grandParent.GetComponent<PlayerStatsController>();
-        playerHealthController = grandParent.GetComponent<PlayerHealthController>();
+        _playerGameObject = transform.parent.parent.gameObject;
+        playerStatsController = _playerGameObject.GetComponent<PlayerStatsController>();
+        playerHealthController = _playerGameObject.GetComponent<PlayerHealthController>();
         _weaponStats = GetComponent<WeaponStats>();
     }
 
@@ -79,6 +82,23 @@ public class MeleeSlash : MonoBehaviour
                         // Deal damage to the enemy
                         enemy.EnemyTakeDamage(_weaponStats.GetDamage());
                         playerHealthController.PlayerHeal(_weaponStats.GetLifeStealAmount());
+                        if (healingHackEnabled)
+                        {
+                            GameObject[] playerGameObjects = GameManager.GetPlayerGameObjects();
+                            foreach (GameObject player in playerGameObjects)
+                            {
+                                float distance = Vector3.Distance(_playerGameObject.transform.position, player.transform.position);
+                                
+                                if (player != _playerGameObject && distance <= healingHackRange) // Check if the player is within 5 units and is not the caster
+                                {
+                                    PlayerHealthController healthController = player.GetComponent<PlayerHealthController>();
+                                    if (healthController != null) // Check if the component exists
+                                    {
+                                        healthController.PlayerHeal(_weaponStats.GetLifeStealAmount() / 10);
+                                    }
+                                }
+                            }
+                        }
 
                         if (bloodType00Enabled)
                         {
