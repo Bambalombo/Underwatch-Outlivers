@@ -61,7 +61,6 @@ public class DeathIconTimer : MonoBehaviour
             Vector3 iconPosition = icon.transform.position;
             iconPosition.x = startPosition + i * iconDistance;
             icon.transform.position = iconPosition;
-            Debug.Log($"Startposition: {startPosition}. Current position {iconPosition}.");
             
             icon.SetActive(false);
         }

@@ -56,6 +56,12 @@ public class AbyssalRift : MonoBehaviour
         float endTime = startTime + abilityStats.GetAttackLifetime();
         while (Time.time < endTime)
         {
+            if (Time.timeScale == 0)
+            {
+                yield return null;
+                continue;
+            }
+            
             PullEnemiesTowardsCenter(rift.transform.position, rift.GetComponent<CircleCollider2D>().radius);
             yield return null;
         }
