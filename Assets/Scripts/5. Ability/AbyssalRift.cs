@@ -12,6 +12,11 @@ public class AbyssalRift : MonoBehaviour
     private PlayerStatsController playerStatsController;
     private PlayerHealthController _playerHealthController;
     
+    [SerializeField] private AudioClip[] arraySounds;
+    private int arrayMax;
+    private int soundToPlay;
+    [SerializeField] AudioSource audioSource;
+    
     private bool isOnCooldown = false;
     
     //Soul harvest talent variables
@@ -35,6 +40,10 @@ public class AbyssalRift : MonoBehaviour
     {
         StartCoroutine(RiftCoroutine());
         abilityCastHandler.StartCooldown(defaultCooldown, abilityStats.GetAttackCooldown());
+        arrayMax = arraySounds.Length;
+        soundToPlay = Random.Range(0, arrayMax);
+        audioSource.clip = arraySounds[soundToPlay];
+        audioSource.Play();
     }
 
     IEnumerator RiftCoroutine()

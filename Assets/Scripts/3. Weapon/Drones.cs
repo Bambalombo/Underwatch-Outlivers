@@ -7,7 +7,11 @@ public class Drones : MonoBehaviour
     private LineRenderer _lineRenderer;
     private NearestEnemyFinder _nearestEnemyFinder;
     private float _damage;
+    [SerializeField]private AudioSource audioSource;
+    private int arrayMax;
+    private int soundToPlay;
     [SerializeField] private Material laserMaterial;
+    [SerializeField] private AudioClip[] arraySounds;
 
 
     private void Awake()
@@ -18,6 +22,8 @@ public class Drones : MonoBehaviour
         _lineRenderer.material = laserMaterial;
 
         _nearestEnemyFinder = GameManager.GetSpawnerEnemyControllerParent().GetComponent<NearestEnemyFinder>();
+        
+        
         
     }
     
@@ -37,6 +43,7 @@ public class Drones : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         FireLaser();
+        
         
         while (true)
         {
@@ -76,6 +83,10 @@ public class Drones : MonoBehaviour
                 if (enemy != null)
                 {
                     enemy.EnemyTakeDamage(_weaponStats.GetDamage());
+                    arrayMax = arraySounds.Length;
+                    soundToPlay = Random.Range(0, arrayMax);
+                    audioSource.clip = arraySounds[soundToPlay];
+                    audioSource.Play();
                 }
             }
             else

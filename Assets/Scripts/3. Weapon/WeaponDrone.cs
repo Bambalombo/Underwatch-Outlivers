@@ -6,7 +6,11 @@ public class WeaponDrone : MonoBehaviour
     [SerializeField] private GameObject dronePrefab;
     private WeaponStats _weaponStats;
     private Vector3 _lastPlayerPosition;
+    private int arrayMax;
+    private int soundToPlay;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] private float totalDistanceMoved;
+    [SerializeField] private AudioClip[] arraySounds;
     
     private void Awake()
     {
@@ -16,6 +20,11 @@ public class WeaponDrone : MonoBehaviour
         _lastPlayerPosition = _playerStatsController.GetPlayerPosition();
 
         _weaponStats = GetComponent<WeaponStats>();
+        
+        arrayMax = arraySounds.Length;
+        soundToPlay = Random.Range(0, arrayMax);
+        audioSource.clip = arraySounds[soundToPlay];
+        
     }
 
     private void FixedUpdate()
@@ -29,6 +38,9 @@ public class WeaponDrone : MonoBehaviour
         if (totalDistanceMoved >= _weaponStats.GetAttackCooldown()*4) 
         {
             SpawnDrone(); // Spawn the drone
+            soundToPlay = Random.Range(0, arrayMax);
+            audioSource.clip = arraySounds[soundToPlay];
+            audioSource.Play();
             
             totalDistanceMoved = 0f; // Reset the total distance moved
         }
@@ -39,7 +51,7 @@ public class WeaponDrone : MonoBehaviour
     private void SpawnDrone()
     {
         GameObject drone = Instantiate(dronePrefab, _playerStatsController.GetPlayerPosition(), Quaternion.identity, GameManager.GetBulletParent());
-
+        
         Drones dronesScript = drone.GetComponent<Drones>();
 
         dronesScript.GetWeaponStats(_weaponStats); // Pass the WeaponStats script to the drone
