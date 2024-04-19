@@ -7,6 +7,8 @@ public class FrenziedMutation : MonoBehaviour
     private AbilityCastHandler abilityCastHandler;
     private AbilityStats _abilityStats;
     private GameObject _playerGameObject;
+    
+    [SerializeField]private AudioSource audioSource;
 
     public bool frenzyFiestaEnabled;
 
@@ -29,12 +31,13 @@ public class FrenziedMutation : MonoBehaviour
                 if (player != _playerGameObject)  // Apply the effect to all players except the one casting it
                 {
                     ApplyFrenzyEffect(player, 0f, 1.2f); //Allied players get no health drain but also a weaker buff
+                    
                 }
             }
             
         }
         ApplyFrenzyEffect(_playerGameObject, 0.5f, 2f); //The player casting it gets health drain and a stronger buff
-        
+        audioSource.Play();
         abilityCastHandler.StartCooldown(defaultCooldown, _abilityStats.GetAttackCooldown());
     }
 

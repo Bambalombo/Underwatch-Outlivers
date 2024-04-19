@@ -17,6 +17,8 @@ public class ElementalBolts : MonoBehaviour
     public bool aspectOfWaterEnabled;
     [FormerlySerializedAs("healingBulletPrefab")] [SerializeField] private GameObject aspectOfWaterBullet; // Prefab for the healing bullet
     public float aspectOfWaterHealChance;
+    
+    [SerializeField]private AudioSource audioSource;
 
     private void Awake()
     {
@@ -47,7 +49,7 @@ public class ElementalBolts : MonoBehaviour
         {
             Vector3 direction = (nearestEnemy.transform.position - transform.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
+            audioSource.Play();
             BulletController bulletController = bullet.GetComponent<BulletController>();
             
             if (aspectOfEarthEnabled)
