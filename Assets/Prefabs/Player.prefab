@@ -3592,158 +3592,163 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatsController: {fileID: 5807114057819124149}
-  elementalistTalents:
-  - name: Player Health Increase
-    description: Increases health by 5%
+  commonElementalistTalents:
+  - name: Health Increase
+    description: Increases the players health by 5%
     level: 0
     talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
     talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
-  - name: Player Movement Speed Increase
-    description: Increases movement speed by 5%
+  - name: Movement Speed Increase
+    description: Increases the players movement speed by 5%
     level: 0
     talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
     talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
   - name: Weapon Damage Increase
-    description: Increases weapon damage by 5%
+    description: Increases the players weapon damage by 5%
     level: 0
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Decrease
-    description: Decreases weapon cooldown by 5%
+  - name: Weapon Cooldown Increase
+    description: Decreases the players weapon cooldown by 5%
     level: 0
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Damage Increase
-    description: Increases ability damage by 5%
+    description: Increases the players ability damage by 5%
     level: 0
     talentPrefab: {fileID: 4542655277352818398, guid: fab404118bd3c31479d779b750037783, type: 3}
     talentIcon: {fileID: 21300000, guid: 988629c087b329b40b61b2709f58e754, type: 3}
   - name: Ability Cooldown Decrease
-    description: Decreaes ability cooldown by 5%
+    description: Decreases the players ability cooldown by 5%
     level: 0
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
-  - name: Aspect of Earth
-    description: Enemies hit by elemental bolts cause a tremor beneath them to occur,
-      damaging everyone inside it for a small duration.
-    level: 0
-    talentPrefab: {fileID: 5973650703511011164, guid: 7165c1c6c7d310a4db93ebc278212a40, type: 3}
-    talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
-  - name: Aspect of Water
-    description: Enemies hit by elemental bolts have a 50% to fire a healing stream
-      towards the player, healing whichever player it comes in contact with.
-    level: 0
-    talentPrefab: {fileID: 8042530938729618515, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-    talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
-  voidwalkerTalents:
-  - name: Player Health Increase
-    description: Increases health by 5%
+  commonVoidwalkerTalents:
+  - name: Health Increase
+    description: Increases the players health by 5%
     level: 0
     talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
     talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
-  - name: Player Movement Speed Increase
-    description: Increases movement speed by 5%
+  - name: Movement Speed Increase
+    description: Increases the players movement speed by 5%
     level: 0
     talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
     talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
   - name: Weapon Damage Increase
-    description: Increases weapon damage by 5%
+    description: Increases the players weapon damage by 5%
     level: 0
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Decrease
-    description: Decreases weapon cooldown by 5%
+  - name: Weapon Cooldown Increase
+    description: Decreases the players weapon cooldown by 5%
     level: 0
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Cooldown Decrease
-    description: Decreaes ability cooldown by 5%
+    description: Decreases the players ability cooldown by 5%
     level: 0
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
+  commonMutantberserkerTalents:
+  - name: Health Increase
+    description: Increases the players health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+    talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
+  - name: Movement Speed Increase
+    description: Increases the players movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+    talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases the players weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+    talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
+  - name: Weapon Cooldown Increase
+    description: Decreases the players weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreases the players ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
+  - name: Weapon Lifesteal Increase
+    description: Increases the weapons lifesteal by 10%
+    level: 0
+    talentPrefab: {fileID: 7793423878317038822, guid: 42bba5d04810ce848a981528b21145ef, type: 3}
+    talentIcon: {fileID: 21300000, guid: 3ead726a0d64679458285a8186f08e4e, type: 3}
+  commonXI_017Talents:
+  - name: Health Increase
+    description: Increases the players health by 5%
+    level: 0
+    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
+    talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
+  - name: Movement Speed Increase
+    description: Increases the players movement speed by 5%
+    level: 0
+    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
+    talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
+  - name: Weapon Damage Increase
+    description: Increases the players weapon damage by 5%
+    level: 0
+    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
+    talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
+  - name: Weapon Cooldown Increase
+    description: Decreases the players weapon cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
+    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
+  - name: Ability Cooldown Decrease
+    description: Decreases the players ability cooldown by 5%
+    level: 0
+    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
+    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
+  rareElementalistTalents:
+  - name: Aspect Of Earth
+    description: Enemies hit by elemental bolts cause a tremor to appear under them,
+      damaging everyone inside it for a short duration.
+    level: 0
+    talentPrefab: {fileID: 5973650703511011164, guid: 7165c1c6c7d310a4db93ebc278212a40, type: 3}
+    talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
+  - name: Aspect Of Water
+    description: Enemies hit by elemental bolts have a 50% chance to shoot a stream
+      of water towards the player, healing the first player it hits.
+    level: 0
+    talentPrefab: {fileID: 8042530938729618515, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
+    talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
+  rareVoidwalkerTalents:
   - name: Angry Kitten
-    description: Sets weapon range to 0 and increases the explosion size by 50%
+    description: Sets the range of void blast to 0 and increases the explosion size
+      of the blastby 100%
     level: 0
     talentPrefab: {fileID: 4902826877966733350, guid: 802c8c725516cd849a0d76d899ff3990, type: 3}
     talentIcon: {fileID: 21300000, guid: 505bdf001050e46429ae16562aa7e0c8, type: 3}
   - name: Soul Harvest
-    description: Enemies inside the abyssal rift have a 5%(?) chance to heal you
-      for 0.1(?)
+    description: The player is healed based on the amount of enemies within the abyssal
+      rift.
     level: 0
     talentPrefab: {fileID: 8241283235283213236, guid: b8227da990f44ee4889783610e033078, type: 3}
     talentIcon: {fileID: 21300000, guid: 505bdf001050e46429ae16562aa7e0c8, type: 3}
-  mutantberserkerTalents:
-  - name: Player Health Increase
-    description: Increases health by 5%
-    level: 0
-    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
-    talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
-  - name: Player Movement Speed Increase
-    description: Increases movement speed by 5%
-    level: 0
-    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
-    talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
-  - name: Weapon Damage Increase
-    description: Increases weapon damage by 5%
-    level: 0
-    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
-    talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Decrease
-    description: Decreases weapon cooldown by 5%
-    level: 0
-    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
-    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
-  - name: Ability Cooldown Decrease
-    description: Decreaes ability cooldown by 5%
-    level: 0
-    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
-    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
-  - name: BloodType00
-    description: Adds a 50% chance for enemies hit by melee slash to leave a pool
-      of blood that damage all enemies within its range
+  rareMutantberserkerTalents:
+  - name: Blood Type-??
+    description: Adds a 50% for enemies hit by melee slash to leave a pool of blood,
+      damaging all enemies inside of it.
     level: 0
     talentPrefab: {fileID: 4594324479640580164, guid: 6b8013e7aa0b2004fb1a7a1c479f65b7, type: 3}
     talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
   - name: Frenzy Fiesta
-    description: Activating Frenzied Mutation also applies a weakaned frenzy effect
-      to all other players.
+    description: Frenzied Mutation also applies 20% of the frenzy buff to all other
+      players.
     level: 0
     talentPrefab: {fileID: 7103618558277064452, guid: a24ab0b5fc6656648ab030dcbd75ad35, type: 3}
     talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
-  - name: Weapon life steal increase
-    description: Increases weapon life steal by 10%
-    level: 0
-    talentPrefab: {fileID: 7793423878317038822, guid: 42bba5d04810ce848a981528b21145ef, type: 3}
-    talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
   - name: Healing Hack
-    description: 10% of the self heal from hitting enemies with melee slash is applied
-      to nearby teammates.
+    description: Hitting enemies with melee slash heals nearby players by 10% of
+      the casting players weapon life steal.
     level: 0
     talentPrefab: {fileID: 4490920884171647563, guid: 320d3f233bef46948ac652035f1d164b, type: 3}
     talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
-  XI_017talents:
-  - name: Player Health Increase
-    description: Increases health by 5%
-    level: 0
-    talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
-    talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
-  - name: Player Movement Speed Increase
-    description: Increases movement speed by 5%
-    level: 0
-    talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
-    talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
-  - name: Weapon Damage Increase
-    description: Increases weapon damage by 5%
-    level: 0
-    talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
-    talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Decrease
-    description: Decreases weapon cooldown by 5%
-    level: 0
-    talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
-    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
-  - name: Ability Cooldown Decrease
-    description: Decreaes ability cooldown by 5%
-    level: 0
-    talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
-    talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
+  rareXI_017Talents: []

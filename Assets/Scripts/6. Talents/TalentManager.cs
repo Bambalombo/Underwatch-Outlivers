@@ -6,11 +6,12 @@ public class TalentManager : MonoBehaviour
     //TODO randomize talents + lave et tjek for at de stat talents der kommer frem rent faktisk giver mening for playercharacteren (f.eks giver ability dmg ikk mening for wall ability)
     //Maybe some sort of checker that checks the weapon and ability, and based on what it finds it adds a predefined set of talents
 
-    private List<Talent> _playerTalentPool;
+    private List<Talent> _commonTalentPool, rareTalentPoll;
     [SerializeField] private GameObject[] playerGameObjects;
     private GameManager _gameManager;
 
     private int _talentsPicked;
+    [SerializeField] private IntVariable playerLevel;
     
     [SerializeField] private GameObject talentBackground;
 
@@ -93,17 +94,26 @@ public class TalentManager : MonoBehaviour
         PlayerTalents playerTalents = interactableCanvas.GetComponentInParent<PlayerTalents>();
         if (playerTalents != null)
         {
-            // Get three random talents applicable to this players weapon/ability combination
-            _playerTalentPool = playerTalents.InitializeUniqueTalentSet(); //lidt dumt den initializer talent pool hver gang men jeg er speedy gonzales så ses
-            List<Talent> randomTalents = playerTalents.GetThreeRandomTalents(_playerTalentPool);
-            // Call UpdateTalentUI to update the talent UI panel for this player
-            UpdateTalentUI(interactableCanvas, randomTalents);
+            // Get three random talents applicable to this player's weapon/ability combination
+            var (commonTalentPool, rareTalentPool) = playerTalents.InitializeUniqueTalentSet();
+            print($"Player level: {playerLevel.value} ");
+            if (playerLevel.value % 5 != 0)
+            {
+                List<Talent> randomTalents = playerTalents.GetThreeRandomTalents(commonTalentPool);
+                UpdateTalentUI(interactableCanvas, randomTalents);
+            }
+            else
+            {
+                List<Talent> randomTalents = playerTalents.GetThreeRandomTalents(rareTalentPool);
+                UpdateTalentUI(interactableCanvas, randomTalents);
+            }
         }
         else
         {
             Debug.LogWarning("PlayerTalents script not found on player GameObject", interactableCanvas.parent.gameObject);
         }
     }
+
     
     private void UpdateTalentUI(Transform interactableCanvas, List<Talent> randomTalents)
     {
