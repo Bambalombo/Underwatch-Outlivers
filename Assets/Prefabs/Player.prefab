@@ -3629,6 +3629,12 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 5973650703511011164, guid: 7165c1c6c7d310a4db93ebc278212a40, type: 3}
     talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
+  - name: Aspect of Water
+    description: Enemies hit by elemental bolts have a 50% to fire a healing stream
+      towards the player, healing whichever player it comes in contact with.
+    level: 0
+    talentPrefab: {fileID: 8042530938729618515, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
+    talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
   voidwalkerTalents:
   - name: Player Health Increase
     description: Increases health by 5%

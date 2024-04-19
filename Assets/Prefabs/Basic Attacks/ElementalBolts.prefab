@@ -69,6 +69,9 @@ MonoBehaviour:
   basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
   AoeDamagePool: {fileID: -690048890690819015}
   aspectOfEarthEnabled: 0
+  aspectOfWaterEnabled: 0
+  aspectOfWaterBullet: {fileID: 244602473224163229, guid: 6048efd6b2c08564796a18a922850c57, type: 3}
+  aspectOfWaterHealChance: 0
 --- !u!114 &-690048890690819015
 MonoBehaviour:
   m_ObjectHideFlags: 0

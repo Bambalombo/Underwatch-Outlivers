@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4490920884171647563
+--- !u!1 &8042530938729618515
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4394572931244106549}
-  - component: {fileID: -5709733543439711842}
+  - component: {fileID: 4185191885708614314}
+  - component: {fileID: 1832218522911407536}
   m_Layer: 0
-  m_Name: HealingHackTalent
+  m_Name: AspectOfWater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4394572931244106549
+--- !u!4 &4185191885708614314
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4490920884171647563}
+  m_GameObject: {fileID: 8042530938729618515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 818.10474, y: 774.19434, z: -1.098581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5709733543439711842
+--- !u!114 &1832218522911407536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4490920884171647563}
+  m_GameObject: {fileID: 8042530938729618515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b6111ab1c495d4b8870f82a5a4dd3c, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4758aada2a059428873a6c35dece5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingHackRange: 5
+  healChance: 0.5

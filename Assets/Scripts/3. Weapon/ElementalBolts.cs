@@ -1,22 +1,26 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ElementalBolts : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+
     [SerializeField] private FloatVariable basicBulletSpeed;
     private NearestEnemyFinder _nearestEnemyFinder;
     private WeaponStats _weaponStats;
+    private GameObject _playerGameObject;
 
     public AoeDamagePool AoeDamagePool;
     
-    //Talent bools
     public bool aspectOfEarthEnabled;
+    public bool aspectOfWaterEnabled;
+    [FormerlySerializedAs("healingBulletPrefab")] [SerializeField] private GameObject aspectOfWaterBullet; // Prefab for the healing bullet
+    public float aspectOfWaterHealChance;
 
     private void Awake()
     {
+        _playerGameObject = transform.parent.parent.gameObject;
         _weaponStats = GetComponent<WeaponStats>();
         _nearestEnemyFinder = GameManager.GetSpawnerEnemyControllerParent().GetComponent<NearestEnemyFinder>();
     }
@@ -37,7 +41,6 @@ public class ElementalBolts : MonoBehaviour
 
     private void SpawnAndInitializeBullet()
     {
-        // Find the nearest enemy from the player's position
         GameObject nearestEnemy = _nearestEnemyFinder.GetNearestEnemy(transform.position);
     
         if (nearestEnemy != null)
@@ -51,14 +54,31 @@ public class ElementalBolts : MonoBehaviour
             {
                 bulletController.OnBulletHitEnemy += SpawnAspectOfEarthAoePool;
             }
+
+            if (aspectOfWaterEnabled)
+            {
+                bulletController.OnBulletHitEnemy += SpawnAspectOfWaterHealingStream;
+            }
         
-            // Pass _weaponStats to the Initialize method
             bulletController.Initialize(direction, basicBulletSpeed.value, _weaponStats);
         }
     }
 
     private void SpawnAspectOfEarthAoePool(GameObject enemy)
     {
-        AoeDamagePool.AttemptInitialize(_weaponStats.GetDamage()/5, enemy.transform.position);
+        AoeDamagePool.AttemptInitialize(_weaponStats.GetDamage() / 5, enemy.transform.position);
     }
+
+    private void SpawnAspectOfWaterHealingStream(GameObject enemy)
+    {
+        if (Random.value < aspectOfWaterHealChance) // 50% chance
+        {
+            GameObject healingBullet = Instantiate(aspectOfWaterBullet, enemy.transform.position, Quaternion.identity);
+            HealingBulletController healingController = healingBullet.GetComponent<HealingBulletController>();
+
+            // Pass the transform of the player who is firing the bullet
+            healingController.Initialize(_playerGameObject.transform, 20f, _weaponStats);
+        }
+    }
+
 }
