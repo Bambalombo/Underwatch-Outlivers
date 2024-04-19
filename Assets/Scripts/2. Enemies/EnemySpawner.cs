@@ -5,87 +5,80 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnCycle
 {
-    public GameObject enemyType;
-    public int count;
-    public float duration;
-    public float spawnRateMultiplier;
+    public GameObject enemyType; // Enemy prefab to spawn
+    public int startCount;  // Initial number of enemies to spawn
+    public int peakCount;   // Maximum number of enemies to spawn as the cycle progresses
+    public float startTime; // Game time when the cycle should start
+    public float endTime;   // Game time when the cycle should end
+    public float spawnRateMultiplier; // Multiplier for the spawn rate
 }
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private int currentCycleIndex;
-    [SerializeField] private float cycleTimer;
     [SerializeField] private List<SpawnCycle> cycles;
     [SerializeField] private List<GameObject> bosses;
     [SerializeField] private FloatVariable gameTime;
-
-    private GameObject _mainCamera; //TODO: I think this should be FixedMultiplayerCamera
+    
+    private GameObject _mainCamera;
     private EnemySpawnPosition _enemySpawnPosition;
     [SerializeField] private List<GameObject> allEnemies = new List<GameObject>();
 
-
-    
     private void Start()
     {
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        
         _enemySpawnPosition = GetComponent<EnemySpawnPosition>();
-        
         SpawnBosses();
+    }
+
+    private void Update()
+    {
+        float currentTime = gameTime.value;
         
-        if (cycles.Count > 0) StartCycle();
+        foreach (var cycle in cycles)
+        {
+            if (currentTime >= cycle.startTime && currentTime < cycle.endTime)
+            {
+                float cycleProgress = (currentTime - cycle.startTime) / (cycle.endTime - cycle.startTime);
+                int spawnCount = (int)Mathf.Lerp(cycle.startCount, cycle.peakCount, cycleProgress);
+                ManageSpawning(cycle, spawnCount);
+            }
+        }
     }
-    
-    public List<GameObject> GetAllEnemiesList()
+
+    private void ManageSpawning(SpawnCycle cycle, int count)
     {
-        return allEnemies;
+        StopAllCoroutines(); // Stop existing spawn coroutines if needed
+        for (int i = 0; i < count; i++)
+        {
+            StartCoroutine(SpawnEnemy(cycle, i * cycle.spawnRateMultiplier));
+        }
     }
-    
-    public void RemoveEnemyFromList(GameObject enemy)
+
+    private IEnumerator SpawnEnemy(SpawnCycle cycle, float delay)
     {
-        allEnemies.Remove(enemy);
+        yield return new WaitForSeconds(delay);
+        Vector3 spawnPos = _enemySpawnPosition.CalculateSpawnPosition(_mainCamera.transform.position);
+        GameObject enemy = Instantiate(cycle.enemyType, spawnPos, Quaternion.identity, GameManager.GetEnemyParent().transform);
+        allEnemies.Add(enemy);
     }
-    
+
     private void SpawnBosses()
     {
         foreach (var boss in bosses)
         {
             Vector3 spawnPos = _enemySpawnPosition.RandomBossSpawnPosition();
             var bossObj = Instantiate(boss, spawnPos, Quaternion.identity, GameManager.GetBossParent().transform);
-            
             allEnemies.Add(bossObj);
         }
     }
-    
-    private void Update()
+
+    public List<GameObject> GetAllEnemiesList()
     {
-        cycleTimer -= Time.deltaTime;
-        if (cycleTimer <= 0 && cycles.Count > 0) NextCycle();
+        return allEnemies;
     }
 
-    private void StartCycle()
+    public void RemoveEnemyFromList(GameObject enemy)
     {
-        SpawnCycle currentCycle = cycles[currentCycleIndex];
-        cycleTimer = currentCycle.duration;
-        for (int i = 0; i < currentCycle.count; i++)
-        {
-            StartCoroutine(SpawnEnemy(currentCycle, i));
-        }
+        allEnemies.Remove(enemy);
     }
-
-    IEnumerator SpawnEnemy(SpawnCycle cycle, int index)
-    {
-        yield return new WaitForSeconds(index * cycle.spawnRateMultiplier);
-        Vector3 spawnPos = _enemySpawnPosition.CalculateSpawnPosition(_mainCamera.transform.position);
-        GameObject enemy = Instantiate(cycle.enemyType, spawnPos, Quaternion.identity, GameManager.GetEnemyParent().transform);
-        allEnemies.Add(enemy);
-    }
-
-    private void NextCycle()
-    {
-        currentCycleIndex = (currentCycleIndex + 1) % cycles.Count;
-        StartCycle();
-    }
-    
 }
-
