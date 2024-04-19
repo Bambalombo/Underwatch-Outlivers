@@ -2766,63 +2766,6 @@ MonoBehaviour:
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
   m_PlayerRoot: {fileID: 1988007145}
---- !u!1001 &6430615197017729176
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 818.10474
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 774.19434
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.098581
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4185191885708614314, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8042530938729618515, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
-      propertyPath: m_Name
-      value: AspectOfWater
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2832,4 +2775,3 @@ SceneRoots:
   - {fileID: 223080224}
   - {fileID: 1851350858}
   - {fileID: 129881764}
-  - {fileID: 6430615197017729176}

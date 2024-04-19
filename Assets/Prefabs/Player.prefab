@@ -3608,7 +3608,7 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Increase
+  - name: Weapon Cooldown Decrease
     description: Decreases the players weapon cooldown by 5%
     level: 0
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
@@ -3639,7 +3639,7 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Increase
+  - name: Weapon Cooldown Decrease
     description: Decreases the players weapon cooldown by 5%
     level: 0
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
@@ -3665,7 +3665,7 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Increase
+  - name: Weapon Cooldown Decrease
     description: Decreases the players weapon cooldown by 5%
     level: 0
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
@@ -3696,7 +3696,7 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
-  - name: Weapon Cooldown Increase
+  - name: Weapon Cooldown Decrease
     description: Decreases the players weapon cooldown by 5%
     level: 0
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
@@ -3751,4 +3751,9 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 4490920884171647563, guid: 320d3f233bef46948ac652035f1d164b, type: 3}
     talentIcon: {fileID: 21300000, guid: 89040f91a47df754d9c7bf7d47dc79aa, type: 3}
-  rareXI_017Talents: []
+  rareXI_017Talents:
+  - name: Shock Sphere
+    description: Drones shock nearby enemies by 10% of their damage.
+    level: 0
+    talentPrefab: {fileID: 8298802843099734027, guid: 8ea04ace194dc9e41a306330670048f3, type: 3}
+    talentIcon: {fileID: 21300000, guid: 25cc9e621fbf313408996a671f99148e, type: 3}

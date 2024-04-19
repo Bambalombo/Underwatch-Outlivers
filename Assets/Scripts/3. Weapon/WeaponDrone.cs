@@ -12,6 +12,9 @@ public class WeaponDrone : MonoBehaviour
     [SerializeField] private float totalDistanceMoved;
     [SerializeField] private AudioClip[] arraySounds;
     
+    //Talent variables
+    public bool shockSphereEnabled;
+    
     private void Awake()
     {
         var grandParent = transform.parent.parent;
@@ -51,6 +54,12 @@ public class WeaponDrone : MonoBehaviour
     private void SpawnDrone()
     {
         GameObject drone = Instantiate(dronePrefab, _playerStatsController.GetPlayerPosition(), Quaternion.identity, GameManager.GetBulletParent());
+        if (shockSphereEnabled)
+        {
+            gameObject.GetComponent<AoeDamagePool>().duration = _weaponStats.GetAttackLifetime();
+            gameObject.GetComponent<AoeDamagePool>().AttemptInitialize(_weaponStats.GetDamage() / 10,
+                _playerStatsController.GetPlayerPosition());
+        }
         
         Drones dronesScript = drone.GetComponent<Drones>();
 

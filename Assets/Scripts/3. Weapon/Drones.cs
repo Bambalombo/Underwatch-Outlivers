@@ -12,6 +12,9 @@ public class Drones : MonoBehaviour
     private int soundToPlay;
     [SerializeField] private Material laserMaterial;
     [SerializeField] private AudioClip[] arraySounds;
+    
+    //Talent variables
+    public bool shockSphereEnabled;
 
 
     private void Awake()

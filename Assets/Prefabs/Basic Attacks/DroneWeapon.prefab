@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1103944262482140880}
   - component: {fileID: 7470401551691688179}
   - component: {fileID: 3918761665504474111}
+  - component: {fileID: -7687969164205539146}
   m_Layer: 0
   m_Name: DroneWeapon
   m_TagString: Untagged
@@ -73,6 +74,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd958ddff42ac434db2f8f940448dd65, type: 3}
   - {fileID: 8300000, guid: 1294b32bc07ac614597d2e00c9061693, type: 3}
   - {fileID: 8300000, guid: a22ff4b3eee2d7d4cbcfa6d46905019e, type: 3}
+  shockSphereEnabled: 1
 --- !u!82 &3918761665504474111
 AudioSource:
   m_ObjectHideFlags: 0
@@ -169,3 +171,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7687969164205539146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427118373787253608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34558d0654f9f8c408ed3833c90a424e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circlePrefab: {fileID: 7910206181747909105, guid: 9f4fbb295fd609c45b16a137c7869d86, type: 3}
+  initialSize: 3
+  maxSize: 3
+  growSpeed: 0
+  duration: 0
+  spawnChance: 100

@@ -71,7 +71,7 @@ public class AoeDamageHandler : MonoBehaviour
 {
     private float damage;
     private Dictionary<GameObject, float> lastDamageTime = new Dictionary<GameObject, float>();
-    private float damageInterval = 1.0f; // Time in seconds between damage applications
+    private float damageInterval = 0.5f; // Time in seconds between damage applications
 
     public void SetDamage(float dmg)
     {
