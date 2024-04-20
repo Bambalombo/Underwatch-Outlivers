@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4962651752816213238}
   - component: {fileID: 678119351136085356}
   - component: {fileID: 5525361236975857770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4842,7 +4842,7 @@ GameObject:
   - component: {fileID: 8069841146167677989}
   - component: {fileID: 4086922388838674317}
   - component: {fileID: 6522130175927526239}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9673,7 +9673,7 @@ GameObject:
   - component: {fileID: 5866683046441037404}
   - component: {fileID: 605369729498742043}
   - component: {fileID: 4240734475086076696}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShockSphereEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

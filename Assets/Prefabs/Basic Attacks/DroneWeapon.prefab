@@ -68,13 +68,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dronePrefab: {fileID: 3548998098040793088, guid: c0bf29b6f910d8a46831025cb7fe4d63, type: 3}
   audioSource: {fileID: 3918761665504474111}
-  totalDistanceMoved: 0
   arraySounds:
   - {fileID: 8300000, guid: 6610dcd2dd3430c429f30c0a2100d05d, type: 3}
   - {fileID: 8300000, guid: cd958ddff42ac434db2f8f940448dd65, type: 3}
   - {fileID: 8300000, guid: 1294b32bc07ac614597d2e00c9061693, type: 3}
   - {fileID: 8300000, guid: a22ff4b3eee2d7d4cbcfa6d46905019e, type: 3}
-  shockSphereEnabled: 0
+  useTimeBasedSpawning: 1
+  shockSphereEnabled: 1
 --- !u!82 &3918761665504474111
 AudioSource:
   m_ObjectHideFlags: 0
