@@ -15,7 +15,7 @@ public class SpawnCycle
 
 public class EnemySpawner : MonoBehaviour
 {
-    public List<SpawnCycle> cycles;
+    public List<SpawnCycle> cycles; // List of spawn cycles
     [SerializeField] private List<GameObject> allEnemies = new List<GameObject>();
     private EnemySpawnPosition _enemySpawnPosition;
     private GameObject _mainCamera;
@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
                 if (cycle.lastSpawnTime < 0 || currentTime >= cycle.lastSpawnTime + cycle.spawnDelay)
                 {
                     SpawnEnemies(cycle, currentTime);
-                    cycle.lastSpawnTime = currentTime;  // Update this line
+                    cycle.lastSpawnTime = currentTime;
                 }
             }
         }
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         
         for (int i = 0; i < currentCount; i++)
         {
-            Vector2 spawnPosition = _enemySpawnPosition.CalculateSpawnPosition(_mainCamera.transform.position);
+            Vector2 spawnPosition = _enemySpawnPosition.CalculateSpawnPosition(_mainCamera.transform.position); //TODO: Not sure if this should be the camera position
 
             GameObject enemy = Instantiate(cycle.enemyType, spawnPosition, Quaternion.identity, GameManager.GetEnemyParent());
             allEnemies.Add(enemy);
