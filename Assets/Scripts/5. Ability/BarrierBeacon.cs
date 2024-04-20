@@ -14,6 +14,10 @@ public class BarrierBeacon : MonoBehaviour
 
     private bool isOnCooldown = false;
     
+    //Talent variables
+    public bool healingHavenActive;
+    public bool mobileMantleActive; 
+    
     void Start()
     {
         var grandParent = transform.parent.parent;
@@ -36,7 +40,14 @@ public class BarrierBeacon : MonoBehaviour
     {
         // Instantiate the buff field at the player's current position
         GameObject buffField = Instantiate(buffFieldPrefab, transform.position, Quaternion.identity);
-        buffField.transform.localScale = new Vector3(barrierSize,barrierSize,1);
+        buffField.transform.localScale = new Vector3(barrierSize,barrierSize,1); 
+        
+        BarrierBeaconPrefabScript _barrierBeaconPrefabScript = buffField.GetComponent<BarrierBeaconPrefabScript>();
+        _barrierBeaconPrefabScript.HealingHaven = healingHavenActive;
+        _barrierBeaconPrefabScript.MobileMantle = mobileMantleActive;
+        _barrierBeaconPrefabScript.casterTransform = gameObject.transform;
+        _barrierBeaconPrefabScript.casterPlayerStats = playerStatsController;
+        
         Destroy(buffField, abilityStats.GetAttackLifetime()); // Destroy the field after its duration ends
         yield return null;
     }

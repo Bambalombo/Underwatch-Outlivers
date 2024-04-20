@@ -66,4 +66,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffFieldPrefab: {fileID: 7910206181747909105, guid: b068b826cd10c8d4c8053ce3647db9d9, type: 3}
   defaultCooldown: 20
-  barrierSize: 7
+  barrierSize: 8
+  healingHavenActive: 0
+  mobileMantleActive: 0

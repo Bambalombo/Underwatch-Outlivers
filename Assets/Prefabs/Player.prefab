@@ -3757,3 +3757,14 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 8298802843099734027, guid: 8ea04ace194dc9e41a306330670048f3, type: 3}
     talentIcon: {fileID: 21300000, guid: 25cc9e621fbf313408996a671f99148e, type: 3}
+  - name: Healing Haven
+    description: 'Players inside Barrier Beacon are periodically healed based on
+      XI_017''s maximum health. '
+    level: 0
+    talentPrefab: {fileID: 67358978275664031, guid: c32f9c435ca284345adcd01a77430376, type: 3}
+    talentIcon: {fileID: 21300000, guid: 25cc9e621fbf313408996a671f99148e, type: 3}
+  - name: Mobile Mantle
+    description: Barrier Beacon follows XI_017 around.
+    level: 0
+    talentPrefab: {fileID: 2824514438447184768, guid: 8d8f66e5928fe7244847f152be46ddfc, type: 3}
+    talentIcon: {fileID: 21300000, guid: 25cc9e621fbf313408996a671f99148e, type: 3}
