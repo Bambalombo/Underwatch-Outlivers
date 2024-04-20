@@ -3249,7 +3249,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3320,7 +3320,7 @@ MonoBehaviour:
     hitboxSize: {x: 0.79, y: 2.12}
     hitboxDirection: 0
   - className: 3
-    ability: {fileID: 1405695155165063261, guid: 2bb0cf72b4d294302bcfe8a427ea3e48, type: 3}
+    ability: {fileID: 1671134818092371004, guid: b40108d9187b0fe4d805a2707022c2ac, type: 3}
     weapon: {fileID: 5427118373787253608, guid: 4bd6f0528f03e544abdb2b5e73cfdd44, type: 3}
     hitboxOffset: {x: 0, y: 0}
     hitboxSize: {x: 1.29, y: 1.83}
