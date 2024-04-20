@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4792808897084071477}
   - component: {fileID: 9160034463395656589}
   m_Layer: 7
-  m_Name: Enemy_4
+  m_Name: Enemy_1.2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8962264, g: 0.15641688, b: 0.6916908, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c63edc946776f364ab177231153a3596, type: 3}
+  m_Color: {r: 0.8522732, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,12 +105,12 @@ MonoBehaviour:
   isBoss: 0
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 100
-  moveSpeed: 1.5
-  damage: 9
+  maxHealth: 10
+  moveSpeed: 2.5
+  damage: 0.5
   lastAttackTime: 0
-  attackCooldown: 2
-  experienceDrop: {fileID: 1571339481620590403, guid: 3fa9d36f232f5034ab5b77ced72352df, type: 3}
+  attackCooldown: 0.1
+  experienceDrop: {fileID: 1571339481620590403, guid: d598553436d6c0d46a0aa4d7af048964, type: 3}
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
   healthDropChance: 5
 --- !u!114 &6042124109120060040
@@ -190,18 +190,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.003575176, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.75, y: 0.7}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7104102, y: 0.7041541}
   m_EdgeRadius: 0
 --- !u!50 &9160034463395656589
 Rigidbody2D:
