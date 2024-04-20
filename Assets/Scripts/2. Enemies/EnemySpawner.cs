@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,14 +10,14 @@ public class SpawnCycle
     public float startTime; // Game time when the cycle should start
     public float endTime;   // Game time when the cycle should end
     public float spawnDelay;  // Delay between spawns
+    public float lastSpawnTime = -1;  // Last time an enemy was spawned (Should always be -1 at the start) 
 }
 
 public class EnemySpawner : MonoBehaviour
 {
     public List<SpawnCycle> cycles;
-    private List<GameObject> allEnemies = new List<GameObject>();
+    [SerializeField] private List<GameObject> allEnemies = new List<GameObject>();
     private EnemySpawnPosition _enemySpawnPosition;
-    private float lastSpawnTime = -1;
     private GameObject _mainCamera;
     [SerializeField] private List<GameObject> bosses;
     [SerializeField] private FloatVariable gameTime;
@@ -37,20 +36,21 @@ public class EnemySpawner : MonoBehaviour
         {
             if (currentTime >= cycle.startTime && currentTime <= cycle.endTime)
             {
-                if (lastSpawnTime < 0 || currentTime >= lastSpawnTime + cycle.spawnDelay)
+                if (cycle.lastSpawnTime < 0 || currentTime >= cycle.lastSpawnTime + cycle.spawnDelay)
                 {
                     SpawnEnemies(cycle, currentTime);
-                    lastSpawnTime = currentTime;
+                    cycle.lastSpawnTime = currentTime;  // Update this line
                 }
             }
         }
     }
 
+
     private void SpawnEnemies(SpawnCycle cycle, float currentTime)
     {
         float progress = (currentTime - cycle.startTime) / (cycle.endTime - cycle.startTime);
         int currentCount = Mathf.FloorToInt(Mathf.Lerp(cycle.startCount, cycle.peakCount, progress));
-        Debug.Log("Current count: " + currentCount);
+        //Debug.Log("Current count: " + currentCount);
         
         for (int i = 0; i < currentCount; i++)
         {
