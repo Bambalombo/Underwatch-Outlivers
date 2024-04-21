@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2198317494037883676}
   - component: {fileID: -2408454811485056334}
   - component: {fileID: 6672369753414411250}
+  - component: {fileID: 5400796154034958844}
   m_Layer: 10
   m_Name: DeadlyLitter
   m_TagString: Untagged
@@ -135,3 +136,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.2
+--- !u!114 &5400796154034958844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497990347824647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615a5c7ed40f184fbc65bc0b7104ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

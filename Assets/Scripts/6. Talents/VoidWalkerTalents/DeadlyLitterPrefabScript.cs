@@ -11,14 +11,12 @@ public class DeadlyLitterPrefabScript : MonoBehaviour
     private WeaponStats _weaponStats;
     private NearestEnemyFinder _enemyFinder;
     private GameObject target;  // Current target enemy
-    private float lastXPosition;  // To track the last x position for flipping the sprite
 
     // Start is called before the first frame update
     void Start()
     {
         _enemyFinder = FindObjectOfType<NearestEnemyFinder>();  // Make sure there is an NearestEnemyFinder in the scene
         target = _enemyFinder.GetNearestEnemy(transform.position);
-        lastXPosition = transform.position.x;  // Initialize lastXPosition
     }
 
     public void Initialize(AbilityStats abilityStats, NearestEnemyFinder nearestEnemyFinder, WeaponStats weaponStats)
@@ -38,13 +36,6 @@ public class DeadlyLitterPrefabScript : MonoBehaviour
         else
         {
             target = _enemyFinder.GetNearestEnemy(transform.position);  // Continuously find a new target if the previous one is null
-        }
-
-        // Sprite flipper based on movement direction
-        if (transform.position.x != lastXPosition)  // Check if the position has changed
-        {
-            FlipSpriteBasedOnDirection();
-            lastXPosition = transform.position.x;  // Update the last position
         }
     }
 
@@ -80,19 +71,5 @@ public class DeadlyLitterPrefabScript : MonoBehaviour
         }
     }
 
-    private void FlipSpriteBasedOnDirection()
-    {
-        // Determine movement direction
-        bool movingRight = transform.position.x > lastXPosition;
-        if (movingRight)
-        {
-            // Ensure the sprite is facing right
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            // Ensure the sprite is facing left
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-    }
+
 }

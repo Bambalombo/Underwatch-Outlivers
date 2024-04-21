@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8933796695499925440}
   - component: {fileID: 9160034463395656589}
   - component: {fileID: 8107337348089501528}
+  - component: {fileID: 756468653916059323}
   m_Layer: 7
   m_Name: Boss_1.1
   m_TagString: Enemy
@@ -267,3 +268,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &756468653916059323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362581833865366400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f615a5c7ed40f184fbc65bc0b7104ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
