@@ -52,7 +52,10 @@ MonoBehaviour:
   playerParentPrefab: {fileID: 5969932391975713251, guid: 2f9639589567e0b4b9fa409a7809b8e6, type: 3}
   spawnerEnemyController: {fileID: 2040488348098064462, guid: e9c6cdb0d48f766428a0cbe444f3d8ce, type: 3}
   numberOfPlayers: 1
+  gameOverEnabled: 1
   players: []
+  DefaultMenuUI: {fileID: 0}
+  CharacterSelectionUI: {fileID: 0}
 --- !u!114 &5664965020529258177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +63,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3229078379461766825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 094f9a9fb7def4c6ca21b42a7f07d87c, type: 3}
   m_Name: 
