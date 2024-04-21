@@ -56,33 +56,24 @@ public class Drones : MonoBehaviour
         }
     }
 
-    private void FireLaser() //TODO: THE LASER DOES NOT SHOOT INSTANTLY FOR SOME REASON!!!
+    private void FireLaser()
     {
         Vector3 dronePosition = transform.position;
         GameObject nearestEnemy = _nearestEnemyFinder.GetNearestEnemy(dronePosition);
 
         if (nearestEnemy != null)
         {
-            Vector3 directionToEnemy = (nearestEnemy.transform.position - transform.position).normalized;
             float distanceToEnemy = Vector3.Distance(dronePosition, nearestEnemy.transform.position);
 
-            if (distanceToEnemy > _weaponStats.GetAttackRange())
+            if (distanceToEnemy <= _weaponStats.GetAttackRange())
             {
-                _lineRenderer.enabled = false;
-                return;
-            }
+                // Laser hits the enemy
+                _lineRenderer.enabled = true;
+                _lineRenderer.SetPosition(0, dronePosition);
+                _lineRenderer.SetPosition(1, nearestEnemy.transform.position);
 
-            _lineRenderer.enabled = true;
-            _lineRenderer.SetPosition(0, dronePosition);
-
-            RaycastHit2D hit = Physics2D.Raycast(dronePosition, directionToEnemy, _weaponStats.GetAttackRange());
-
-            Vector3 endPosition;
-            if (hit.collider != null)
-            {
-                endPosition = hit.point;
-
-                EnemyCombatController enemy = hit.collider.GetComponent<EnemyCombatController>();
+                // Damage the enemy
+                EnemyCombatController enemy = nearestEnemy.GetComponent<EnemyCombatController>();
                 if (enemy != null)
                 {
                     enemy.EnemyTakeDamage(_weaponStats.GetDamage());
@@ -94,10 +85,12 @@ public class Drones : MonoBehaviour
             }
             else
             {
-                endPosition = dronePosition + directionToEnemy * _weaponStats.GetAttackRange();
+                _lineRenderer.enabled = false;
             }
-
-            _lineRenderer.SetPosition(1, endPosition);
+        }
+        else
+        {
+            _lineRenderer.enabled = false;
         }
     }
 
