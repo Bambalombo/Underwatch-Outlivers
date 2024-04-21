@@ -11,6 +11,7 @@ public class VoidBlast : MonoBehaviour
     private WeaponStats _weaponStats;
 
     public Vector2 projectileScale;
+    public float travelDistance; 
     
     
     [SerializeField]private AudioSource audioSource;
@@ -65,7 +66,7 @@ public class VoidBlast : MonoBehaviour
         Vector3 launchPosition = projectile.transform.position;
         float distanceTraveled = 0;
 
-        while (distanceTraveled < _weaponStats.GetAttackRange())
+        while (distanceTraveled < travelDistance)
         {
             projectile.transform.Translate(new Vector3(direction.x, direction.y, 0) * (_weaponStats.GetProjectileSpeed() * Time.deltaTime), Space.World);
             distanceTraveled += _weaponStats.GetProjectileSpeed() * Time.deltaTime;
@@ -82,11 +83,11 @@ public class VoidBlast : MonoBehaviour
         if (explosionEffectPrefab != null)
         {
             GameObject explosionEffect = Instantiate(explosionEffectPrefab, projectile.transform.position, Quaternion.identity);
-            explosionEffect.transform.localScale = projectileScale; // Example scale setting, adjust as needed
+            explosionEffect.transform.localScale = new Vector3(_weaponStats.GetAttackRange(),_weaponStats.GetAttackRange(),0); // Example scale setting, adjust as needed
             Destroy(explosionEffect, explosionEffect.GetComponent<ParticleSystem>().main.duration); 
         }
         
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(projectile.transform.position, 4f);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(projectile.transform.position, _weaponStats.GetAttackRange()/2f);
         foreach (Collider2D hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Enemy"))
