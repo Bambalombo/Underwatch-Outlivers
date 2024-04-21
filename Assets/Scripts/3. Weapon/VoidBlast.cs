@@ -18,6 +18,9 @@ public class VoidBlast : MonoBehaviour
     [SerializeField] private AudioClip[] arraySounds;
     private int arrayMax;
     private int soundToPlay;
+    
+    //talent variables
+    public bool angryKittenActive;
 
     void Awake()
     {
@@ -52,25 +55,34 @@ public class VoidBlast : MonoBehaviour
             lastMoveDirection = playerStatsController.GetLastMoveDirection().normalized;
             if (lastMoveDirection != Vector2.zero) 
             {
-                GameObject projectile = Instantiate(projectilePrefab, transform.position + new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * 1.5f, Quaternion.identity); // Spawn projectile in front of player
+                if (angryKittenActive)
+                {
+                    GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                    StartCoroutine(ProjectileBehaviorRoutine(projectile, lastMoveDirection));
+                }
+                else
+                {
+                    GameObject projectile = Instantiate(projectilePrefab, transform.position + new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * 1.5f, Quaternion.identity); // Spawn projectile in front of player
+                    StartCoroutine(ProjectileBehaviorRoutine(projectile, lastMoveDirection));
+                }
                 
-                
-                
-                StartCoroutine(ProjectileBehaviorRoutine(projectile, lastMoveDirection));
             }
         }
     }
 
     IEnumerator ProjectileBehaviorRoutine(GameObject projectile, Vector2 direction)
     {
-        Vector3 launchPosition = projectile.transform.position;
-        float distanceTraveled = 0;
-
-        while (distanceTraveled < travelDistance)
+        if (!angryKittenActive)
         {
-            projectile.transform.Translate(new Vector3(direction.x, direction.y, 0) * (_weaponStats.GetProjectileSpeed() * Time.deltaTime), Space.World);
-            distanceTraveled += _weaponStats.GetProjectileSpeed() * Time.deltaTime;
-            yield return null;
+            Vector3 launchPosition = projectile.transform.position;
+            float distanceTraveled = 0;
+
+            while (distanceTraveled < travelDistance)
+            {
+                projectile.transform.Translate(new Vector3(direction.x, direction.y, 0) * (_weaponStats.GetProjectileSpeed() * Time.deltaTime), Space.World);
+                distanceTraveled += _weaponStats.GetProjectileSpeed() * Time.deltaTime;
+                yield return null;
+            }
         }
         soundToPlay = Random.Range(0, arrayMax);
         audioSource.clip = arraySounds[soundToPlay];
