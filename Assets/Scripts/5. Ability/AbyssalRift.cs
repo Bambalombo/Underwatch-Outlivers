@@ -8,9 +8,11 @@ public class AbyssalRift : MonoBehaviour
     [SerializeField] private float pullStrength;
     [SerializeField] private float riftSpawnDistance;
     private AbilityCastHandler abilityCastHandler; 
-    private AbilityStats abilityStats; 
+    private AbilityStats abilityStats;
+    private WeaponStats _weaponStats;
     private PlayerStatsController playerStatsController;
     private PlayerHealthController _playerHealthController;
+    private NearestEnemyFinder _nearestEnemyFinder;
     
     [SerializeField] private AudioClip[] arraySounds;
     private int arrayMax;
@@ -25,13 +27,16 @@ public class AbyssalRift : MonoBehaviour
     public float soulHarvestHealChance; // Chance to trigger the soul harvest heal
     public float nextHealTime; // Next time player can be healed by soul harvest
     public bool deadlyLitterActivated;
+    public GameObject deadlyLitterMinionPrefab;
 
     void Start()
     {
         var grandParent = transform.parent.parent;
+        _weaponStats = grandParent.GetComponentInChildren<WeaponStats>();
         abilityCastHandler = grandParent.GetComponent<AbilityCastHandler>();
         playerStatsController = grandParent.GetComponent<PlayerStatsController>();
         _playerHealthController = grandParent.GetComponent<PlayerHealthController>();
+        _nearestEnemyFinder = GameManager.GetSpawnerEnemyControllerParent().GetComponent<NearestEnemyFinder>();
         abilityStats = GetComponent<AbilityStats>();
 
         abilityCastHandler.OnAbilityCast += OnAbilityUsed;
@@ -54,6 +59,12 @@ public class AbyssalRift : MonoBehaviour
         GameObject rift = Instantiate(riftPrefab, new Vector3(spawnPosition.x, spawnPosition.y, 1), Quaternion.identity);
         rift.transform.localScale = new Vector3(abilityStats.GetAttackRange(),abilityStats.GetAttackRange(),0);
 
+        if (deadlyLitterActivated)
+        {
+            StartCoroutine(DeadlyLitterCoroutine(rift.transform));
+        }
+
+
         float startTime = Time.time;
         float endTime = startTime + abilityStats.GetAttackLifetime();
         while (Time.time < endTime)
@@ -68,6 +79,10 @@ public class AbyssalRift : MonoBehaviour
             yield return null;
         }
 
+        if (deadlyLitterActivated)
+        {
+            StopCoroutine(DeadlyLitterCoroutine());
+        }
         Destroy(rift);
     }
 
@@ -106,5 +121,23 @@ public class AbyssalRift : MonoBehaviour
             }
         }
 
+    }
+
+    IEnumerator DeadlyLitterCoroutine(Transform spawnPosition = null)
+    {
+        while (true)
+        {
+            SpawnMinion(spawnPosition);
+            yield return new WaitForSeconds(2f);
+        }
+    }
+
+    private void SpawnMinion(Transform spawnPosition)
+    {
+        if (spawnPosition)
+        {
+            GameObject minion = Instantiate(deadlyLitterMinionPrefab, spawnPosition.position, Quaternion.identity);
+            minion.GetComponent<DeadlyLitterPrefabScript>().Initialize(abilityStats, _nearestEnemyFinder,_weaponStats);
+        }
     }
 }

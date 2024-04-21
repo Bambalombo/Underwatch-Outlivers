@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd8622f6a9924321ac1afdf1e286b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
   cooldown: 0
-  range: 5
+  size: 5
   projectileSpeed: 0
   lifetime: 10
   knockback: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   soulHarvestHealChance: 0
   nextHealTime: 0
   deadlyLitterActivated: 0
+  deadlyLitterMinionPrefab: {fileID: 3497990347824647, guid: af61957240f4a8e4f82acd41eae91981, type: 3}
 --- !u!82 &4251319545539366398
 AudioSource:
   m_ObjectHideFlags: 0
