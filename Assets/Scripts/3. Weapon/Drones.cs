@@ -39,15 +39,17 @@ public class Drones : MonoBehaviour
 
     private void StartFiring()
     {
+        StartCoroutine(StartFiringAfterDelay());
+    }
+    
+    private IEnumerator StartFiringAfterDelay()
+    {
+        yield return new WaitForSeconds(1f); // Delay the start of firing by 1 second
         StartCoroutine(FireLaserAutomatically());
     }
 
     private IEnumerator FireLaserAutomatically()
     {
-        yield return new WaitForSeconds(0.5f);
-        FireLaser();
-        
-        
         while (true)
         {
             FireLaser();
