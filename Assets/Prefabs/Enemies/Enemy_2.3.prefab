@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8876211974583484907}
   - component: {fileID: -5921489093431520526}
   - component: {fileID: 4426178556680646889}
-  - component: {fileID: 4792808897084071477}
+  - component: {fileID: 2734299493421348797}
   - component: {fileID: 9160034463395656589}
   m_Layer: 7
   m_Name: Enemy_2.3
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistanceFromPlayer: 41
---- !u!61 &4792808897084071477
-BoxCollider2D:
+--- !u!70 &2734299493421348797
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -190,19 +190,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.005362749, y: -0.016088337}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 1.82}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.41366988, y: 0.8677183}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.01591146, y: -0.0010143518}
+  m_Size: {x: 0.72376764, y: 1.8236656}
+  m_Direction: 0
 --- !u!50 &9160034463395656589
 Rigidbody2D:
   serializedVersion: 4
