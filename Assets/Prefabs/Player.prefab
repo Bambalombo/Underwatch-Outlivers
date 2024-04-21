@@ -3310,8 +3310,8 @@ MonoBehaviour:
   - className: 2
     ability: {fileID: 2829449551655566294, guid: 888a29827ed35a44c8f560ef76daace5, type: 3}
     weapon: {fileID: 4140215671141498193, guid: aedb32521890444a686dbaad89338c80, type: 3}
-    hitboxOffset: {x: 0, y: -0.05}
-    hitboxSize: {x: 0.78, y: 2.61}
+    hitboxOffset: {x: 0.022, y: 0.448}
+    hitboxSize: {x: 0.774, y: 2.675}
     hitboxDirection: 0
   - className: 0
     ability: {fileID: 8940566107521859141, guid: a263166ce5aa74e61879fa594272a952, type: 3}
