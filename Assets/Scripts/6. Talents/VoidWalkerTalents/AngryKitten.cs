@@ -9,10 +9,9 @@ public class AngryKitten : MonoBehaviour, ITalentEffect
     public void ApplyEffect(GameObject player)
     {
         _voidBlastGameobject = player.GetComponent<ClassAssets>().GetActiveWeapons();
-        _voidBlastGameobject.GetComponent<WeaponStats>().SetAttackRange(0);
-        Vector2 currentScale = _voidBlastGameobject.GetComponent<VoidBlast>().projectileScale;
-        Vector2 increasedScale = currentScale * 1.5f; // Multiply each component by 1.5
-        _voidBlastGameobject.GetComponent<VoidBlast>().projectileScale = increasedScale;
+        //_voidBlastGameobject.GetComponent<VoidBlast>().travelDistance = 0.1f;
+        _voidBlastGameobject.GetComponent<WeaponStats>().SetAttackRange(_voidBlastGameobject.GetComponent<WeaponStats>().GetAttackRange()*2f);
+        _voidBlastGameobject.GetComponent<VoidBlast>().angryKittenActive = true;
 
     }
 }
