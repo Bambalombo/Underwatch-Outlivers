@@ -104,6 +104,14 @@ public class BossController : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, _bulletParent);
         var bc = bullet.GetComponent<BulletController>();
         bc.Initialize(direction, bulletSpeed, _enemyStatsController);
+
+        // Calculate the angle of the direction vector
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        angle += 135;
+
+        // Set the rotation of the bullet to match the angle
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
 
