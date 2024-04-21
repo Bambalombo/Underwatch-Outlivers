@@ -73,8 +73,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd958ddff42ac434db2f8f940448dd65, type: 3}
   - {fileID: 8300000, guid: 1294b32bc07ac614597d2e00c9061693, type: 3}
   - {fileID: 8300000, guid: a22ff4b3eee2d7d4cbcfa6d46905019e, type: 3}
-  useTimeBasedSpawning: 1
-  shockSphereEnabled: 1
+  useTimeBasedSpawning: 0
+  shockSphereEnabled: 0
 --- !u!82 &3918761665504474111
 AudioSource:
   m_ObjectHideFlags: 0
