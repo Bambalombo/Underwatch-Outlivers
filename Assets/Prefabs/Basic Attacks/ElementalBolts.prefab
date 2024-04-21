@@ -68,12 +68,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 244602473224163229, guid: a455ae59b97b94f59a88985c908702de, type: 3}
   basicBulletSpeed: {fileID: 11400000, guid: 3310ccdc649d14451a095d6f0cea53cc, type: 2}
-  audioSource: {fileID: -664034129355478184}
   AoeDamagePool: {fileID: -690048890690819015}
+  enemyDetectionRange: 25
   aspectOfEarthEnabled: 0
   aspectOfWaterEnabled: 0
   aspectOfWaterBullet: {fileID: 244602473224163229, guid: 6048efd6b2c08564796a18a922850c57, type: 3}
   aspectOfWaterHealChance: 0
+  elementalSpreadEnabled: 0
+  audioSource: {fileID: -664034129355478184}
 --- !u!114 &-690048890690819015
 MonoBehaviour:
   m_ObjectHideFlags: 0

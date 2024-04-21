@@ -3719,6 +3719,11 @@ MonoBehaviour:
     level: 0
     talentPrefab: {fileID: 8042530938729618515, guid: 6815ea0a740ffa34b89d8fe4cfc2a889, type: 3}
     talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
+  - name: Elemental Spread
+    description: 'Elemental bolts now fires 3 bolts at the nearest enemies. '
+    level: 0
+    talentPrefab: {fileID: 2458819726180247266, guid: ae81b87b16f4d96488f5e7ede75acf87, type: 3}
+    talentIcon: {fileID: 21300000, guid: 58dc2ed2706581f4b9fdba0540a99921, type: 3}
   rareVoidwalkerTalents:
   - name: Angry Kitten
     description: Sets the range of void blast to 0 and increases the explosion size

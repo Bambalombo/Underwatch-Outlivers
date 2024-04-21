@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NearestEnemyFinder : MonoBehaviour
@@ -12,24 +13,39 @@ public class NearestEnemyFinder : MonoBehaviour
 
     public GameObject GetNearestEnemy(Vector2 position, List<GameObject> enemies = null)
     {
-        GameObject nearestEnemy = null;
-        float nearestDistance = Mathf.Infinity;
+        // Get the list with exactly 1 nearest enemy
+        List<GameObject> nearestEnemies = GetClosestEnemies(position, 1, enemies);
+
+        // Return the first and only enemy if available, otherwise null
+        return nearestEnemies.FirstOrDefault();
+    }
+
+    public List<GameObject> GetClosestEnemies(Vector2 position, int numberOfEnemies, List<GameObject> enemies = null, float maxRange = 1000)
+    {
         if (enemies == null)
             enemies = _enemySpawner.GetAllEnemiesList();
-        
+
+        // Create a list to store enemies and their distances
+        List<(GameObject enemy, float distance)> closestEnemies = new List<(GameObject, float)>();
+
         foreach (var enemy in enemies)
         {
             if (enemy == null) continue; // Skip if the enemy has been destroyed
 
             float distance = Vector2.Distance(position, enemy.transform.position);
-            if (distance < nearestDistance)
+        
+            if (distance <= maxRange) // Only add the enemy if within the specified range
             {
-                nearestDistance = distance;
-                nearestEnemy = enemy;
+                closestEnemies.Add((enemy, distance));
             }
         }
 
-        return nearestEnemy;
+        // Sort the list by distance and take the top 'numberOfEnemies' entries
+        closestEnemies = closestEnemies.OrderBy(x => x.distance).ToList();
+
+        // Return only the GameObject part of the tuple, up to the specified number of closest enemies
+        return closestEnemies.Take(numberOfEnemies).Select(x => x.enemy).ToList();
+
     }
 
     public List<GameObject> GetChainOfEnemies(Vector3 lastPos, float targetCount)
