@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAngle: 80
+  meleeSlashPrefab: {fileID: 6750740301435801352, guid: 77e70f332a7de3f4daba97f693ae0c7c, type: 3}
   bloodType00Enabled: 0
   healingHackEnabled: 0
   healingHackRange: 0
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 50
   attackCooldown: 2
-  attackRange: 6
+  attackRange: 3
   projectileSpeed: 0
   attackLifetime: 0
   knockback: 0

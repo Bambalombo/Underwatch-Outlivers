@@ -17,6 +17,8 @@ public class MeleeSlash : MonoBehaviour
     private PlayerStatsController playerStatsController;
     private PlayerHealthController playerHealthController;
     private Vector2 lastMoveDirection = Vector2.right; // Default direction if the player has not moved
+
+    public GameObject meleeSlashPrefab;
     
     //Talent variables
     //Bloodtype00 
@@ -60,7 +62,7 @@ public class MeleeSlash : MonoBehaviour
         {
             yield return new WaitForSeconds(_weaponStats.GetAttackCooldown());
             PerformAttack();
-            StartCoroutine(ShowLineRendererTemporarily());
+            //StartCoroutine(ShowLineRendererTemporarily());
         }
     }
 
@@ -75,79 +77,69 @@ public class MeleeSlash : MonoBehaviour
 
     void PerformAttack()
     {
+        // Play a random attack sound
         arrayMax = arraySounds.Length;
         soundToPlay = Random.Range(0, arrayMax);
         audioSource.clip = arraySounds[soundToPlay];
         audioSource.Play();
-        
-        
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _weaponStats.GetAttackRange());
 
-        foreach (Collider2D hit in hits)
+        // Get the last movement direction
+        Vector2 lastMoveDirection = playerStatsController.GetLastMoveDirection();
+        if (lastMoveDirection == Vector2.zero) // In case the player hasn't moved, use a default direction
+            lastMoveDirection = Vector2.right; // Default direction is right, change as needed
+
+        // Calculate the position in front of the player based on last move direction
+        Vector3 spawnPosition = transform.position + new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0) * (_weaponStats.GetAttackRange() * 0.75f); // Multiply by a larger factor to move it further
+
+        // Calculate the rotation based on the last movement direction
+        float angle = Mathf.Atan2(lastMoveDirection.y, lastMoveDirection.x) * Mathf.Rad2Deg;
+        Quaternion spawnRotation = Quaternion.Euler(0, 0, angle);
+
+        // Instantiate melee attack effect prefab
+        GameObject explosionEffect = Instantiate(meleeSlashPrefab, spawnPosition, spawnRotation);
+        explosionEffect.transform.localScale = new Vector3(_weaponStats.GetAttackRange(), _weaponStats.GetAttackRange(), 1); // Scale the effect
+        Destroy(explosionEffect, 2); // Destroy effect after 1 second, adjust as needed
+
+        // Detect enemies within the attack range
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(spawnPosition, _weaponStats.GetAttackRange() / 2f);
+        foreach (Collider2D hitCollider in hitColliders)
         {
-            if (hit.gameObject != this.gameObject)
+            if (hitCollider.CompareTag("Enemy")) // Ensure you're only hitting objects tagged as "Enemy"
             {
-                Vector2 directionToTarget = (hit.transform.position - transform.position).normalized;
-                float angleToTarget = Vector2.Angle(lastMoveDirection, directionToTarget);
-
-                if (angleToTarget < attackAngle / 2)
+                EnemyCombatController enemyController = hitCollider.GetComponent<EnemyCombatController>();
+                if (enemyController != null)
                 {
-                    EnemyCombatController enemy = hit.gameObject.GetComponent<EnemyCombatController>();
-                    if (enemy != null)
+                    enemyController.EnemyTakeDamage(_weaponStats.GetDamage()); // Damage the enemy
+                    playerHealthController.PlayerHeal(_weaponStats.GetLifeStealAmount());
+                    
+                    if (bloodType00Enabled)
                     {
-                        // Deal damage to the enemy
-                        enemy.EnemyTakeDamage(_weaponStats.GetDamage());
-                        playerHealthController.PlayerHeal(_weaponStats.GetLifeStealAmount());
-                        if (healingHackEnabled)
+                        this.gameObject.GetComponent<AoeDamagePool>().AttemptInitialize(_weaponStats.GetDamage() / 10,
+                            hitCollider.gameObject.transform.position);
+                    }
+                    
+                    if (healingHackEnabled)
+                    {
+                        GameObject[] playerGameObjects = GameManager.GetPlayerGameObjects();
+                        foreach (GameObject player in playerGameObjects)
                         {
-                            GameObject[] playerGameObjects = GameManager.GetPlayerGameObjects();
-                            foreach (GameObject player in playerGameObjects)
+                            float distance = Vector3.Distance(_playerGameObject.transform.position,
+                                player.transform.position);
+
+                            if (player != _playerGameObject &&
+                                distance <=
+                                healingHackRange) // Check if the player is within 5 units and is not the caster
                             {
-                                float distance = Vector3.Distance(_playerGameObject.transform.position, player.transform.position);
-                                
-                                if (player != _playerGameObject && distance <= healingHackRange) // Check if the player is within 5 units and is not the caster
+                                PlayerHealthController healthController = player.GetComponent<PlayerHealthController>();
+                                if (healthController != null) // Check if the component exists
                                 {
-                                    PlayerHealthController healthController = player.GetComponent<PlayerHealthController>();
-                                    if (healthController != null) // Check if the component exists
-                                    {
-                                        healthController.PlayerHeal(_weaponStats.GetLifeStealAmount() / 10);
-                                    }
+                                    healthController.PlayerHeal(_weaponStats.GetLifeStealAmount() / 10);
                                 }
                             }
-                        }
-
-                        if (bloodType00Enabled)
-                        {
-                            this.gameObject.GetComponent<AoeDamagePool>().AttemptInitialize(_weaponStats.GetDamage()/10, hit.gameObject.transform.position);
                         }
                     }
                 }
             }
-        }
-    }
-
-    IEnumerator ShowLineRendererTemporarily()
-    {
-        UpdateLineRenderer();
-        lineRenderer.enabled = true; // Make the line visible
-        yield return new WaitForSeconds(lineVisibilityDuration); // Wait for half a second
-        lineRenderer.enabled = false; // Hide the line again
-    }
-
-    void UpdateLineRenderer()
-    {
-        if (lineRenderer != null)
-        {
-            // Ensure we have a direction to face even when standing still
-            Vector3 forwardDirection = new Vector3(lastMoveDirection.x, lastMoveDirection.y, 0);
-            Vector3 rightBoundary = Quaternion.Euler(0, 0, attackAngle / 2) * forwardDirection * _weaponStats.GetAttackRange();
-            Vector3 leftBoundary = Quaternion.Euler(0, 0, -attackAngle / 2) * forwardDirection * _weaponStats.GetAttackRange();
-
-            lineRenderer.positionCount = 4; // Update to 4 points to form a closed triangle
-            lineRenderer.SetPosition(0, transform.position + rightBoundary); // Right vertex of the triangle
-            lineRenderer.SetPosition(1, transform.position); // Apex of the triangle (player's position)
-            lineRenderer.SetPosition(2, transform.position + leftBoundary); // Left vertex of the triangle
-            lineRenderer.SetPosition(3, transform.position + rightBoundary); // Back to the right vertex to close the triangle
         }
     }
 
