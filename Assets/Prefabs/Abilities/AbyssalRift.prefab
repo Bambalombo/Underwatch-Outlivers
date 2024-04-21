@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   cooldown: 0
-  range: 0
+  range: 5
   projectileSpeed: 0
   lifetime: 10
   knockback: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   soulHarvestHealAmount: 0
   soulHarvestHealChance: 0
   nextHealTime: 0
+  deadlyLitterActivated: 0
 --- !u!82 &4251319545539366398
 AudioSource:
   m_ObjectHideFlags: 0
