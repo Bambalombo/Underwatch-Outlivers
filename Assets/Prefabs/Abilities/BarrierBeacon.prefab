@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   cooldown: 0
-  range: 0
+  range: 5
   projectileSpeed: 0
   lifetime: 10
   knockback: 0

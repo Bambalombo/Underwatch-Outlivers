@@ -24,6 +24,7 @@ public class AbyssalRift : MonoBehaviour
     public float soulHarvestHealAmount;
     public float soulHarvestHealChance; // Chance to trigger the soul harvest heal
     public float nextHealTime; // Next time player can be healed by soul harvest
+    public bool deadlyLitterActivated;
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class AbyssalRift : MonoBehaviour
         Vector2 spawnDirection = playerStatsController.GetLastMoveDirection().normalized;
         Vector2 spawnPosition = (Vector2)transform.position + spawnDirection * riftSpawnDistance;
         GameObject rift = Instantiate(riftPrefab, new Vector3(spawnPosition.x, spawnPosition.y, 1), Quaternion.identity);
+        rift.transform.localScale = new Vector3(abilityStats.GetAttackRange(),abilityStats.GetAttackRange(),0);
 
         float startTime = Time.time;
         float endTime = startTime + abilityStats.GetAttackLifetime();
@@ -62,7 +64,7 @@ public class AbyssalRift : MonoBehaviour
                 continue;
             }
             
-            PullEnemiesTowardsCenter(rift.transform.position, rift.GetComponent<CircleCollider2D>().radius);
+            PullEnemiesTowardsCenter(rift.transform.position, rift.GetComponent<SpriteRenderer>().transform.localScale.x/2f);
             yield return null;
         }
 

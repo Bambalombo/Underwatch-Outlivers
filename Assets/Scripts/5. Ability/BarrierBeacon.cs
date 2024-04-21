@@ -40,7 +40,7 @@ public class BarrierBeacon : MonoBehaviour
     {
         // Instantiate the buff field at the player's current position
         GameObject buffField = Instantiate(buffFieldPrefab, transform.position, Quaternion.identity);
-        buffField.transform.localScale = new Vector3(barrierSize,barrierSize,1); 
+        buffField.transform.localScale = new Vector3(abilityStats.GetAttackRange(),abilityStats.GetAttackRange(),1); 
         
         BarrierBeaconPrefabScript _barrierBeaconPrefabScript = buffField.GetComponent<BarrierBeaconPrefabScript>();
         _barrierBeaconPrefabScript.HealingHaven = healingHavenActive;
