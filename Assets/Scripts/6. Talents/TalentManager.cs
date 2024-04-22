@@ -39,6 +39,9 @@ public class TalentManager : MonoBehaviour
 
     public void TalentSelected(Talent selectedTalent, GameObject playerGameobject) {
         selectedTalent.ApplyEffectToPlayer(playerGameobject);
+        selectedTalent.level++; //Increase the level of the talent
+        
+        
         _talentsPicked++;
         // if (_talentsPicked >= playerGameObjects.Length)
         if (_talentsPicked >= _gameManager.GetAlivePlayers().Count)

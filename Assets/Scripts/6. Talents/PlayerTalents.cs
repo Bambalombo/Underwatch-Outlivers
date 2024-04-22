@@ -52,10 +52,16 @@ public class PlayerTalents : MonoBehaviour
 
         return (commonTalentPool, rareTalentPool); //Dum workaround til at returne mere end 1 variable og nej jeg gidder ikk returne et array >:(
     }
+    
+    public void RemoveMaxedOutTalents(ref List<Talent> allTalents)
+    {
+        allTalents = allTalents.Where(t => t.level < t.maxLevel).ToList();
+    }
 
 
     public List<Talent> GetThreeRandomTalents(List<Talent> allTalents)
     {   
+        RemoveMaxedOutTalents(ref allTalents);
         List<Talent> selectedTalents = new List<Talent>();
         commonTalentPool = allTalents;
 
@@ -80,4 +86,6 @@ public class PlayerTalents : MonoBehaviour
 
         return selectedTalents;
     }
+    
+
 }

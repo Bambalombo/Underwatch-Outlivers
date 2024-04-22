@@ -4,14 +4,14 @@ using UnityEngine;
 public class Talent {
     public string name;
     public string description;
-    public int level; // Current level of the talent.
+    public int level, maxLevel; // Current level of the talent.
     public GameObject talentPrefab;
     public Sprite talentIcon;
 
     public Talent(string name, string description) {
         this.name = name;
         this.description = description;
-        this.level = 0;
+        
     }
     
     // Method to apply the talent effect to a player
