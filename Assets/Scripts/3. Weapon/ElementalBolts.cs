@@ -63,8 +63,18 @@ public class ElementalBolts : MonoBehaviour
     
             if (target != null)  
             {
+                
                 Vector3 direction = (target.transform.position - transform.position).normalized;
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                
+                // Calculate the angle of the direction vector
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+                angle += 0;
+
+                // Set the rotation of the bullet to match the angle
+                bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                
                 audioSource.Play();
                 BulletController bulletController = bullet.GetComponent<BulletController>();
     

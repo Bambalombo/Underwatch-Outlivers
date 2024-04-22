@@ -19,6 +19,7 @@ public class BulletController : MonoBehaviour
     // Modified Initialize method to accept WeaponStats
     public void Initialize(Vector3 direction, float speed, IStatController damageSource, float killTime = 0)
     {
+        
         _direction = direction;
         _damage = damageSource.GetDamage();
         _speed = speed;
