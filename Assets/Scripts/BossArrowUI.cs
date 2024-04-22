@@ -13,6 +13,8 @@ public class BossArrowUI : MonoBehaviour
     private Transform _bossParent;
     [SerializeField] private float offset = 50f; // Offset from the edge of the screen
     private const float Tolerance = 0.01f; // Define your tolerance here
+    
+    
 
 
     private IEnumerator Start()
@@ -86,6 +88,7 @@ public class BossArrowUI : MonoBehaviour
     private void RemoveBoss(GameObject boss)
     {
         bosses.Remove(boss);
+        SoundManager.PlaySound("BossDeath");
         var arrow = bossToArrowMap[boss];
         bossToArrowMap.Remove(boss);
         bossToArrowRectMap.Remove(boss);

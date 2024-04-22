@@ -45,6 +45,7 @@ public class LightningBoltBall : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             StartChainLightning(other.gameObject);
+            SoundManager.PlaySound("ChainLightningHit");
         }
     }
     */

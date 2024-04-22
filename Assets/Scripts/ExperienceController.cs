@@ -51,7 +51,7 @@ public class ExperienceController : MonoBehaviour
         // TODO: Could not get the reference from GameManager for some reason
         var uiManager = FindObjectOfType<UIManager>().GetComponent<UIManager>();
         uiManager.UpdateExpUI();
-        
+        SoundManager.PlaySound("LevelUp");
         _talentManager.OpenTalentMenu(level.value);
 
     }
