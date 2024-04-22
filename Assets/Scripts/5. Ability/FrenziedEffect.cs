@@ -6,6 +6,8 @@ public class FrenziedEffect : MonoBehaviour
 {
     private float duration;
     private float _healthDrainRate, _statBuffMultiplier;
+
+    private bool buffActive;
     
     private PlayerStatsController playerStatsController;
     private PlayerHealthController playerHealthController;
@@ -24,7 +26,7 @@ public class FrenziedEffect : MonoBehaviour
         playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() * _statBuffMultiplier);
         weaponStats.SetDamage(weaponStats.GetDamage() * _statBuffMultiplier);
         weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() / _statBuffMultiplier);
-
+        buffActive = true;
 
 
         StartCoroutine(EffectCoroutine(playerStatsController, playerHealthController, weaponStats));
@@ -41,22 +43,33 @@ public class FrenziedEffect : MonoBehaviour
             yield return null;
         }
 
-        // Revert buff
-        playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() / _statBuffMultiplier);
-        weaponStats.SetDamage(weaponStats.GetDamage() / _statBuffMultiplier);
-        weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() * _statBuffMultiplier);
+        if (buffActive)
+        {
+            DisableBuff();
+            buffActive = false;
+        }
 
         Destroy(gameObject);
     }
 
     private void OnDisable()
     {
-        // Revert buff
-        playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() / _statBuffMultiplier);
-        weaponStats.SetDamage(weaponStats.GetDamage() / _statBuffMultiplier);
-        weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() * _statBuffMultiplier);
+        if (buffActive)
+        {
+            DisableBuff();
+            buffActive = false;
+        }
+
         StopCoroutine(EffectCoroutine(playerStatsController, playerHealthController, weaponStats));
         
         Destroy(gameObject);
+    }
+
+    private void DisableBuff()
+    {
+        Debug.Log("Disabling buff");
+        playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() / _statBuffMultiplier);
+        weaponStats.SetDamage(weaponStats.GetDamage() / _statBuffMultiplier);
+        weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() * _statBuffMultiplier);
     }
 }
