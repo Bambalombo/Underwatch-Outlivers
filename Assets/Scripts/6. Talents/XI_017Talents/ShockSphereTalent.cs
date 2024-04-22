@@ -5,12 +5,12 @@ using UnityEngine;
 public class ShockSphereTalent : MonoBehaviour, ITalentEffect
 {
     private GameObject _droneGameObject;
-    private FrenziedMutation _droneComponent;
+    private WeaponDrone _droneComponent;
     public void ApplyEffect(GameObject player)
     {
-        _droneGameObject = player.GetComponent<ClassAssets>().GetActiveAbilities();
-        _droneComponent = _droneGameObject.GetComponent<FrenziedMutation>();
+        _droneGameObject = player.GetComponent<ClassAssets>().GetActiveWeapons();
+        _droneComponent = _droneGameObject.GetComponent<WeaponDrone>();
 
-        _droneComponent.frenzyFiestaEnabled = true;
+        _droneComponent.shockSphereEnabled = true;
     }
 }
