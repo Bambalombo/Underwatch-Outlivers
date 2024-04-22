@@ -1,5 +1,5 @@
 {
-    "name": "DefaultInputActions",
+    "name": "NewControls",
     "maps": [
         {
             "name": "Player",
@@ -504,6 +504,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "372203ef-10e8-426c-8417-a5b21cccb2e2",
+                    "path": "<SwitchProControllerHID>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
