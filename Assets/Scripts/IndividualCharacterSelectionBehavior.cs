@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.Serialization;
 
 public class IndividualCharacterSelectionBehavior : MonoBehaviour
 {
@@ -21,8 +22,9 @@ public class IndividualCharacterSelectionBehavior : MonoBehaviour
         droneWeapon,
         lightningBolt,
         abyssalRift,
-        frenziedMutation,
-        linusVæg;
+        frenziedMutation;
+
+    [FormerlySerializedAs("linusVæg")] public String barrierBeacon;
 
     public Sprite[] characterSprites; // Array of character sprites
     private int currentSpriteIndex = 0; // Currently selected sprite index
@@ -91,7 +93,7 @@ public class IndividualCharacterSelectionBehavior : MonoBehaviour
             case 3:
                 CharacterNameText.text = "XI_017";
                 WeaponDescriptionText.text = droneWeapon;
-                AbilityDescriptionText.text = linusVæg;
+                AbilityDescriptionText.text = barrierBeacon;
                 break;
         }
 
