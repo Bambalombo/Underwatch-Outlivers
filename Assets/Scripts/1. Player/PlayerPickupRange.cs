@@ -21,16 +21,42 @@ public class PlayerPickupRange : MonoBehaviour
     {
         pickupRangeCollider.radius = playerStatsController.GetExperiencePickupRange();
     }
-    
-    
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+        PickupItem item = null;
+
+        if (other.CompareTag("PickupItem"))
+        {
+            item = other.gameObject.GetComponent<PickupItem>();
+        }
+        
+        /*
+        switch (other.gameObject.tag)
+        {
+            case "Experience":
+                pickupable = other.gameObject.GetComponent<ExperienceAmount>();
+                break;
+            case "HealthPickup":
+                pickupable = other.gameObject.GetComponent<HealthPickup>();
+                break;
+        }
+        */
+
+        if (item != null && !item.isBeingPickedUp)
+        {
+            Debug.Log(item.isBeingPickedUp);
+            item.CheckIfBeingPickedUp(gameObject);
+            StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, item));
+        }
+        /*
         if (other.gameObject.CompareTag("Experience"))
         {
             var experiencePickup = other.gameObject.GetComponent<ExperienceAmount>();
             if (!experiencePickup.isBeingPickedUp)
             {
-                experiencePickup.isBeingPickedUp = true;
+                experiencePickup.CheckIfBeingPickedUp(gameObject);
                 StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, experiencePickup));
             }
         }
@@ -40,12 +66,14 @@ public class PlayerPickupRange : MonoBehaviour
             if (!healthPickup.isBeingPickedUp)
             {
                 healthPickup.isBeingPickedUp = true;
-                StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, null, healthPickup));
+                StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, healthPickup));
             }
+        
         }
+        */
     }
 
-    private IEnumerator MoveObjectToPlayer(GameObject obj, float speed, ExperienceAmount experiencePickup = null, HealthPickup healthPickup = null)
+    private IEnumerator MoveObjectToPlayer(GameObject obj, float speed, PickupItem item)
     {
         if (obj == null)
             yield break;
@@ -56,16 +84,16 @@ public class PlayerPickupRange : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        if (experiencePickup != null)
+        switch (item.GetItemType())
         {
-            var expAmount = experiencePickup.GetExperienceAmount();
-            experienceController.AddExperience(expAmount);
+            case PickupItem.ItemType.Experience:
+                experienceController.AddExperience((int)item.GetValue());
+                break;
+            case PickupItem.ItemType.Health:
+                playerHealthController.PlayerHeal(item.GetValue());
+                break;
         }
-        else if (healthPickup != null)
-        {
-            var healAmount = healthPickup.GetHealthAmount();
-            playerHealthController.PlayerHeal(healAmount);
-        }
+            
         Destroy(obj);
     }
     

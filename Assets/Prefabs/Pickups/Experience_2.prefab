@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8450201259560679556}
   - component: {fileID: 2676313606372879963}
-  - component: {fileID: 3128785358851057910}
   - component: {fileID: -592092902796875869}
+  - component: {fileID: -2619089199419311184}
   m_Layer: 8
   m_Name: Experience_2
-  m_TagString: Experience
+  m_TagString: PickupItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3128785358851057910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571339481620590403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571c9a40927b3ca40ad826be508d6312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experienceAmount: 25
 --- !u!58 &-592092902796875869
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +121,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16855884
+--- !u!114 &-2619089199419311184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571339481620590403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cda47fed0e8495eb1fd379662e1fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 25
+  pickupType: 1

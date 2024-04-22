@@ -29,11 +29,11 @@ public class ExperienceController : MonoBehaviour
 
     private void ScaleLevel()
     {
-        nextLevelExperience.value = baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value);
+        nextLevelExperience.value = Mathf.RoundToInt((baseExperience * Mathf.Pow(levelScalingFactor, level.value)) / 50) * 50;
         while (experience.value >= nextLevelExperience.value)
         {
             LevelUp();
-            nextLevelExperience.value = baseExperience * (int)Mathf.Pow(levelScalingFactor, level.value);
+            nextLevelExperience.value = Mathf.RoundToInt((baseExperience * Mathf.Pow(levelScalingFactor, level.value)) / 50) * 50;
         }
     }
 
