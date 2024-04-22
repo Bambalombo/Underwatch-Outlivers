@@ -49,7 +49,7 @@ MonoBehaviour:
   frenzyEffectPrefab: {fileID: 4609061036474927045, guid: d0515f89d4ef3a9498c7d0f0723007d7, type: 3}
   defaultCooldown: 10
   audioSource: {fileID: 5824222791831482126}
-  frenzyFiestaEnabled: 1
+  frenzyFiestaEnabled: 0
 --- !u!114 &1466473065086806268
 MonoBehaviour:
   m_ObjectHideFlags: 0

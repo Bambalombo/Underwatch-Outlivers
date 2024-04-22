@@ -28,15 +28,25 @@ public class FrenziedMutation : MonoBehaviour
             GameObject[] playerGameObjects = GameManager.GetPlayerGameObjects();
             foreach (GameObject player in playerGameObjects)
             {
-                if (player != _playerGameObject)  // Apply the effect to all players except the one casting it
+                
+                if (player != _playerGameObject && player.activeSelf)  // Apply the effect to all players except the one casting it
                 {
-                    ApplyFrenzyEffect(player, 0f, 1.2f); //Allied players get no health drain but also a weaker buff
-                    
+                    if (player.GetComponentInChildren<FrenziedEffect>() == null) //We check if they already have a buff enabled before applying a new one
+                    {
+                        ApplyFrenzyEffect(player, 0f, 1.2f); //Allied players get no health drain but also a weaker buff
+                    }
                 }
             }
             
         }
-        ApplyFrenzyEffect(_playerGameObject, 0.1f, 2f); //The player casting it gets health drain and a stronger buff
+        
+        // Frenzy effect applied to the casting player
+        
+        if (_playerGameObject.GetComponentInChildren<FrenziedEffect>()) // We check here if a buff is already applied (In case of another mutated berserker having cast it on the player, and if yes, we destroy that)
+        {
+            Destroy(_playerGameObject.GetComponentInChildren<FrenziedEffect>().gameObject);
+        }
+        ApplyFrenzyEffect(_playerGameObject, 1f, 2f); // The player casting it gets health drain and a stronger buff
         audioSource.Play();
         abilityCastHandler.StartCooldown(defaultCooldown, _abilityStats.GetAttackCooldown());
     }
