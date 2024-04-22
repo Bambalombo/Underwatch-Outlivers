@@ -55,6 +55,7 @@ public class LightningBoltBall : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             StartChainLightning(other.gameObject);
+            SoundManager.PlaySound("ChainLightningHit");
         }
     }
 
@@ -84,6 +85,7 @@ public class LightningBoltBall : MonoBehaviour
             {
                 _damageAmplifier = stats.GetTargetCount() / _enemyHitList.Count;
                 enemyCombatController.EnemyTakeDamage(stats.GetDamage() * _damageAmplifier);
+                
             }
 
             yield return new WaitForSeconds(_lightningJumpDelay);
