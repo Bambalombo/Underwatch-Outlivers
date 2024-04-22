@@ -37,18 +37,19 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collider.gameObject.CompareTag("Enemy"))
         {
-            var enemy = collision.gameObject.GetComponent<EnemyCombatController>();
+            var enemy = collider.gameObject.GetComponent<EnemyCombatController>();
             if (enemy != null)
             {
                 enemy.EnemyTakeDamage(_damage);
                 // Fire the OnBulletHitEnemy event
-                OnBulletHitEnemy?.Invoke(collision.gameObject);
+                OnBulletHitEnemy?.Invoke(collider.gameObject);
                 Destroy(gameObject, impactDestroyTime);
             }
         }
     }
+
 }
