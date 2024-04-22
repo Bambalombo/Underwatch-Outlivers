@@ -16,6 +16,7 @@ TagManager:
   - BossWeapon
   - DeathIcons
   - DeathIconText
+  - PickupItem
   layers:
   - Default
   - TransparentFX
