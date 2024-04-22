@@ -88,7 +88,7 @@ public class ElementalBolts : MonoBehaviour
                     bulletController.OnBulletHitEnemy += SpawnAspectOfWaterHealingStream;
                 }
     
-                bulletController.Initialize(direction, basicBulletSpeed.value, _weaponStats);
+                bulletController.Initialize(direction, _weaponStats.GetProjectileSpeed(), _weaponStats);
             }
         }
     }
@@ -110,7 +110,7 @@ public class ElementalBolts : MonoBehaviour
             HealingBulletController healingController = healingBullet.GetComponent<HealingBulletController>();
 
             // Pass the transform of the player who is firing the bullet
-            healingController.Initialize(_playerGameObject.transform, 20f, _weaponStats);
+            healingController.Initialize(_playerGameObject.transform, _weaponStats.GetProjectileSpeed()*2f, _weaponStats);
         }
     }
 

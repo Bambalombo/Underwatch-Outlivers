@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7302632221211052090}
   - component: {fileID: 4360340228533101647}
   m_Layer: 0
-  m_Name: abilityRangeIncrease
+  m_Name: AbilityProjectileSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1490eed79ba22444bdf92ecbea91eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedStat: 11
-  amountPercent: 0.1
+  selectedStat: 12
+  amountPercent: 0.2

@@ -44,6 +44,6 @@ public class FrenziedMutation : MonoBehaviour
     private void ApplyFrenzyEffect(GameObject playerGameObject, float healthDrain, float buffMultiplier)
     {
         GameObject frenzyEffectInstance = Instantiate(frenzyEffectPrefab, playerGameObject.transform.position, Quaternion.identity, playerGameObject.transform);
-        frenzyEffectInstance.GetComponent<FrenziedEffect>().Initialize(playerGameObject, healthDrain, buffMultiplier);
+        frenzyEffectInstance.GetComponent<FrenziedEffect>().Initialize(playerGameObject, healthDrain, buffMultiplier, _abilityStats.GetAttackLifetime());
     }
 }

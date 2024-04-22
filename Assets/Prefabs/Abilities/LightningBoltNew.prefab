@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   cooldown: 0
-  range: 10
+  size: 10
   projectileSpeed: 3
   lifetime: 0
   knockback: 0
@@ -4926,4 +4926,5 @@ MonoBehaviour:
   lightningBoltPrefab: {fileID: 8367521391973670183, guid: bdc4faa689bb94052ac340b4b7c29765, type: 3}
   boltStartSize: 0.8
   boltMaxSize: 1.8
+  lightningWidth: 1
   defaultCooldown: 5

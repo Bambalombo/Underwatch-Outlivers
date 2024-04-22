@@ -25,14 +25,15 @@ public class StatUpgradeTalent : MonoBehaviour, ITalentEffect
         abilityRange,
         abilityProjectileSpeed,
         abilityLifetime,
-        abilityKnockback
+        abilityKnockback,
+        abilityTargetCount
     }
 
     [Header("Stat Selection")]
     [SerializeField] private Stat selectedStat;
     
     [Header("Percent increase written as a decimal (for 5% write 0.05 e.g)")]
-    //Amount skal bruges som en procent (Så f.eks 5% mere damage), så skriv det som et decimal tal (0.05 for 5%)
+    //Amount skal bruges som en procent (Så f.eks 5% mere damage), så skriv det som et decimal tal (0.05 for 5%). Target count er dog ikke en procent lol
     public float amountPercent;
     
 
@@ -85,13 +86,13 @@ public class StatUpgradeTalent : MonoBehaviour, ITalentEffect
                 _weaponStats.SetAttackCooldown(_weaponStats.GetAttackCooldown() * (1-amount)); //OBS: Cooldown bliver minusset i stedet for så f.eks 5% CDR bliver til at abilityens cooldown = 95% af den originale
                 break;
             case "weaponRange":
-                Debug.Log("weaponRange not implemented/used yet");
+                _weaponStats.SetAttackRange(_weaponStats.GetAttackRange() *(1+amount));
                 break;
             case "weaponProjectileSpeed":
                 _weaponStats.SetProjectileSpeed(_weaponStats.GetProjectileSpeed() * (1 + amount));
                 break;
             case "weaponAttackLifetime":
-                Debug.Log("weaponLifeTime not implemented/used yet");
+                _weaponStats.SetAttackLifetime(_weaponStats.GetAttackLifetime()*(1+amount));
                 break;
             case "weaponKnockback":
                 Debug.Log("weaponKnockback not implemented/used yet");
@@ -123,6 +124,9 @@ public class StatUpgradeTalent : MonoBehaviour, ITalentEffect
                 break;
             case "abilityKnockback":
                 _abilityStats.SetKnockback(_abilityStats.GetKnockback()*(1+amount)); 
+                break;
+            case "abilityTargetCount":
+                _abilityStats.SetTargetCount(_abilityStats.GetTargetCount()+amount); //OBS, HER ER DET ALTSÅ IKKE EN PROCENT 
                 break;
                 
         }

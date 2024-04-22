@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class FrenziedEffect : MonoBehaviour
 {
-    [SerializeField] private float duration = 10f;
+    private float duration;
     private float _healthDrainRate, _statBuffMultiplier;
-
+    
     private PlayerStatsController playerStatsController;
     private PlayerHealthController playerHealthController;
     private WeaponStats weaponStats;
     
-    public void Initialize(GameObject playerGameObject, float healthDrain, float buffMultiplier)
+    public void Initialize(GameObject playerGameObject, float healthDrain, float buffMultiplier, float abilityDuration)
     {
         _healthDrainRate = healthDrain;
         _statBuffMultiplier = buffMultiplier;
+        duration = abilityDuration;
         playerStatsController = playerGameObject.GetComponent<PlayerStatsController>();
         playerHealthController = playerGameObject.GetComponent<PlayerHealthController>();
         weaponStats = playerGameObject.GetComponentInChildren<WeaponStats>();
