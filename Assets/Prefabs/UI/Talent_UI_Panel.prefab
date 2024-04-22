@@ -100,6 +100,10 @@ MonoBehaviour:
   talentNameText: {fileID: 7623340398617853898}
   talentDescriptionText: {fileID: 5247349425067399120}
   talentManager: {fileID: 0}
+  talentImage: {fileID: 0}
+  playerGameobject: {fileID: 0}
+  localTalentPanel: {fileID: 0}
+  doneSelectingPanel: {fileID: 0}
 --- !u!1 &37313335526749419
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +204,7 @@ RectTransform:
   m_GameObject: {fileID: 2890588448569414591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.6591802, y: 2.6591802, z: 2.6591802}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3102166290492368933}
@@ -210,7 +214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.8361, y: -4.9902}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2955939234530902785
@@ -941,6 +945,10 @@ MonoBehaviour:
   talentNameText: {fileID: 5316592614669373294}
   talentDescriptionText: {fileID: 6795806017293635824}
   talentManager: {fileID: 0}
+  talentImage: {fileID: 0}
+  playerGameobject: {fileID: 0}
+  localTalentPanel: {fileID: 0}
+  doneSelectingPanel: {fileID: 0}
 --- !u!1 &6366327575327676957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1613,10 @@ MonoBehaviour:
   talentNameText: {fileID: 8789187794111503803}
   talentDescriptionText: {fileID: 1832050959565571736}
   talentManager: {fileID: 0}
+  talentImage: {fileID: 0}
+  playerGameobject: {fileID: 0}
+  localTalentPanel: {fileID: 0}
+  doneSelectingPanel: {fileID: 0}
 --- !u!1 &8994567769729868463
 GameObject:
   m_ObjectHideFlags: 0

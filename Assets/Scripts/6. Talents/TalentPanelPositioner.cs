@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class TalentPanelPositioner : MonoBehaviour
 {
@@ -10,59 +11,77 @@ public class TalentPanelPositioner : MonoBehaviour
 
     void Start()
     {
-        Transform playerTransform = transform.parent.parent; // The grandparent of this GameObject
+        Transform playerTransform = transform.parent.parent;
 
         if (playerTransform != null)
         {
             RectTransform rectTransform = GetComponent<RectTransform>();
 
+            Color color = Color.white; // Default color, change if necessary
+
             switch (playerTransform.name)
             {
-                case "Player_1": // Top Left
+                case "Player_1":
                     rectTransform.anchorMin = new Vector2(0, 1);
                     rectTransform.anchorMax = new Vector2(0, 1);
                     rectTransform.pivot = new Vector2(0, 1);
                     rectTransform.anchoredPosition = new Vector2(offset.x, -offset.y);
+                    color = new Color(0.7132076f, 0.3268512f, 0.3268512f, 0.6313726f); 
                     break;
-                case "Player_2": // Top Right
+                case "Player_2":
                     rectTransform.anchorMin = new Vector2(1, 1);
                     rectTransform.anchorMax = new Vector2(1, 1);
                     rectTransform.pivot = new Vector2(1, 1);
                     rectTransform.anchoredPosition = new Vector2(-offset.x, -offset.y);
+                    color = new Color(0.3254902f, 0.351754f, 0.6117647f, 0.6313726f);
                     break;
-                case "Player_3": // Bottom Left
+                case "Player_3":
                     rectTransform.anchorMin = new Vector2(0, 0);
                     rectTransform.anchorMax = new Vector2(0, 0);
                     rectTransform.pivot = new Vector2(0, 0);
                     rectTransform.anchoredPosition = new Vector2(offset.x, offset.y);
+                    color = new Color(0.5313726f, 0.8f, 0.3891499f, 0.5313726f);
                     break;
-                case "Player_4": // Bottom Right
+                case "Player_4":
                     rectTransform.anchorMin = new Vector2(1, 0);
                     rectTransform.anchorMax = new Vector2(1, 0);
                     rectTransform.pivot = new Vector2(1, 0);
                     rectTransform.anchoredPosition = new Vector2(-offset.x, offset.y);
+                    color = new Color(0.5763184f, 0.3254902f, 0.6117647f, 0.6313726f); // Purple
                     break;
             }
 
-            rectTransform.sizeDelta = new Vector2(100, 100); // Adjust the size according to your UI element's desired size
+            rectTransform.sizeDelta = new Vector2(100, 100);
 
-            // Iterate through children and set their position and size
-            foreach (Transform child in transform)
-            {
-                RectTransform childRectTransform = child.GetComponent<RectTransform>();
-                if (childRectTransform != null)
-                {
-                    childRectTransform.anchorMin = new Vector2(0, 0);
-                    childRectTransform.anchorMax = new Vector2(1, 1);
-                    childRectTransform.pivot = new Vector2(0.5f, 0.5f);
-                    childRectTransform.sizeDelta = Vector2.zero;
-                    childRectTransform.anchoredPosition = Vector2.zero;
-                }
-            }
+            // Recursively find all "Background" GameObjects and change their colors
+            ChangeBackgroundColor(transform, color);
         }
         else
         {
             Debug.LogError("Player grandparent not found.");
+        }
+    }
+
+    void ChangeBackgroundColor(Transform parent, Color color)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == "Background")
+            {
+                Image image = child.GetComponent<Image>();
+                if (image != null)
+                {
+                    image.color = color;
+                }
+                else
+                {
+                    Debug.LogWarning("Image component not found on Background GameObject named: " + child.name);
+                }
+            }
+            // Recursively call this method to check all descendants
+            ChangeBackgroundColor(child, color);
+            
+            Destroy(this.GetComponent<TalentPanelPositioner>());
         }
     }
 }
