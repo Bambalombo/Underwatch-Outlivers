@@ -107,9 +107,9 @@ MonoBehaviour:
   isBoss: 1
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 300
+  maxHealth: 600
   moveSpeed: 1.5
-  damage: 5
+  damage: 10
   lastAttackTime: 0
   attackCooldown: 0.5
   experienceDrop: {fileID: 1571339481620590403, guid: e3a217142e90b3c40a769950e39b9dc3, type: 3}
@@ -162,10 +162,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6252570930536968202, guid: 9ba4ae3513d24d74594f9834a09aedb1, type: 3}
   bulletSpeed: 10
   normalFireRate: 2
-  rageFireRate: 10
+  rageFireRate: 5
   lastFireTime: 0
   timeSinceLastBullet: 0
-  currentState: 1
+  currentState: 0
   players: []
 --- !u!114 &8933796695499925440
 MonoBehaviour:

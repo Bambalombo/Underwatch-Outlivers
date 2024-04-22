@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5419640662774951631}
   - component: {fileID: 7710591613723563232}
   m_Layer: 11
-  m_Name: BossBullet
+  m_Name: BossBullet 2
   m_TagString: BossWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f6f6a16544cd5741acb3fa2c8621548, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 104eaa613bed54c4287569b4acc01c7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

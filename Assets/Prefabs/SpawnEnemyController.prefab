@@ -85,7 +85,8 @@ MonoBehaviour:
   allEnemies: []
   bosses:
   - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
-  - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
+  - {fileID: 5362581833865366400, guid: 4849fd9a1c23ce14bb2d292959e41e80, type: 3}
+  - {fileID: 5362581833865366400, guid: dfc82815b2c7a504194e8d78af77d3db, type: 3}
   gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
 --- !u!114 &1757951494819308280
 MonoBehaviour:

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 9160034463395656589}
   - component: {fileID: 9018387638034703035}
   m_Layer: 7
-  m_Name: Boss_1.2
+  m_Name: Boss_2.1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e24bfb9faef26f4dbec50635ddc80be, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.9088969, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b91044454ea3bc740b63ed7ff6139452, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,9 +107,9 @@ MonoBehaviour:
   isBoss: 1
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 600
-  moveSpeed: 1.5
-  damage: 10
+  maxHealth: 300
+  moveSpeed: 2
+  damage: 5
   lastAttackTime: 0
   attackCooldown: 0.5
   experienceDrop: {fileID: 1571339481620590403, guid: e3a217142e90b3c40a769950e39b9dc3, type: 3}
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d87eb48bfe8ee41bda995646fe4f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6252570930536968202, guid: 9ba4ae3513d24d74594f9834a09aedb1, type: 3}
+  bulletPrefab: {fileID: 6252570930536968202, guid: 41716fc5c81e77444830021a3bd4f188, type: 3}
   bulletSpeed: 10
   normalFireRate: 2
   rageFireRate: 5
@@ -212,8 +212,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.18}
-  m_Size: {x: 1.0848571, y: 2.5210576}
+  m_Offset: {x: 0, y: -0.0039668083}
+  m_Size: {x: 0.7778043, y: 2.7368402}
   m_Direction: 0
 --- !u!50 &9160034463395656589
 Rigidbody2D:
