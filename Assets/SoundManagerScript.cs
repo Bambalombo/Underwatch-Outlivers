@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     {
         public string name;
         public AudioClip clip;
+        public float volume;
     }
 
     public List<Sound> sounds = new List<Sound>();
@@ -44,16 +45,19 @@ public class SoundManager : MonoBehaviour
             soundClips[sound.name] = sound.clip;
         }
     }
-
+    
     public static void PlaySound(string name)
     {
         if (Instance.soundClips.TryGetValue(name, out AudioClip clip))
         {
-            Instance.audioSource.PlayOneShot(clip);
+            float volume = Instance.sounds.Find(sound => sound.name == name).volume;
+            Instance.audioSource.PlayOneShot(clip, volume);
         }
         else
         {
             Debug.LogError("SoundManager: Sound not found. Name: " + name);
         }
     }
+
+    
 }
