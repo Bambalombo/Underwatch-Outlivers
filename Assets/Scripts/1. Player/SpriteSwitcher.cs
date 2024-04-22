@@ -27,6 +27,9 @@ public class SpriteSwitcher : MonoBehaviour
 
     private void FlipSprite()
     {
+        if (Time.timeScale == 0)
+            return;
+        
         if (playerStatsController.GetLastMoveDirection().x > 0)
         {
             spriteRenderer.flipX = false;
