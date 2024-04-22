@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -6520535320058767454}
   - component: {fileID: 34153790591562364}
   - component: {fileID: 7553064973841813736}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: LightningBoltBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4931,7 +4931,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -40,17 +40,21 @@ public class LightningBoltBall : MonoBehaviour
         stats = abilityStats;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    /*private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             StartChainLightning(other.gameObject);
         }
     }
+    */
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            StartChainLightning(other.gameObject);
+        }
     }
 
     private void StartChainLightning(GameObject enemy)
