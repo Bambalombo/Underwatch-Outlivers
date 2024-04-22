@@ -36,7 +36,7 @@ public class FrenziedMutation : MonoBehaviour
             }
             
         }
-        ApplyFrenzyEffect(_playerGameObject, 0.5f, 2f); //The player casting it gets health drain and a stronger buff
+        ApplyFrenzyEffect(_playerGameObject, 20f, 2f); //The player casting it gets health drain and a stronger buff
         audioSource.Play();
         abilityCastHandler.StartCooldown(defaultCooldown, _abilityStats.GetAttackCooldown());
     }

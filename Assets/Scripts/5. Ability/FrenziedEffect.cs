@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,13 +7,17 @@ public class FrenziedEffect : MonoBehaviour
     [SerializeField] private float duration = 10f;
     private float _healthDrainRate, _statBuffMultiplier;
 
+    private PlayerStatsController playerStatsController;
+    private PlayerHealthController playerHealthController;
+    private WeaponStats weaponStats;
+    
     public void Initialize(GameObject playerGameObject, float healthDrain, float buffMultiplier)
     {
         _healthDrainRate = healthDrain;
         _statBuffMultiplier = buffMultiplier;
-        PlayerStatsController playerStatsController = playerGameObject.GetComponent<PlayerStatsController>();
-        PlayerHealthController playerHealthController = playerGameObject.GetComponent<PlayerHealthController>();
-        WeaponStats weaponStats = playerGameObject.GetComponentInChildren<WeaponStats>();
+        playerStatsController = playerGameObject.GetComponent<PlayerStatsController>();
+        playerHealthController = playerGameObject.GetComponent<PlayerHealthController>();
+        weaponStats = playerGameObject.GetComponentInChildren<WeaponStats>();
 
         // Apply buff
         playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() * _statBuffMultiplier);
@@ -40,6 +45,17 @@ public class FrenziedEffect : MonoBehaviour
         weaponStats.SetDamage(weaponStats.GetDamage() / _statBuffMultiplier);
         weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() * _statBuffMultiplier);
 
+        Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        // Revert buff
+        playerStatsController.SetMoveSpeed(playerStatsController.GetMoveSpeed() / _statBuffMultiplier);
+        weaponStats.SetDamage(weaponStats.GetDamage() / _statBuffMultiplier);
+        weaponStats.SetAttackCooldown(weaponStats.GetAttackCooldown() * _statBuffMultiplier);
+        StopCoroutine(EffectCoroutine(playerStatsController, playerHealthController, weaponStats));
+        
         Destroy(gameObject);
     }
 }
