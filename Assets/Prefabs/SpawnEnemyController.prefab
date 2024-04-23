@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 294, y: -152, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   allEnemies: []
   bosses:
   - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
-  - {fileID: 5362581833865366400, guid: 4849fd9a1c23ce14bb2d292959e41e80, type: 3}
+  - {fileID: 5362581833865366400, guid: d1d4a946bd7979f4c92641d53962c896, type: 3}
   - {fileID: 5362581833865366400, guid: dfc82815b2c7a504194e8d78af77d3db, type: 3}
   gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
 --- !u!114 &1757951494819308280
@@ -103,10 +103,9 @@ MonoBehaviour:
   spawnRadius: 40
   safeZoneRadius: 30
   bossSpawnPositions:
-  - {x: 30, y: 30}
-  - {x: 30, y: -30}
-  - {x: -30, y: 30}
-  - {x: -30, y: -30}
+  - {x: 294, y: -152}
+  - {x: 247, y: 321}
+  - {x: -464, y: -365}
 --- !u!114 &-2451237040802010168
 MonoBehaviour:
   m_ObjectHideFlags: 0
