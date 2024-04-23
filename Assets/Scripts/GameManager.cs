@@ -411,5 +411,11 @@ public class GameManager : MonoBehaviour
     {
         OnPlayerRespawn?.Invoke(playerIndex);
     }
+    
+    public void ExitGame()
+    {
+        Debug.Log("Exiting game...");
+        Application.Quit();
+    }
 }
 
