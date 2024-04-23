@@ -8,8 +8,6 @@ public class PlayerPickupRange : MonoBehaviour
     [SerializeField] private ExperienceController experienceController;
     [SerializeField] private PlayerStatsController playerStatsController;
     [SerializeField] private PlayerHealthController playerHealthController;
-
-     
     
     [FormerlySerializedAs("towardsPlayerSpeed")]
     [Header("Movement Settings")]
@@ -31,46 +29,12 @@ public class PlayerPickupRange : MonoBehaviour
         {
             item = other.gameObject.GetComponent<PickupItem>();
         }
-        
-        /*
-        switch (other.gameObject.tag)
-        {
-            case "Experience":
-                pickupable = other.gameObject.GetComponent<ExperienceAmount>();
-                break;
-            case "HealthPickup":
-                pickupable = other.gameObject.GetComponent<HealthPickup>();
-                break;
-        }
-        */
 
         if (item != null && !item.isBeingPickedUp)
         {
-            Debug.Log(item.isBeingPickedUp);
             item.CheckIfBeingPickedUp(gameObject);
             StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, item));
         }
-        /*
-        if (other.gameObject.CompareTag("Experience"))
-        {
-            var experiencePickup = other.gameObject.GetComponent<ExperienceAmount>();
-            if (!experiencePickup.isBeingPickedUp)
-            {
-                experiencePickup.CheckIfBeingPickedUp(gameObject);
-                StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, experiencePickup));
-            }
-        }
-        else if (other.gameObject.CompareTag("HealthPickup"))
-        {
-            var healthPickup = other.gameObject.GetComponent<HealthPickup>();
-            if (!healthPickup.isBeingPickedUp)
-            {
-                healthPickup.isBeingPickedUp = true;
-                StartCoroutine(MoveObjectToPlayer(other.gameObject, expMoveSpeed, healthPickup));
-            }
-        
-        }
-        */
     }
 
     private IEnumerator MoveObjectToPlayer(GameObject obj, float speed, PickupItem item)
@@ -96,36 +60,4 @@ public class PlayerPickupRange : MonoBehaviour
             
         Destroy(obj);
     }
-    
-    /*private IEnumerator MoveExperienceToPlayer(GameObject expObject)
-    {
-        var experiencePickup = expObject.GetComponent<ExperienceAmount>();
-        var expAmount = experiencePickup.GetExperienceAmount();
-
-        // Calculate the initial away direction
-        Vector3 awayDirection = (expObject.transform.position - transform.position).normalized;
-        float startTime = Time.time;
-
-        // Initial movement away from the player
-        while (Time.time < startTime + moveAwayDuration && expObject != null)
-        {
-            expObject.transform.position += awayDirection * Time.deltaTime * awayDirectionSpeed;
-            yield return null;
-        }
-
-        // Move towards the player after moving away
-        while (expObject != null && Vector3.Distance(expObject.transform.position, transform.position) > 0.1f)
-        {
-            expObject.transform.position = Vector3.MoveTowards(expObject.transform.position, transform.position, Time.deltaTime * towardsPlayerSpeed);
-            yield return null;
-        }
-
-        // Once the experience reaches the player, add the experience and destroy the object
-        if (expObject != null)
-        {
-            experienceController.GainExperience(expAmount);
-            Destroy(expObject);
-        }
-    }*/
-
 }

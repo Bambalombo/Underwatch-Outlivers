@@ -93,13 +93,9 @@ public class ElementalBolts : MonoBehaviour
         }
     }
 
-
-
-
-
     private void SpawnAspectOfEarthAoePool(GameObject enemy)
     {
-        AoeDamagePool.AttemptInitialize(_weaponStats.GetDamage() / 5, enemy.transform.position);
+        AoeDamagePool.AttemptInitialize(_weaponStats.GetDamage() / 3, enemy.transform.position);
     }
 
     private void SpawnAspectOfWaterHealingStream(GameObject enemy)

@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     private PlayerStatsController[] _playerStatsControllers;
 
     private static bool _isPaused;
+    private bool _isGameOver;
     
     //UI 
     public GameObject DefaultMenuUI;
@@ -181,7 +182,6 @@ public class GameManager : MonoBehaviour
         DefaultMenuUI.SetActive(false);
         CharacterSelectionUI.SetActive(true);
         CharacterSelectionUI.GetComponent<CharacterSelectionManager>().EnableCharacterSelectionUI(GetNumberOfPlayers());
-        
     }
 
     public static void SaveCharacterSelectionsAndLoadLevel(List<int> listOfSelectedCharacters)
@@ -189,17 +189,16 @@ public class GameManager : MonoBehaviour
         _selectedCharacters = listOfSelectedCharacters;
         SceneManager.LoadScene("Level_1");
     }
-    
+
+    public static event Action OnGameOver;
 
     public void StartGameOverSequence()
     {
-        if (!_isPaused)
-            TogglePause();
-        
-        // Game over sequence here ...
-        Debug.Log("All players are dead. Game over.");
+        Debug.Log("Running GameOver Sequence.");
+        _isGameOver = true;
+        OnGameOver?.Invoke();
     }
-
+    
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Level_1")
@@ -348,18 +347,13 @@ public class GameManager : MonoBehaviour
     public static event PlayerDeathHandler OnPlayerDeath;
     public void PlayerDied(int playerIndex, float respawnTime)
     {
+        OnPlayerDeath?.Invoke(playerIndex, respawnTime);
+        StartCoroutine(KillAndRespawnPlayer(playerIndex, respawnTime));
+        
         // Check to see if we end the game
         bool anyPlayersAreAlive = GetPlayerHealthControllers().Any(player => player.IsAlive());
-        
         if (!anyPlayersAreAlive && EndGameEnabled())
-        {
             StartGameOverSequence();
-        }
-        else
-        {
-            OnPlayerDeath?.Invoke(playerIndex, respawnTime);
-            StartCoroutine(KillAndRespawnPlayer(playerIndex, respawnTime));
-        }
     }
 
     private void KillPlayer(int playerIndex, float respawnTime)
@@ -372,12 +366,14 @@ public class GameManager : MonoBehaviour
         var player = players[playerIndex];
         player.SetActive(false);
         
-        Debug.Log("Respawn time " + respawnTime);
+        //Debug.Log("Respawn time " + respawnTime);
         
         yield return new WaitForSeconds(respawnTime);
+
+        if (_isGameOver)
+            yield break;
         
         player.SetActive(true);
-        Debug.Log($"prev pos, {player.transform.position}");
         
         var newPos = _cameraManager.GetCenterPoint();
         player.transform.position = newPos;

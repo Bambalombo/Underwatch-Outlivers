@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd8622f6a9924321ac1afdf1e286b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 25
   cooldown: 0
   size: 10
   projectileSpeed: 3

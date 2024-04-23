@@ -29,11 +29,13 @@ public class DeathIconTimer : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnPlayerDeath += ShowDeathIcon;
+        GameManager.OnGameOver += StopAllDeathTimerCoroutines;
     }
 
     private void OnDisable()
     {
         GameManager.OnPlayerDeath -= ShowDeathIcon;
+        GameManager.OnGameOver -= StopAllDeathTimerCoroutines;
     }
     
     public void CreateDeathIcons(int numberOfPlayers, List<int> classSelections)
@@ -67,7 +69,6 @@ public class DeathIconTimer : MonoBehaviour
 
         _deathIcons = icons;
     }
-
     
     private void ShowDeathIcon(int playerIndex, float respawnTime)
     {
@@ -107,5 +108,10 @@ public class DeathIconTimer : MonoBehaviour
         }
         
         _deathIcons[playerIndex].SetActive(false);
+    }
+
+    public void StopAllDeathTimerCoroutines()
+    {
+        StopAllCoroutines();
     }
 }
