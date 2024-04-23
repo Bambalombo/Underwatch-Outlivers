@@ -146,6 +146,7 @@ MonoBehaviour:
   lastAttackTime: 0
   attackCooldown: 0.5
   experienceDrop: {fileID: 1571339481620590403, guid: e3a217142e90b3c40a769950e39b9dc3, type: 3}
+  experienceDropAmount: 15
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
   healthDropChance: 100
 --- !u!114 &1801632654411770858
@@ -201,6 +202,7 @@ MonoBehaviour:
   rageFireRate: 5
   lastFireTime: 0
   timeSinceLastBullet: 0
+  normalFireTwoBullets: 0
   currentState: 0
   players: []
 --- !u!114 &8933796695499925440

@@ -112,6 +112,7 @@ MonoBehaviour:
   lastAttackTime: 0
   attackCooldown: 1
   experienceDrop: {fileID: 1571339481620590403, guid: f8e5e4e7fa1e1744c88b8ac4bd7818d3, type: 3}
+  experienceDropAmount: 1
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
   healthDropChance: 5
 --- !u!114 &1801632654411770858

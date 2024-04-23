@@ -46,7 +46,8 @@ public class EnemyCombatController : MonoBehaviour
         else
         {
             // Instantiate the experience drop
-            Instantiate(enemyStatsController.GetExperienceDrop(), transform.position, Quaternion.identity, _experiencePickupParent.transform);
+            for (int i = 0; i < enemyStatsController.GetExperienceDropAmount(); i++)
+                Instantiate(enemyStatsController.GetExperienceDrop(), transform.position, Quaternion.identity, _experiencePickupParent.transform);
         }
         
         float randomFloat = Random.Range(0, 100); // Random number between 0 and 100
@@ -66,9 +67,8 @@ public class EnemyCombatController : MonoBehaviour
         var expParticleEffect = Instantiate(expParticleEffectPrefab, bossPosition, Quaternion.identity, _experiencePickupParent);
         Destroy(expParticleEffect, 5f);
         
-        int numExpOrbs = 20; // Number of experience orbs to spawn
         float explosionRadius = 5.0f; // Radius for the explosion effect
-        for (int i = 0; i < numExpOrbs; i++)
+        for (int i = 0; i < enemyStatsController.GetExperienceDropAmount(); i++)
         {
             float angle = Random.Range(0f, Mathf.PI * 2);
             Vector3 spawnPosition = bossPosition + new Vector3(Mathf.Cos(angle) * explosionRadius, Mathf.Sin(angle) * explosionRadius, 0);
