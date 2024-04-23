@@ -17,6 +17,8 @@ public class EnemyMovement : MonoBehaviour
     private float _originalMoveSpeed;
     [SerializeField] private float runSpeedMultiplier = 1f; // 1 = normal speed, 2 = double speed
 
+    private Vector2 _lastDirection = Vector2.zero;
+
 
 
     private void Awake()
@@ -69,12 +71,12 @@ public class EnemyMovement : MonoBehaviour
             Vector2 targetDirection = (nearestPlayerStatsController.GetPlayerPosition() - transform.position).normalized;
             bool isCloseEnough = Vector2.Distance(transform.position, nearestPlayerStatsController.GetPlayerPosition()) <= minDistanceToPlayer;
             _movementDirection = isCloseEnough ? Vector2.zero : targetDirection;
-            
+            _lastDirection = targetDirection;
             RunCloserToPlayer(nearestPlayerStatsController);
         }
         else
         {
-            _movementDirection = Vector2.zero;
+            _movementDirection = _lastDirection;
         }
     }
 

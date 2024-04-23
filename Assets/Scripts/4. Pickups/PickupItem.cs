@@ -46,7 +46,6 @@ public class PickupItem : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         
-        Debug.Log("Target is inactive");
         isBeingPickedUp = false;
         _checkIfTargetIsActiveCoroutine = null;
     }

@@ -85,8 +85,8 @@ public class PlayerHealthController : MonoBehaviour
         _isAlive = false;
             
         bool anyPlayerAlive = GameManager.GetPlayerHealthControllers().Any(player => player.IsAlive());
-        if (!anyPlayerAlive && gameManager.EndGameEnabled())
-            gameManager.StartGameOverSequence();
+        //if (!anyPlayerAlive && gameManager.EndGameEnabled())
+        //    gameManager.StartGameOverSequence();
 
         if (canDie)
         {
