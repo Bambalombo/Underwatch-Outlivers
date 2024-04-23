@@ -3284,7 +3284,7 @@ MonoBehaviour:
   playerPosition: {x: 0, y: 0, z: 0}
   lastMoveDirection: {x: 0, y: 0}
   playerHealthController: {fileID: 537972653550675585}
-  playerClass: 1
+  playerClass: 2
 --- !u!114 &8457482166147896845
 MonoBehaviour:
   m_ObjectHideFlags: 0
