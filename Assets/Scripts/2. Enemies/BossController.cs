@@ -12,7 +12,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private float rageFireRate; // Bullets per second in rage state
     [SerializeField] private float lastFireTime; // Time since the last fire
     [SerializeField] private float timeSinceLastBullet; // Time since the last bullet
-
+    [SerializeField] private bool normalFireTwoBullets; 
     private Transform _currentFirePosition;
     
     private enum State { Normal, Rage }
@@ -129,7 +129,13 @@ public class BossController : MonoBehaviour
         _currentAngle += normalAngleChange;
         float angle = _currentAngle * Mathf.Deg2Rad;
         Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        FireBullet(direction);
+        if (normalFireTwoBullets)
+        {
+            FireBullet(direction);
+            FireBullet(-direction);
+        }
+        else
+            FireBullet(-direction);
     }
 
     private void FireBullet(Vector3 direction)

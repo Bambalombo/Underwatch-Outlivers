@@ -224,7 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6252570930536968202, guid: 9ba4ae3513d24d74594f9834a09aedb1, type: 3}
-  spriteRenderer: {fileID: 0}
   rightFirePosition: {fileID: 3072706989888394787}
   leftFirePosition: {fileID: 7102903780121158824}
   bulletSpeed: 10
@@ -233,6 +232,7 @@ MonoBehaviour:
   rageFireRate: 5
   lastFireTime: 0
   timeSinceLastBullet: 0
+  normalFireTwoBullets: 1
   currentState: 0
   players: []
 --- !u!114 &8933796695499925440
