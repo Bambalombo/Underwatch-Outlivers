@@ -1,23 +1,27 @@
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    // SerializeField attributes allow these variables to be adjusted in the Unity Inspector
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab; // Bullet prefab to fire
+    [SerializeField] private Transform rightFirePosition; // Right fire position
+    [SerializeField] private Transform leftFirePosition; // Left fire position
     [SerializeField] private float bulletSpeed; // Speed of bullets
     [SerializeField] private float normalFireRate; // Bullets per second in normal state
+    [SerializeField] private float normalAngleChange; // Angle change per bullet in normal state
     [SerializeField] private float rageFireRate; // Bullets per second in rage state
     [SerializeField] private float lastFireTime; // Time since the last fire
     [SerializeField] private float timeSinceLastBullet; // Time since the last bullet
 
+    private Transform _currentFirePosition;
+    
     private enum State { Normal, Rage }
     [SerializeField] private State currentState;
     [SerializeField] private GameObject[] players;
 
     private EnemyStatsController _enemyStatsController;
     private Transform _bulletParent;
+    private SpriteRenderer _spriteRenderer;
 
     private float _currentAngle;
     private EnemySpawner _enemySpawner;
@@ -29,6 +33,18 @@ public class BossController : MonoBehaviour
         _enemyStatsController = GetComponent<EnemyStatsController>();
         players = GameManager.GetPlayerGameObjects();
         _bulletParent = GameManager.GetBulletParent().transform;
+        
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        if (_spriteRenderer.flipX)
+        {
+            _currentFirePosition = leftFirePosition;
+        }
+        else
+        {
+            _currentFirePosition = rightFirePosition;
+        }
+        
         StartCoroutine(StateMachine());
     }
 
@@ -62,6 +78,16 @@ public class BossController : MonoBehaviour
             Shoot();
             lastFireTime = Time.time;
         }
+        
+        
+        if (_spriteRenderer.flipX && _currentFirePosition != leftFirePosition)
+        {
+            _currentFirePosition = leftFirePosition;
+        }
+        else if (!_spriteRenderer.flipX && _currentFirePosition != rightFirePosition)
+        {
+            _currentFirePosition = rightFirePosition;
+        }
     }
     
     private void Shoot()
@@ -69,31 +95,38 @@ public class BossController : MonoBehaviour
         switch (currentState)
         {
             case State.Normal:
-                ShootSpiral();
+                if (Time.time >= lastFireTime + 1f / normalFireRate) // Use normalFireRate for Normal state
+                {
+                    NormalShootSpiral();
+                    lastFireTime = Time.time;
+                }
                 break;
             case State.Rage:
-                ShootAtPlayers();
+                if (Time.time >= lastFireTime + 1f / rageFireRate) // Use rageFireRate for Rage state
+                {
+                    RageShootAtPlayers();
+                    lastFireTime = Time.time;
+                }
                 break;
         }
         timeSinceLastBullet = 0f;
     }
 
-    private void ShootAtPlayers()
+    private void RageShootAtPlayers()
     {
         foreach (var player in players)
         {
             if (player != null)
             {
-                Vector3 direction = (player.transform.position - transform.position).normalized;
+                Vector3 direction = (player.transform.position - _currentFirePosition.position).normalized;
                 FireBullet(direction);
             }
         }
     }
 
-    private void ShootSpiral()
+    private void NormalShootSpiral()
     {
-        float angleStep = 360f / rageFireRate;
-        _currentAngle += angleStep;
+        _currentAngle += normalAngleChange;
         float angle = _currentAngle * Mathf.Deg2Rad;
         Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         FireBullet(direction);
@@ -101,7 +134,7 @@ public class BossController : MonoBehaviour
 
     private void FireBullet(Vector3 direction)
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity, _bulletParent);
+        GameObject bullet = Instantiate(bulletPrefab, _currentFirePosition.position, Quaternion.identity, _bulletParent);
         var bc = bullet.GetComponent<BulletController>();
         bc.Initialize(direction, bulletSpeed, _enemyStatsController);
 
