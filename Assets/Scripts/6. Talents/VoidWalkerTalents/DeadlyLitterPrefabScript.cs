@@ -66,7 +66,7 @@ public class DeadlyLitterPrefabScript : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
-                enemy.GetComponent<EnemyCombatController>().EnemyTakeDamage(_weaponStats.GetDamage() * 2f);
+                enemy.GetComponent<EnemyCombatController>().EnemyTakeDamage(_weaponStats.GetDamage());
             }
         }
     }

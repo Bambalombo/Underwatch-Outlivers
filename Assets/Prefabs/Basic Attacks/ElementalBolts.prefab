@@ -74,7 +74,7 @@ MonoBehaviour:
   aspectOfWaterEnabled: 0
   aspectOfWaterBullet: {fileID: 244602473224163229, guid: 6048efd6b2c08564796a18a922850c57, type: 3}
   aspectOfWaterHealChance: 0
-  elementalSpreadEnabled: 0
+  elementalSpreadEnabled: 1
   audioSource: {fileID: -664034129355478184}
 --- !u!114 &-690048890690819015
 MonoBehaviour:
@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circlePrefab: {fileID: 7910206181747909105, guid: 6219c808ba54100489a556a97a7a3ebc, type: 3}
-  initialSize: 1
-  maxSize: 2
-  growSpeed: 0.1
+  initialSize: 3
+  maxSize: 3
+  growSpeed: 0.05
   duration: 4
   spawnChance: 100
 --- !u!82 &-664034129355478184

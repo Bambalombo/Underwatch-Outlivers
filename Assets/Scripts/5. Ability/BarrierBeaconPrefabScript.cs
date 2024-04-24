@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BarrierBeaconPrefabScript : MonoBehaviour
 {
+    private Dictionary<Collider2D, Color> originalColors = new Dictionary<Collider2D, Color>();
     public bool HealingHaven;
     public bool MobileMantle;
     public Transform casterTransform;
@@ -25,6 +26,15 @@ public class BarrierBeaconPrefabScript : MonoBehaviour
         {
             ApplyBuff(other);
 
+            SpriteRenderer playerSprite = other.GetComponent<SpriteRenderer>();
+            if (playerSprite != null)
+            {
+                // Store the original color in the dictionary
+                originalColors[other] = playerSprite.color;
+                // Set the sprite color to blue while preserving the alpha
+                playerSprite.color = new Color(0, 0.6f, 1, playerSprite.color.a);
+            }
+            
             if (HealingHaven)
             {
                 // Start healing if not already healing
@@ -47,6 +57,14 @@ public class BarrierBeaconPrefabScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             RemoveBuff(other);
+
+            SpriteRenderer playerSprite = other.GetComponent<SpriteRenderer>();
+            if (playerSprite != null && originalColors.ContainsKey(other))
+            {
+                // Revert to the original color stored when entering
+                playerSprite.color = originalColors[other];
+                originalColors.Remove(other); // Remove the entry from the dictionary
+            }
 
             if (HealingHaven && activeHealings.ContainsKey(other))
             {

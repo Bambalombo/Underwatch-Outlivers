@@ -3,16 +3,23 @@ using UnityEngine;
 
 public class AbyssalRift : MonoBehaviour
 {
+
+    public float riftSpawnDistance; // Distance in front of the player where the rift spawns
+    public float riftTravelDistance; // Max distance the rift should travel from its spawn point
+    public float riftTravelSpeed; // Speed at which the rift travels
+    public float riftInitialScale;// Initial scale of the rift
+    public float riftMaxScale; // Maximum scale the rift will reach
     [SerializeField] private float defaultCooldown;
     public GameObject riftPrefab;
     [SerializeField] private float pullStrength;
-    [SerializeField] private float riftSpawnDistance;
     private AbilityCastHandler abilityCastHandler; 
     private AbilityStats abilityStats;
     private WeaponStats _weaponStats;
     private PlayerStatsController playerStatsController;
     private PlayerHealthController _playerHealthController;
     private NearestEnemyFinder _nearestEnemyFinder;
+    
+    
     
     [SerializeField] private AudioClip[] arraySounds;
     private int arrayMax;
@@ -57,16 +64,20 @@ public class AbyssalRift : MonoBehaviour
         Vector2 spawnDirection = playerStatsController.GetLastMoveDirection().normalized;
         Vector2 spawnPosition = (Vector2)transform.position + spawnDirection * riftSpawnDistance;
         GameObject rift = Instantiate(riftPrefab, new Vector3(spawnPosition.x, spawnPosition.y, 1), Quaternion.identity);
-        rift.transform.localScale = new Vector3(abilityStats.GetAttackRange(),abilityStats.GetAttackRange(),0);
-
+        rift.transform.localScale = new Vector3(riftInitialScale, riftInitialScale, 0);
+        
         if (deadlyLitterActivated)
         {
             StartCoroutine(DeadlyLitterCoroutine(rift.transform));
         }
 
 
+        Vector2 targetPosition = spawnPosition + spawnDirection * riftTravelDistance;
         float startTime = Time.time;
         float endTime = startTime + abilityStats.GetAttackLifetime();
+        float journeyLength = Vector2.Distance(spawnPosition, targetPosition);
+        float fracJourney = 0f;
+
         while (Time.time < endTime)
         {
             if (Time.timeScale == 0)
@@ -74,8 +85,18 @@ public class AbyssalRift : MonoBehaviour
                 yield return null;
                 continue;
             }
-            
-            PullEnemiesTowardsCenter(rift.transform.position, rift.GetComponent<SpriteRenderer>().transform.localScale.x/2f);
+
+            // Update position of rift
+            float distCovered = (Time.time - startTime) * riftTravelSpeed;
+            fracJourney = distCovered / journeyLength;
+            rift.transform.position = Vector3.Lerp(spawnPosition, targetPosition, fracJourney);
+
+            // Scale the rift
+            float scale = Mathf.Lerp(riftInitialScale, riftMaxScale, fracJourney);
+            rift.transform.localScale = new Vector3(scale, scale, 0);
+
+            // Example of pulling enemies towards the center
+            PullEnemiesTowardsCenter(rift.transform.position, scale / 2f);
             yield return null;
         }
 
