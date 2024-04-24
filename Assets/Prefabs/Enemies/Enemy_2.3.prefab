@@ -107,10 +107,10 @@ MonoBehaviour:
   isFoundByPlayer: 1
   currentHealth: 0
   maxHealth: 35
-  moveSpeed: 3
-  damage: 9
+  moveSpeed: 2.8
+  damage: 5
   lastAttackTime: 0
-  attackCooldown: 2
+  attackCooldown: 1
   experienceDrop: {fileID: 1571339481620590403, guid: f8e5e4e7fa1e1744c88b8ac4bd7818d3, type: 3}
   experienceDropAmount: 1
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
