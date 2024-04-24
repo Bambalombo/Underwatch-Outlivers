@@ -2929,14 +2929,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1809355141524032551, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
-      propertyPath: baseExperience
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1809355141524032551, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
-      propertyPath: levelScalingFactor
-      value: 1.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3229078379461766825, guid: 4bfc7ccbaa66e074585539997d2fe8a0, type: 3}
       propertyPath: m_Name
       value: GameManager
