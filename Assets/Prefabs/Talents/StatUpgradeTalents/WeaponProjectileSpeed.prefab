@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1490eed79ba22444bdf92ecbea91eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedStat: 4
+  selectedStat: 5
   amountPercent: 0.5

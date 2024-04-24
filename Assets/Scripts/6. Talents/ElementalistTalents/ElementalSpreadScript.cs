@@ -13,6 +13,7 @@ public class ElementalSpread : MonoBehaviour, ITalentEffect
         _elementalBoltComponent = _elementalBoltGameObject.GetComponent<ElementalBolts>();
 
         _elementalBoltComponent.elementalSpreadEnabled = true;
+        _elementalBoltGameObject.GetComponent<WeaponStats>().SetDamage(_elementalBoltGameObject.GetComponent<WeaponStats>().GetDamage()/2f); //Halfs weapon damage
     }
 }
 

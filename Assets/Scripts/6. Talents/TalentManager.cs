@@ -100,7 +100,7 @@ public class TalentManager : MonoBehaviour
             // Get three random talents applicable to this player's weapon/ability combination
             var (commonTalentPool, rareTalentPool) = playerTalents.InitializeUniqueTalentSet();
             print($"Player level: {playerLevel.value} ");
-            if (playerLevel.value % 5 != 0)
+            if (playerLevel.value % 10 != 0)
             {
                 List<Talent> randomTalents = playerTalents.GetThreeRandomTalents(commonTalentPool);
                 UpdateTalentUI(interactableCanvas, randomTalents);
