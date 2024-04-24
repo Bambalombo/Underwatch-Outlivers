@@ -28,6 +28,10 @@ public class PlayerHealthController : MonoBehaviour
     [SerializeField] private DeathIconTimer deathIconTimer;
 
     
+    
+    private float lastHurtSoundTime = 0f;
+    private float hurtSoundCooldown = 0.2f; 
+    
     private void Start()
     {
         _playerStatsController = GetComponent<PlayerStatsController>();
@@ -71,6 +75,12 @@ public class PlayerHealthController : MonoBehaviour
             StopCoroutine(_flashSpriteColorCoroutine);
         
         _flashSpriteColorCoroutine = StartCoroutine(FlashSpriteColor(hurtColor));
+        
+        if (Time.time - lastHurtSoundTime >= hurtSoundCooldown)
+        {
+            SoundManager.PlaySound("PlayerTakeDamageSound");
+            lastHurtSoundTime = Time.time;
+        }
     }
 
     public void TryKillPlayer()
@@ -159,7 +169,7 @@ public class PlayerHealthController : MonoBehaviour
         float duration = colorRecoverTime;
         float elapsed = 0f;
         
-        SoundManager.PlaySound("PlayerTakeDamageSound");
+        
 
         while (elapsed < duration)
         {
