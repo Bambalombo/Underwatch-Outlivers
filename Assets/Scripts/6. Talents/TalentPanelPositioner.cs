@@ -7,7 +7,7 @@ public class TalentPanelPositioner : MonoBehaviour
     //A MAJOR PROBLEM WITH IT THO IS THAT IT DOESN'T SCALE WELL WITH DIFFERENT RESOLUTIONS BUT INSTEAD EXPECTS 1920x1080
     
     // Offset from the corners, adjust as needed
-    private Vector2 offset = new Vector2(500,250); 
+    private Vector2 offset = new Vector2(440,220); 
 
     void Start()
     {
