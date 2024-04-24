@@ -48,6 +48,7 @@ public class GameOverManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnGameOver += StartGameOverSequence;
+        
     }
     
     private void OnDisable()
@@ -81,6 +82,7 @@ public class GameOverManager : MonoBehaviour
 
     void StartGameOverSequence()
     {
+        SoundManager.PlaySound("GameOverSound");
         StartCoroutine(GameOverSequence());
     }
     

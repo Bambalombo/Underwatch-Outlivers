@@ -97,6 +97,7 @@ public class PlayerHealthController : MonoBehaviour
         _playerStatsController.SetCurrentHealth(_playerStatsController.GetCurrentHealth() + healAmount);
         healthBarController.UpdateStatusBar(_playerStatsController.GetCurrentHealth(), _playerStatsController.GetMaxHealth());
         _flashSpriteColorCoroutine = StartCoroutine(FlashSpriteColor(healColor));
+        SoundManager.PlaySound("HealthPickup");
     }
     
     public void UpdateCoolDownBar(float currentCooldown, float maxCooldown)
