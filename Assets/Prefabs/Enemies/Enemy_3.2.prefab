@@ -108,7 +108,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 75
   moveSpeed: 2.2
-  damage: 14
+  damage: 9
   lastAttackTime: 0
   attackCooldown: 2
   experienceDrop: {fileID: 1571339481620590403, guid: 3658418d1285ada48b39daa8836082f6, type: 3}
