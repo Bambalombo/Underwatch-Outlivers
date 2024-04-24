@@ -158,14 +158,17 @@ public class PlayerHealthController : MonoBehaviour
         
         float duration = colorRecoverTime;
         float elapsed = 0f;
+        
+        SoundManager.PlaySound("PlayerTakeDamageSound");
 
         while (elapsed < duration)
         {
             _spriteRenderer.color = Color.Lerp(flashColor, _originalColor, elapsed / duration);
             elapsed += Time.deltaTime;
+            
             yield return null;
         }
-
+        
         _spriteRenderer.color = _originalColor; 
     }
 
