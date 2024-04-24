@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd8622f6a9924321ac1afdf1e286b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 18
   cooldown: 0
   size: 10
-  projectileSpeed: 3
+  projectileSpeed: 6
   lifetime: 0
   knockback: 0
   targetCount: 3
@@ -4927,4 +4927,4 @@ MonoBehaviour:
   boltStartSize: 0.8
   boltMaxSize: 1.8
   lightningWidth: 1
-  defaultCooldown: 5
+  defaultCooldown: 15

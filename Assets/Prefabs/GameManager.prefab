@@ -93,4 +93,4 @@ MonoBehaviour:
   nextLevelExperience: {fileID: 11400000, guid: c829af41fec879b4cb5776a2ca228732, type: 2}
   level: {fileID: 11400000, guid: 5e81f02d13a93294893d33f7ee6b5200, type: 2}
   baseExperience: 100
-  levelScalingFactor: 1.5
+  levelScalingFactor: 1.25

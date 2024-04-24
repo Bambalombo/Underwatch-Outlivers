@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 20
   attackCooldown: 2
   attackRange: 5
   projectileSpeed: 10
@@ -68,7 +68,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5317794402841587772, guid: cc8b447428eb8e0449e0e140acdb1bf7, type: 3}
   explosionEffectPrefab: {fileID: 7910206181747909105, guid: c2e6e2d3937a833489b20d511eca4ba6, type: 3}
   projectileScale: {x: 0, y: 0}
-  travelDistance: 10
+  travelDistance: 7.5
   audioSource: {fileID: -2851834135182701680}
   arraySounds:
   - {fileID: 8300000, guid: 2636cf13d7fcaec4baaea3ada035c835, type: 3}

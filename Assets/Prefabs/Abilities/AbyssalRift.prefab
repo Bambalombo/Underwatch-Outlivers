@@ -50,7 +50,7 @@ MonoBehaviour:
   cooldown: 0
   size: 5
   projectileSpeed: 0
-  lifetime: 10
+  lifetime: 6
   knockback: 0
   targetCount: 0
 --- !u!114 &127855552803855778
@@ -65,10 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a9d671817b3a24cb4c97bb4d9c9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCooldown: 10
+  defaultCooldown: 20
   riftPrefab: {fileID: 7910206181747909105, guid: 20b72a78c821ed044a3ff16c03c4af74, type: 3}
   pullStrength: 30
-  riftSpawnDistance: 11.5
+  riftSpawnDistance: 7.5
   arraySounds:
   - {fileID: 8300000, guid: 5e45342c720011e4cb62f2949c2a2496, type: 3}
   - {fileID: 8300000, guid: 03995d336407bca45b2d65ac1f470689, type: 3}

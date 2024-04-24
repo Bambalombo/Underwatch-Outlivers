@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frenzyEffectPrefab: {fileID: 4609061036474927045, guid: d0515f89d4ef3a9498c7d0f0723007d7, type: 3}
-  defaultCooldown: 10
+  defaultCooldown: 20
   audioSource: {fileID: 5824222791831482126}
   frenzyFiestaEnabled: 0
 --- !u!114 &1466473065086806268

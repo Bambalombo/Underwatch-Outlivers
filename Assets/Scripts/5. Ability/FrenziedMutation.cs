@@ -46,7 +46,7 @@ public class FrenziedMutation : MonoBehaviour
         {
             Destroy(_playerGameObject.GetComponentInChildren<FrenziedEffect>().gameObject);
         }
-        ApplyFrenzyEffect(_playerGameObject, 1f, 2f); // The player casting it gets health drain and a stronger buff
+        ApplyFrenzyEffect(_playerGameObject, 2.5f, 1.5f); // The player casting it gets health drain and a stronger buff
         audioSource.Play();
         abilityCastHandler.StartCooldown(defaultCooldown, _abilityStats.GetAttackCooldown());
     }

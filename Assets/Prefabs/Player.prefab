@@ -3277,7 +3277,7 @@ MonoBehaviour:
   classIndex: 0
   playerCanLooseHealth: 1
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 50
   respawnTime: 15
   moveSpeed: 5
   experiencePickupRange: 4

@@ -71,13 +71,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 15
   attackCooldown: 2
-  attackRange: 3
+  attackRange: 5
   projectileSpeed: 0
   attackLifetime: 0
   knockback: 0
-  lifeStealAmount: 1
+  lifeStealAmount: 2
 --- !u!114 &-5951617738857337012
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,22 +48,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cycles:
   - enemyType: {fileID: 5362581833865366400, guid: db0360b50530a4a49a6dac6f49327ef6, type: 3}
-    startCount: 5
-    peakCount: 10
+    startCount: 8
+    peakCount: 30
     startTime: 5
     endTime: 60
     spawnDelay: 10
     lastSpawnTime: -1
   - enemyType: {fileID: 5362581833865366400, guid: fdf2d49501f06a749bf5677bab1f697a, type: 3}
-    startCount: 15
-    peakCount: 30
+    startCount: 4
+    peakCount: 9
     startTime: 60
     endTime: 120
-    spawnDelay: 10
+    spawnDelay: 3
     lastSpawnTime: -1
   - enemyType: {fileID: 5362581833865366400, guid: f58a704cf80fca945b70b2f2aa8ff480, type: 3}
-    startCount: 25
-    peakCount: 50
+    startCount: 10
+    peakCount: 30
     startTime: 120
     endTime: 180
     spawnDelay: 10
@@ -75,11 +75,39 @@ MonoBehaviour:
     endTime: 240
     spawnDelay: 10
     lastSpawnTime: -1
-  - enemyType: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
+  - enemyType: {fileID: 5362581833865366400, guid: 19bc6e938d7e43644b5b72f3ad959c8b, type: 3}
     startCount: 50
     peakCount: 100
     startTime: 240
     endTime: 300
+    spawnDelay: 10
+    lastSpawnTime: -1
+  - enemyType: {fileID: 5362581833865366400, guid: 1b70d8ffda01ad44f832cb63e221d362, type: 3}
+    startCount: 50
+    peakCount: 100
+    startTime: 300
+    endTime: 360
+    spawnDelay: 10
+    lastSpawnTime: -1
+  - enemyType: {fileID: 5362581833865366400, guid: 4de1751b8c3b071459eab98b8154bf18, type: 3}
+    startCount: 50
+    peakCount: 100
+    startTime: 360
+    endTime: 420
+    spawnDelay: 10
+    lastSpawnTime: -1
+  - enemyType: {fileID: 5362581833865366400, guid: f024211896bd1c14a8500fd5b87a2b42, type: 3}
+    startCount: 50
+    peakCount: 100
+    startTime: 420
+    endTime: 480
+    spawnDelay: 10
+    lastSpawnTime: -1
+  - enemyType: {fileID: 5362581833865366400, guid: 76efe84a2c5d3b744adc6aa3cae37159, type: 3}
+    startCount: 50
+    peakCount: 100
+    startTime: 480
+    endTime: 540
     spawnDelay: 10
     lastSpawnTime: -1
   allEnemies: []

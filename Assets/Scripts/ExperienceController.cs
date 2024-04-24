@@ -25,6 +25,7 @@ public class ExperienceController : MonoBehaviour
         experience.value += gainedExperience;
         
         ScaleLevel();
+        SoundManager.PlaySound("XPpickup");
     }
 
     private void ScaleLevel()

@@ -106,15 +106,15 @@ MonoBehaviour:
   isBoss: 0
   isFoundByPlayer: 0
   currentHealth: 0
-  maxHealth: 25
-  moveSpeed: 1.5
-  damage: 9
+  maxHealth: 12
+  moveSpeed: 3.5
+  damage: 5
   lastAttackTime: 0
-  attackCooldown: 2
+  attackCooldown: 1
   experienceDrop: {fileID: 1571339481620590403, guid: d598553436d6c0d46a0aa4d7af048964, type: 3}
   experienceDropAmount: 1
   healthPickup: {fileID: 1571339481620590403, guid: 11f27e2419b5d1a478ee7308bac68ee6, type: 3}
-  healthDropChance: 5
+  healthDropChance: 3
 --- !u!114 &8876211974583484907
 MonoBehaviour:
   m_ObjectHideFlags: 0

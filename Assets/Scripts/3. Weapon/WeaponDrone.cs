@@ -8,6 +8,8 @@ public class WeaponDrone : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] private AudioClip[] arraySounds;
 
+    [SerializeField] private float moveDistanceDroneSpawn;
+
     // Configuration Variables
     [SerializeField] private bool useTimeBasedSpawning = true; // Toggle this in the inspector
     private Vector3 _lastPlayerPosition;
@@ -52,7 +54,7 @@ public class WeaponDrone : MonoBehaviour
             float distanceMoved = Vector3.Distance(_lastPlayerPosition, currentPlayerPosition);
             totalDistanceMoved += distanceMoved;
             
-            if (totalDistanceMoved >= _weaponStats.GetAttackCooldown() * 4) // Adjust the multiplier as needed
+            if (totalDistanceMoved >= moveDistanceDroneSpawn) // Adjust the multiplier as needed
             {
                 TriggerSpawn();
             }
