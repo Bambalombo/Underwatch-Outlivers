@@ -413,5 +413,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Exiting game...");
         Application.Quit();
     }
+    
+    public static void DestroyInstance()
+    {
+        Destroy(_instance.gameObject);
+    }
+    
 }
 

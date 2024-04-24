@@ -85,7 +85,7 @@ public class NearestEnemyFinder : MonoBehaviour
         {
             // we get the nearest enemy and save it in the "currentEnemy variable"
             var currentEnemy = GetNearestEnemy(lastPos, enemyLookList);
-            Debug.Log($"{currentEnemy}, {lastPos}");
+            //Debug.Log($"{currentEnemy}, {lastPos}");
             
             float distance = Vector2.Distance(lastPos, currentEnemy.transform.position);
             if (distance > proximityRange || currentEnemy == null) break;

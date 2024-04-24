@@ -214,6 +214,11 @@ public class GameOverManager : MonoBehaviour
 
     void ReturnToMainMenu()
     {
+        // Reset the game
+        GameManager.DestroyInstance(); // Destroy the GameManager instance
+        
+        Time.timeScale = 1; // Reset the time scale
+        
         SceneManager.LoadScene("Menu");
     }
 }
