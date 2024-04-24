@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 0
   attackCooldown: 2
   attackRange: 5
   projectileSpeed: 10
@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cee2d94e4aaa667429825f52fb18874d, type: 3}
   - {fileID: 8300000, guid: 123bc14cb34dd5745b1e3e8dde0da7e1, type: 3}
   - {fileID: 8300000, guid: 3050cf96bbd797a47871dfa788e54030, type: 3}
+  angryKittenActive: 0
 --- !u!82 &-2851834135182701680
 AudioSource:
   m_ObjectHideFlags: 0

@@ -33,6 +33,8 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private Button returnToMainMenuButton;
     [SerializeField] private FloatVariable gameTime;
     [SerializeField] private List<Highscore> highscores = new List<Highscore>();
+
+    // private FileStream stream;
     
     private void Start()
     {
@@ -66,7 +68,7 @@ public class GameOverManager : MonoBehaviour
     void SetupListeners()
     {
         saveHighscoreButton.onClick.AddListener(SaveHighscore);
-        viewHighscoreButton.onClick.AddListener(ViewHighscores);
+        viewHighscoreButton.onClick.AddListener(SkipSaveHighscore);
         returnToMainMenuButton.onClick.AddListener(ReturnToMainMenu);
     }
 
@@ -86,7 +88,7 @@ public class GameOverManager : MonoBehaviour
     {
         gameOverCanvas.SetActive(true);
 
-        yield return StartCoroutine(SlowDownTime(timeSlowDuration));
+        StartCoroutine(SlowDownTime(timeSlowDuration));
         yield return StartCoroutine(FadeOutGameUI(uiFadeDuration));
 
         currentHighscoreText.text = "You survived for\n" + GameTimeAsText(gameTime.value);
@@ -153,6 +155,7 @@ public class GameOverManager : MonoBehaviour
 
         string path = Application.persistentDataPath + "/highscores.dat";
         BinaryFormatter formatter = new BinaryFormatter();
+
         FileStream stream;
 
         if (File.Exists(path))
@@ -174,21 +177,25 @@ public class GameOverManager : MonoBehaviour
         ViewHighscores();
     }
     
+    void SkipSaveHighscore()
+    {
+        saveHighscoreUI.SetActive(false);
+        viewHighscoreUI.SetActive(true);
+        gameOverUI.transform.GetChild(0).gameObject.SetActive(false);
+        ViewHighscores();
+    }
+    
     private void ViewHighscores()
     {
         string path = Application.persistentDataPath + "/highscores.dat";
         if (File.Exists(path))
         {
-            Debug.Log("Highscore file found");
-            
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
             highscores = formatter.Deserialize(stream) as List<Highscore>;
             stream.Close();
             
-            Debug.Log($"number of highscores loaded: {highscores?.Count}");
-
             highscores?.Sort((x, y) =>
                 TimeSpan.Parse(GameTimeAsText(y.gameTime)).CompareTo(TimeSpan.Parse(GameTimeAsText(x.gameTime)))
             );
@@ -196,7 +203,6 @@ public class GameOverManager : MonoBehaviour
             allHighscoresText.text = "";
             foreach (Highscore highscore in highscores)
             {
-                Debug.Log(highscore.gameTime);
                 allHighscoresText.text += $"{highscore.realWorldDateTime} - {highscore.playerName} - {GameTimeAsText(float.Parse(highscore.gameTime))}\n";
             }
         }

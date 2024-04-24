@@ -77,11 +77,15 @@ public class NearestEnemyFinder : MonoBehaviour
         var enemyLookList = new List<GameObject>();
         enemyLookList.AddRange(_enemySpawner.GetAllEnemiesList());
         var lastPos = startPos;
+
+        if (enemyLookList.Count < targetCount)
+            targetCount = enemyLookList.Count;
         
         for (int i = 0; i < (int)targetCount; i++)
         {
             // we get the nearest enemy and save it in the "currentEnemy variable"
             var currentEnemy = GetNearestEnemy(lastPos, enemyLookList);
+            Debug.Log($"{currentEnemy}, {lastPos}");
             
             float distance = Vector2.Distance(lastPos, currentEnemy.transform.position);
             if (distance > proximityRange || currentEnemy == null) break;
