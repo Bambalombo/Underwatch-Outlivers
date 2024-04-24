@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Glitchy Games
-  productName: Underwatch Outlivers
+  productName: Parasitic Panic
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -286,7 +286,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: eb6f3f405cde94a4f80eb170e3a29f2e, type: 3}
+      m_Icon: {fileID: 2800000, guid: dd71743b2c2a26043afd3241d07a4d95, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
