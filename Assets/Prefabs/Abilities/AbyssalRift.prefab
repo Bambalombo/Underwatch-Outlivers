@@ -82,7 +82,7 @@ MonoBehaviour:
   soulHarvestHealAmount: 0
   soulHarvestHealChance: 0
   nextHealTime: 0
-  deadlyLitterActivated: 1
+  deadlyLitterActivated: 0
   deadlyLitterMinionPrefab: {fileID: 3497990347824647, guid: af61957240f4a8e4f82acd41eae91981, type: 3}
 --- !u!82 &4251319545539366398
 AudioSource:
