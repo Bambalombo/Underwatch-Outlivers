@@ -21,12 +21,15 @@ public class EnemySpawner : MonoBehaviour
     private GameObject _mainCamera;
     [SerializeField] private List<GameObject> bosses;
     [SerializeField] private FloatVariable gameTime;
+    [SerializeField] private GameObject startBoss;
+    [SerializeField] private Vector2 startBossPosition;
 
     private void Start()
     {
         _enemySpawnPosition = GetComponent<EnemySpawnPosition>();
         _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         SpawnBosses();
+        SpawnStartBoss();
     }
 
     private void Update()
@@ -71,6 +74,17 @@ public class EnemySpawner : MonoBehaviour
                 GameManager.GetBossParent().transform);
             allEnemies.Add(bossObj);
         }
+    }
+
+    private void SpawnStartBoss()
+    {
+        GameObject bossObj = Instantiate(startBoss, startBossPosition, Quaternion.identity, 
+            GameManager.GetBossParent().transform);
+
+        //var enemyStatsController = bossObj.GetComponent<EnemyStatsController>();
+        //enemyStatsController.SetIsFoundByPlayer(true);
+        
+        allEnemies.Add(bossObj);
     }
 
     public List<GameObject> GetAllEnemiesList()

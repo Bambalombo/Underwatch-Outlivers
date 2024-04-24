@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 9160034463395656589}
   - component: {fileID: 9018387638034703035}
   m_Layer: 7
-  m_Name: Boss_2.1
+  m_Name: Boss_Start
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBoss: 1
-  isFoundByPlayer: 0
+  isFoundByPlayer: 1
   currentHealth: 0
   maxHealth: 300
   moveSpeed: 2
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5362581833865366400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4489d1eec22949449b4dfec2dcad0a0c, type: 3}
   m_Name: 

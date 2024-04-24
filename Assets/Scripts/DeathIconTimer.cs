@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Net.Mime;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeathIconTimer : MonoBehaviour

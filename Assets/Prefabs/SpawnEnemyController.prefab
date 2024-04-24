@@ -57,7 +57,7 @@ MonoBehaviour:
   - enemyType: {fileID: 5362581833865366400, guid: fdf2d49501f06a749bf5677bab1f697a, type: 3}
     startCount: 4
     peakCount: 9
-    startTime: 60
+    startTime: 70
     endTime: 120
     spawnDelay: 3
     lastSpawnTime: -1
@@ -110,12 +110,21 @@ MonoBehaviour:
     endTime: 540
     spawnDelay: 10
     lastSpawnTime: -1
+  - enemyType: {fileID: 5362581833865366400, guid: 06f10e0d9fbf7a243adef13c5c3d51ce, type: 3}
+    startCount: 1
+    peakCount: 100
+    startTime: 540
+    endTime: 700
+    spawnDelay: 10
+    lastSpawnTime: -1
   allEnemies: []
   bosses:
   - {fileID: 5362581833865366400, guid: 34717f0ed31c4c24aae7475a12a6944b, type: 3}
   - {fileID: 5362581833865366400, guid: d1d4a946bd7979f4c92641d53962c896, type: 3}
-  - {fileID: 5362581833865366400, guid: dfc82815b2c7a504194e8d78af77d3db, type: 3}
+  - {fileID: 5362581833865366400, guid: 4849fd9a1c23ce14bb2d292959e41e80, type: 3}
   gameTime: {fileID: 11400000, guid: 53103ab4b973ad04fb75a8ed5488b351, type: 2}
+  startBoss: {fileID: 5362581833865366400, guid: dfc82815b2c7a504194e8d78af77d3db, type: 3}
+  startBossPosition: {x: 300, y: 0}
 --- !u!114 &1757951494819308280
 MonoBehaviour:
   m_ObjectHideFlags: 0

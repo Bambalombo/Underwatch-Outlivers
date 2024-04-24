@@ -22,9 +22,6 @@ public class EnemyStatsController : MonoBehaviour, IStatController
     {
         currentHealth = maxHealth;
         lastAttackTime = -attackCooldown;
-        
-        // If the enemy is a boss, it has not been found by the player
-        isFoundByPlayer = !isBoss;
 
         if (!isFoundByPlayer)
             GetComponent<EnemyTeleportToPlayer>().enabled = false;
