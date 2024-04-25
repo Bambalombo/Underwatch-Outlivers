@@ -263,7 +263,13 @@ public class GameManager : MonoBehaviour
                 Vector3 position = new Vector3(i * 2 - (playersToCreate - 1), 0, 0);
                 players[i] = Instantiate(playerPrefab, position, Quaternion.identity, _playerParent);
                 players[i].name = "Player_" + (i + 1);
-                
+
+                //if (players[i].name == "Player_1")
+                //{
+                   //players[i].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardMouse";
+                //}
+
+
                 // Fill local lists of health and stats controllers
                 PlayerHealthController playerHealthController = players[i].GetComponentInChildren<PlayerHealthController>(true);
                 _playerHealthControllers[i] = playerHealthController;
