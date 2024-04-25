@@ -62,7 +62,8 @@ public class EnemyCombatController : MonoBehaviour
     
     private void BossExperienceDrop()
     {
-        SoundManager.PlaySound("BossDeathSound");
+        if (enemyStatsController.GetIsBoss())
+            SoundManager.PlaySound("BossDeathSound");
         Vector3 bossPosition = transform.position;
         // Play the particle effect at the boss position
         var expParticleEffect = Instantiate(expParticleEffectPrefab, bossPosition, Quaternion.identity, _experiencePickupParent);
