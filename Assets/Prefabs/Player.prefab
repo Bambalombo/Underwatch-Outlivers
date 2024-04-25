@@ -3179,6 +3179,7 @@ GameObject:
   - component: {fileID: 1120148009396779783}
   - component: {fileID: 1591481472568065555}
   - component: {fileID: 3462755394086869057}
+  - component: {fileID: 1478478851492535212}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player
@@ -3880,3 +3881,15 @@ MonoBehaviour:
     maxLevel: 1
     talentPrefab: {fileID: 2824514438447184768, guid: 8d8f66e5928fe7244847f152be46ddfc, type: 3}
     talentIcon: {fileID: 21300000, guid: 25cc9e621fbf313408996a671f99148e, type: 3}
+--- !u!114 &1478478851492535212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905089503809146214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246fecd07b32c574ca9733783d7fdc66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
