@@ -9,6 +9,7 @@ public class EnemyCombatController : MonoBehaviour
     [SerializeField] private EnemyStatsController enemyStatsController;
     private EnemySpawner _enemySpawner;
     [SerializeField] private GameObject expParticleEffectPrefab;
+    private bool isAlive = true;
     
     private void Awake()
     {
@@ -24,20 +25,28 @@ public class EnemyCombatController : MonoBehaviour
         
         enemyStatsController.SetCurrentHealth(enemyStatsController.GetCurrentHealth() - damageAsInt);
         
+        InstantiateDamagePopup(damageAsInt);
+        
         KillEnemyAndGivePlayerExp();
 
-        InstantiateDamagePopup(damageAsInt);
     }
 
     private void KillEnemyAndGivePlayerExp()
     {
         if (enemyStatsController.GetCurrentHealth() <= 0)
         {
-            InstantiateExperiencePickup();
+            if (isAlive)
+            {
+                InstantiatePickups();
+                
+                Destroy(gameObject); // Destroy the enemy object
+                
+                isAlive = false;
+            }
         }
     }
     
-    private void InstantiateExperiencePickup()
+    private void InstantiatePickups()
     {
         if (enemyStatsController.GetIsBoss())
         {
@@ -56,8 +65,6 @@ public class EnemyCombatController : MonoBehaviour
             // Instantiate the health pickup
             Instantiate(enemyStatsController.GetHealthPickup(), transform.position, Quaternion.identity, _experiencePickupParent.transform);
         }
-        
-        Destroy(gameObject); // Destroy the enemy object
     }
     
     private void BossExperienceDrop()
@@ -85,6 +92,9 @@ public class EnemyCombatController : MonoBehaviour
 
     private void InstantiateDamagePopup(float damage)
     {
+        if (isAlive == false)
+            return;
+        
         // Disable if no offset is needed
         var randomOffset = RandomOffsetForDamagePopup();
 
