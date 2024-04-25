@@ -100,7 +100,7 @@ public class BarrierBeaconPrefabScript : MonoBehaviour
     {
         while (true)
         {
-            player.GetComponentInChildren<PlayerHealthController>().PlayerHeal(casterPlayerStats.GetMaxHealth()*0.01f); //Heals by 1% of casting players max health
+            player.GetComponentInChildren<PlayerHealthController>().PlayerHeal(casterPlayerStats.GetMaxHealth()*0.05f); //Heals by 1% of casting players max health
             yield return new WaitForSeconds(1f); // Heal every second
         }
     }

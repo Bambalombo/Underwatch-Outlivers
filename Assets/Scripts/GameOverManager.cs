@@ -32,6 +32,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private Button viewHighscoreButton;
     [SerializeField] private Button returnToMainMenuButton;
     [SerializeField] private FloatVariable gameTime;
+    [SerializeField] private float pausedGameTime;
     [SerializeField] private List<Highscore> highscores = new List<Highscore>();
 
     // private FileStream stream;
@@ -82,7 +83,11 @@ public class GameOverManager : MonoBehaviour
 
     void StartGameOverSequence()
     {
+        pausedGameTime = gameTime.value; 
+        currentHighscoreText.text = "You survived for\n" + GameTimeAsText(pausedGameTime);
+        
         SoundManager.PlaySound("GameOverSound");
+        
         StartCoroutine(GameOverSequence());
     }
     
@@ -92,8 +97,6 @@ public class GameOverManager : MonoBehaviour
 
         StartCoroutine(SlowDownTime(timeSlowDuration));
         yield return StartCoroutine(FadeOutGameUI(uiFadeDuration));
-
-        currentHighscoreText.text = "You survived for\n" + GameTimeAsText(gameTime.value);
         
         gameOverUI.SetActive(true);
     }
@@ -150,7 +153,7 @@ public class GameOverManager : MonoBehaviour
     private void SaveHighscore()
     {
         string playerName = playerNameInputField.text;
-        string score = gameTime.value.ToString();
+        string score = pausedGameTime.ToString();
         string realWorldDateTime = DateTime.Now.ToString("dd.MM.yyyy, HH:mm");
 
         Highscore newHighscore = new Highscore(playerName, score, realWorldDateTime);

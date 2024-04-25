@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   cooldown: 0
-  size: 5
+  size: 7
   projectileSpeed: 0
   lifetime: 8
   knockback: 0
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riftSpawnDistance: 3
   riftTravelDistance: 8
-  riftTravelSpeed: 3
-  riftInitialScale: 2
+  riftTravelSpeed: 4
+  riftInitialScale: 1
   riftMaxScale: 5
   defaultCooldown: 20
   riftPrefab: {fileID: 7910206181747909105, guid: 20b72a78c821ed044a3ff16c03c4af74, type: 3}
@@ -96,7 +96,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -69,8 +69,8 @@ MonoBehaviour:
     spawnDelay: 10
     lastSpawnTime: -1
   - enemyType: {fileID: 5362581833865366400, guid: b127c7d400a17c0499566ead9024825a, type: 3}
-    startCount: 35
-    peakCount: 70
+    startCount: 15
+    peakCount: 55
     startTime: 180
     endTime: 240
     spawnDelay: 10
@@ -83,15 +83,15 @@ MonoBehaviour:
     spawnDelay: 10
     lastSpawnTime: -1
   - enemyType: {fileID: 5362581833865366400, guid: 1b70d8ffda01ad44f832cb63e221d362, type: 3}
-    startCount: 50
-    peakCount: 100
+    startCount: 20
+    peakCount: 40
     startTime: 300
     endTime: 360
     spawnDelay: 10
     lastSpawnTime: -1
   - enemyType: {fileID: 5362581833865366400, guid: 4de1751b8c3b071459eab98b8154bf18, type: 3}
-    startCount: 50
-    peakCount: 100
+    startCount: 15
+    peakCount: 55
     startTime: 360
     endTime: 420
     spawnDelay: 10
@@ -112,8 +112,15 @@ MonoBehaviour:
     lastSpawnTime: -1
   - enemyType: {fileID: 5362581833865366400, guid: 06f10e0d9fbf7a243adef13c5c3d51ce, type: 3}
     startCount: 1
-    peakCount: 100
+    peakCount: 10
     startTime: 540
+    endTime: 600
+    spawnDelay: 10
+    lastSpawnTime: -1
+  - enemyType: {fileID: 5362581833865366400, guid: 06f10e0d9fbf7a243adef13c5c3d51ce, type: 3}
+    startCount: 15
+    peakCount: 100
+    startTime: 600
     endTime: 700
     spawnDelay: 10
     lastSpawnTime: -1

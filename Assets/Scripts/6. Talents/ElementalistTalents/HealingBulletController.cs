@@ -35,7 +35,7 @@ public class HealingBulletController : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             // Trigger healing if the bullet hits the player who fired it
-            other.GetComponentInParent<PlayerHealthController>().PlayerHeal(1f);
+            other.GetComponentInParent<PlayerHealthController>().PlayerHeal(0.25f);
             Destroy(gameObject);
         }
     }

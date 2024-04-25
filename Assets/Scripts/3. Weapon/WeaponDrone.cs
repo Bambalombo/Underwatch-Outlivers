@@ -80,7 +80,7 @@ public class WeaponDrone : MonoBehaviour
         if (shockSphereEnabled)
         {
             gameObject.GetComponent<AoeDamagePool>().duration = _weaponStats.GetAttackLifetime();
-            gameObject.GetComponent<AoeDamagePool>().AttemptInitialize(_weaponStats.GetDamage() / 10, _playerStatsController.GetPlayerPosition());
+            gameObject.GetComponent<AoeDamagePool>().AttemptInitialize(_weaponStats.GetDamage() / 4, _playerStatsController.GetPlayerPosition());
         }
         
         Drones dronesScript = drone.GetComponent<Drones>();

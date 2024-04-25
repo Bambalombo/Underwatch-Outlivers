@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedStat: 4
-  amountPercent: 0.05
+  amountPercent: 0.1
