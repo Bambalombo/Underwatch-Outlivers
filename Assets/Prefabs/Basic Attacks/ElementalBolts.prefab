@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
+  damage: 15
   attackCooldown: 1
   attackRange: 0
   projectileSpeed: 10
@@ -74,7 +74,7 @@ MonoBehaviour:
   aspectOfWaterEnabled: 0
   aspectOfWaterBullet: {fileID: 244602473224163229, guid: 6048efd6b2c08564796a18a922850c57, type: 3}
   aspectOfWaterHealChance: 0
-  elementalSpreadEnabled: 1
+  elementalSpreadEnabled: 0
   audioSource: {fileID: -664034129355478184}
 --- !u!114 &-690048890690819015
 MonoBehaviour:

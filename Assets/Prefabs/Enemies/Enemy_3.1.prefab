@@ -107,7 +107,7 @@ MonoBehaviour:
   isFoundByPlayer: 1
   currentHealth: 0
   maxHealth: 50
-  moveSpeed: 2.2
+  moveSpeed: 2
   damage: 9
   lastAttackTime: 0
   attackCooldown: 2

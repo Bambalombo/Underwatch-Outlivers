@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 9160034463395656589}
   - component: {fileID: 7523265658556748073}
   m_Layer: 7
-  m_Name: Enemy_2.1 1
+  m_Name: Enemy_2.2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   isFoundByPlayer: 1
   currentHealth: 0
   maxHealth: 20
-  moveSpeed: 2.8
+  moveSpeed: 2.4
   damage: 5
   lastAttackTime: 0
   attackCooldown: 1

@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87741a1665e0fde4a870b142c815f232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
-  attackCooldown: 2.5
-  attackRange: 7
+  damage: 15
+  attackCooldown: 1.5
+  attackRange: 8
   projectileSpeed: 0
   attackLifetime: 10
   knockback: 0
@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circlePrefab: {fileID: 7910206181747909105, guid: 9f4fbb295fd609c45b16a137c7869d86, type: 3}
-  initialSize: 3
-  maxSize: 3
+  initialSize: 6
+  maxSize: 6
   growSpeed: 0
   duration: 0
   spawnChance: 100
