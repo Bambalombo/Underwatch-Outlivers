@@ -3595,49 +3595,49 @@ MonoBehaviour:
   playerStatsController: {fileID: 5807114057819124149}
   commonElementalistTalents:
   - name: Health Increase
-    description: Increases the player's health by 5%
+    description: Increases the player's health by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
     talentIcon: {fileID: 21300000, guid: b6aa0f2430bd49143b961bad5d4efd21, type: 3}
   - name: Movement Speed Increase
-    description: Increases the player's movement speed by 5%
+    description: Increases the player's movement speed by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
     talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
   - name: Weapon Damage Increase
-    description: Increases the player's weapon damage by 5%
+    description: Increases the player's weapon damage by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
   - name: Weapon Cooldown Decrease
-    description: Decreases the player's weapon cooldown by 5%
+    description: Decreases the player's weapon cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Damage Increase
-    description: Increases the player's ability damage by 5%
+    description: Increases the player's ability damage by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 4542655277352818398, guid: fab404118bd3c31479d779b750037783, type: 3}
     talentIcon: {fileID: 21300000, guid: 988629c087b329b40b61b2709f58e754, type: 3}
   - name: Ability Cooldown Decrease
-    description: Decreases the player's ability cooldown by 5%
+    description: Decreases the player's ability cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Weapon Projectile Speed
-    description: Increases the player's weapon projectile speed by 50%
+    description: Increases the player's weapon projectile speed by 100%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 7793423878317038822, guid: 2a674bd790c239f43af6c9f8d1c71320, type: 3}
     talentIcon: {fileID: 21300000, guid: 1d9f1bd8914f9ea4e8ed754533126be9, type: 3}
   - name: Ability Projectile Speed
-    description: Increases the player's ability projectile speed by 50%
+    description: Increases the player's ability projectile speed by 100%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 7793423878317038822, guid: 0be5f9d41293bc04485de3712bea9f74, type: 3}
@@ -3650,49 +3650,49 @@ MonoBehaviour:
     talentIcon: {fileID: 21300000, guid: c63edc946776f364ab177231153a3596, type: 3}
   commonVoidwalkerTalents:
   - name: Health Increase
-    description: Increases the player's health by 5%
+    description: Increases the player's health by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
     talentIcon: {fileID: 21300000, guid: b6aa0f2430bd49143b961bad5d4efd21, type: 3}
   - name: Movement Speed Increase
-    description: Increases the player's movement speed by 5%
+    description: Increases the player's movement speed by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
     talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
   - name: Weapon Damage Increase
-    description: Increases the player's weapon damage by 5%
+    description: Increases the player's weapon damage by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
   - name: Weapon Cooldown Decrease
-    description: Decreases the player's weapon cooldown by 5%
+    description: Decreases the player's weapon cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Cooldown Decrease
-    description: Decreases the player's ability cooldown by 5%
+    description: Decreases the player's ability cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Size Increase
-    description: Increases the ability hitbox by 5%
+    description: Increases the ability hitbox by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 7793423878317038822, guid: 0fbb632f6ff398045b9b3b610197ce1f, type: 3}
     talentIcon: {fileID: 21300000, guid: 747e11e8aa0b9fd448ff26665bdea220, type: 3}
   - name: 'Weapon Size Increase '
-    description: Increases the weapon hitbox by 5%
+    description: Increases the weapon hitbox by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 7793423878317038822, guid: 64b689b5d9cc1af46a9aeb1601e34499, type: 3}
     talentIcon: {fileID: 21300000, guid: 747e11e8aa0b9fd448ff26665bdea220, type: 3}
   - name: Weapon Projectile Speed
-    description: Increases the player's weapon projectile speed by 50%
+    description: Increases the player's weapon projectile speed by 100%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 7793423878317038822, guid: 2a674bd790c239f43af6c9f8d1c71320, type: 3}
@@ -3705,31 +3705,31 @@ MonoBehaviour:
     talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
   commonMutantberserkerTalents:
   - name: Health Increase
-    description: Increases the player's health by 5%
+    description: Increases the player's health by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
     talentIcon: {fileID: 21300000, guid: b6aa0f2430bd49143b961bad5d4efd21, type: 3}
   - name: Movement Speed Increase
-    description: Increases the player's movement speed by 5%
+    description: Increases the player's movement speed by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
     talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
   - name: Weapon Damage Increase
-    description: Increases the player's weapon damage by 5%
+    description: Increases the player's weapon damage by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
   - name: Weapon Cooldown Decrease
-    description: Decreases the player's weapon cooldown by 5%
+    description: Decreases the player's weapon cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Cooldown Decrease
-    description: Decreases the player's ability cooldown by 5%
+    description: Decreases the player's ability cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
@@ -3748,37 +3748,37 @@ MonoBehaviour:
     talentIcon: {fileID: 21300000, guid: 3924f5c630e13684cb23d1e825f7cc17, type: 3}
   commonXI_017Talents:
   - name: Health Increase
-    description: Increases the player's health by 5%
+    description: Increases the player's health by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 3630048842388575491, guid: 26da71f8d0b7ad64b9eaf75b95cea6f9, type: 3}
     talentIcon: {fileID: 21300000, guid: b6aa0f2430bd49143b961bad5d4efd21, type: 3}
   - name: Movement Speed Increase
-    description: Increases the player's movement speed by 5%
+    description: Increases the player's movement speed by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2444712780698177583, guid: d49997862f9d6b247b8eceac13f9d9e9, type: 3}
     talentIcon: {fileID: 21300000, guid: 04d52190b74aae447aa8f0cabdb2c0ad, type: 3}
   - name: Weapon Damage Increase
-    description: Increases the player's weapon damage by 5%
+    description: Increases the player's weapon damage by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 2124982430488272803, guid: aaf9e8a06c0f8d04e850719ce063b895, type: 3}
     talentIcon: {fileID: 21300000, guid: a989b5dac5c1757458e5499539a12f25, type: 3}
   - name: Weapon Cooldown Decrease
-    description: Decreases the player's weapon cooldown by 5%
+    description: Decreases the player's weapon cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 9100859039356343518, guid: 1feec2e42cc458d458400f27694ec66b, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Cooldown Decrease
-    description: Decreases the player's ability cooldown by 5%
+    description: Decreases the player's ability cooldown by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 6717452128120063790, guid: 5a2c02c17552e2745992cbec5330a6c7, type: 3}
     talentIcon: {fileID: 21300000, guid: f27c2fd46d3b51546bd113ce0738d217, type: 3}
   - name: Ability Size Increase
-    description: Increases the ability hitbox by 5%
+    description: Increases the ability hitbox by 10%
     level: 0
     maxLevel: 10
     talentPrefab: {fileID: 7793423878317038822, guid: 0fbb632f6ff398045b9b3b610197ce1f, type: 3}

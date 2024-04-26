@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupType: 2
-  value: 8
+  value: 7
 --- !u!58 &-592092902796875869
 CircleCollider2D:
   m_ObjectHideFlags: 0
