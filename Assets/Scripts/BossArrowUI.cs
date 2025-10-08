@@ -77,12 +77,17 @@ public class BossArrowUI : MonoBehaviour
         screenPosition.x = Mathf.Clamp(screenPosition.x, 0, Screen.width);
         screenPosition.y = Mathf.Clamp(screenPosition.y, 0, Screen.height);
 
-        if (screenPosition.x == 0) screenPosition.x += offset;
-        else if (Math.Abs(screenPosition.x - Screen.width) < tolerance) screenPosition.x -= offset;
-        if (screenPosition.y == 0) screenPosition.y += offset;
-        else if (Math.Abs(screenPosition.y - Screen.height) < tolerance) screenPosition.y -= offset;
+        // Calculate the offset as a percentage of the screen's width
+        float scaledOffset = Screen.width * (offset / 1080f);
 
-        arrowRect.anchoredPosition = screenPosition - new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+        if (screenPosition.x == 0) screenPosition.x += scaledOffset;
+        else if (Math.Abs(screenPosition.x - Screen.width) < tolerance) screenPosition.x -= scaledOffset;
+        if (screenPosition.y == 0) screenPosition.y += scaledOffset;
+        else if (Math.Abs(screenPosition.y - Screen.height) < tolerance) screenPosition.y -= scaledOffset;
+
+        // Convert the screen's pixel coordinates to the canvas's coordinate system
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), screenPosition, null, out Vector2 localPoint);
+        arrowRect.anchoredPosition = localPoint;
     }
     
     private void RemoveBoss(GameObject boss)
